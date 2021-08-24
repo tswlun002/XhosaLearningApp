@@ -6,84 +6,219 @@
     android:layout_height="match_parent"
     tools:context=".WelcomeWindow">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/BTN_1ST"
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/level1IDBTN"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:backgroundTint="#F6F6F6"
-        android:backgroundTintMode="add"
-        android:gravity="center"
-        android:text="@string/level_one"
-        android:textColor="@color/purple_700"
-        app:icon="@drawable/ic_baseline_keyboard_arrow_right_24"
-        app:iconGravity="textEnd"
-        app:iconTint="@color/purple_700"
+        android:padding="16dp"
+        app:cardElevation="9dp"
+        app:barrierMargin="@dimen/cardview_compat_inset_shadow"
+        app:cardBackgroundColor="@color/purple_200"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="@id/guideline8"
         app:layout_constraintStart_toStartOf="@id/guideline9"
-        app:layout_constraintTop_toBottomOf="@id/guideline2" />
+        app:layout_constraintTop_toBottomOf="@id/guideline2">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/BTN_2nd"
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="74dp"
+            android:layout_height="wrap_content"
+            android:text="@string/level_one"
+            tools:ignore="MissingConstraints"
+            android:fontFamily="sans-serif-black"/>
+
+        <ImageView
+            android:layout_width="58dp"
+            android:layout_height="53dp"
+            android:layout_gravity="right|center"
+            android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" - Numbers" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" - Vowels" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text=" - Consonents" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" - Clicks" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/level2IDBTN"
         android:layout_width="0dp"
+        app:cardBackgroundColor="@color/teal_200"
         android:layout_height="0dp"
-        android:backgroundTint="#F6F6F6"
-        android:backgroundTintMode="add"
-        android:gravity="center"
-        android:text="@string/level_two"
-        android:textColor="@color/purple_700"
-        app:icon="@drawable/ic_baseline_keyboard_arrow_right_24"
-        app:iconGravity="textEnd"
-        app:iconTint="@color/purple_700"
-        app:layout_constraintBottom_toBottomOf="@id/guideline6"
+        app:cardElevation="9dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@id/guideline8"
         app:layout_constraintStart_toStartOf="@id/guideline9"
-        app:layout_constraintTop_toBottomOf="@id/guideline3" />
+        app:layout_constraintTop_toBottomOf="@id/guideline10">
 
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/BTN_3rd"
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/level_two"
+            android:fontFamily="sans-serif-black"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:layout_width="58dp"
+            android:layout_height="53dp"
+            android:layout_gravity="right|center"
+            android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" - Terms" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" - Communication" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text=" - directions" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" - Colors" />
+
+
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/level3IDBTN"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:backgroundTint="#F6F6F6"
-        android:gravity="center"
-        android:text="@string/level_three"
-        android:textColor="@color/purple_700"
-        app:icon="@drawable/ic_baseline_keyboard_arrow_right_24"
-        app:iconGravity="textEnd"
-        app:iconTint="@color/purple_700"
+        app:cardElevation="9dp"
+        app:cardBackgroundColor="@color/lemon"
         app:layout_constraintBottom_toBottomOf="@id/guideline7"
         app:layout_constraintEnd_toStartOf="@id/guideline8"
         app:layout_constraintStart_toStartOf="@id/guideline9"
-        app:layout_constraintTop_toBottomOf="@id/guideline6" />
+        app:layout_constraintTop_toBottomOf="@id/guideline11">
+
+        <TextView
+            android:id="@+id/text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/level_three"
+            android:fontFamily="sans-serif-black"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:layout_width="58dp"
+            android:layout_height="53dp"
+            android:layout_gravity="right|center"
+            android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" - Daily conversations" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" - Basic Phrases" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text=" - Lodging" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" - Problems" />
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.40" />
+        app:layout_constraintGuide_percent="0.35" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.55" />
+        app:layout_constraintGuide_percent="0.59" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.70" />
+        app:layout_constraintGuide_percent="0.85" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
@@ -98,4 +233,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.07" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,7 +37,7 @@ public class WelcomeWindow extends Fragment {
             }
         });*/
 
-        binding.BTN1ST.setOnClickListener(new View.OnClickListener() {
+        binding.level1IDBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NavHostFragment.findNavController(WelcomeWindow.this)
@@ -45,7 +45,7 @@ public class WelcomeWindow extends Fragment {
             }
         });
 
-        binding.BTN2nd.setOnClickListener(new View.OnClickListener() {
+        binding.level2IDBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NavHostFragment.findNavController(WelcomeWindow.this)
@@ -54,7 +54,7 @@ public class WelcomeWindow extends Fragment {
         });
 
 
-        binding.BTN3rd.setOnClickListener(new View.OnClickListener() {
+        binding.level3IDBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NavHostFragment.findNavController(WelcomeWindow.this)
