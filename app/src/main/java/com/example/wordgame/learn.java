@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.wordgame.databinding.FragmentLearnBinding;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link learn#newInstance} factory method to
@@ -23,7 +25,7 @@ public class learn extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+   private  FragmentLearnBinding binding;
     public learn() {
         // Required empty public constructor
     }
@@ -59,6 +61,13 @@ public class learn extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_learn, container, false);
+        binding = FragmentLearnBinding.inflate(inflater, container, false);
+        return  binding.getRoot();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

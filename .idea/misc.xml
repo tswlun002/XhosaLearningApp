@@ -8,12 +8,16 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.34010416666666665" />
-        <entry key="app/src/main/res/layout/fragment_learn.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_learn.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_play.xml" value="0.34646739130434784" />
         <entry key="app/src/main/res/layout/fragment_start.xml" value="0.33" />
         <entry key="app/src/main/res/layout/image.xml" value="0.34010416666666665" />
         <entry key="app/src/main/res/layout/learn.xml" value="0.34646739130434784" />
-        <entry key="app/src/main/res/layout/learn_adapter.xml" value="0.15715579710144928" />
+        <entry key="app/src/main/res/layout/matching.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/multiple_choice.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/progress.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/translation.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/true_or_false.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/welcomwindow.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.34010416666666665" />
         <entry key="app/src/main/res/menu/welcome_menu.xml" value="0.34010416666666665" />

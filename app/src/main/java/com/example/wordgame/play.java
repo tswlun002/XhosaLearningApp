@@ -2,11 +2,15 @@ package com.example.wordgame;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.wordgame.databinding.FragmentPlayBinding;
+import com.example.wordgame.databinding.FragmentStartBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,7 +27,7 @@ public class play extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private @NonNull FragmentPlayBinding binding;
     public play() {
         // Required empty public constructor
     }
@@ -59,6 +63,13 @@ public class play extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_play, container, false);
+        binding = FragmentPlayBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+       // return inflater.inflate(R.layout.fragment_play, container, false);
+    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }
