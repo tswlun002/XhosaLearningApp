@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="10dp"
     tools:context=".MultipleChoiceFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,17 +45,20 @@
 
                 <TextView
                     android:id="@+id/answer1textView"
-                    android:layout_width="match_parent"
+                    android:layout_width="190dp"
                     android:layout_height="114dp"
+                    android:layout_margin="3dp"
                     android:background="#9D92CF"
                     android:gravity="center"
+                    android:includeFontPadding="false"
                     android:text="@string/answer1"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/answer2TextView"
-                    android:layout_width="match_parent"
+                    android:layout_width="190dp"
                     android:layout_height="126dp"
+                    android:layout_margin="3dp"
                     android:background="#9D92CF"
                     android:gravity="center"
                     android:text="@string/answer2"
@@ -69,8 +73,9 @@
                 <TextView
                     android:id="@+id/answer3textView"
                     android:layout_width="match_parent"
-                    android:layout_height="114dp"
+                    android:layout_height="110dp"
                     android:layout_gravity="center"
+                    android:layout_margin="3dp"
                     android:background="#9D92CF"
                     android:gravity="center"
                     android:text="@string/answer3"
@@ -80,6 +85,7 @@
                     android:id="@+id/answer4TextView"
                     android:layout_width="match_parent"
                     android:layout_height="122dp"
+                    android:layout_margin="3dp"
                     android:background="#9D92CF"
                     android:gravity="center"
                     android:text="@string/answer4"
