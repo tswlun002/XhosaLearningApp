@@ -1,5 +1,7 @@
 package com.example.wordgame;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -27,7 +29,7 @@ public class TabAdapter  extends FragmentStateAdapter {
                 break;
         }
         assert fragment != null;
-        return  fragment;
+        return fragment;
     }
 
     @Override

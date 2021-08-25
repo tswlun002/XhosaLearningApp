@@ -14,5 +14,11 @@
     <item
         android:id="@+id/instructions"
         android:title="@string/instructions"/>
+    <item
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="@string/search"
+        android:id="@+id/search"
+        app:actionViewClass="android.widget.SearchView"
+        android:visible="false"/>
 
 </menu>

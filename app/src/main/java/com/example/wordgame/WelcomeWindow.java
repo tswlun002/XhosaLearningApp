@@ -10,16 +10,14 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.wordgame.databinding.WelcomwindowBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class WelcomeWindow extends Fragment {
 
     private WelcomwindowBinding binding;
 
     @Override
-    public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-    ) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = WelcomwindowBinding.inflate(inflater, container, false);
         return binding.getRoot();
@@ -28,15 +26,6 @@ public class WelcomeWindow extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        /*binding.nextBTNID.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(WelcomeWindow.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
-            }
-        });*/
-
         binding.level1IDBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +51,13 @@ public class WelcomeWindow extends Fragment {
             }
         });
     }
+    @Override
+    public void onResume() {
+        super.onResume();
 
+        BottomNavigationView bottomNavigationView = requireActivity().findViewById(R.id.bottom_navigationID);
+        bottomNavigationView.setVisibility(View.VISIBLE);
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();

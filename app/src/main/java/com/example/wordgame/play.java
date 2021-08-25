@@ -27,7 +27,7 @@ public class play extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private @NonNull FragmentPlayBinding binding;
+    private  FragmentPlayBinding binding;
     public play() {
         // Required empty public constructor
     }
@@ -65,7 +65,7 @@ public class play extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentPlayBinding.inflate(inflater, container, false);
         return binding.getRoot();
-       // return inflater.inflate(R.layout.fragment_play, container, false);
+
     }
     @Override
     public void onDestroyView() {

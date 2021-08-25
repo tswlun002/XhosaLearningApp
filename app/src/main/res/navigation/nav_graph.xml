@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.example.wordgame.WelcomeWindow"
-        android:label="@string/first_fragment_label"
+        android:label="Wecome to xhosa learning"
         tools:layout="@layout/welcomwindow">
 
         <action

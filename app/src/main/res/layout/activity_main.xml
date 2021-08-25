@@ -7,18 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.WordGame.AppBarOverlay"
+        android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
         app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
     </com.google.android.material.appbar.AppBarLayout>
-
 
     <include
         android:id="@+id/include"
@@ -46,10 +48,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="?attr/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/guideline4"
+        app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/welcome_menu"
         app:popupTheme="@style/Theme.WordGame.PopupOverlay" />
 
@@ -66,5 +70,4 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
      app:layout_constraintGuide_percent="0.93" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,8 +7,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.wordgame.databinding.FragmentLearnBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,7 +31,21 @@ public class learn extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-   private  FragmentLearnBinding binding;
+
+    private final String[] headings = {
+            "Numbers/Izibalo",
+            "Vowels/Izikhamiso",
+            "Consonants/Amaqabane",
+            "Clicks/Izandi"
+    };
+    //TODO: picture of the lost people
+    private final int[] lesson = {
+            R.drawable.numbers, R.drawable.vowels,
+            R.drawable.consonants, R.drawable.clicks
+    };
+
+
+    FragmentLearnBinding  binding;
     public learn() {
         // Required empty public constructor
     }
@@ -62,12 +82,25 @@ public class learn extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentLearnBinding.inflate(inflater, container, false);
-        return  binding.getRoot();
+        //ListView listView = view.findViewById(R.id.learnIDListview);
+        binding.learnIDListview.setStackFromBottom(false);
+
+        binding.learnIDListview.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
+
+        LearnController learn = new LearnController(requireContext(), headings, lesson, R.layout.learn_adapter);
+        binding.learnIDListview.setAdapter(learn);
+
+        return binding.getRoot();
+
+
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    public void onResume() {
+        super.onResume();
+
+        BottomNavigationView bottomNavigationView = requireActivity().findViewById(R.id.bottom_navigationID);
+        bottomNavigationView.setVisibility(View.GONE);
     }
+
 }

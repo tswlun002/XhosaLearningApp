@@ -26,7 +26,7 @@
             android:layout_height="55dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="TRANSLATE" />
+            android:text="@string/translate" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -48,7 +48,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="MATCHING" />
+            android:text="@string/matching" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -70,7 +70,7 @@
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="MULTIPLE CHOICE" />
+            android:text="@string/multiple_choice" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -92,6 +92,6 @@
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="TRUE or FALSE" />
+            android:text="@string/true_or_false" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
