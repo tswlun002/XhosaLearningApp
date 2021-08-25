@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,7 @@ public class play extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private  FragmentPlayBinding binding;
+    private @NonNull FragmentPlayBinding binding;
     public play() {
         // Required empty public constructor
     }
@@ -64,6 +65,41 @@ public class play extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentPlayBinding.inflate(inflater, container, false);
+
+       // return inflater.inflate(R.layout.fragment_play, container, false);
+        binding.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(play.this)
+                        .navigate(R.id.trueFragment);
+            }
+        });
+
+        binding.cardView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(play.this)
+                        .navigate(R.id.multipleChoiceFragment);
+            }
+        });
+
+
+        binding.cardView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(play.this)
+                        .navigate(R.id.matchingFragment);
+            }
+        });
+
+        binding.cardView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(play.this)
+                        .navigate(R.id.translationFragment);
+            }
+        });
+
         return binding.getRoot();
 
     }
