@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".TrueFalseFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="401dp"
+            android:layout_height="108dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="33dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="132dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/picQuestionTextViewID">
+
+            <Button
+                android:id="@+id/falseButton"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="#F44336"
+                android:text="@string/falseButton"
+                android:textColor="#000000" />
+
+            <Button
+                android:id="@+id/trueButton"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="#4CAF50"
+                android:text="@string/trueButton"
+                android:textColor="#263238" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/picQuestionTextViewID"
+            android:layout_width="376dp"
+            android:layout_height="119dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="17dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="@string/questionTextView"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/QuestionImageViewID" />
+
+        <ImageView
+            android:id="@+id/QuestionImageViewID"
+            android:layout_width="351dp"
+            android:layout_height="256dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="90dp"
+            android:layout_marginEnd="41dp"
+            android:layout_marginBottom="3dp"
+            android:contentDescription="TODO"
+            app:layout_constraintBottom_toTopOf="@+id/picQuestionTextViewID"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/igusha" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
