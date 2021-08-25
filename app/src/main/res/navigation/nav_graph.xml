@@ -14,6 +14,11 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_proggress"
+            app:destination="@id/proggress"
+            app:popUpTo="@id/proggress"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -35,4 +40,15 @@
         android:name="com.example.wordgame.play"
         android:label="fragment_play"
         tools:layout="@layout/fragment_play" />
+    <fragment
+        android:id="@+id/proggress"
+        android:name="com.example.wordgame.Proggress"
+        android:label="fragment_proggress"
+        tools:layout="@layout/fragment_proggress" >
+        <action
+            android:id="@+id/action_proggress_to_FirstFragment"
+            app:destination="@id/FirstFragment"
+            app:popUpTo="@id/FirstFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

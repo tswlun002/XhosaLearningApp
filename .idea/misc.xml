@@ -10,10 +10,12 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.34010416666666665" />
         <entry key="app/src/main/res/layout/fragment_learn.xml" value="0.15" />
         <entry key="app/src/main/res/layout/fragment_play.xml" value="0.34646739130434784" />
+        <entry key="app/src/main/res/layout/fragment_proggress.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_start.xml" value="0.33" />
         <entry key="app/src/main/res/layout/image.xml" value="0.34010416666666665" />
         <entry key="app/src/main/res/layout/learn.xml" value="0.34646739130434784" />
         <entry key="app/src/main/res/layout/learn_adapter.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/progress.xml" value="0.11141304347826086" />
         <entry key="app/src/main/res/layout/welcomwindow.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.34010416666666665" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.1" />
