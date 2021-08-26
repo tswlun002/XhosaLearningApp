@@ -2,8 +2,10 @@ package com.example.wordgame;
 
 import android.os.Bundle;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // upon click allow the fragment to get another fragment
+        setHasOptionsMenu(true);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -45,24 +49,30 @@ public class MainActivity extends AppCompatActivity {
         });*/
     }
 
+    private void setHasOptionsMenu(boolean b) {
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.welcome_menu, menu);
         return true;
     }
-
+    /** Handle action bar item clicks here. The action bar will
+     *  automatically handle clicks on the Home/Up button, so long
+     *  Then Navigate to home upon the second case click
+     *  as you specify a parent activity in AndroidManifest.xml.
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+            if( item.getItemId() == R.id.progressIdItem)
+                Navigation.findNavController(this,R.id.nav_host_fragment_content_main).navigate(R.id.action_FirstFragment_to_proggress);
+            else if(item.getItemId()==R.id.homeIdItem)
+                Navigation.findNavController(this,R.id.nav_host_fragment_content_main).navigate(R.id.action_proggress_to_FirstFragment);
+
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -73,4 +83,6 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
 }

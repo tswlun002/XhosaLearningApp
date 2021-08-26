@@ -19,23 +19,11 @@
     <string name="learn">Learn</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="translate">TRANSLATE</string>
+    <string name="heading">HEADING</string>
     <string name="multiple_choice">MULTIPLE CHOICE</string>
     <string name="true_or_false">TRUE or FALSE</string>
     <string name="matching">MATCHING</string>
-    <string name="question">Question</string>
-    <string name="answer1">answer1</string>
-    <string name="answer2">answer2</string>
-    <string name="answer3">answer3</string>
-    <string name="answer4">answer4</string>
-    <string name="questionTextView">question about the picture</string>
-    <string name="falseButton">False/ayonini</string>
-    <string name="trueButton">True/yinyani</string>
-    <string name="transQuestionTextView">word/ phrase to be translated</string>
-    <string name="hintButton">hints</string>
-    <string name="noHintsTextView">10</string>
-    <string name="submitButton">Submit</string>
-    <string name="transAnswerEditText">Enter direct translation of phrase above</string>
-    <string name="heading">heading</string>
-    <string name="search">search</string>
+    <string name="translate">TRANSLATE</string>
+    <string name="search">Search</string>
+    <string name="sign_out">Sign out</string>
 </resources>
