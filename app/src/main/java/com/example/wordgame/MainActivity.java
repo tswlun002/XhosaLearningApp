@@ -20,7 +20,7 @@ import com.example.wordgame.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // upon click allow the fragment to get another fragement
+        // upon click allow the fragment to get another fragment
         setHasOptionsMenu(true);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -59,13 +59,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getMenuInflater().inflate(R.menu.welcome_menu, menu);
         return true;
     }
-
+    /** Handle action bar item clicks here. The action bar will
+     *  automatically handle clicks on the Home/Up button, so long
+     *  Then Navigate to home upon the second case click
+     *  as you specify a parent activity in AndroidManifest.xml.
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-
 
             if( item.getItemId() == R.id.progressIdItem)
                 Navigation.findNavController(this,R.id.nav_host_fragment_content_main).navigate(R.id.action_FirstFragment_to_proggress);
@@ -84,22 +84,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 || super.onSupportNavigateUp();
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        /** get the item id from the user click
-         *  Inside the switch function Navigate to the Progress fragment upon first case click
-         *  Then Navigate to home upon the second case click
-         */
-        switch (item.getItemId()){
 
-            case R.id.progressIdItem:
-                Navigation.findNavController(this,R.id.FirstFragment).navigate(R.id.action_FirstFragment_to_proggress);
-                break;
-            case R.id.home:
-                Navigation.findNavController(this,R.id.proggress).navigate(R.id.action_proggress_to_FirstFragment);
-                break;
-
-        }
-        return true;
-    }
 }
