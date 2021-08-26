@@ -39,7 +39,20 @@
         android:id="@+id/play"
         android:name="com.example.wordgame.play"
         android:label="fragment_play"
-        tools:layout="@layout/fragment_play" />
+        tools:layout="@layout/fragment_play" >
+        <action
+            android:id="@+id/action_play_to_matchingFragment"
+            app:destination="@id/matchingFragment" />
+        <action
+            android:id="@+id/action_play_to_multipleChoiceFragment"
+            app:destination="@id/multipleChoiceFragment" />
+        <action
+            android:id="@+id/action_play_to_trueFalseFragment"
+            app:destination="@id/trueFalseFragment" />
+        <action
+            android:id="@+id/action_play_to_translationFragment"
+            app:destination="@id/translationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/proggress"
         android:name="com.example.wordgame.Proggress"
@@ -50,5 +63,41 @@
             app:destination="@id/FirstFragment"
             app:popUpTo="@id/FirstFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/matchingFragment"
+        android:name="com.example.wordgame.MatchingFragment"
+        android:label="fragment_matching"
+        tools:layout="@layout/fragment_matching" >
+        <action
+            android:id="@+id/action_matchingFragment_to_play"
+            app:destination="@id/play" />
+    </fragment>
+    <fragment
+        android:id="@+id/multipleChoiceFragment"
+        android:name="com.example.wordgame.MultipleChoiceFragment"
+        android:label="fragment_multiple_choice"
+        tools:layout="@layout/fragment_multiple_choice" >
+        <action
+            android:id="@+id/action_multipleChoiceFragment_to_play"
+            app:destination="@id/play" />
+    </fragment>
+    <fragment
+        android:id="@+id/trueFalseFragment"
+        android:name="com.example.wordgame.TrueFalseFragment"
+        android:label="true_false_adapter"
+        tools:layout="@layout/true_false_adapter" >
+        <action
+            android:id="@+id/action_trueFalseFragment_to_play"
+            app:destination="@id/play" />
+    </fragment>
+    <fragment
+        android:id="@+id/translationFragment"
+        android:name="com.example.wordgame.TranslationFragment"
+        android:label="fragment_translation"
+        tools:layout="@layout/fragment_translation" >
+        <action
+            android:id="@+id/action_translationFragment_to_play"
+            app:destination="@id/play" />
     </fragment>
 </navigation>

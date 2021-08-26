@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="#FFFFFF"
+    android:padding="2dp"
     tools:context=".MatchingFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +26,7 @@
             app:layout_constraintHeight_percent="0.3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-            app:layout_constraintWidth_percent="0.85">
+            app:layout_constraintWidth_percent="0.90">
 
             <TextView
                 android:id="@+id/textView13"
@@ -88,12 +89,13 @@
             android:layout_marginStart="31dp"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="31dp"
+            android:background="#E6D5D5"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.32"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/instructionTextView"
-            app:layout_constraintWidth_percent="0.85">
+            app:layout_constraintWidth_percent="0.9">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -104,6 +106,7 @@
                     android:id="@+id/engWordTextView1"
                     android:layout_width="165dp"
                     android:layout_height="match_parent"
+                    android:background="#FAE6E6"
                     android:gravity="center_vertical"
                     android:text="1.EnglishWord" />
 
@@ -135,6 +138,7 @@
                     android:id="@+id/engWordTextView2"
                     android:layout_width="165dp"
                     android:layout_height="match_parent"
+                    android:background="#FAE6E6"
                     android:gravity="center_vertical"
                     android:text="2.EnglishWord" />
             </androidx.cardview.widget.CardView>
@@ -157,18 +161,20 @@
                     android:id="@+id/engWordTextView3"
                     android:layout_width="165dp"
                     android:layout_height="match_parent"
+                    android:background="#FAE6E6"
                     android:gravity="center_vertical"
                     android:text="3.EnglishWord" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="86dp"
+                app:cardBackgroundColor="#FFFFFF">
 
                 <EditText
                     android:id="@+id/xhosaWordEditText4"
                     android:layout_width="183dp"
-                    android:layout_height="48dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="right"
                     android:ems="10"
                     android:hint="matching Xhosa word"
@@ -177,7 +183,8 @@
                 <TextView
                     android:id="@+id/engWordTextView4"
                     android:layout_width="165dp"
-                    android:layout_height="45dp"
+                    android:layout_height="match_parent"
+                    android:background="#FAE6E6"
                     android:gravity="center_vertical"
                     android:text="4.EnglishWord" />
             </androidx.cardview.widget.CardView>

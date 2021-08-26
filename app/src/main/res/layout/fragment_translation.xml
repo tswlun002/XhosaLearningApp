@@ -21,7 +21,7 @@
             android:layout_marginBottom="1dp"
             android:background="#E1D9D9"
             android:gravity="center"
-            android:text="@string/transQuestionTextView"
+            android:text="English word or Phrase"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/transAnswerEditText"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +37,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="91dp"
             android:layout_marginBottom="156dp"
-            android:text="@string/submitButton"
+            android:text="submit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +78,7 @@
                 android:layout_width="117dp"
                 android:layout_height="51dp"
                 android:backgroundTint="#009688"
-                android:text="@string/hintButton"
+                android:text="hints"
                 android:textColor="#000000"
                 tools:ignore="TextContrastCheck" />
 
@@ -88,7 +88,7 @@
                 android:layout_height="50dp"
                 android:background="#4CAF50"
                 android:gravity="center|fill_vertical"
-                android:text="@string/noHintsTextView"
+                android:text="10"
                 android:textColor="#0D47A1"
                 android:textSize="20sp" />
         </LinearLayout>

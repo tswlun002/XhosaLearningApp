@@ -101,24 +101,5 @@ public class TrueFalseFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ListView listView = view.findViewById(R.id.listviewIDtrueAdapter);
 
-        /*listView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                view.findViewById(R.id.trueButton).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        listView.setBackgroundColor(Color.BLUE);
-                    }
-                });
-
-                view.findViewById(R.id.falseButton).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        listView.setBackgroundColor(Color.RED);
-
-                    }
-                });
-            }
-        });*/
     }
 }

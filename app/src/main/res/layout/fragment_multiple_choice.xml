@@ -20,7 +20,7 @@
             android:layout_marginEnd="61dp"
             android:background="#58BDB4"
             android:gravity="center"
-            android:text="@string/question"
+            android:text="question"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +51,7 @@
                     android:background="#9D92CF"
                     android:gravity="center"
                     android:includeFontPadding="false"
-                    android:text="@string/answer1"
+                    android:text="answer1"
                     android:textSize="20sp" />
 
                 <TextView
@@ -61,7 +61,7 @@
                     android:layout_margin="3dp"
                     android:background="#9D92CF"
                     android:gravity="center"
-                    android:text="@string/answer2"
+                    android:text="answer2"
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -78,7 +78,7 @@
                     android:layout_margin="3dp"
                     android:background="#9D92CF"
                     android:gravity="center"
-                    android:text="@string/answer3"
+                    android:text="answer3"
                     android:textSize="20sp" />
 
                 <TextView
@@ -88,7 +88,7 @@
                     android:layout_margin="3dp"
                     android:background="#9D92CF"
                     android:gravity="center"
-                    android:text="@string/answer4"
+                    android:text="answer4"
                     android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>

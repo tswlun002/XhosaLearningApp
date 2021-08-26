@@ -71,7 +71,7 @@ public class play extends Fragment {
             @Override
             public void onClick(View v) {
                 NavHostFragment.findNavController(play.this)
-                        .navigate(R.id.trueFragment);
+                        .navigate(R.id.trueFalseFragment);
             }
         });
 

@@ -4,14 +4,14 @@
 
 
     <item android:id="@+id/homeIdItem"
-        android:title="@string/home"
+        android:title="home"
         android:icon="@drawable/ic_baseline_home_24"
         app:showAsAction="always|withText"
         android:onClick="onOptionsItemSelected"
         />
 
     <item android:id="@+id/progressIdItem"
-        android:title="@string/progress"
+        android:title="progress"
         android:icon="@drawable/ic_baseline_auto_graph_24"
         app:showAsAction="always|withText"
         android:onClick="onOptionsItemSelected"

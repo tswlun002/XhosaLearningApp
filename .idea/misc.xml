@@ -13,6 +13,7 @@
         <entry key="app/src/main/res/layout/fragment_matching.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/fragment_multiple_choice.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/fragment_play.xml" value="0.34646739130434784" />
+        <entry key="app/src/main/res/layout/fragment_proggress.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/fragment_start.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_translation.xml" value="0.425" />
         <entry key="app/src/main/res/layout/fragment_true.xml" value="0.35572916666666665" />
@@ -21,7 +22,7 @@
         <entry key="app/src/main/res/layout/learn_adapter.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/matching.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/multiple_choice.xml" value="0.35572916666666665" />
-        <entry key="app/src/main/res/layout/progress.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/progress.xml" value="0.33" />
         <entry key="app/src/main/res/layout/translation.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/true_false_adapter.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/true_frament.xml" value="0.33" />
