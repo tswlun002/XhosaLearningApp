@@ -11,13 +11,28 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+/**
+ * Class helps to inflate content into Listview of Learn
+ * Subclass of ArrayAdapter<String>
+ */
 public class LearnController extends ArrayAdapter<String> {
 
+    /**
+     * @serialField hearding  list of headings of lessons
+     * @serialField lesson  list of lessons
+     * @serialField context  of fragment learn
+     */
     private final String [] hearding;
     private final int[] lesson;
     private final Context context;
 
-
+    /**
+     * Constructor of Learn controller to initialise the fields
+     * @param context of fragment learn
+     * @param heading  list of headings of lessons
+     * @param lessons   list of lessons
+     * @param resource  number the layout to be inflated into listview
+     */
     public LearnController(@NonNull Context context,String[] heading, int[] lessons,int resource) {
         super(context, resource);
 
@@ -26,11 +41,23 @@ public class LearnController extends ArrayAdapter<String> {
         this.context =context;
     }
 
+    /**
+     * number of elements to inflated into listview
+     * @return number of the element inflated
+     */
     @Override
     public int getCount() {
         return hearding.length;
     }
 
+
+    /**
+     * get view of the listview
+     * @param position of each element/item to inflate into listview
+     * @param convertView is view of the listview
+     * @param parent is the view of fragment learn
+     * @return view of listview
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -63,7 +90,7 @@ public class LearnController extends ArrayAdapter<String> {
 
 
     /**
-     * Inner class that contain features of the person
+     * Inner class that contain features of the element to be inflated into listview
      */
     static  class  Holder{
         ImageView picView;
