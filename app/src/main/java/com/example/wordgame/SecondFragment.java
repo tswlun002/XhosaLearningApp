@@ -64,8 +64,6 @@ public class SecondFragment extends Fragment {
         }).attach();
 
 
-        //tabAdapter.settab(tabLayout.getTabAt(tabLayout.getSelectedTabPosition()+1));
-
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

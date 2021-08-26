@@ -38,7 +38,7 @@ public class TrueFalseFragment extends Fragment {
             "The animal name on the picture is Ikati?",
             "The animal name on the picture is Ibhokhwe?"
     };
-    //TODO: picture of the lost people
+
     private final int[] lesson = {
             R.drawable.igusha, R.drawable.igusha,
             R.drawable.igusha, R.drawable.igusha
