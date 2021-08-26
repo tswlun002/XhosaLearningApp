@@ -21,16 +21,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
-
+    /**
+     * @serialField  appBarConfiguration for configuration of appbar
+     * @serialField  binding is data binder for main activity
+     */
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
+    /**
+     * creates main activity  ,set up navigation controller
+     * @param savedInstanceState of main activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // upon click allow the fragment to get another fragment
-        setHasOptionsMenu(true);
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -40,19 +47,15 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-/*        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
     }
 
-    private void setHasOptionsMenu(boolean b) {
 
-    }
 
+    /**
+     * inflate created menu in a tool bar (drop down menu)
+     * @param menu is drop down menu in a tool bar
+     * @return true when menu is inflated
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -77,6 +80,10 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * set support for navigation up
+     * @return true if navigation is supported else false
+     */
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
