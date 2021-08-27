@@ -38,14 +38,18 @@ public class learn extends Fragment {
             "Consonants/Amaqabane",
             "Clicks/Izandi"
     };
-    //TODO: picture of the lost people
+
     private final int[] lesson = {
             R.drawable.numbers, R.drawable.vowels,
             R.drawable.consonants, R.drawable.clicks
     };
 
 
-    FragmentLearnBinding  binding;
+     private FragmentLearnBinding  binding;
+
+    /**
+     * Empty constructor
+     */
     public learn() {
         // Required empty public constructor
     }
@@ -68,6 +72,10 @@ public class learn extends Fragment {
         return fragment;
     }
 
+    /**
+     *  creates Fragemnt learn
+     * @param savedInstanceState Fragemnt learn
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,30 +85,56 @@ public class learn extends Fragment {
         }
     }
 
+    /**
+     * creates view of the frament learn
+     * @param inflater inflates Fragemnt learn
+     * @param container container for   Fragemnt learn
+     * @param savedInstanceState state instance for Fragemnt learn
+     * @return view of Fragemnt learn
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentLearnBinding.inflate(inflater, container, false);
-        //ListView listView = view.findViewById(R.id.learnIDListview);
+        setUpListView(binding);
+        return binding.getRoot();
+
+
+    }
+
+    /**
+     * set up List view with data content
+     * @param binding  FragmentLearnBinding
+     */
+    private  void setUpListView(FragmentLearnBinding binding){
         binding.learnIDListview.setStackFromBottom(false);
 
         binding.learnIDListview.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
 
         LearnController learn = new LearnController(requireContext(), headings, lesson, R.layout.learn_adapter);
         binding.learnIDListview.setAdapter(learn);
-
-        return binding.getRoot();
-
-
     }
 
+
+    /**
+     * fragment learn resume
+     * set bottom navigation Invisible/gone when fragment resumes
+     */
     @Override
     public void onResume() {
         super.onResume();
+        setVisibilityBottomNavigation(View.GONE);
 
+    }
+
+    /**
+     * set visibility of bottom navigation
+     * @param visible visibility value
+     */
+    private  void setVisibilityBottomNavigation(int visible){
         BottomNavigationView bottomNavigationView = requireActivity().findViewById(R.id.bottom_navigationID);
-        bottomNavigationView.setVisibility(View.GONE);
+        bottomNavigationView.setVisibility(visible);
     }
 
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MultipleChoiceFragment"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/multiple_choice_adapter"
+        android:layout_height="570dp"
+        android:layout_width="match_parent" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/questionNumber"
+        android:text="@string/_1"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="24sp"
+        />
+
+</LinearLayout>

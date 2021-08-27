@@ -1,15 +1,22 @@
 package com.example.wordgame;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.view.LayoutInflater;
 import android.view.View;
 
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -17,15 +24,26 @@ import com.example.wordgame.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity  {
+    /**
+     * @serialField  appBarConfiguration for configuration of appbar
+     * @serialField  binding is data binder for main activity
+     */
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
+
+    /**
+     * creates main activity  ,set up navigation controller
+     * @param savedInstanceState of main activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // upon click allow the fragment to get another fragment
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -33,44 +51,69 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-/*        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
     }
 
+
+
+    /**
+     * inflate created menu in a tool bar (drop down menu)
+     * @param menu is drop down menu in a tool bar
+     * @return true when menu is inflated
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.welcome_menu, menu);
         return true;
     }
-
+    /** Handle action bar item clicks here. The action bar will
+     *  automatically handle clicks on the Home/Up button, so long
+     *  Then Navigate to home upon the second case click
+     *  as you specify a parent activity in AndroidManifest.xml.
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+            if( item.getItemId() == R.id.progressIdItem)
+                Navigation.findNavController(this,R.id.nav_host_fragment_content_main).navigate(R.id.action_FirstFragment_to_proggress);
+            else if(item.getItemId()==R.id.homeIdItem)
+                Navigation.findNavController(this,R.id.nav_host_fragment_content_main).navigate(R.id.action_proggress_to_FirstFragment);
+
+
 
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * set support for navigation up
+     * @return true if navigation is supported else false
+     */
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+    /**
+     * handle all back pressed in fragments
+     * @param fragment current fragment where back pressed is pressed
+     * @param id  action id from current to back
+     */
+    public void backUpPressed(Fragment fragment, int id){
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(fragment).navigate(id);
+
+            }
+        });
+    }
+
+
 }

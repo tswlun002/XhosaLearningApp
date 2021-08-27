@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#FFFFFF"
+    android:padding="2dp"
+    tools:context=".MatchingFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/questioTextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CDE6E6">
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="31dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+            app:layout_constraintWidth_percent="0.90">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="1dp"
+                android:background="#F1E6E6"
+                android:gravity="center"
+                android:text="1.XhosaWordMatch" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="1dp"
+                android:background="#F1E6E6"
+                android:gravity="center"
+                android:text="2.XhosaWordMatch" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="1dp"
+                android:background="#F1E6E6"
+                android:gravity="center"
+                android:text="3.XhosaWordMatch" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="1dp"
+                android:background="#F1E6E6"
+                android:gravity="center"
+                android:text="4.XhosaWordMatch" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/instructionTextView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginEnd="38dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:text="Match English word with its Xhosa word translation "
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.85" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="31dp"
+            android:background="#E6D5D5"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.32"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/instructionTextView"
+            app:layout_constraintWidth_percent="0.9">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                app:layout_constraintHeight_percent="0.25">
+
+                <TextView
+                    android:id="@+id/engWordTextView1"
+                    android:layout_width="165dp"
+                    android:layout_height="match_parent"
+                    android:background="#FAE6E6"
+                    android:gravity="center_vertical"
+                    android:text="1.EnglishWord" />
+
+                <EditText
+                    android:id="@+id/xhosaWordEditText1"
+                    android:layout_width="183dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:ems="10"
+                    android:hint="matching Xhosa word"
+                    android:inputType="textPersonName" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                app:layout_constraintHeight_percent="0.25">
+
+                <EditText
+                    android:id="@+id/xhosaWordEditText2"
+                    android:layout_width="183dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:ems="10"
+                    android:hint="matching Xhosa word"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/engWordTextView2"
+                    android:layout_width="165dp"
+                    android:layout_height="match_parent"
+                    android:background="#FAE6E6"
+                    android:gravity="center_vertical"
+                    android:text="2.EnglishWord" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                app:layout_constraintHeight_percent="0.25">
+
+                <EditText
+                    android:id="@+id/xhosaWordEditText3"
+                    android:layout_width="183dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:ems="10"
+                    android:hint="matching Xhosa word"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/engWordTextView3"
+                    android:layout_width="165dp"
+                    android:layout_height="match_parent"
+                    android:background="#FAE6E6"
+                    android:gravity="center_vertical"
+                    android:text="3.EnglishWord" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="86dp"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <EditText
+                    android:id="@+id/xhosaWordEditText4"
+                    android:layout_width="183dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:ems="10"
+                    android:hint="matching Xhosa word"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/engWordTextView4"
+                    android:layout_width="165dp"
+                    android:layout_height="match_parent"
+                    android:background="#FAE6E6"
+                    android:gravity="center_vertical"
+                    android:text="4.EnglishWord" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="83dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="82dp"
+            android:text="Submit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.08"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+            app:layout_constraintWidth_percent="0.6" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

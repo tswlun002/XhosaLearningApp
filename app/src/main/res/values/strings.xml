@@ -26,4 +26,17 @@
     <string name="translate">TRANSLATE</string>
     <string name="search">Search</string>
     <string name="sign_out">Sign out</string>
+    <string name="_30">30%</string>
+    <string name="home">home</string>
+    <string name="progress">Progress</string>
+    <string name="your_progress_report">Your progress report</string>
+    <string name="avg_grade">Avg grade</string>
+    <string name="learning"><![CDATA[Learning >>]]></string>
+    <string name="submit">submit</string>
+    <string name="english_word_or_phrase">English word or Phrase</string>
+    <string name="answer2">answer2</string>
+    <string name="answer1">answer1</string>
+    <string name="answer3">answer3</string>
+    <string name="answer4">answer4</string>
+    <string name="_1">1</string>
 </resources>

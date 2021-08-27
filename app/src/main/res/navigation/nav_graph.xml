@@ -13,26 +13,180 @@
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/SecondFragment"
+            app:popUpTo="@id/SecondFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_FirstFragment_to_proggress"
+            app:destination="@id/proggress"
+            app:popUpTo="@id/proggress"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.wordgame.SecondFragment"
+        android:name="com.example.wordgame.FragmentStart"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_start">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            app:destination="@id/FirstFragment"
+            app:popUpTo="@id/FirstFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_SecondFragment_to_proggress"
+            app:destination="@id/proggress"
+            app:popUpTo="@id/proggress"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_SecondFragment_to_learn"
+            app:destination="@id/learn"
+            app:popUpTo="@id/learn"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/learn"
         android:name="com.example.wordgame.learn"
         android:label="fragment_learn"
-        tools:layout="@layout/fragment_learn" />
+        tools:layout="@layout/fragment_learn" >
+        <action
+            android:id="@+id/action_learn_to_SecondFragment"
+            app:destination="@id/SecondFragment"
+            app:popUpTo="@id/SecondFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/play"
         android:name="com.example.wordgame.play"
         android:label="fragment_play"
-        tools:layout="@layout/fragment_play" />
+        tools:layout="@layout/fragment_play" >
+        <action
+            android:id="@+id/action_play_to_matchingFragment"
+            app:destination="@id/matchingFragment"
+            app:popUpTo="@id/matchingFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_play_to_multipleChoiceFragment"
+            app:destination="@id/multipleChoiceFragment"
+            app:popUpTo="@id/multipleChoiceFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_play_to_trueFalseFragment"
+            app:destination="@id/trueFalseFragment"
+            app:popUpTo="@id/trueFalseFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_play_to_translationFragment"
+            app:destination="@id/translationFragment"
+            app:popUpTo="@id/translationFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_play_to_SecondFragment"
+            app:destination="@id/SecondFragment"
+            app:popUpTo="@id/SecondFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/proggress"
+        android:name="com.example.wordgame.Proggress"
+        android:label="fragment_proggress"
+        tools:layout="@layout/fragment_proggress" >
+        <action
+            android:id="@+id/action_proggress_to_FirstFragment"
+            app:destination="@id/FirstFragment"
+            app:popUpTo="@id/FirstFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_proggress_to_SecondFragment"
+            app:destination="@id/SecondFragment"
+            app:popUpTo="@id/SecondFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/matchingFragment"
+        android:name="com.example.wordgame.MatchingFragment"
+        android:label="fragment_matching"
+        tools:layout="@layout/fragment_matching" >
+        <action
+            android:id="@+id/action_matchingFragment_to_play"
+            app:destination="@id/play"
+            app:popUpTo="@id/play"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_matchingFragment_to_results_CurrentActivity"
+            app:destination="@id/results_CurrentActivity"
+            app:popUpTo="@id/results_CurrentActivity"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/multipleChoiceFragment"
+        android:name="com.example.wordgame.MultipleChoiceFragment"
+        android:label="fragment_multiple_choice"
+        tools:layout="@layout/fragment_multiple_choice" >
+        <action
+            android:id="@+id/action_multipleChoiceFragment_to_play"
+            app:destination="@id/play"
+            app:popUpTo="@id/play"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_multipleChoiceFragment_to_results_CurrentActivity"
+            app:destination="@id/results_CurrentActivity"
+            app:popUpTo="@id/results_CurrentActivity"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/trueFalseFragment"
+        android:name="com.example.wordgame.TrueFalseFragment"
+        android:label="true_false_adapter"
+        tools:layout="@layout/true_false_adapter" >
+        <action
+            android:id="@+id/action_trueFalseFragment_to_play"
+            app:destination="@id/play"
+            app:popUpTo="@id/play"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_trueFalseFragment_to_results_CurrentActivity"
+            app:destination="@id/results_CurrentActivity"
+            app:popUpTo="@id/results_CurrentActivity"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/translationFragment"
+        android:name="com.example.wordgame.TranslationFragment"
+        android:label="fragment_translation"
+        tools:layout="@layout/fragment_translation" >
+        <action
+            android:id="@+id/action_translationFragment_to_play"
+            app:destination="@id/play"
+            app:popUpTo="@id/play"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_translationFragment_to_results_CurrentActivity"
+            app:destination="@id/results_CurrentActivity"
+            app:popUpTo="@id/results_CurrentActivity"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/results_CurrentActivity"
+        android:name="com.example.wordgame.Results_CurrentActivity"
+        android:label="fragment_results__current_activity"
+        tools:layout="@layout/fragment_results__current_activity" >
+        <action
+            android:id="@+id/action_results_CurrentActivity_to_multipleChoiceFragment"
+            app:destination="@id/multipleChoiceFragment"
+            app:popUpTo="@id/multipleChoiceFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_results_CurrentActivity_to_matchingFragment"
+            app:destination="@id/matchingFragment"
+            app:popUpTo="@id/matchingFragment" />
+        <action
+            android:id="@+id/action_results_CurrentActivity_to_trueFalseFragment"
+            app:destination="@id/trueFalseFragment"
+            app:popUpTo="@id/trueFalseFragment" />
+        <action
+            android:id="@+id/action_results_CurrentActivity_to_translationFragment"
+            app:destination="@id/translationFragment"
+            app:popUpTo="@id/translationFragment" />
+    </fragment>
 </navigation>

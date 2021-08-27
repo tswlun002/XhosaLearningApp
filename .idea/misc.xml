@@ -5,19 +5,35 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/WelcomWindow.xml" value="0.35572916666666665" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.34010416666666665" />
-        <entry key="app/src/main/res/layout/fragment_learn.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/fragment_learn.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_matching.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_multiple_choice.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_play.xml" value="0.34646739130434784" />
+        <entry key="app/src/main/res/layout/fragment_proggress.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_results__current_activity.xml" value="0.128125" />
         <entry key="app/src/main/res/layout/fragment_start.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_translation.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_true.xml" value="0.1483050847457627" />
         <entry key="app/src/main/res/layout/image.xml" value="0.34010416666666665" />
         <entry key="app/src/main/res/layout/learn.xml" value="0.34646739130434784" />
-        <entry key="app/src/main/res/layout/learn_adapter.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/learn_adapter.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/matching.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/mcq_adapter.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/multiple_choice.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/multiple_choice_adapter.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/progress.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/translation.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/translation_adapter.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/true_false_adapter.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/true_frament.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/true_or_false.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/welcomwindow.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.34010416666666665" />
-        <entry key="app/src/main/res/menu/menu_main.xml" value="0.1" />
-        <entry key="app/src/main/res/menu/welcome_menu.xml" value="0.25" />
+        <entry key="app/src/main/res/menu/welcome_menu.xml" value="0.34010416666666665" />
       </map>
     </option>
   </component>
