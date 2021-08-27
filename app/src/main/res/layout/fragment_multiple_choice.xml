@@ -1,98 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="10dp"
+    android:orientation="vertical"
     tools:context=".MultipleChoiceFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+   <ListView
+       android:id="@+id/mulplechoiceListviewId"
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:contextClickable="true"
+       android:divider="#FFCC00"
+       android:dividerHeight="4dp"
+       android:footerDividersEnabled="true"
+       android:headerDividersEnabled="true"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintBottom_toTopOf="@id/guideline28"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.0"
+       app:layout_constraintStart_toStartOf="parent" />
+   <com.google.android.material.button.MaterialButton
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+      android:text="@string/submit"
+      android:id="@+id/submit"
+       app:layout_constraintTop_toBottomOf="@id/guideline28"
+       app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+      />
+   <androidx.constraintlayout.widget.Guideline
+       android:id="@+id/guideline28"
+       android:layout_width="0dp"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+      app:layout_constraintGuide_percent="0.9"/>
 
-        <TextView
-            android:id="@+id/questionTextView"
-            android:layout_width="290dp"
-            android:layout_height="248dp"
-            android:layout_marginStart="61dp"
-            android:layout_marginTop="69dp"
-            android:layout_marginEnd="61dp"
-            android:background="#58BDB4"
-            android:gravity="center"
-            android:text="question"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="410dp"
-            android:layout_height="239dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="10dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/questionTextView">
-
-            <LinearLayout
-                android:layout_width="198dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/answer1textView"
-                    android:layout_width="190dp"
-                    android:layout_height="114dp"
-                    android:layout_margin="3dp"
-                    android:background="#9D92CF"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:text="answer1"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/answer2TextView"
-                    android:layout_width="190dp"
-                    android:layout_height="126dp"
-                    android:layout_margin="3dp"
-                    android:background="#9D92CF"
-                    android:gravity="center"
-                    android:text="answer2"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/answer3textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="3dp"
-                    android:background="#9D92CF"
-                    android:gravity="center"
-                    android:text="answer3"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/answer4TextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="122dp"
-                    android:layout_margin="3dp"
-                    android:background="#9D92CF"
-                    android:gravity="center"
-                    android:text="answer4"
-                    android:textSize="20sp" />
-            </LinearLayout>
-        </LinearLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

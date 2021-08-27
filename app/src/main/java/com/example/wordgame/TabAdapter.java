@@ -13,6 +13,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
  */
 public class TabAdapter  extends FragmentStateAdapter {
 
+    private play status;
+
     /**
      * constructor initialise parent class FragmentStateAdapter
      * @param fragmentActivity of second fragment
@@ -40,6 +42,7 @@ public class TabAdapter  extends FragmentStateAdapter {
                 break;
             case 1:
                 fragment= new play();
+                ((play) fragment).tabStatus(true);
                 break;
         }
         assert fragment != null;
@@ -53,6 +56,14 @@ public class TabAdapter  extends FragmentStateAdapter {
     @Override
     public int getItemCount() {
         return 2;
+    }
+
+    public  void playstatus(play s){
+        status= s;
+    }
+
+    public  play getStatus(){
+        return  status;
     }
 }
 

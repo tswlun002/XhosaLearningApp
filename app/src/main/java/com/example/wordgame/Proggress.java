@@ -2,11 +2,18 @@ package com.example.wordgame;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toolbar;
+
+import com.google.android.material.navigation.NavigationView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,6 +53,10 @@ public class Proggress extends Fragment {
         return fragment;
     }
 
+    /**
+     * creates progress fragment
+     * @param savedInstanceState for progress fragment
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,10 +66,41 @@ public class Proggress extends Fragment {
         }
     }
 
+    /**
+     * inflate view of progress
+     * Handle event for textView click
+     * @param inflater for progress fragment
+     * @param container of progress fragment
+     * @param savedInstanceState for progress fragment
+     * @return view of progress fragment
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_proggress, container, false);
+        View view= inflater.inflate(R.layout.fragment_proggress, container, false);
+
+        TextView textView =view.findViewById(R.id.learnnextID);
+
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_proggress_to_SecondFragment);
+            }
+        });
+
+        return view;
+    }
+
+    /**
+     * onCreated view handle back press events
+     * @param view Progress view
+     * @param savedInstanceState of Progress fragment
+     */
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ((MainActivity) requireActivity()).backUpPressed(Proggress.this,R.id.action_proggress_to_FirstFragment);
+
     }
 }

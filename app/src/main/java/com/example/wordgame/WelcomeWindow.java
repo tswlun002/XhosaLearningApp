@@ -48,7 +48,7 @@ public class WelcomeWindow extends Fragment {
         super.onViewCreated(view, savedInstanceState);
        levelOne();
        levelTwo();
-       levelTwo();
+       levelThree();
 
     }
 
@@ -98,6 +98,7 @@ public class WelcomeWindow extends Fragment {
 
         BottomNavigationView bottomNavigationView = requireActivity().findViewById(R.id.bottom_navigationID);
         bottomNavigationView.setVisibility(View.VISIBLE);
+        bottomNavigationView.getMenu().findItem(R.id.homeIdItem).setChecked(true);
     }
 
     /**

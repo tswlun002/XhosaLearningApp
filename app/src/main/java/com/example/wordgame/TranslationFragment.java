@@ -1,12 +1,21 @@
 package com.example.wordgame;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.TextView;
+
+import com.example.wordgame.databinding.FragmentLearnBinding;
+import com.example.wordgame.databinding.FragmentTranslationBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +33,14 @@ public class TranslationFragment extends Fragment {
     public TranslationFragment() {
         // Required empty public constructor
     }
+    private final String [] questions={
+        "Molo sisi",
+         "Usisi uyapheka",
+         "Umama uphangele",
+         "Hlamab izandla Lulu"
+    };
+    private  FragmentTranslationBinding binding;
+    private  LayoutInflater inflater;
 
     /**
      * Use this factory method to create a new instance of
@@ -52,10 +69,61 @@ public class TranslationFragment extends Fragment {
         }
     }
 
+
+
+    /**
+     * create view of  Tralation fragment
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_translation, container, false);
+
+        binding= FragmentTranslationBinding.inflate(inflater, container, false);
+        this.inflater =inflater;
+        setUpListView(binding);
+        handleButton();
+        return binding.getRoot();
+    }
+    /**
+     * created view of translation fragment
+     * @param view
+     * @param savedInstanceState
+     */
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ((MainActivity) requireActivity()).backUpPressed(TranslationFragment.this,R.id.action_translationFragment_to_play);
+    }
+
+    /**
+     * set up List view with data content
+     * @param binding  FragmentTranslationBinding
+     */
+    private  void setUpListView(FragmentTranslationBinding binding){
+        binding.tranlationListviewID.setStackFromBottom(false);
+
+        binding.tranlationListviewID.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
+
+        TranslationController translationController = new TranslationController(requireContext(), questions,  R.layout.translation_adapter);
+        binding.tranlationListviewID.setAdapter(translationController);
+    }
+    /**
+     * handle button event
+     * Show grades for user
+     */
+    private  void handleButton(){
+        binding.submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActiviyResults activiyResults = new ActiviyResults(inflater,requireContext());
+                activiyResults.gradesActity();
+            }
+        });
     }
 }

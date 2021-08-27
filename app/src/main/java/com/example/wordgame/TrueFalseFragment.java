@@ -1,5 +1,7 @@
 package com.example.wordgame;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.wordgame.databinding.FragmentTrueBinding;
 
@@ -45,6 +48,7 @@ public class TrueFalseFragment extends Fragment {
     };
 
     private FragmentTrueBinding binding;
+    private LayoutInflater inflater;
 
     public TrueFalseFragment() {
         // Required empty public constructor
@@ -77,12 +81,20 @@ public class TrueFalseFragment extends Fragment {
         }
     }
 
+    /**
+     * creates TrueFalseFragment
+     * @param inflater of TrueFalseFragment
+     * @param container of TrueFalseFragment
+     * @param savedInstanceState for TrueFalseFragment
+     * @return
+     */
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentTrueBinding.inflate(inflater, container, false);
-
+        this.inflater = inflater;
 
 
         binding.listviewIDtrueAdapter.setStackFromBottom(false);
@@ -91,15 +103,34 @@ public class TrueFalseFragment extends Fragment {
         binding.listviewIDtrueAdapter.setAdapter(plaController);
 
 
-
         return  binding.getRoot();
 
     }
 
+    /**
+     * created view for TrueFalseFragment
+     * @param view of TrueFalseFragment
+     * @param savedInstanceState for  TrueFalseFragment
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ListView listView = view.findViewById(R.id.listviewIDtrueAdapter);
+        handleButton();
+        ((MainActivity) requireActivity()).backUpPressed(TrueFalseFragment.this,R.id.action_trueFalseFragment_to_play);
 
+    }
+    /**
+     * handle button event
+     * Show grades for user
+     */
+    private  void handleButton() {
+
+        binding.submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActiviyResults activiyResults = new ActiviyResults(inflater, requireContext());
+                activiyResults.gradesActity();
+            }
+        });
     }
 }

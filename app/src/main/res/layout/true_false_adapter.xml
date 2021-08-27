@@ -29,6 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:layout_marginEnd="5dp"
                 android:backgroundTint="#F44336"
                 android:text="false"
                 android:textColor="#000000" />
@@ -39,6 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:layout_marginStart="5dp"
                 android:backgroundTint="#4CAF50"
                 android:text="true"
                 android:textColor="#263238" />
@@ -50,9 +52,8 @@
             android:layout_width="376dp"
             android:layout_height="119dp"
             android:layout_marginStart="14dp"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="17dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:text="questionTextView"
             android:textSize="20sp"

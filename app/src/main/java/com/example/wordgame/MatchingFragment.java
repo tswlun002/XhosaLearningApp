@@ -1,12 +1,19 @@
 package com.example.wordgame;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.example.wordgame.databinding.FragmentMatchingBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +31,8 @@ public class MatchingFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private FragmentMatchingBinding binding;
+    private  LayoutInflater inflater;
     public MatchingFragment() {
         // Required empty public constructor
     }
@@ -55,10 +64,46 @@ public class MatchingFragment extends Fragment {
         }
     }
 
+    /**
+     * overloaded creates which binds data and inflate view
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_matching, container, false);
+        binding = FragmentMatchingBinding.inflate(inflater, container, false);
+        this.inflater =inflater;
+        return binding.getRoot();
+    }
+
+    /**
+     * created fragment
+     * @param view
+     * @param savedInstanceState
+     */
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        handleButton();
+        ((MainActivity) requireActivity()).backUpPressed(MatchingFragment.this,R.id.action_matchingFragment_to_play);
+    }
+
+    /**
+     * handle button event
+     * Show grades for user
+     */
+    private  void handleButton() {
+
+        binding.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActiviyResults activiyResults = new ActiviyResults(inflater, requireContext());
+                activiyResults.gradesActity();
+            }
+        });
     }
 }

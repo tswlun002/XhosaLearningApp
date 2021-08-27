@@ -11,43 +11,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-/**
- * Class helps to inflate content into Listview of Learn
- * Subclass of ArrayAdapter<String>
- */
-public class LearnController extends ArrayAdapter<String> {
+public class TranslationController  extends ArrayAdapter<String> {
 
-    /**
-     * @serialField hearding  list of headings of lessons
-     * @serialField lesson  list of lessons
-     * @serialField context  of fragment learn
-     */
-    private final String [] hearding;
-    private final int[] lesson;
+    private final String [] questions;
     private final Context context;
+    private final int  layout ;
 
-    /**
-     * Constructor of Learn controller to initialise the fields
-     * @param context of fragment learn
-     * @param heading  list of headings of lessons
-     * @param lessons   list of lessons
-     * @param resource  number the layout to be inflated into listview
-     */
-    public LearnController(@NonNull Context context,String[] heading, int[] lessons,int resource) {
+    public TranslationController(@NonNull Context context, String[] question, int resource) {
         super(context, resource);
-
-        this.lesson=lessons;
-        this.hearding=heading;
-        this.context =context;
+        this.context=context;
+        this.layout=resource;
+        this.questions=question;
     }
-
     /**
      * number of elements to inflated into listview
      * @return number of the element inflated
      */
     @Override
     public int getCount() {
-        return hearding.length;
+        return questions.length;
     }
 
 
@@ -61,27 +43,25 @@ public class LearnController extends ArrayAdapter<String> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        Holder  viewHolder = new Holder();
+        TranslationController.Holder viewHolder = new TranslationController.Holder();
         if(convertView ==null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             //get listview into convertView
-            convertView = inflater.inflate(R.layout.learn_adapter, parent, false);
+            convertView = inflater.inflate(layout, parent, false);
 
             //inflate picture and text description
-            viewHolder.picView = (ImageView) convertView.findViewById(R.id.imageAdapterId);
-            viewHolder.descriptionView = (TextView) convertView.findViewById(R.id.textViewAdaoterID);
+            viewHolder.descriptionView = (TextView) convertView.findViewById(R.id.transQuestionTextView);
 
             //set into holder
             convertView.setTag(viewHolder);
 
         }else{
-            viewHolder  = (Holder) convertView.getTag();
+            viewHolder  = (TranslationController.Holder) convertView.getTag();
 
         }
         //set pictures and description of lost people
-        viewHolder.picView.setImageResource((lesson[position]));
-        viewHolder.descriptionView.setText(hearding[position]);
+        viewHolder.descriptionView.setText(questions[position]);
 
         return convertView;
 
@@ -93,7 +73,6 @@ public class LearnController extends ArrayAdapter<String> {
      * Inner class that contain features of the element to be inflated into listview
      */
     static  class  Holder{
-        ImageView picView;
         TextView descriptionView;
     }
 

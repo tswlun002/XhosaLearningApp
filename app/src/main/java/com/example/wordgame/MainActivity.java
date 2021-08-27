@@ -1,5 +1,7 @@
 package com.example.wordgame;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import com.google.android.material.navigation.NavigationView;
@@ -8,10 +10,13 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.view.LayoutInflater;
 import android.view.View;
 
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -19,14 +24,16 @@ import com.example.wordgame.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
     /**
      * @serialField  appBarConfiguration for configuration of appbar
      * @serialField  binding is data binder for main activity
      */
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+
 
     /**
      * creates main activity  ,set up navigation controller
@@ -44,7 +51,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
     }
@@ -89,6 +98,21 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    /**
+     * handle all back pressed in fragments
+     * @param fragment current fragment where back pressed is pressed
+     * @param id  action id from current to back
+     */
+    public void backUpPressed(Fragment fragment, int id){
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(fragment).navigate(id);
+
+            }
+        });
     }
 
 
