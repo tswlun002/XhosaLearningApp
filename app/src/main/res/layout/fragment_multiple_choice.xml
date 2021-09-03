@@ -7,20 +7,19 @@
     android:orientation="vertical"
     tools:context=".MultipleChoiceFragment">
 
-   <ListView
+   <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/mulplechoiceListviewId"
        android:layout_width="match_parent"
        android:layout_height="0dp"
-       android:contextClickable="true"
        android:divider="#FFCC00"
        android:dividerHeight="4dp"
-       android:footerDividersEnabled="true"
-       android:headerDividersEnabled="true"
+       android:scrollIndicators="right|bottom"
        app:layout_constraintTop_toTopOf="parent"
        app:layout_constraintBottom_toTopOf="@id/guideline28"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintHorizontal_bias="0.0"
        app:layout_constraintStart_toStartOf="parent" />
+
    <com.google.android.material.button.MaterialButton
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
@@ -36,6 +35,6 @@
        android:layout_width="0dp"
        android:layout_height="wrap_content"
        android:orientation="horizontal"
-      app:layout_constraintGuide_percent="0.9"/>
+      app:layout_constraintGuide_percent="0.93"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

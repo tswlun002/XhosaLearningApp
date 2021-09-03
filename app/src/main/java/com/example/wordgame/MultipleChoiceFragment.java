@@ -8,9 +8,11 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -18,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wordgame.databinding.FragmentMultipleChoiceBinding;
 import com.example.wordgame.databinding.FragmentTranslationBinding;
@@ -37,7 +40,7 @@ public class MultipleChoiceFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private  RecyclerView recyclerView;
     private final String [] questions={
             "home is called ?",
             "chair is called?",
@@ -46,6 +49,9 @@ public class MultipleChoiceFragment extends Fragment {
     };
     private FragmentMultipleChoiceBinding binding ;
     private LayoutInflater inflater;
+    private  int position;
+    private  TextView textView;
+    private  MultipleChoiceController multipleChoiceController;
     public MultipleChoiceFragment() {
         // Required empty public constructor
     }
@@ -100,11 +106,13 @@ public class MultipleChoiceFragment extends Fragment {
      * @param binding  FragmentTranslationBinding
      */
     private  void setUpListView(FragmentMultipleChoiceBinding binding){
-        binding.mulplechoiceListviewId.setStackFromBottom(false);
-        binding.mulplechoiceListviewId.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
-
-        MultipleChoiceController multipleChoiceController = new MultipleChoiceController(requireContext(), questions,  R.layout.mcq_adapter);
+        MultipleChoiceController multipleChoiceController = new MultipleChoiceController(requireContext(), questions,  R.layout.multiple_choice_adapter);
         binding.mulplechoiceListviewId.setAdapter(multipleChoiceController);
+        binding.mulplechoiceListviewId.setLayoutManager(new LinearLayoutManager(requireContext()));
+        this.multipleChoiceController=multipleChoiceController;
+        ((MainActivity) requireActivity()).setMultipleChoiceController(multipleChoiceController);
+
+
     }
 
     /**
@@ -116,7 +124,6 @@ public class MultipleChoiceFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        handleListView(view);
         handleButton();
         ((MainActivity) requireActivity()).backUpPressed(MultipleChoiceFragment.this,R.id.action_multipleChoiceFragment_to_play);
     }
@@ -132,59 +139,7 @@ public class MultipleChoiceFragment extends Fragment {
     }
 
 
-    /**
-     * handle event of the listview
-     * @param view of this frament
-     */
 
-    private  void handleListView(View view){
-
-       ListView listView = view.findViewById(R.id.mulplechoiceListviewId);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                    Button textView1 = view.findViewById(R.id.answer1textView);
-                    textView1.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            TextView textView = view.findViewById(R.id.transQuestionTextView);
-                            textView.setText("\nAnswer :"+textView1.getText());
-                        }
-                    });
-
-                Button textView2 = view.findViewById(R.id.answer2TextView);
-                textView2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        TextView textView = view.findViewById(R.id.transQuestionTextView);
-                        textView.setText("\nAnswer :"+textView2.getText());
-                    }
-                });
-
-                Button textView3 = view.findViewById(R.id.answer3textView);
-                textView3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        TextView textView = view.findViewById(R.id.transQuestionTextView);
-                        textView.setText("\nAnswer :"+textView3.getText());
-                    }
-                });
-
-                Button textView4 = view.findViewById(R.id.answer4TextView);
-                textView4.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        TextView textView = view.findViewById(R.id.transQuestionTextView);
-                        textView.append("\nAnswer :"+textView4.getText());
-                    }
-                });
-
-            }
-
-        });
-    }
     /**
      * handle button event
      * Show grades for user
@@ -199,5 +154,9 @@ public class MultipleChoiceFragment extends Fragment {
             }
         });
     }
+
+
+
+
 }
 
