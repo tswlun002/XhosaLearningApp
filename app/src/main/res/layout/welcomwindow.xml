@@ -24,9 +24,10 @@
             android:id="@+id/text1"
             android:layout_width="74dp"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
             android:text="@string/level_one"
-            tools:ignore="MissingConstraints"
-            android:fontFamily="sans-serif-black"/>
+            android:textColor="#311B92"
+            tools:ignore="MissingConstraints" />
 
         <ImageView
             android:layout_width="58dp"

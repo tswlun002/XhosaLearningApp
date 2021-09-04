@@ -10,13 +10,14 @@
 
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/engTextView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_margin="1dp"
         android:background="#FAE6E6"
         android:gravity="center"
         android:text="English Word"
-        android:layout_margin="1dp"
+        android:textColor="#616161"
         app:layout_constraintBottom_toTopOf="@+id/guideline39"
         app:layout_constraintEnd_toStartOf="@+id/guideline35"
         app:layout_constraintHorizontal_bias="0.0"
@@ -43,22 +44,23 @@
 
 
     <TextView
-        android:id="@+id/engWordTextView1"
+        android:id="@+id/xhosaMatchTextView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_margin="1dp"
         android:background="#F1E6E6"
         android:gravity="center"
         android:text=" XhosaWordMatch"
-        android:layout_margin="1dp"
+        android:textColor="#616161"
         app:layout_constraintBottom_toTopOf="@+id/guideline36"
         app:layout_constraintEnd_toStartOf="@+id/guideline34"
         app:layout_constraintStart_toStartOf="@+id/guideline33"
         app:layout_constraintTop_toTopOf="@+id/guideline42" />
 
     <EditText
-        android:id="@+id/xhosaWordEditText1"
-        android:layout_width="183dp"
-        android:layout_height="45dp"
+        android:id="@+id/xhosaEditText4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_gravity="right"
         android:ems="10"
         android:hint="matching Xhosa word"
@@ -69,7 +71,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline32" />
 
     <EditText
-        android:id="@+id/xhosaWordEditText2"
+        android:id="@+id/xhosaEditText3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="right"
@@ -82,7 +84,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline38" />
 
     <TextView
-        android:id="@+id/engWordTextView2"
+        android:id="@+id/engTextView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#FAE6E6"
@@ -95,7 +97,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline38" />
 
     <EditText
-        android:id="@+id/xhosaWordEditText3"
+        android:id="@+id/xhosaEditText2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="right"
@@ -121,7 +123,7 @@
         app:layout_constraintTop_toBottomOf="@id/guideline37" />
 
     <EditText
-        android:id="@+id/xhosaWordEditText4"
+        android:id="@+id/xhosaEditText1"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="right"
@@ -135,7 +137,7 @@
 
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/xhosaMatchTextView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#F1E6E6"
@@ -147,7 +149,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline41" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/xhosaMatchTextView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#F1E6E6"
@@ -160,7 +162,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline31" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/xhosaMatchTextView1"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
@@ -173,7 +175,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline40" />
 
     <TextView
-        android:id="@+id/engWordTextView4"
+        android:id="@+id/engWordTextView1"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#FAE6E6"
