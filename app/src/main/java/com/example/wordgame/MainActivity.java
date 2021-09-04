@@ -1,7 +1,9 @@
 package com.example.wordgame;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.material.navigation.NavigationView;
@@ -24,15 +26,24 @@ import com.example.wordgame.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity  {
+import java.text.CollationElementIterator;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity  implements MultipleChoiceController.OnMCQ {
     /**
      * @serialField  appBarConfiguration for configuration of appbar
      * @serialField  binding is data binder for main activity
      */
+   private List<View> views = new ArrayList<>();
+
+    private Button btn1,btn2,btn3,btn4;
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+    private  MultipleChoiceController multipleChoiceController;
 
 
     /**
@@ -115,5 +126,59 @@ public class MainActivity extends AppCompatActivity  {
         });
     }
 
+    @SuppressLint({"SetTextI18n", "NotifyDataSetChanged"})
+    @Override
+    public void choice1(View view) {
+        addView(view);
+    }
 
+    @SuppressLint({"SetTextI18n", "NotifyDataSetChanged"})
+    @Override
+    public void choice2(View view) {
+        addView(view);;
+    }
+
+    @SuppressLint({"SetTextI18n", "NotifyDataSetChanged", "ResourceAsColor"})
+    @Override
+    public void choice3(View view) {
+        addView(view);
+    }
+    @SuppressLint("ResourceAsColor")
+    private  void addView(View view){
+        if(views.contains(view)) {
+            //view.setBackgroundColor(Color.WHITE);
+            view.setBackgroundColor(Color.BLUE);
+            views.remove(view);
+        }
+        else {
+            view.setBackgroundColor(Color.GREEN);
+            views.add(view);
+
+        }
+    }
+
+    @SuppressLint({"SetTextI18n", "NotifyDataSetChanged"})
+    @Override
+    public void choice4(View view) {
+        addView(view);
+
+    }
+
+
+    @Override
+    public void onMultipleChoice(Button button1, Button button2, Button button3, Button button4) {
+      this.btn1=button1;
+      this.btn2=button2;
+      this.btn3=button3;
+      this.btn4=button4;
+    }
+
+    @Override
+    public int scrollDown(int position) {
+        return position +1;
+    }
+
+    public void setMultipleChoiceController(MultipleChoiceController multipleChoiceController) {
+        this.multipleChoiceController = multipleChoiceController;
+    }
 }

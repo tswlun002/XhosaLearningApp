@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MultipleChoiceFragment">
 
     <TextView
@@ -11,12 +11,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="1dp"
-
+        android:elevation="0dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:gravity="center"
         android:text="@string/english_word_or_phrase"
         android:textSize="20sp"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
         app:layout_constraintBottom_toTopOf="@id/guideline27"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,11 +56,11 @@
         android:layout_height="0dp"
         android:layout_margin="3dp"
         android:layout_marginStart="5dp"
-        android:gravity="center"
-        android:focusableInTouchMode="false"
-        android:focusable="false"
-        android:contextClickable="true"
         android:clickable="true"
+        android:contextClickable="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center"
         android:text="@string/answer2"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/guideline23"
@@ -69,20 +69,36 @@
         app:layout_constraintTop_toBottomOf="@id/guideline22" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/moreQuestionID"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:backgroundTint="@color/white"
+        android:gravity="center"
+        app:iconSize="50dp"
+        app:icon="@drawable/arrow_down_24"
+        app:iconGravity="textTop"
+        app:iconTint="@color/purple_700"
+        app:layout_constraintBottom_toTopOf="@+id/guideline30"
+        app:layout_constraintEnd_toStartOf="@id/guideline26"
+        app:layout_constraintStart_toEndOf="@id/guideline24"
+        app:layout_constraintTop_toBottomOf="@id/guideline23" />
+
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/answer1textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="3dp"
         android:layout_marginEnd="5dp"
-
+        android:clickable="true"
+        android:contextClickable="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:gravity="center"
         android:includeFontPadding="false"
         android:text="@string/answer1"
         android:textSize="20sp"
-        android:contextClickable="true"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:clickable="true"
         app:layout_constraintBottom_toTopOf="@id/guideline22"
         app:layout_constraintEnd_toStartOf="@id/guideline24"
         app:layout_constraintStart_toEndOf="@id/guideline25"
@@ -96,13 +112,13 @@
         android:layout_margin="3dp"
         android:layout_marginStart="5dp"
 
+        android:clickable="true"
+        android:contextClickable="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:gravity="center"
         android:text="@string/answer3"
         android:textSize="20sp"
-        android:clickable="true"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:contextClickable="true"
         app:layout_constraintBottom_toTopOf="@id/guideline22"
         app:layout_constraintEnd_toStartOf="@id/guideline26"
         app:layout_constraintStart_toEndOf="@id/guideline24"
@@ -114,14 +130,13 @@
         android:layout_height="0dp"
         android:layout_margin="3dp"
         android:layout_marginEnd="5dp"
-
+        android:clickable="true"
+        android:contextClickable="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:gravity="center"
         android:text="@string/answer4"
         android:textSize="20sp"
-        android:clickable="true"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:contextClickable="true"
         app:layout_constraintBottom_toTopOf="@id/guideline23"
         app:layout_constraintEnd_toStartOf="@id/guideline24"
         app:layout_constraintStart_toEndOf="@id/guideline25"
@@ -153,5 +168,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.39"/>
+        app:layout_constraintGuide_percent="0.39" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.92" />
 </androidx.constraintlayout.widget.ConstraintLayout>
