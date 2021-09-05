@@ -1,18 +1,11 @@
 package com.example.wordgame;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.fragment.app.Fragment;
@@ -21,29 +14,31 @@ import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wordgame.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import java.text.CollationElementIterator;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity  implements MultipleChoiceController.OnMCQ {
+public class MainActivity extends AppCompatActivity  implements OnMultipleChoice,OnTrueFalseQuestion {
     /**
      * @serialField  appBarConfiguration for configuration of appbar
      * @serialField  binding is data binder for main activity
+     * @serialField  views list of clicked view( multiple choice buttons)
      */
-   private List<View> views = new ArrayList<>();
-
+   private HashMap<String ,View> views = new HashMap<>();
     private Button btn1,btn2,btn3,btn4;
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     private  MultipleChoiceController multipleChoiceController;
+    private final  String []letter = {"a","b","c","d"};
+    private RecyclerView recycleView;
 
 
     /**
@@ -126,43 +121,89 @@ public class MainActivity extends AppCompatActivity  implements MultipleChoiceCo
         });
     }
 
+    /**
+     * add the view to list
+     * @param view is the clicked view
+     */
     @SuppressLint({"SetTextI18n", "NotifyDataSetChanged"})
     @Override
-    public void choice1(View view) {
-        addView(view);
+    public void choice1(View view,int pos) {
+        addView(view,pos);
     }
-
+    /**
+     * add the view to list
+     * @param view is the clicked view
+     */
     @SuppressLint({"SetTextI18n", "NotifyDataSetChanged"})
     @Override
-    public void choice2(View view) {
-        addView(view);;
+    public void choice2(View view,int pos) {
+        addView(view,pos);;
     }
-
+    /**
+     * add the view to list
+     * @param view is the clicked view
+     */
     @SuppressLint({"SetTextI18n", "NotifyDataSetChanged", "ResourceAsColor"})
     @Override
-    public void choice3(View view) {
-        addView(view);
+    public void choice3(View view,int pos) {
+        addView(view,pos);
     }
-    @SuppressLint("ResourceAsColor")
-    private  void addView(View view){
-        if(views.contains(view)) {
-            //view.setBackgroundColor(Color.WHITE);
-            view.setBackgroundColor(Color.BLUE);
-            views.remove(view);
-        }
-        else {
-            view.setBackgroundColor(Color.GREEN);
-            views.add(view);
-
-        }
-    }
-
+    /**
+     * add the view to list
+     * @param view is the clicked view
+     */
     @SuppressLint({"SetTextI18n", "NotifyDataSetChanged"})
     @Override
-    public void choice4(View view) {
-        addView(view);
+    public void choice4(View view, int pos) {
+        addView(view,pos);
 
     }
+
+    /**
+     *
+     * @param view
+     */
+    @SuppressLint("ResourceAsColor")
+    private  void addView(View view,int pos){
+        if(views.containsValue(view)) {
+            String key ="";
+            view.setBackgroundColor(Color.BLUE);
+            for (String key1 : views.keySet()){
+                if(views.get(key1)==view) {
+                    key = key1;
+                    break;
+                }
+            }
+            views.remove(key);
+        }
+        else {
+
+            String key = makeKey(pos);
+            view.setBackgroundColor(Color.GREEN);
+            for (String key1 : views.keySet()){
+                if(Integer.parseInt(key1.substring(0,1)) ==pos)
+                    Objects.requireNonNull(views.get(key1)).setBackgroundColor(Color.BLUE);
+            }
+            views.put(key,view);
+
+            Toast.makeText(this, ""+key,  Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
+    private  String makeKey(int pos){
+        String key =pos+letter[0];
+        for (String key1 : views.keySet()) {
+            if (key1.equalsIgnoreCase(pos + "a"))
+                key = pos + letter[1];
+            else if (key1.equalsIgnoreCase(pos + "b"))
+                key = pos + letter[2];
+            else if (key1.equalsIgnoreCase(pos + "c"))
+                key = pos + letter[3];
+        }
+        return  key;
+    }
+
 
 
     @Override
@@ -174,11 +215,22 @@ public class MainActivity extends AppCompatActivity  implements MultipleChoiceCo
     }
 
     @Override
-    public int scrollDown(int position) {
-        return position +1;
+    public void scrollDown(int position) {
+        recycleView.scrollToPosition(position+1);
     }
 
-    public void setMultipleChoiceController(MultipleChoiceController multipleChoiceController) {
+    public void setMultipleChoiceController(MultipleChoiceController multipleChoiceController, RecyclerView view) {
         this.multipleChoiceController = multipleChoiceController;
+
+        this.recycleView =view;
+    }
+
+    @Override
+    public void trueButton(View view, int position) { addView(view,position);
+    }
+
+    @Override
+    public void falseButton(View view, int position) {addView(view,position);
+
     }
 }

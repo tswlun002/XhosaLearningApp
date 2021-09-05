@@ -19,10 +19,8 @@ public class MultipleChoiceController  extends RecyclerView.Adapter<MultipleChoi
     @SuppressLint("StaticFieldLeak")
     private static Context context = null;
     private final int layout;
-    private static  OnMCQ onMCQ ;
+    private static  OnMultipleChoice onMCQ ;
     private  static  Holder holder;
-    private  static  int lastSelected =0;
-    private  static  int Selected =0;
     @SuppressLint("StaticFieldLeak")
     static  TextView question ;
     @SuppressLint("StaticFieldLeak")
@@ -51,8 +49,8 @@ public class MultipleChoiceController  extends RecyclerView.Adapter<MultipleChoi
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = (LayoutInflater)LayoutInflater.from(context);
         View view = inflater.inflate(layout,parent,false);
-        if(context instanceof OnMCQ)
-            onMCQ = (OnMCQ) context;
+        if(context instanceof OnMultipleChoice)
+            onMCQ = (OnMultipleChoice) context;
         else
             throw  new ClassCastException(context.toString()+" must implement OnMCQ button");
         //viewHolder.pages.setText(position+"");
@@ -72,9 +70,10 @@ public class MultipleChoiceController  extends RecyclerView.Adapter<MultipleChoi
         choice2.setText(choices[1]);
         choice3.setText(choices[2]);
         choice4.setText(choices[3]);
+        viewHolder.page.setText((position+1)+"/"+questions.length);
         holder =viewHolder;
         onMCQ.onMultipleChoice(choice1,choice2,choice3,choice4);
-        setPos(position);
+
 
     }
 
@@ -93,8 +92,7 @@ public class MultipleChoiceController  extends RecyclerView.Adapter<MultipleChoi
      * Inner class that contain features of the element to be inflated into listview
      */
     class  Holder extends RecyclerView.ViewHolder{
-         int pos;
-
+        TextView page;
         public Holder(@NonNull View convertView) {
             super(convertView);
 
@@ -109,7 +107,7 @@ public class MultipleChoiceController  extends RecyclerView.Adapter<MultipleChoi
             choice4 = (Button) convertView.findViewById(R.id.answer4TextView);
             choice4.setBackgroundColor(Color.BLUE);
             nextQ   = convertView.findViewById(R.id.moreQuestionID);
-
+            page = convertView.findViewById(R.id.page);
             handleRecycleView();
 
         }
@@ -120,7 +118,7 @@ public class MultipleChoiceController  extends RecyclerView.Adapter<MultipleChoi
                 @Override
                 public void onClick(View v) {
                     notifyChanges();
-                    onMCQ.choice1(v);
+                    onMCQ.choice1(v,getLayoutPosition());
 
 
                 }
@@ -134,7 +132,8 @@ public class MultipleChoiceController  extends RecyclerView.Adapter<MultipleChoi
                 public void onClick(View v) {
                    // onMCQ.onMultipleChoice(choice1,choice2,choice3,choice4);
                     notifyChanges();
-                    onMCQ.choice2(v);
+
+                    onMCQ.choice2(v,getLayoutPosition());
 
 
                 }
@@ -147,7 +146,7 @@ public class MultipleChoiceController  extends RecyclerView.Adapter<MultipleChoi
                 public void onClick(View v) {
                     //onMCQ.onMultipleChoice(choice1,choice2,choice3,choice4);
                     notifyChanges();
-                    onMCQ.choice3(v);
+                    onMCQ.choice3(v,getLayoutPosition());
 
 
                 }
@@ -161,8 +160,22 @@ public class MultipleChoiceController  extends RecyclerView.Adapter<MultipleChoi
 
                     //onMCQ.onMultipleChoice(choice1,choice2,choice3,choice4);
                     notifyChanges();
-                    onMCQ.choice4(v);
+                    onMCQ.choice4(v,getLayoutPosition());
 
+                }
+            });
+
+            nextQ.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos = getLayoutPosition();
+                    if(pos+1<questions.length) {
+                        nextQ.setVisibility(View.VISIBLE);
+                        onMCQ.scrollDown(pos);
+                    }else{
+                        nextQ.setVisibility(View.GONE);
+
+                    }
                 }
             });
         }
@@ -171,36 +184,15 @@ public class MultipleChoiceController  extends RecyclerView.Adapter<MultipleChoi
 
     }
 
-    public interface  OnMCQ {
-        public void choice1 (View view);
-        public void choice2 (View view);
-        public void choice3 (View view);
-        public void choice4 (View view);
-        public void onMultipleChoice(Button button1,Button button2,Button button3,Button button4);
-        public   int scrollDown(int pos);
-
-    }
-
     public void notifyChanges(){
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lastSelected = Selected;
-                Selected = getPos();
-                //notifyItemChanged(lastSelected);
                 notifyItemChanged(holder.getAdapterPosition());
-
-
             }
         });
     }
 
-    private  int getPos(){
-        return pos;
-    }
-    private  void setPos(int pos){
-        this.pos=pos;
-    }
 
 }
 

@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.example.wordgame.WelcomeWindow"
-        android:label="Wecome to xhosa learning"
+        android:label="Welcome to xhosa learning"
         tools:layout="@layout/welcomwindow">
 
         <action
@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.wordgame.FragmentStart"
-        android:label="@string/second_fragment_label"
+        android:label="Learn  and  Play"
         tools:layout="@layout/fragment_start">
 
         <action
@@ -47,8 +47,8 @@
     <fragment
         android:id="@+id/learn"
         android:name="com.example.wordgame.learn"
-        android:label="fragment_learn"
-        tools:layout="@layout/fragment_learn" >
+        android:label="Learning"
+        tools:layout="@layout/fragment_learn">
         <action
             android:id="@+id/action_learn_to_SecondFragment"
             app:destination="@id/SecondFragment"
@@ -58,8 +58,8 @@
     <fragment
         android:id="@+id/play"
         android:name="com.example.wordgame.play"
-        android:label="fragment_play"
-        tools:layout="@layout/fragment_play" >
+        android:label="Play"
+        tools:layout="@layout/fragment_play">
         <action
             android:id="@+id/action_play_to_matchingFragment"
             app:destination="@id/matchingFragment"
@@ -89,8 +89,8 @@
     <fragment
         android:id="@+id/proggress"
         android:name="com.example.wordgame.Proggress"
-        android:label="fragment_proggress"
-        tools:layout="@layout/fragment_proggress" >
+        android:label="Progress results"
+        tools:layout="@layout/fragment_proggress">
         <action
             android:id="@+id/action_proggress_to_FirstFragment"
             app:destination="@id/FirstFragment"
@@ -105,8 +105,8 @@
     <fragment
         android:id="@+id/matchingFragment"
         android:name="com.example.wordgame.MatchingFragment"
-        android:label="fragment_matching"
-        tools:layout="@layout/fragment_matching" >
+        android:label="Matching"
+        tools:layout="@layout/fragment_matching">
         <action
             android:id="@+id/action_matchingFragment_to_play"
             app:destination="@id/play"
@@ -121,8 +121,8 @@
     <fragment
         android:id="@+id/multipleChoiceFragment"
         android:name="com.example.wordgame.MultipleChoiceFragment"
-        android:label="fragment_multiple_choice"
-        tools:layout="@layout/fragment_multiple_choice" >
+        android:label="Multiple choice"
+        tools:layout="@layout/fragment_multiple_choice">
         <action
             android:id="@+id/action_multipleChoiceFragment_to_play"
             app:destination="@id/play"
@@ -137,8 +137,8 @@
     <fragment
         android:id="@+id/trueFalseFragment"
         android:name="com.example.wordgame.TrueFalseFragment"
-        android:label="true_false_adapter"
-        tools:layout="@layout/true_false_adapter" >
+        android:label="True | False"
+        tools:layout="@layout/true_false_adapter">
         <action
             android:id="@+id/action_trueFalseFragment_to_play"
             app:destination="@id/play"
@@ -153,8 +153,8 @@
     <fragment
         android:id="@+id/translationFragment"
         android:name="com.example.wordgame.TranslationFragment"
-        android:label="fragment_translation"
-        tools:layout="@layout/fragment_translation" >
+        android:label="Translation"
+        tools:layout="@layout/fragment_translation">
         <action
             android:id="@+id/action_translationFragment_to_play"
             app:destination="@id/play"
@@ -169,8 +169,8 @@
     <fragment
         android:id="@+id/results_CurrentActivity"
         android:name="com.example.wordgame.Results_CurrentActivity"
-        android:label="fragment_results__current_activity"
-        tools:layout="@layout/fragment_results__current_activity" >
+        android:label="Exercise results"
+        tools:layout="@layout/fragment_results__current_activity">
         <action
             android:id="@+id/action_results_CurrentActivity_to_multipleChoiceFragment"
             app:destination="@id/multipleChoiceFragment"

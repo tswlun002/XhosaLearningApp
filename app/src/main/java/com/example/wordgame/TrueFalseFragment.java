@@ -1,23 +1,19 @@
 package com.example.wordgame;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.wordgame.databinding.FragmentTrueBinding;
+import com.example.wordgame.databinding.TrueFalseAdapterBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,23 +25,27 @@ public class TrueFalseFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM2 = "par" +
+            "am2";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    private final String[] headings = {
+    private final String[] questions = {
+
             "The animal name on the picture is  Inkomo?",
             "The animal name on the picture is Igusha?",
             "The animal name on the picture is Ikati?",
             "The animal name on the picture is Ibhokhwe?"
     };
 
-    private final int[] lesson = {
+    private final int[] figure = {
             R.drawable.igusha, R.drawable.igusha,
             R.drawable.igusha, R.drawable.igusha
     };
+
+
 
     private FragmentTrueBinding binding;
     private LayoutInflater inflater;
@@ -75,6 +75,7 @@ public class TrueFalseFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -95,15 +96,19 @@ public class TrueFalseFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentTrueBinding.inflate(inflater, container, false);
         this.inflater = inflater;
-
-
-        binding.listviewIDtrueAdapter.setStackFromBottom(false);
-        binding.listviewIDtrueAdapter.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
-        PlaController plaController = new PlaController(requireContext(),headings,lesson,R.layout.true_false_adapter);
-        binding.listviewIDtrueAdapter.setAdapter(plaController);
-
-
+         setUpRecycleView(binding);
         return  binding.getRoot();
+
+    }
+
+    /**
+     * helper method to set up controller
+     * @param binding  FragmentTrueBinding binder
+     */
+    private  void setUpRecycleView(FragmentTrueBinding binding){
+        TrueFalseController trueFalseController = new TrueFalseController(requireContext(),questions,figure,R.layout.true_false_adapter);
+        binding.listviewIDtrueAdapter.setAdapter(trueFalseController);
+        binding.listviewIDtrueAdapter.setLayoutManager(new LinearLayoutManager(requireContext()));
 
     }
 

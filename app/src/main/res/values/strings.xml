@@ -39,4 +39,7 @@
     <string name="answer3">answer3</string>
     <string name="answer4">answer4</string>
     <string name="_1">1</string>
+    <string name="pagenumber">pageNumber</string>
+    <string name="False">false</string>
+    <string name="True">true</string>
 </resources>
