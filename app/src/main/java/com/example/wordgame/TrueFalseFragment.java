@@ -10,6 +10,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -44,17 +45,19 @@ public class TrueFalseFragment extends Fragment  {
     static  TextView question ;
 
 
-    private final String[] headings = {
+    private final String[] questions = {
+
             "The animal name on the picture is  Inkomo?",
             "The animal name on the picture is Igusha?",
             "The animal name on the picture is Ikati?",
             "The animal name on the picture is Ibhokhwe?"
     };
 
-    private final int[] lesson = {
+    private final int[] figure = {
             R.drawable.igusha, R.drawable.igusha,
             R.drawable.igusha, R.drawable.igusha
     };
+
 
     private FragmentTrueBinding binding;
     private LayoutInflater inflater;
@@ -104,20 +107,23 @@ public class TrueFalseFragment extends Fragment  {
         // Inflate the layout for this fragment
         binding = FragmentTrueBinding.inflate(inflater, container, false);
         this.inflater = inflater;
-
-
-        binding.listviewIDtrueAdapter.setStackFromBottom(false);
-        binding.listviewIDtrueAdapter.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
-        PlaController plaController = new PlaController(requireContext(),headings,lesson,R.layout.true_false_adapter);
-        binding.listviewIDtrueAdapter.setAdapter(plaController);
-
-
+        setUpRecycleView(binding);
         return  binding.getRoot();
 
     }
-    private void setUpRecycleView(FragmentTrueBinding binding){
-        TrueFalseController trueFalseController =new TrueFalseController(requireContext(),questions,figur)
+
+    /**
+     * helper method to set up controller
+     * @param binding  FragmentTrueBinding binder
+     */
+    private  void setUpRecycleView(FragmentTrueBinding binding){
+        TrueFalseController trueFalseController = new TrueFalseController(requireContext(),questions,figure,R.layout.true_false_adapter);
+        binding.listviewIDtrueAdapter.setAdapter(trueFalseController);
+        binding.listviewIDtrueAdapter.setLayoutManager(new LinearLayoutManager(requireContext()));
+
     }
+
+
     /**
      * created view for TrueFalseFragment
      * @param view of TrueFalseFragment
@@ -140,7 +146,7 @@ public class TrueFalseFragment extends Fragment  {
             @Override
             public void onClick(View v) {
                 ActiviyResults activiyResults = new ActiviyResults(inflater, requireContext());
-                activiyResults.gradesActity();
+                activiyResults.gradesActity(18,20);
 
             }
         });
