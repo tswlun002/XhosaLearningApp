@@ -6,14 +6,16 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.zip.Inflater;
 
 public class ActiviyResults {
 
-    private LayoutInflater inflater;
-    private Context context;
+    private final LayoutInflater inflater;
+    private final Context context;
 
     public  ActiviyResults (LayoutInflater inflater,Context context){
         this.inflater=inflater;
@@ -22,37 +24,30 @@ public class ActiviyResults {
 
 
     /**
-     * Show user marks for current activity on dialog
-     * Click close to dismiss dialog
+     * This method desplay's the user score, the answers they had wrong with corrections.
+     * @param userScore stores the user score for each of the exercises
+     * @param totalScore stores the user average score of each of the levels.
      */
-
-
-
     @SuppressLint("SetTextI18n")
     //introduced new parameters userScore and total Score
     public void gradesActity(int userScore, int totalScore){
         final View view = inflater.inflate(R.layout.fragment_results__current_activity, null);
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-        alertDialog.setTitle("Your Score");
+        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+        alertDialog.setTitle("                           Score");
 
 
         TextView grades  = view.findViewById(R.id.gradesActivity);
-        grades.setText(userScore+"/"+totalScore);
-        alertDialog.setMessage(userScore+"/"+totalScore);
-
-        alertDialog.setNeutralButton("Close", new DialogInterface.OnClickListener() {
+        TextView answers = view.findViewById(R.id.CorrectionsID);
+        Button button = view.findViewById(R.id.ExitBitton);
+        grades.setText("1.True\n2.false\n3.true\n4.false");
+        answers.setText("Your Score and Answers:".toUpperCase()+userScore+"/"+totalScore);
+        alertDialog.setView(view);
+        alertDialog.show();
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
+            public void onClick(View view) {
 
-            }
-        });
-
-        final  AlertDialog alert = alertDialog.create();
-        alert.show();
-        alert.getButton(DialogInterface.BUTTON_NEUTRAL).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alert.dismiss();
+                alertDialog.dismiss();
             }
         });
     }
