@@ -1,79 +1,94 @@
 package com.example.wordgame;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class TranslationController  extends ArrayAdapter<String> {
+public class TranslationController  extends RecyclerView.Adapter<TranslationController.Holder> {
 
     private final String [] questions;
-    private final Context context;
+    @SuppressLint("StaticFieldLeak")
+    private static  Context context;
     private final int  layout ;
+    private  static  LayoutInflater inflater;
 
     public TranslationController(@NonNull Context context, String[] question, int resource) {
-        super(context, resource);
         this.context=context;
         this.layout=resource;
         this.questions=question;
     }
+
+    /**
+     * get view of the recycle view
+     * @param viewType is view of the recycle view
+     * @param parent is the view of fragment learn
+     * @return view of recycle view
+     */
+
+    @NonNull
+    @Override
+    public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(layout,parent,false);
+        return new Holder(view);
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void onBindViewHolder(@NonNull Holder viewHolder, int position) {
+        viewHolder.descriptionView.setText(questions[position]);
+        viewHolder.pageNumber.setText((position+1)+"/"+questions.length);
+    }
+
     /**
      * number of elements to inflated into listview
      * @return number of the element inflated
      */
     @Override
-    public int getCount() {
-        return questions.length;
+    public int getItemCount() {
+        return questions.length ;
     }
-
-
-    /**
-     * get view of the listview
-     * @param position of each element/item to inflate into listview
-     * @param convertView is view of the listview
-     * @param parent is the view of fragment learn
-     * @return view of listview
-     */
-    @NonNull
-    @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        TranslationController.Holder viewHolder = new TranslationController.Holder();
-        if(convertView ==null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            //get listview into convertView
-            convertView = inflater.inflate(layout, parent, false);
-
-            //inflate picture and text description
-            viewHolder.descriptionView = (TextView) convertView.findViewById(R.id.transQuestionTextView);
-
-            //set into holder
-            convertView.setTag(viewHolder);
-
-        }else{
-            viewHolder  = (TranslationController.Holder) convertView.getTag();
-
-        }
-        //set pictures and description of lost people
-        viewHolder.descriptionView.setText(questions[position]);
-
-        return convertView;
-
-    }
-
 
 
     /**
      * Inner class that contain features of the element to be inflated into listview
      */
-    static  class  Holder{
-        TextView descriptionView;
+    static  class  Holder extends  RecyclerView.ViewHolder{
+        TextView descriptionView,pageNumber, numberHints;
+        Button hints;
+        int numberOfHints =10;
+
+        public Holder(@NonNull View itemView) {
+            super(itemView);
+
+            descriptionView = itemView.findViewById(R.id.transQuestionTextView);
+            pageNumber = itemView.findViewById(R.id.pageNo);
+            hints = itemView.findViewById(R.id.hintButton);
+            numberHints = itemView.findViewById(R.id.noHintsTextView);
+            hints.setOnClickListener(new View.OnClickListener() {
+                @SuppressLint("SetTextI18n")
+                @Override
+                public void onClick(View v) {
+                    numberOfHints --;
+                    if(numberOfHints <0)
+                        hints.setEnabled(false);
+                    else
+                        numberHints.setText("No of hints: "+numberOfHints);
+                        HintController hintController = new HintController(inflater,context);
+                        hintController.getHint();
+                }
+            });
+        }
     }
 
 

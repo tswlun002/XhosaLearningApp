@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -106,12 +107,10 @@ public class TranslationFragment extends Fragment {
      * @param binding  FragmentTranslationBinding
      */
     private  void setUpListView(FragmentTranslationBinding binding){
-        binding.tranlationListviewID.setStackFromBottom(false);
-
-        binding.tranlationListviewID.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
 
         TranslationController translationController = new TranslationController(requireContext(), questions,  R.layout.translation_adapter);
         binding.tranlationListviewID.setAdapter(translationController);
+        binding.tranlationListviewID.setLayoutManager(new LinearLayoutManager(requireContext()));
     }
     /**
      * handle button event
