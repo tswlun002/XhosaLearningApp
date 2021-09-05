@@ -122,7 +122,7 @@ public class TranslationFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ActiviyResults activiyResults = new ActiviyResults(inflater,requireContext());
-                activiyResults.gradesActity();
+                activiyResults.gradesActity(18,20);
             }
         });
     }

@@ -20,20 +20,24 @@ public class ActiviyResults {
         this.context=context;
     }
 
+
     /**
      * Show user marks for current activity on dialog
      * Click close to dismiss dialog
      */
 
+
+
     @SuppressLint("SetTextI18n")
-    public void gradesActity(){
+    //introduced new parameters userScore and total Score
+    public void gradesActity(int userScore, int totalScore){
         final View view = inflater.inflate(R.layout.fragment_results__current_activity, null);
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
         alertDialog.setTitle("Your Exercise Grades");
 
         TextView grades  = view.findViewById(R.id.gradesActivity);
-        grades.setText("18/20");
-        alertDialog.setMessage("18/20");
+        grades.setText(userScore+"/"+totalScore);
+        alertDialog.setMessage(userScore+"/"+totalScore);
         alertDialog.setNeutralButton("Close", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

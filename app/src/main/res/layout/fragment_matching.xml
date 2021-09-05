@@ -110,7 +110,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline37" />
 
     <TextView
-        android:id="@+id/engWordTextView3"
+        android:id="@+id/engTextView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#FAE6E6"
@@ -175,7 +175,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline40" />
 
     <TextView
-        android:id="@+id/engWordTextView1"
+        android:id="@+id/engTextView1"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#FAE6E6"

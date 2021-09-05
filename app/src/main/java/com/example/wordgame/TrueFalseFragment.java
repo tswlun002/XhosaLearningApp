@@ -1,5 +1,6 @@
 package com.example.wordgame;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -9,11 +10,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,7 +27,7 @@ import com.example.wordgame.databinding.FragmentTrueBinding;
  * Use the {@link TrueFalseFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TrueFalseFragment extends Fragment {
+public class TrueFalseFragment extends Fragment  {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,6 +37,12 @@ public class TrueFalseFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private int pos;
+
+    //Ini
+    @SuppressLint("StaticFieldLeak")
+    static  TextView question ;
+
 
     private final String[] headings = {
             "The animal name on the picture is  Inkomo?",
@@ -129,8 +138,10 @@ public class TrueFalseFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ActiviyResults activiyResults = new ActiviyResults(inflater, requireContext());
-                activiyResults.gradesActity();
+                activiyResults.gradesActity(18,20);
             }
         });
     }
+
+
 }
