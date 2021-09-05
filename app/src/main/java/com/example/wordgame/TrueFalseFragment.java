@@ -115,7 +115,9 @@ public class TrueFalseFragment extends Fragment  {
         return  binding.getRoot();
 
     }
-
+    private void setUpRecycleView(FragmentTrueBinding binding){
+        TrueFalseController trueFalseController =new TrueFalseController(requireContext(),questions,figur)
+    }
     /**
      * created view for TrueFalseFragment
      * @param view of TrueFalseFragment
@@ -138,7 +140,8 @@ public class TrueFalseFragment extends Fragment  {
             @Override
             public void onClick(View v) {
                 ActiviyResults activiyResults = new ActiviyResults(inflater, requireContext());
-                activiyResults.gradesActity(18,20);
+                activiyResults.gradesActity();
+
             }
         });
     }
