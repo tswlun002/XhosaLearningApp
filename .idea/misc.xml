@@ -9,7 +9,7 @@
         <entry key="app/src/main/res/layout/content_main.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.34010416666666665" />
-        <entry key="app/src/main/res/layout/fragment_learn.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_learn.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_matching.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_multiple_choice.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_play.xml" value="0.34646739130434784" />

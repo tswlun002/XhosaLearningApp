@@ -3,6 +3,7 @@ package com.example.wordgame;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -108,12 +109,10 @@ public class learn extends Fragment {
      * @param binding  FragmentLearnBinding
      */
     private  void setUpListView(FragmentLearnBinding binding){
-        binding.learnIDListview.setStackFromBottom(false);
-
-        binding.learnIDListview.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
 
         LearnController learn = new LearnController(requireContext(), headings, lesson, R.layout.learn_adapter);
         binding.learnIDListview.setAdapter(learn);
+        binding.learnIDListview.setLayoutManager(new LinearLayoutManager(requireContext()));
     }
 
 

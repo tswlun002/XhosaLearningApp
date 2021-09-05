@@ -10,12 +10,13 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Class helps to inflate content into Listview of Learn
  * Subclass of ArrayAdapter<String>
  */
-public class LearnController extends ArrayAdapter<String> {
+public class LearnController extends RecyclerView.Adapter<LearnController.Holder> {
 
     /**
      * @serialField hearding  list of headings of lessons
@@ -25,6 +26,7 @@ public class LearnController extends ArrayAdapter<String> {
     private final String [] hearding;
     private final int[] lesson;
     private final Context context;
+    private  int layout;
 
     /**
      * Constructor of Learn controller to initialise the fields
@@ -34,11 +36,26 @@ public class LearnController extends ArrayAdapter<String> {
      * @param resource  number the layout to be inflated into listview
      */
     public LearnController(@NonNull Context context,String[] heading, int[] lessons,int resource) {
-        super(context, resource);
-
         this.lesson=lessons;
         this.hearding=heading;
         this.context =context;
+        this.layout =resource;
+    }
+
+
+    /**
+     * get view of the listview
+     * @param viewType is view of the listview
+     * @param parent is the view of fragment learn
+     * @return view of listview
+     */
+    @NonNull
+    @Override
+    public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(layout,parent,false);
+
+        return new Holder(view);
     }
 
     /**
@@ -46,55 +63,38 @@ public class LearnController extends ArrayAdapter<String> {
      * @return number of the element inflated
      */
     @Override
-    public int getCount() {
+    public int getItemCount() {
         return hearding.length;
     }
 
-
     /**
-     * get view of the listview
-     * @param position of each element/item to inflate into listview
-     * @param convertView is view of the listview
-     * @param parent is the view of fragment learn
-     * @return view of listview
+     * bind learn adapter view to holder
+     * @param holder for learn adapter
+     * @param position position of each view
      */
-    @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        Holder  viewHolder = new Holder();
-        if(convertView ==null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            //get listview into convertView
-            convertView = inflater.inflate(R.layout.learn_adapter, parent, false);
-
-            //inflate picture and text description
-            viewHolder.picView = (ImageView) convertView.findViewById(R.id.imageAdapterId);
-            viewHolder.descriptionView = (TextView) convertView.findViewById(R.id.textViewAdaoterID);
-
-            //set into holder
-            convertView.setTag(viewHolder);
-
-        }else{
-            viewHolder  = (Holder) convertView.getTag();
-
-        }
-        //set pictures and description of lost people
-        viewHolder.picView.setImageResource((lesson[position]));
-        viewHolder.descriptionView.setText(hearding[position]);
-
-        return convertView;
-
+    public void onBindViewHolder(@NonNull Holder holder, int position) {
+        holder.picView.setImageResource((lesson[position]));
+        holder.descriptionView.setText(hearding[position]);
     }
-
 
 
     /**
      * Inner class that contain features of the element to be inflated into listview
      */
-    static  class  Holder{
+    static  class  Holder extends RecyclerView.ViewHolder {
         ImageView picView;
         TextView descriptionView;
+
+        /**
+         * constructor to initialise serial fields of Holder
+         * @param itemView learn adapter view
+         */
+        public Holder(@NonNull View itemView) {
+            super(itemView);
+            picView = itemView.findViewById(R.id.imageAdapterId);
+            descriptionView = itemView.findViewById(R.id.textViewAdaoterID);
+        }
     }
 
 
