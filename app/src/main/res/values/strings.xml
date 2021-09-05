@@ -39,4 +39,11 @@
     <string name="answer3">answer3</string>
     <string name="answer4">answer4</string>
     <string name="_1">1</string>
+    <string name="pagenumber">pageNumber</string>
+    <string name="False">false</string>
+    <string name="True">true</string>
+    <string name="no_of_hints_10">No of hints: 10</string>
+    <string name="enter_a_xhosa_translation">Enter a Xhosa translation</string>
+    <string name="hint">hint</string>
+    <string name="type_translation">Type translation</string>
 </resources>

@@ -5,7 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MultipleChoiceFragment">
-
+    <TextView
+        android:id="@+id/page"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textStyle="bold"
+        android:gravity="left|center"
+        android:text="@string/pagenumber"
+        app:layout_constraintBottom_toTopOf="@id/guideline20"
+        app:layout_constraintEnd_toEndOf="@id/guideline37"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlHardcoded" />
     <TextView
         android:id="@+id/transQuestionTextView"
         android:layout_width="0dp"
@@ -75,9 +86,9 @@
         android:layout_marginStart="5dp"
         android:backgroundTint="@color/white"
         android:gravity="center"
-        app:iconSize="50dp"
         app:icon="@drawable/arrow_down_24"
         app:iconGravity="textTop"
+        app:iconSize="50dp"
         app:iconTint="@color/purple_700"
         app:layout_constraintBottom_toTopOf="@+id/guideline30"
         app:layout_constraintEnd_toStartOf="@id/guideline26"
@@ -176,4 +187,11 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.92" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline37"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

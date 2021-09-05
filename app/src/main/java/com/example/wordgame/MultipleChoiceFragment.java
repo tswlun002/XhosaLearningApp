@@ -97,20 +97,22 @@ public class MultipleChoiceFragment extends Fragment {
 
         binding= FragmentMultipleChoiceBinding.inflate(inflater, container, false);
         this.inflater =inflater;
-        setUpListView(binding);
-        return  binding.getRoot();
+        View view =binding.getRoot();
+        setUpListView(binding,view);
+        return  view;
     }
 
     /**
      * set up List view with data content
      * @param binding  FragmentTranslationBinding
      */
-    private  void setUpListView(FragmentMultipleChoiceBinding binding){
+    private  void setUpListView(FragmentMultipleChoiceBinding binding,View view){
         MultipleChoiceController multipleChoiceController = new MultipleChoiceController(requireContext(), questions,  R.layout.multiple_choice_adapter);
         binding.mulplechoiceListviewId.setAdapter(multipleChoiceController);
         binding.mulplechoiceListviewId.setLayoutManager(new LinearLayoutManager(requireContext()));
         this.multipleChoiceController=multipleChoiceController;
-        ((MainActivity) requireActivity()).setMultipleChoiceController(multipleChoiceController);
+        RecyclerView recyclerView = view.findViewById(R.id.mulplechoiceListviewId);
+        ((MainActivity) requireActivity()).setMultipleChoiceController(multipleChoiceController, recyclerView);
 
 
     }
