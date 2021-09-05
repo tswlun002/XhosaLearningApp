@@ -33,11 +33,13 @@ public class ActiviyResults {
     public void gradesActity(int userScore, int totalScore){
         final View view = inflater.inflate(R.layout.fragment_results__current_activity, null);
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-        alertDialog.setTitle("Your Exercise Grades");
+        alertDialog.setTitle("Your Score");
+
 
         TextView grades  = view.findViewById(R.id.gradesActivity);
         grades.setText(userScore+"/"+totalScore);
         alertDialog.setMessage(userScore+"/"+totalScore);
+
         alertDialog.setNeutralButton("Close", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

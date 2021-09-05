@@ -1,6 +1,7 @@
 package com.example.wordgame;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.example.wordgame.databinding.FragmentMatchingBinding;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,12 +43,19 @@ public class MatchingFragment extends Fragment {
     private String [] myEngWordsArr = {"dog", "sheep", "goat", "horse"};
     private String [] xhosaTransWordArr =  {"inja", "igusha", "ibhokhwe", "ihashe"};
 
-    //ids of textViews
+    //ids of textViews and edit texts
     private int [] idsArrayEngTVs = {R.id.engTextView1, R.id.engTextView2,R.id.engTextView3, R.id.engTextView4};
     private int [] idsArrayXhosaTVs = {R.id.xhosaMatchTextView1, R.id.xhosaMatchTextView2,R.id.xhosaMatchTextView3, R.id.xhosaMatchTextView4};
     private int [] idsArrayEditText = {R.id.xhosaEditText1, R.id.xhosaEditText2,R.id.xhosaEditText3, R.id.xhosaEditText4};
 
-    //populating text views with content
+    /**
+     * The method is used to add content in an textviews
+     * @param idEng
+     * @param idXhosa
+     * @param eWords
+     * @param xWords
+     * @param view
+     */
     public void PopulateTextViews(int idEng[], int idXhosa[],String[] eWords,String[] xWords, View view){
 
         for(int i = 0; i < idEng.length; i++){
@@ -60,6 +69,11 @@ public class MatchingFragment extends Fragment {
         }
     }
 
+    /**
+     * The method is used to check if the english terms match xhosa term
+     * @param view
+     * @return
+     */
     public int numMatchingAns(View view){
         //boolean isMatching = false;
         ArrayList<String> userAnswers = new ArrayList<>();
@@ -68,17 +82,16 @@ public class MatchingFragment extends Fragment {
 
         for(int i = 0; i< idsArrayEditText.length; i++){
             myEd = (EditText) view.findViewById(idsArrayEditText[i]);
-            String text = (String) myEd.getText().toString();
+            String text = myEd.getText().toString().trim().toLowerCase();
             userAnswers.add(text);
         }
 
         for (int k = 0; k< idsArrayEditText.length; k++){
 
-            if(userAnswers.get(k).equalsIgnoreCase( xhosaTransWordArr[k])== true){
+            if(userAnswers.get(k).compareTo(xhosaTransWordArr[k]) == 0){
                 correctAnswers++;
             }
         }
-
         return correctAnswers;
     }
 
@@ -134,21 +147,24 @@ public class MatchingFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         PopulateTextViews(idsArrayEngTVs,idsArrayXhosaTVs,myEngWordsArr,xhosaTransWordArr,view);
-        int correctAns = numMatchingAns(view);
-        handleButton(correctAns);
+        //int correctAns = numMatchingAns(view);
+        //System.out.println(correctAns);
+        handleButton(view);
         ((MainActivity) requireActivity()).backUpPressed(MatchingFragment.this,R.id.action_matchingFragment_to_play);
     }
 
-    /**
+
+     /**
      * handle button event
      * Show grades for user
+     * @param view
      */
-    private  void handleButton(int correctAns) {
+    private  void handleButton(View view) {
 
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //int correctAns = numMatchingAns(v);
+                int correctAns = numMatchingAns(view);
                 ActiviyResults activiyResults = new ActiviyResults(inflater, requireContext());
                 activiyResults.gradesActity(correctAns,idsArrayEditText.length);
             }
