@@ -108,8 +108,6 @@ public class TrueFalseFragment extends Fragment  {
         binding = FragmentTrueBinding.inflate(inflater, container, false);
         this.inflater = inflater;
         setUpRecycleView(binding);
-        ((MainActivity)requireActivity()).setID(R.id.action_trueFalseFragment_to_play);
-        ((MainActivity)requireActivity()).setView(binding.getRoot());
         return  binding.getRoot();
 
     }
@@ -147,7 +145,7 @@ public class TrueFalseFragment extends Fragment  {
         binding.submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActiviyResults activiyResults = new ActiviyResults(inflater, requireContext(),R.id.action_trueFalseFragment_to_play,binding.getRoot());
+                ActiviyResults activiyResults = new ActiviyResults(inflater, requireContext());
                 activiyResults.gradesActity(18,20);
 
             }
