@@ -165,7 +165,7 @@ public class MatchingFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 int correctAns = numMatchingAns(view);
-                ActiviyResults activiyResults = new ActiviyResults(inflater, requireContext());
+                ActiviyResults activiyResults = new ActiviyResults(inflater, requireContext(),R.id.action_matchingFragment_to_play,binding.getRoot());
                 activiyResults.gradesActity(correctAns,idsArrayEditText.length);
             }
         });

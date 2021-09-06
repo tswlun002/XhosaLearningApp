@@ -3,23 +3,25 @@ package com.example.wordgame;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.zip.Inflater;
+import androidx.navigation.Navigation;
 
 public class ActiviyResults {
 
     private final LayoutInflater inflater;
     private final Context context;
+    static int actionId;
+    static View fragmentView;
 
-    public  ActiviyResults (LayoutInflater inflater,Context context){
+    public  ActiviyResults (LayoutInflater inflater,Context context, int Id,View fragment1){
         this.inflater=inflater;
         this.context=context;
+        actionId = Id;
+        fragmentView = fragment1;
     }
 
 
@@ -38,16 +40,26 @@ public class ActiviyResults {
 
         TextView grades  = view.findViewById(R.id.gradesActivity);
         TextView answers = view.findViewById(R.id.CorrectionsID);
-        Button button = view.findViewById(R.id.ExitBitton);
+        Button tryAgainButton = view.findViewById(R.id.ExitBitton);
+        Button nextButton = view.findViewById(R.id.NextButtonId);
+
         grades.setText("1.True\n2.false\n3.true\n4.false");
         answers.setText("Your Score and Answers:".toUpperCase()+userScore+"/"+totalScore);
         alertDialog.setView(view);
         alertDialog.show();
-        button.setOnClickListener(new View.OnClickListener() {
+
+        tryAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 alertDialog.dismiss();
+            }
+        });
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+               Navigation.findNavController(fragmentView).navigate(actionId);
             }
         });
     }
