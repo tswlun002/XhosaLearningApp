@@ -157,6 +157,7 @@ public class MatchingFragment extends Fragment {
      /**
      * handle button event
      * Show grades for user
+      * Show user correct answers to the user id the user does not get all answers correctly
      * @param view
      */
     private  void handleButton(View view) {
@@ -165,9 +166,34 @@ public class MatchingFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 int correctAns = numMatchingAns(view);
+                String corrections = "";
+                if(correctAns< myEngWordsArr.length){
+                    corrections = makeCorrections(myEngWordsArr, xhosaTransWordArr);
+                }
+
+                else{
+                    corrections = "Congratulation your answers are all correct";
+                }
+
                 ActiviyResults activiyResults = new ActiviyResults(inflater, requireContext());
-                activiyResults.gradesActity(correctAns,idsArrayEditText.length);
+                activiyResults.gradesActity(correctAns,idsArrayEditText.length, corrections);
             }
         });
+    }
+
+    /**
+     * Method for generating user correct answers when the user is does not get all answers in the question
+     * @param myEngWordsArr
+     * @param xhosaTransWordArr
+     * @return
+     */
+    private String makeCorrections(String[] myEngWordsArr, String[] xhosaTransWordArr){
+        String corrections = "Correct Answers\n";
+
+        for(int i = 0 ; i<myEngWordsArr.length ; i++){
+            corrections = corrections + myEngWordsArr[i] + " = " + xhosaTransWordArr[i] +"\n";
+        }
+
+        return  corrections;
     }
 }
