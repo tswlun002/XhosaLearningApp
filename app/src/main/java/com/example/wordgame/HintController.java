@@ -29,20 +29,29 @@ public class HintController {
         TextView hint  = view.findViewById(R.id.hintDialogID);
         hint.setText("greeting your Sister");
         alertDialog.setMessage("greeting your Sister");
-        alertDialog.setNeutralButton("Close", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
 
-            }
-        });
-
+        HandleButton handleButton = new HandleButton();
+        alertDialog.setNeutralButton("Close",handleButton);
         final  AlertDialog alert = alertDialog.create();
         alert.show();
-        alert.getButton(DialogInterface.BUTTON_NEUTRAL).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alert.dismiss();
-            }
-        });
+        handleButton.handleButton(alert);
+
+
     }
+
+    private static  class HandleButton implements  DialogInterface.OnClickListener{
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+
+        }
+        void handleButton(AlertDialog alert){
+            alert.getButton(DialogInterface.BUTTON_NEUTRAL).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alert.dismiss();
+                }
+            });
+        }
+    }
+
 }

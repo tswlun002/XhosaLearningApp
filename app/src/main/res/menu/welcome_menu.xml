@@ -14,6 +14,11 @@
         android:title="@string/about_wordgame"
         />
     <item
+        android:id="@+id/resultsId"
+        android:visible="false"
+        android:title="@string/results"
+        />
+    <item
         android:id="@+id/instructions"
         android:title="@string/instructions"/>
     <item

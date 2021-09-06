@@ -1,11 +1,14 @@
 package com.example.wordgame;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Message;
 import android.view.View;
 
 import androidx.fragment.app.Fragment;
@@ -39,7 +42,8 @@ public class MainActivity extends AppCompatActivity  implements OnMultipleChoice
     private  MultipleChoiceController multipleChoiceController;
     private final  String []letter = {"a","b","c","d"};
     private RecyclerView recycleView;
-
+    private View view;
+    private int Id;
 
     /**
      * creates main activity  ,set up navigation controller
@@ -75,6 +79,9 @@ public class MainActivity extends AppCompatActivity  implements OnMultipleChoice
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.welcome_menu, menu);
+        MenuItem menuItem = menu.findItem(R.id.resultsId);
+        menuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        menuItem.setVisible(false);
         return true;
     }
     /** Handle action bar item clicks here. The action bar will
@@ -89,12 +96,81 @@ public class MainActivity extends AppCompatActivity  implements OnMultipleChoice
                 Navigation.findNavController(this,R.id.nav_host_fragment_content_main).navigate(R.id.action_FirstFragment_to_proggress);
             else if(item.getItemId()==R.id.homeIdItem)
                 Navigation.findNavController(this,R.id.nav_host_fragment_content_main).navigate(R.id.action_proggress_to_FirstFragment);
+            else if(item.getItemId()==R.id.instructions){
+                Instructions instructions = new Instructions(this , getLayoutInflater());
+                instructions.instructions();
+            }
+            else if(item.getItemId()==R.id.aboutApp){
+                String message ="This application about learning basic xhosa:\n" +
+                        "terms\n" +
+                        "communication\n" +
+                        "basic sentence building\n";
+               popUp("About App",message);
+            }
 
-
+            else if(item.getItemId()==R.id.resultsId){
+                ActiviyResults activiyResults = new ActiviyResults(getLayoutInflater(),this,getID(), getView());
+                 activiyResults.gradesActity(0,0);
+            }
+            else if (item.getItemId() == R.id.help){
+                String message  = "Drag and drop text to edit text\n" +
+                        "Or type the answer\n" +
+                        "Selected option answer are highlighted light blue (CYAN)" ;
+                popUp("This Activity Instructions",message);
+            }
 
         return super.onOptionsItemSelected(item);
     }
 
+
+    /**
+     * set up pop up when click
+     * gives user instruction how to play current game
+     * When user clicks Okay button, poop is dismissed
+     * @param tittle tittle of the popup
+     * @param message instruction of the current game
+     */
+    void popUp(String tittle ,String message){
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle(tittle);
+        alertDialog.setMessage(message);
+        alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Okay", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                alertDialog.dismiss();
+            }
+        });
+        alertDialog.show();
+    }
+
+    /**
+     * @return view
+     */
+    View getView(){
+        return  this.view;
+    }
+
+    /**
+     * @param v  set view
+     */
+    void setView(View v){
+        this.view=v;
+    }
+
+    /**
+     *
+     * @return action id for navigation between fragments
+     */
+    int getID(){
+        return  this.Id;
+    }
+
+    /**
+     * @param v set id for navigation
+     */
+    void setID(int v){
+        this.Id=v;
+    }
     /**
      * set support for navigation up
      * @return true if navigation is supported else false
@@ -160,8 +236,13 @@ public class MainActivity extends AppCompatActivity  implements OnMultipleChoice
     }
 
     /**
-     *
-     * @param view
+     * add view into views when user play game
+     * When user click button, clicked view is added
+     * if view  was not clicked before, change background color to green
+     * Else remove view  from views and set view background color to blue
+     * Button is identified by keys,
+     * key = position concatenate with a to d
+     * @param view clicked view
      */
     @SuppressLint("ResourceAsColor")
     private  void addView(View view,int pos){
@@ -191,6 +272,11 @@ public class MainActivity extends AppCompatActivity  implements OnMultipleChoice
         }
     }
 
+    /**
+     * create keys for buttons
+     * @param pos  is the position of the view
+     * @return key = position + letters from a-d
+     */
     private  String makeKey(int pos){
         String key =pos+letter[0];
         for (String key1 : views.keySet()) {
@@ -204,8 +290,13 @@ public class MainActivity extends AppCompatActivity  implements OnMultipleChoice
         return  key;
     }
 
-
-
+    /**
+     * multiple choice interface method to initialise buttons
+     * @param button1 button one
+     * @param button2 button two
+     * @param button3 button three
+     * @param button4 button four
+     */
     @Override
     public void onMultipleChoice(Button button1, Button button2, Button button3, Button button4) {
       this.btn1=button1;
@@ -214,21 +305,38 @@ public class MainActivity extends AppCompatActivity  implements OnMultipleChoice
       this.btn4=button4;
     }
 
+    /**
+     * scroll recycle view to the next position
+     * @param position current position , scroll from
+     */
     @Override
     public void scrollDown(int position) {
         recycleView.scrollToPosition(position+1);
     }
 
+    /**
+     * sets multipleChoiceController and recycle view
+     * @param multipleChoiceController multipleChoiceController
+     * @param view recycle view
+     */
     public void setMultipleChoiceController(MultipleChoiceController multipleChoiceController, RecyclerView view) {
         this.multipleChoiceController = multipleChoiceController;
-
         this.recycleView =view;
     }
 
+    /**
+     * handle true button on True False game
+     * @param view clicked view
+     * @param position clicked position
+     */
     @Override
     public void trueButton(View view, int position) { addView(view,position);
     }
-
+    /**
+     * handle false button on True False game
+     * @param view clicked view
+     * @param position clicked position
+     */
     @Override
     public void falseButton(View view, int position) {addView(view,position);
 

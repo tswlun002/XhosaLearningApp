@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -25,6 +28,7 @@ public class play extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     public static play onplay;
+    private Menu menu;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -56,10 +60,19 @@ public class play extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        MenuItem results = menu.findItem(R.id.resultsId);
+        results.setVisible(true);
+        this.menu =menu;
     }
 
     /**
@@ -116,8 +129,17 @@ public class play extends Fragment {
             }
         });
 
+
         return binding.getRoot();
 
+    }
+
+    @Override
+    public void onDestroyOptionsMenu() {
+        super.onDestroyOptionsMenu();
+        MenuItem menuItem=menu.findItem(R.id.resultsId);
+        menuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        menuItem.setVisible(false);
     }
 
     /**

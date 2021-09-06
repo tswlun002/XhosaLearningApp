@@ -99,6 +99,8 @@ public class MultipleChoiceFragment extends Fragment {
         this.inflater =inflater;
         View view =binding.getRoot();
         setUpListView(binding,view);
+        ((MainActivity)requireActivity()).setID(R.id.action_multipleChoiceFragment_to_play);
+        ((MainActivity)requireActivity()).setView(binding.getRoot());
         return  view;
     }
 
@@ -113,6 +115,7 @@ public class MultipleChoiceFragment extends Fragment {
         this.multipleChoiceController=multipleChoiceController;
         RecyclerView recyclerView = view.findViewById(R.id.mulplechoiceListviewId);
         ((MainActivity) requireActivity()).setMultipleChoiceController(multipleChoiceController, recyclerView);
+
 
 
     }

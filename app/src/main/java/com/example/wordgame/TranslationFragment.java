@@ -88,6 +88,8 @@ public class TranslationFragment extends Fragment {
         this.inflater =inflater;
         setUpListView(binding);
         handleButton();
+        ((MainActivity)requireActivity()).setID(R.id.action_translationFragment_to_play);
+        ((MainActivity)requireActivity()).setView(binding.getRoot());
         return binding.getRoot();
     }
     /**

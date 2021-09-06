@@ -1,6 +1,7 @@
 package com.example.wordgame;
 
 import android.os.Bundle;
+import android.os.HandlerThread;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -134,6 +135,8 @@ public class MatchingFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentMatchingBinding.inflate(inflater, container, false);
         this.inflater =inflater;
+        ((MainActivity)requireActivity()).setID(R.id.action_matchingFragment_to_play);
+        ((MainActivity)requireActivity()).setView(binding.getRoot());
         return binding.getRoot();
     }
 
@@ -147,10 +150,10 @@ public class MatchingFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         PopulateTextViews(idsArrayEngTVs,idsArrayXhosaTVs,myEngWordsArr,xhosaTransWordArr,view);
-        //int correctAns = numMatchingAns(view);
-        //System.out.println(correctAns);
         handleButton(view);
         ((MainActivity) requireActivity()).backUpPressed(MatchingFragment.this,R.id.action_matchingFragment_to_play);
+        handleDragDrop();
+        handleClicks();
     }
 
 
@@ -169,5 +172,38 @@ public class MatchingFragment extends Fragment {
                 activiyResults.gradesActity(correctAns,idsArrayEditText.length);
             }
         });
+    }
+
+    void handleDragDrop(){
+        DragandDrop dragandDrop = new DragandDrop();
+        dragandDrop.handleDragDrop(binding.xhosaMatchTextView1);
+        dragandDrop.handleDragDrop(binding.xhosaMatchTextView2);
+        dragandDrop.handleDragDrop(binding.xhosaMatchTextView3);
+        dragandDrop.handleDragDrop(binding.xhosaMatchTextView4);
+        dragandDrop.handleDragDrop(binding.xhosaMatchTextView5);
+        dragandDrop.handleDragDrop(binding.xhosaMatchTextView6);
+        dragandDrop.handleDragDrop(binding.xhosaMatchTextView7);
+        dragandDrop.handleDragDrop(binding.xhosaMatchTextView8);
+        dragandDrop.handleDragDrop(binding.xhosaEditText3);
+        dragandDrop.handleDragDrop(binding.xhosaEditText1);
+        dragandDrop.handleDragDrop(binding.xhosaEditText2);
+        dragandDrop.handleDragDrop(binding.xhosaEditText4);
+    }
+    void handleClicks(){
+        binding.xhosaMatchTextView1.setOnClickListener(new click());
+        binding.xhosaMatchTextView2.setOnClickListener(new click());
+        binding.xhosaMatchTextView3.setOnClickListener(new click());
+        binding.xhosaMatchTextView3.setOnClickListener(new click());
+        binding.xhosaEditText1.setOnClickListener(new click());
+        binding.xhosaEditText2.setOnClickListener(new click());
+        binding.xhosaEditText3.setOnClickListener(new click());
+        binding.xhosaEditText4.setOnClickListener(new click());
+    }
+
+    private static class click implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+        }
     }
 }

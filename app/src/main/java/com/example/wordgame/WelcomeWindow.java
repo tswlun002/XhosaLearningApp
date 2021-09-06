@@ -2,6 +2,9 @@ package com.example.wordgame;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -23,7 +26,11 @@ public class WelcomeWindow extends Fragment {
      * @serialField binding data binding for Welcome fragment
      */
     private WelcomwindowBinding binding;
-
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
     /**
      * creates view of Welcome fragment
      * @param inflater to inflate Welcome fragment
@@ -33,10 +40,17 @@ public class WelcomeWindow extends Fragment {
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         binding = WelcomwindowBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        MenuItem menuItem=menu.findItem(R.id.resultsId);
+        menuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        menuItem.setVisible(false);
     }
 
     /**

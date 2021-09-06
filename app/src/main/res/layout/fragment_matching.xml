@@ -8,7 +8,6 @@
     android:padding="2dp"
     tools:context=".MatchingFragment">
 
-
     <TextView
         android:id="@+id/engTextView4"
         android:layout_width="0dp"
@@ -47,15 +46,44 @@
         android:id="@+id/xhosaMatchTextView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="1dp"
         android:background="#F1E6E6"
+        android:elevation="8dp"
         android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text=" XhosaWordMatch"
+        android:textColor="#616161"
+        app:layout_constraintBottom_toTopOf="@+id/guideline41"
+        app:layout_constraintEnd_toStartOf="@+id/guideline34"
+        app:layout_constraintStart_toStartOf="@+id/guideline43"
+        app:layout_constraintTop_toBottomOf="@+id/guideline31" />
+    <TextView
+        android:id="@+id/xhosaMatchTextView6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#F1E6E6"
+        android:elevation="8dp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text=" XhosaWordMatch"
+        android:textColor="#616161"
+        app:layout_constraintBottom_toTopOf="@+id/guideline42"
+        app:layout_constraintEnd_toStartOf="@+id/guideline34"
+        app:layout_constraintStart_toStartOf="@+id/guideline43"
+        app:layout_constraintTop_toBottomOf="@+id/guideline41" />
+    <TextView
+        android:id="@+id/xhosaMatchTextView8"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#F1E6E6"
+        android:elevation="8dp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
         android:text=" XhosaWordMatch"
         android:textColor="#616161"
         app:layout_constraintBottom_toTopOf="@+id/guideline36"
         app:layout_constraintEnd_toStartOf="@+id/guideline34"
-        app:layout_constraintStart_toStartOf="@+id/guideline33"
-        app:layout_constraintTop_toTopOf="@+id/guideline42" />
+        app:layout_constraintStart_toStartOf="@+id/guideline43"
+        app:layout_constraintTop_toBottomOf="@+id/guideline42" />
 
     <EditText
         android:id="@+id/xhosaEditText4"
@@ -142,11 +170,39 @@
         android:layout_height="0dp"
         android:background="#F1E6E6"
         android:gravity="center"
+        android:elevation="8dp"
+        android:layout_marginTop="10dp"
+        android:text="XhosaWordMatch"
+        app:layout_constraintBottom_toTopOf="@+id/guideline41"
+        app:layout_constraintEnd_toStartOf="@+id/guideline35"
+        app:layout_constraintStart_toStartOf="@+id/guideline33"
+        app:layout_constraintTop_toBottomOf="@+id/guideline31" />
+    <TextView
+        android:id="@+id/xhosaMatchTextView5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#F1E6E6"
+        android:gravity="center"
+        android:elevation="8dp"
+        android:layout_marginTop="10dp"
         android:text="XhosaWordMatch"
         app:layout_constraintBottom_toTopOf="@+id/guideline42"
-        app:layout_constraintEnd_toStartOf="@+id/guideline34"
+        app:layout_constraintEnd_toStartOf="@+id/guideline35"
         app:layout_constraintStart_toStartOf="@+id/guideline33"
-        app:layout_constraintTop_toTopOf="@+id/guideline41" />
+        app:layout_constraintTop_toBottomOf="@+id/guideline41" />
+    <TextView
+        android:id="@+id/xhosaMatchTextView7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#F1E6E6"
+        android:gravity="center"
+        android:elevation="8dp"
+        android:layout_marginTop="10dp"
+        android:text="XhosaWordMatch"
+        app:layout_constraintBottom_toTopOf="@id/guideline36"
+        app:layout_constraintEnd_toStartOf="@+id/guideline35"
+        app:layout_constraintStart_toStartOf="@+id/guideline33"
+        app:layout_constraintTop_toBottomOf="@+id/guideline42" />
 
     <TextView
         android:id="@+id/xhosaMatchTextView2"
@@ -154,23 +210,25 @@
         android:layout_height="0dp"
         android:background="#F1E6E6"
         android:gravity="center"
+        android:layout_marginTop="10dp"
         android:text="XhosaWordMatch"
-        android:layout_margin="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline41"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline31"
         app:layout_constraintEnd_toStartOf="@+id/guideline34"
-        app:layout_constraintStart_toStartOf="@+id/guideline33"
-        app:layout_constraintTop_toTopOf="@+id/guideline31" />
+        app:layout_constraintStart_toStartOf="@+id/guideline43"
+        app:layout_constraintTop_toBottomOf="@+id/guideline40" />
 
     <TextView
         android:id="@+id/xhosaMatchTextView1"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="1dp"
         android:background="#F1E6E6"
         android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:elevation="8dp"
         android:text="XhosaWordMatch"
         app:layout_constraintBottom_toTopOf="@+id/guideline31"
-        app:layout_constraintEnd_toStartOf="@+id/guideline34"
+        app:layout_constraintEnd_toStartOf="@+id/guideline35"
         app:layout_constraintStart_toStartOf="@+id/guideline33"
         app:layout_constraintTop_toTopOf="@+id/guideline40" />
 
@@ -189,15 +247,11 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="83dp"
-        android:layout_marginEnd="82dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.08"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline36"
         app:layout_constraintWidth_percent="0.6" />
@@ -210,12 +264,12 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.1627907" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline36"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.86" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline36"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.89" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline37"
