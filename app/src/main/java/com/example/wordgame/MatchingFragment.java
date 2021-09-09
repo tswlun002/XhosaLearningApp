@@ -36,10 +36,6 @@ public class MatchingFragment extends Fragment {
 
     private FragmentMatchingBinding binding;
     private  LayoutInflater inflater;
-    public MatchingFragment() {
-        // Required empty public constructor
-    }
-
     //words to generate questions
     private String [] myEngWordsArr = {"dog", "sheep", "goat", "horse"};
     private String [] xhosaTransWordArr =  {"inja", "igusha", "ibhokhwe", "ihashe"};
@@ -48,6 +44,13 @@ public class MatchingFragment extends Fragment {
     private int [] idsArrayEngTVs = {R.id.engTextView1, R.id.engTextView2,R.id.engTextView3, R.id.engTextView4};
     private int [] idsArrayXhosaTVs = {R.id.xhosaMatchTextView1, R.id.xhosaMatchTextView2,R.id.xhosaMatchTextView3, R.id.xhosaMatchTextView4};
     private int [] idsArrayEditText = {R.id.xhosaEditText1, R.id.xhosaEditText2,R.id.xhosaEditText3, R.id.xhosaEditText4};
+
+    private  Submit submit;
+
+    public MatchingFragment() {
+        // Required empty public constructor
+    }
+
 
     /**
      * The method is used to add content in an textviews
@@ -167,12 +170,12 @@ public class MatchingFragment extends Fragment {
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int correctAns = numMatchingAns(view);
-                ActiviyResults activiyResults = new ActiviyResults(inflater, requireContext(),R.id.action_matchingFragment_to_play,binding.getRoot());
-                activiyResults.gradesActity(correctAns,idsArrayEditText.length);
+                submit = (Submit) new SubmitHandler();
+                submit.onSubmit(binding.getRoot(),inflater);
             }
         });
     }
+
 
     void handleDragDrop(){
         DragandDrop dragandDrop = new DragandDrop();

@@ -154,8 +154,8 @@ public class MultipleChoiceFragment extends Fragment {
         binding.submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActiviyResults activiyResults = new ActiviyResults(inflater, requireContext(),R.id.action_multipleChoiceFragment_to_play,binding.getRoot());
-                activiyResults.gradesActity(18, 20);
+                Submit submit = (Submit) new SubmitHandler();
+                submit.onSubmit(binding.getRoot(),inflater);
             }
         });
     }

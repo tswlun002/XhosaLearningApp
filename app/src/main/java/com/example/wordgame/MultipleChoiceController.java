@@ -4,6 +4,7 @@ package com.example.wordgame;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.HandlerThread;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +21,10 @@ public class MultipleChoiceController  extends RecyclerView.Adapter<MultipleChoi
     private static Context context = null;
     private final int layout;
     private static  OnMultipleChoice onMCQ ;
-    private  static  Holder holder;
+    private static    Holder holder;
     @SuppressLint("StaticFieldLeak")
     static  TextView question ;
     @SuppressLint("StaticFieldLeak")
-    static Button choice3,choice1,choice2,choice4, nextQ;
     private final String[] choices ={
 
             "Isitulo",
@@ -32,7 +32,7 @@ public class MultipleChoiceController  extends RecyclerView.Adapter<MultipleChoi
             "ukutya",
             "Ekhaya"
     };
-    private int pos;
+
 
     public MultipleChoiceController(@NonNull Context context, String[] question, int resource) {
         MultipleChoiceController.context = context;
@@ -49,11 +49,7 @@ public class MultipleChoiceController  extends RecyclerView.Adapter<MultipleChoi
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = (LayoutInflater)LayoutInflater.from(context);
         View view = inflater.inflate(layout,parent,false);
-        if(context instanceof OnMultipleChoice)
-            onMCQ = (OnMultipleChoice) context;
-        else
-            throw  new ClassCastException(context.toString()+" must implement OnMCQ button");
-        //viewHolder.pages.setText(position+"");
+        onMCQ = new HandleMQCButtons();
         return  new MultipleChoiceController.Holder( view);
     }
 
@@ -66,13 +62,17 @@ public class MultipleChoiceController  extends RecyclerView.Adapter<MultipleChoi
     @Override
     public void onBindViewHolder(@NonNull Holder viewHolder, @SuppressLint("RecyclerView") int position) {
         question.setText(questions[position]);
-        choice1.setText(choices[0]);
-        choice2.setText(choices[1]);
-        choice3.setText(choices[2]);
-        choice4.setText(choices[3]);
+        viewHolder.choice1.setText(choices[0]);
+        viewHolder.choice2.setText(choices[1]);
+        viewHolder.choice3.setText(choices[2]);
+        viewHolder.choice4.setText(choices[3]);
         viewHolder.page.setText((position+1)+"/"+questions.length);
-        holder =viewHolder;
-        onMCQ.onMultipleChoice(choice1,choice2,choice3,choice4);
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                notifyItemChanged(viewHolder.getAdapterPosition());
+            }
+        });
 
 
     }
@@ -93,11 +93,10 @@ public class MultipleChoiceController  extends RecyclerView.Adapter<MultipleChoi
      */
     class  Holder extends RecyclerView.ViewHolder{
         TextView page;
+        Button choice3,choice1,choice2,choice4, nextQ;
         public Holder(@NonNull View convertView) {
             super(convertView);
-
             question = (TextView) convertView.findViewById(R.id.transQuestionTextView);
-
             choice1 = (Button) convertView.findViewById(R.id.answer1textView);
             choice1.setBackgroundColor(Color.BLUE);
             choice2 = (Button) convertView.findViewById(R.id.answer2TextView);
@@ -108,92 +107,48 @@ public class MultipleChoiceController  extends RecyclerView.Adapter<MultipleChoi
             choice4.setBackgroundColor(Color.BLUE);
             nextQ   = convertView.findViewById(R.id.moreQuestionID);
             page = convertView.findViewById(R.id.page);
+            //onMCQ.onMultipleChoice(choice1,choice2,choice3,choice4);
+
             handleRecycleView();
 
+
         }
+
         private void handleRecycleView (){
+            choice1.setOnClickListener(new HandleClickButtons(questions.length));
+            choice2.setOnClickListener(new HandleClickButtons(questions.length));
+            choice3.setOnClickListener(new HandleClickButtons(questions.length));
+            choice4.setOnClickListener(new HandleClickButtons(questions.length));
 
-            choice1.setOnClickListener(new View.OnClickListener() {
-                @SuppressLint("ResourceAsColor")
-                @Override
-                public void onClick(View v) {
-                    notifyChanges();
-                    onMCQ.choice1(v,getLayoutPosition());
-
-
-                }
-            });
-
-
-
-            choice2.setOnClickListener(new View.OnClickListener() {
-                @SuppressLint("ResourceAsColor")
-                @Override
-                public void onClick(View v) {
-                   // onMCQ.onMultipleChoice(choice1,choice2,choice3,choice4);
-                    notifyChanges();
-
-                    onMCQ.choice2(v,getLayoutPosition());
-
-
-                }
-            });
-
-
-            choice3.setOnClickListener(new View.OnClickListener() {
-                @SuppressLint("ResourceAsColor")
-                @Override
-                public void onClick(View v) {
-                    //onMCQ.onMultipleChoice(choice1,choice2,choice3,choice4);
-                    notifyChanges();
-                    onMCQ.choice3(v,getLayoutPosition());
-
-
-                }
-            });
-
-
-            choice4.setOnClickListener(new View.OnClickListener() {
-                @SuppressLint("ResourceAsColor")
-                @Override
-                public void onClick(View v) {
-
-                    //onMCQ.onMultipleChoice(choice1,choice2,choice3,choice4);
-                    notifyChanges();
-                    onMCQ.choice4(v,getLayoutPosition());
-
-                }
-            });
-
-            nextQ.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int pos = getLayoutPosition();
-                    if(pos+1<questions.length) {
-                        nextQ.setVisibility(View.VISIBLE);
-                        onMCQ.scrollDown(pos);
-                    }else{
-                        nextQ.setVisibility(View.GONE);
-
-                    }
-                }
-            });
+            //nextQ.setOnClickListener(new HandleClickButtons(questions.length));
         }
 
+        private   class HandleClickButtons implements View.OnClickListener{
+            private final int numberOfQuestions;
+            Button nextQ;
 
+            HandleClickButtons(int numberQ){
+                numberOfQuestions =numberQ;
+            }
 
-    }
-
-    public void notifyChanges(){
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                notifyItemChanged(holder.getAdapterPosition());
+                if (v.getId() == R.id.moreQuestionID) {
+                    int pos = getLayoutPosition();
+                    if (pos + 1 < numberOfQuestions) {
+                        nextQ.setVisibility(View.VISIBLE);
+                        onMCQ.scrollDown(pos);
+                    } else {
+                        nextQ.setVisibility(View.GONE);
+                    }
+                }
+                else {
+                    onMCQ.choices(v,getLayoutPosition());
+                }
             }
-        });
+
+        }
     }
-
-
 }
 
 

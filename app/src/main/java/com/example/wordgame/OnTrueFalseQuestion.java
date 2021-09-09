@@ -1,5 +1,4 @@
 package com.example.wordgame;
-
 import android.view.View;
 
 public interface OnTrueFalseQuestion {

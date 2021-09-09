@@ -29,18 +29,15 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity  implements OnMultipleChoice,OnTrueFalseQuestion {
+public class MainActivity extends AppCompatActivity {
     /**
      * @serialField  appBarConfiguration for configuration of appbar
      * @serialField  binding is data binder for main activity
      * @serialField  views list of clicked view( multiple choice buttons)
      */
-   private HashMap<String ,View> views = new HashMap<>();
-    private Button btn1,btn2,btn3,btn4;
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     private  MultipleChoiceController multipleChoiceController;
-    private final  String []letter = {"a","b","c","d"};
     private RecyclerView recycleView;
     private View view;
     private int Id;
@@ -54,7 +51,6 @@ public class MainActivity extends AppCompatActivity  implements OnMultipleChoice
         super.onCreate(savedInstanceState);
 
         // upon click allow the fragment to get another fragment
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -198,123 +194,6 @@ public class MainActivity extends AppCompatActivity  implements OnMultipleChoice
     }
 
     /**
-     * add the view to list
-     * @param view is the clicked view
-     */
-    @SuppressLint({"SetTextI18n", "NotifyDataSetChanged"})
-    @Override
-    public void choice1(View view,int pos) {
-        addView(view,pos);
-    }
-    /**
-     * add the view to list
-     * @param view is the clicked view
-     */
-    @SuppressLint({"SetTextI18n", "NotifyDataSetChanged"})
-    @Override
-    public void choice2(View view,int pos) {
-        addView(view,pos);;
-    }
-    /**
-     * add the view to list
-     * @param view is the clicked view
-     */
-    @SuppressLint({"SetTextI18n", "NotifyDataSetChanged", "ResourceAsColor"})
-    @Override
-    public void choice3(View view,int pos) {
-        addView(view,pos);
-    }
-    /**
-     * add the view to list
-     * @param view is the clicked view
-     */
-    @SuppressLint({"SetTextI18n", "NotifyDataSetChanged"})
-    @Override
-    public void choice4(View view, int pos) {
-        addView(view,pos);
-
-    }
-
-    /**
-     * add view into views when user play game
-     * When user click button, clicked view is added
-     * if view  was not clicked before, change background color to green
-     * Else remove view  from views and set view background color to blue
-     * Button is identified by keys,
-     * key = position concatenate with a to d
-     * @param view clicked view
-     */
-    @SuppressLint("ResourceAsColor")
-    private  void addView(View view,int pos){
-        if(views.containsValue(view)) {
-            String key ="";
-            view.setBackgroundColor(Color.BLUE);
-            for (String key1 : views.keySet()){
-                if(views.get(key1)==view) {
-                    key = key1;
-                    break;
-                }
-            }
-            views.remove(key);
-        }
-        else {
-
-            String key = makeKey(pos);
-            view.setBackgroundColor(Color.GREEN);
-            for (String key1 : views.keySet()){
-                if(Integer.parseInt(key1.substring(0,1)) ==pos)
-                    Objects.requireNonNull(views.get(key1)).setBackgroundColor(Color.BLUE);
-            }
-            views.put(key,view);
-
-            Toast.makeText(this, ""+key,  Toast.LENGTH_SHORT).show();
-
-        }
-    }
-
-    /**
-     * create keys for buttons
-     * @param pos  is the position of the view
-     * @return key = position + letters from a-d
-     */
-    private  String makeKey(int pos){
-        String key =pos+letter[0];
-        for (String key1 : views.keySet()) {
-            if (key1.equalsIgnoreCase(pos + "a"))
-                key = pos + letter[1];
-            else if (key1.equalsIgnoreCase(pos + "b"))
-                key = pos + letter[2];
-            else if (key1.equalsIgnoreCase(pos + "c"))
-                key = pos + letter[3];
-        }
-        return  key;
-    }
-
-    /**
-     * multiple choice interface method to initialise buttons
-     * @param button1 button one
-     * @param button2 button two
-     * @param button3 button three
-     * @param button4 button four
-     */
-    @Override
-    public void onMultipleChoice(Button button1, Button button2, Button button3, Button button4) {
-      this.btn1=button1;
-      this.btn2=button2;
-      this.btn3=button3;
-      this.btn4=button4;
-    }
-
-    /**
-     * scroll recycle view to the next position
-     * @param position current position , scroll from
-     */
-    @Override
-    public void scrollDown(int position) {
-        recycleView.scrollToPosition(position+1);
-    }
-
-    /**
      * sets multipleChoiceController and recycle view
      * @param multipleChoiceController multipleChoiceController
      * @param view recycle view
@@ -324,21 +203,4 @@ public class MainActivity extends AppCompatActivity  implements OnMultipleChoice
         this.recycleView =view;
     }
 
-    /**
-     * handle true button on True False game
-     * @param view clicked view
-     * @param position clicked position
-     */
-    @Override
-    public void trueButton(View view, int position) { addView(view,position);
-    }
-    /**
-     * handle false button on True False game
-     * @param view clicked view
-     * @param position clicked position
-     */
-    @Override
-    public void falseButton(View view, int position) {addView(view,position);
-
-    }
 }

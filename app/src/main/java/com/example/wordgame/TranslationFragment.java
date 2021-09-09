@@ -122,8 +122,8 @@ public class TranslationFragment extends Fragment {
         binding.submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActiviyResults activiyResults = new ActiviyResults(inflater,requireContext(),R.id.action_translationFragment_to_play,binding.getRoot());
-                activiyResults.gradesActity(18,20);
+                Submit submit = (Submit) new SubmitHandler();
+                submit.onSubmit(binding.getRoot(),inflater);
             }
         });
     }

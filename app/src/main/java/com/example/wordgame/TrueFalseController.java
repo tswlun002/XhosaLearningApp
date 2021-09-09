@@ -33,6 +33,7 @@ public class TrueFalseController extends RecyclerView.Adapter<TrueFalseControlle
         private  int inflateClass;
         private boolean status;
         private  int  layout;
+        private Holder holder;
         private OnTrueFalseQuestion onTruefalse;
 
         /**
@@ -58,12 +59,10 @@ public class TrueFalseController extends RecyclerView.Adapter<TrueFalseControlle
                 LayoutInflater inflater = (LayoutInflater)LayoutInflater.from(context);
                 View view = inflater.inflate(layout,parent,false);
 
-                if(context instanceof OnTrueFalseQuestion)
-                        this.onTruefalse= (OnTrueFalseQuestion) context;
-                else
-                        throw  new ClassCastException(context.toString()+" must implement onTrueFalse buttons");
+                this.onTruefalse= (HandleTrueFalse) new HandleTrueFalse();
                 //viewHolder.pages.setText(position+"");
-                return new Holder(view);
+                holder= new Holder(view);
+                return holder;
         }
 
         @SuppressLint("SetTextI18n")
@@ -109,22 +108,21 @@ public class TrueFalseController extends RecyclerView.Adapter<TrueFalseControlle
                 }
 
                 private   void handleButtons(){
-                        True.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                        onTruefalse.trueButton(v,getAdapterPosition());
-                                }
-                        });
-
-                        False.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                        onTruefalse.falseButton(v,getAdapterPosition());
-                                }
-                        });
+                        True.setOnClickListener(new Click());
+                        False.setOnClickListener(new Click());
                 }
 
         }
+       private   class  Click implements  View.OnClickListener{
+
+           @Override
+           public void onClick(View v) {
+               if(v.getId()==R.id.trueButton)
+                   onTruefalse.trueButton(v,holder.getLayoutPosition());
+               else if(v.getId()==R.id.falseButton)
+                    onTruefalse.falseButton(v,holder.getLayoutPosition());
+           }
+       }
 
 
 
