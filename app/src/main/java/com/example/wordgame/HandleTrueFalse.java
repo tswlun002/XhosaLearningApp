@@ -3,11 +3,14 @@ import android.view.View;
 
 import java.util.HashMap;
 
-
+/**
+ * @Class HandleTrueFalse is used to handle button clicks of TrueFalse game
+ * Uses abstract class CreateKeys to store user answer and
+ * implement OnTrueFalseQuestion to handle button clicks on TrueFalse game
+ */
 public class HandleTrueFalse extends CreateKeys implements  OnTrueFalseQuestion{
-
     HandleTrueFalse(){
-        super(new String[]{"a", "b", "c", "d", "e", "f"},new HashMap<String,View>());
+        super();
     }
     /**
      * handle true button on True False game

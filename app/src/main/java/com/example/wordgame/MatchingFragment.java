@@ -38,7 +38,11 @@ public class MatchingFragment extends Fragment {
     private  LayoutInflater inflater;
     //words to generate questions
     private String [] myEngWordsArr = {"dog", "sheep", "goat", "horse"};
-    private String [] xhosaTransWordArr =  {"inja", "igusha", "ibhokhwe", "ihashe"};
+    private String [] xhosaTransWordArr =  {
+            "inja", "igusha", "ibhokhwe",
+            "ihashe","icephe","isitya",
+            "injana","amanzi"
+    };
 
     //ids of textViews and edit texts
     private int [] idsArrayEngTVs = {R.id.engTextView1, R.id.engTextView2,R.id.engTextView3, R.id.engTextView4};

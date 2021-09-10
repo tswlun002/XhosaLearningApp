@@ -6,16 +6,12 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.TreeMap;
 
 /**
  * Class helps to inflate content into Listview of  Play
@@ -27,14 +23,12 @@ public class TrueFalseController extends RecyclerView.Adapter<TrueFalseControlle
          * @serialField lesson  list of lessons
          * @serialField context  of fragment play
          */
-        private final String [] hearding;
+        private final String [] questions;
         private final int[] lesson;
         private final Context context;
-        private  int inflateClass;
-        private boolean status;
-        private  int  layout;
+        private final int  layout;
         private Holder holder;
-        private OnTrueFalseQuestion onTruefalse;
+        private final OnTrueFalseQuestion onTruefalse;
 
         /**
          * Constructor of play controller to initialise the fields
@@ -44,12 +38,11 @@ public class TrueFalseController extends RecyclerView.Adapter<TrueFalseControlle
          * @param resource  number the layout to be inflated into listview
          */
         public TrueFalseController(Context context, String[] heading, int[] lessons, int resource) {
-
                 this.lesson=lessons;
-                this.hearding=heading;
+                this.questions =heading;
                 this.context =context;
-                this.inflateClass=resource;
                 this.layout=resource;
+                this.onTruefalse= (HandleTrueFalse) new HandleTrueFalse();
         }
 
 
@@ -58,9 +51,6 @@ public class TrueFalseController extends RecyclerView.Adapter<TrueFalseControlle
         public TrueFalseController.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 LayoutInflater inflater = (LayoutInflater)LayoutInflater.from(context);
                 View view = inflater.inflate(layout,parent,false);
-
-                this.onTruefalse= (HandleTrueFalse) new HandleTrueFalse();
-                //viewHolder.pages.setText(position+"");
                 holder= new Holder(view);
                 return holder;
         }
@@ -71,8 +61,8 @@ public class TrueFalseController extends RecyclerView.Adapter<TrueFalseControlle
                 viewHolder.picView.setImageResource((lesson[position]));
                 viewHolder.True.setText("True");
                  viewHolder.False.setText("False");
-                viewHolder.descriptionView.setText(hearding[position]);
-                viewHolder.page.setText((position+1)+"/"+hearding.length+"");
+                viewHolder.descriptionView.setText(questions[position]);
+                viewHolder.page.setText((position+1)+"/"+ questions.length+"");
 
         }
         /**
@@ -82,19 +72,23 @@ public class TrueFalseController extends RecyclerView.Adapter<TrueFalseControlle
 
         @Override
         public int getItemCount() {
-                return hearding.length;
+                return questions.length;
         }
 
 
         /**
-         * Inner class that contain features of the person
+         * @Class  Holder is the inner class that contain features of the TruFalse game
          */
           class  Holder  extends RecyclerView.ViewHolder{
             ImageView picView;
             TextView descriptionView,page;
             Button  True,False;
 
-                public Holder(@NonNull View convertView) {
+            /**
+             * constructor to initialise the serial filed of this class
+             * @param convertView view contains buttons
+             */
+            public Holder(@NonNull View convertView) {
                         super(convertView);
                        picView = (ImageView) convertView.findViewById(R.id.QuestionImageViewID);
                        descriptionView = (TextView) convertView.findViewById(R.id.picQuestionTextViewID);
@@ -105,22 +99,34 @@ public class TrueFalseController extends RecyclerView.Adapter<TrueFalseControlle
                        False.setBackgroundColor(Color.BLUE);
                        handleButtons();
 
-                }
+            }
 
-                private   void handleButtons(){
+            /**
+             * helper method to set click listeners of the buttons
+             */
+            private   void handleButtons(){
                         True.setOnClickListener(new Click());
                         False.setOnClickListener(new Click());
-                }
+            }
 
         }
-       private   class  Click implements  View.OnClickListener{
 
+    /**
+     * @Class Click handle button clicks
+     */
+    private   class  Click implements  View.OnClickListener{
+
+        /**
+         * If true clicked , true button is invoked
+         * else if false clicked , false button is invoked
+         * @param view is the clicked view
+         */
            @Override
-           public void onClick(View v) {
-               if(v.getId()==R.id.trueButton)
-                   onTruefalse.trueButton(v,holder.getLayoutPosition());
-               else if(v.getId()==R.id.falseButton)
-                    onTruefalse.falseButton(v,holder.getLayoutPosition());
+           public void onClick(View view) {
+               if(view.getId()==R.id.trueButton)
+                   onTruefalse.trueButton(view,holder.getLayoutPosition());
+               else if(view.getId()==R.id.falseButton)
+                    onTruefalse.falseButton(view,holder.getLayoutPosition());
            }
        }
 

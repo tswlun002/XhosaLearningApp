@@ -38,6 +38,7 @@ public class MultipleChoiceController  extends RecyclerView.Adapter<MultipleChoi
         MultipleChoiceController.context = context;
         this.layout = resource;
         this.questions = question;
+        onMCQ = new HandleMQCButtons();
     }
     /**
      * get view of the listview
@@ -49,7 +50,7 @@ public class MultipleChoiceController  extends RecyclerView.Adapter<MultipleChoi
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = (LayoutInflater)LayoutInflater.from(context);
         View view = inflater.inflate(layout,parent,false);
-        onMCQ = new HandleMQCButtons();
+
         return  new MultipleChoiceController.Holder( view);
     }
 

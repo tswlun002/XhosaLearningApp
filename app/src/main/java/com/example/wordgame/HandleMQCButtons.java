@@ -7,10 +7,15 @@ import android.widget.Button;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * @Class HandleMQCButtons is used to handle button clicks of MQC game
+ * Uses abstract class CreateKeys to store user answer and
+ * implement OnMultipleChoice to handle button clicks on MQC game
+ */
 public class HandleMQCButtons extends CreateKeys implements  OnMultipleChoice{
     private Button btn1,btn2,btn3,btn4;
     HandleMQCButtons(){
-        super(new String[]{"a", "b", "c", "d", "e", "f"},new HashMap<String,View>());
+       super();
     }
 
     /**
@@ -18,8 +23,7 @@ public class HandleMQCButtons extends CreateKeys implements  OnMultipleChoice{
      * @param view is the clicked view
      */
     @Override
-    public void choices(View view,int pos) {
-        addView(view,pos);
+    public void choices(View view,int pos) { addView(view,pos);
     }
 
     /**
