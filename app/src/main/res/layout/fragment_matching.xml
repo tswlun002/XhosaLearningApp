@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:backgroundTint="#FFFFFF"
     android:padding="2dp"
-    tools:context=".MatchingFragment">
+    tools:context=".presentation_layer.MatchingFragment">
 
     <TextView
         android:id="@+id/engTextView4"
@@ -27,11 +27,11 @@
         android:id="@+id/instructionTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_margin="1dp"
         android:background="#FFFFFF"
         android:gravity="center"
         android:text="Match English word with its Xhosa word translation "
         android:textSize="20sp"
-        android:layout_margin="1dp"
         app:layout_constraintBottom_toBottomOf="@id/guideline30"
         app:layout_constraintEnd_toEndOf="@id/guideline34"
         app:layout_constraintHeight_percent="0.12"
@@ -46,41 +46,43 @@
         android:id="@+id/xhosaMatchTextView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         android:background="@color/blue"
-        android:textColor="@color/white"
         android:elevation="8dp"
         android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:text=" XhosaWordMatch"
+        android:text=" Xhosa"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline41"
         app:layout_constraintEnd_toStartOf="@+id/guideline34"
         app:layout_constraintStart_toStartOf="@+id/guideline43"
         app:layout_constraintTop_toBottomOf="@+id/guideline31" />
+
     <TextView
         android:id="@+id/xhosaMatchTextView6"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         android:background="@color/blue"
-        android:textColor="@color/white"
         android:elevation="8dp"
         android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:text=" XhosaWordMatch"
+        android:text=" WordMatch"
+        android:textColor="@color/white"
 
         app:layout_constraintBottom_toTopOf="@+id/guideline42"
         app:layout_constraintEnd_toStartOf="@+id/guideline34"
         app:layout_constraintStart_toStartOf="@+id/guideline43"
         app:layout_constraintTop_toBottomOf="@+id/guideline41" />
+
     <TextView
         android:id="@+id/xhosaMatchTextView8"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         android:background="@color/blue"
-        android:textColor="@color/white"
         android:elevation="8dp"
         android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:text=" XhosaWordMatch"
+        android:text=" Xho"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline36"
         app:layout_constraintEnd_toStartOf="@+id/guideline34"
         app:layout_constraintStart_toStartOf="@+id/guideline43"
@@ -92,7 +94,7 @@
         android:layout_height="0dp"
         android:layout_gravity="right"
         android:ems="10"
-        android:hint="matching Xhosa word"
+        android:hint="Drop Answer here"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/guideline39"
         app:layout_constraintEnd_toStartOf="@+id/guideline34"
@@ -105,7 +107,7 @@
         android:layout_height="0dp"
         android:layout_gravity="right"
         android:ems="10"
-        android:hint="matching Xhosa word"
+        android:hint="Drop Answer here"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/guideline32"
         app:layout_constraintEnd_toStartOf="@+id/guideline34"
@@ -116,10 +118,10 @@
         android:id="@+id/engTextView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_margin="1dp"
         android:background="#FAE6E6"
         android:gravity="center"
         android:text="English Word"
-        android:layout_margin="1dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline32"
         app:layout_constraintEnd_toStartOf="@+id/guideline35"
         app:layout_constraintStart_toStartOf="@+id/guideline33"
@@ -131,7 +133,7 @@
         android:layout_height="0dp"
         android:layout_gravity="right"
         android:ems="10"
-        android:hint="matching Xhosa word"
+        android:hint="Drop Answer here"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/guideline38"
         app:layout_constraintEnd_toStartOf="@+id/guideline34"
@@ -142,13 +144,13 @@
         android:id="@+id/engTextView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_margin="1dp"
         android:background="#FAE6E6"
         android:gravity="center"
         android:text=" English Word"
-        android:layout_margin="1dp"
-        app:layout_constraintStart_toStartOf="@id/guideline33"
-        app:layout_constraintEnd_toStartOf="@id/guideline35"
         app:layout_constraintBottom_toTopOf="@id/guideline38"
+        app:layout_constraintEnd_toStartOf="@id/guideline35"
+        app:layout_constraintStart_toStartOf="@id/guideline33"
         app:layout_constraintTop_toBottomOf="@id/guideline37" />
 
     <EditText
@@ -157,7 +159,7 @@
         android:layout_height="0dp"
         android:layout_gravity="right"
         android:ems="10"
-        android:hint="matching Xhosa word"
+        android:hint="Drop Answer here"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@id/guideline37"
         app:layout_constraintEnd_toStartOf="@id/guideline34"
@@ -169,40 +171,42 @@
         android:id="@+id/xhosaMatchTextView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/blue"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:elevation="8dp"
         android:layout_marginTop="10dp"
-        android:text="XhosaWordMatch"
+        android:background="@color/blue"
+        android:elevation="8dp"
+        android:gravity="center"
+        android:text="Match"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline41"
         app:layout_constraintEnd_toStartOf="@+id/guideline35"
         app:layout_constraintStart_toStartOf="@+id/guideline33"
         app:layout_constraintTop_toBottomOf="@+id/guideline31" />
+
     <TextView
         android:id="@+id/xhosaMatchTextView5"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/blue"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:elevation="8dp"
         android:layout_marginTop="10dp"
-        android:text="XhosaWordMatch"
+        android:background="@color/blue"
+        android:elevation="8dp"
+        android:gravity="center"
+        android:text="XhosaWord"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline42"
         app:layout_constraintEnd_toStartOf="@+id/guideline35"
         app:layout_constraintStart_toStartOf="@+id/guideline33"
         app:layout_constraintTop_toBottomOf="@+id/guideline41" />
+
     <TextView
         android:id="@+id/xhosaMatchTextView7"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/blue"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:elevation="8dp"
         android:layout_marginTop="10dp"
-        android:text="XhosaWordMatch"
+        android:background="@color/blue"
+        android:elevation="8dp"
+        android:gravity="center"
+        android:text="Word"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@id/guideline36"
         app:layout_constraintEnd_toStartOf="@+id/guideline35"
         app:layout_constraintStart_toStartOf="@+id/guideline33"
@@ -212,12 +216,12 @@
         android:id="@+id/xhosaMatchTextView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/blue"
-        android:textColor="@color/white"
-        android:gravity="center"
         android:layout_marginTop="10dp"
-        android:text="XhosaWordMatch"
+        android:background="@color/blue"
         android:elevation="8dp"
+        android:gravity="center"
+        android:text="ch"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline31"
         app:layout_constraintEnd_toStartOf="@+id/guideline34"
         app:layout_constraintStart_toStartOf="@+id/guideline43"
@@ -227,12 +231,12 @@
         android:id="@+id/xhosaMatchTextView1"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/blue"
-        android:textColor="@color/white"
-        android:gravity="center"
         android:layout_marginTop="10dp"
+        android:background="@color/blue"
         android:elevation="8dp"
-        android:text="XhosaWordMatch"
+        android:gravity="center"
+        android:text="Xh"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline31"
         app:layout_constraintEnd_toStartOf="@+id/guideline35"
         app:layout_constraintStart_toStartOf="@+id/guideline33"
@@ -242,25 +246,25 @@
         android:id="@+id/engTextView1"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_margin="1dp"
         android:background="#FAE6E6"
         android:gravity="center"
         android:text="English Word"
-        android:layout_margin="1dp"
         app:layout_constraintBottom_toTopOf="@id/guideline37"
         app:layout_constraintEnd_toStartOf="@id/guideline35"
         app:layout_constraintStart_toStartOf="@id/guideline33"
         app:layout_constraintTop_toTopOf="@+id/guideline30" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline36"
-        app:layout_constraintWidth_percent="0.6" />
+        app:layout_constraintTop_toTopOf="@+id/guideline54"
+      />
 
     <!-- horizontal constraints -->
     <androidx.constraintlayout.widget.Guideline
@@ -290,12 +294,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.32" />
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline32"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.40" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.40" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline39"
@@ -304,32 +309,34 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.48" />
 
-        <!-- answers for the questions -->
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline40"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.56" />
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline31"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.64" />
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline41"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.72" />
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline42"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.80" />
+    <!-- answers for the questions -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.56" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.64" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.72" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.80" />
 
 
     <!--vertical constraints -->
@@ -339,18 +346,20 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.05" />
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline34"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.95" />
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline35"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.45" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline43"
@@ -358,6 +367,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.47" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline54"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.93"  />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

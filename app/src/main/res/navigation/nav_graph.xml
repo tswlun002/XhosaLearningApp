@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.wordgame.WelcomeWindow"
+        android:name="com.example.wordgame.presentation_layer.WelcomeWindow"
         android:label="Welcome to xhosa learning"
         tools:layout="@layout/welcomwindow">
 
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.wordgame.FragmentStart"
+        android:name="com.example.wordgame.presentation_layer.FragmentStart"
         android:label="Learn  and  Play"
         tools:layout="@layout/fragment_start">
 
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/learn"
-        android:name="com.example.wordgame.learn"
+        android:name="com.example.wordgame.presentation_layer.LearnFragment"
         android:label="Learning"
         tools:layout="@layout/fragment_learn">
         <action
@@ -57,7 +57,7 @@
     </fragment>
     <fragment
         android:id="@+id/play"
-        android:name="com.example.wordgame.play"
+        android:name="com.example.wordgame.presentation_layer.PlayFragment"
         android:label="Play"
         tools:layout="@layout/fragment_play">
         <action
@@ -88,7 +88,7 @@
     </fragment>
     <fragment
         android:id="@+id/proggress"
-        android:name="com.example.wordgame.Proggress"
+        android:name="com.example.wordgame.presentation_layer.ProggressFragment"
         android:label="Progress results"
         tools:layout="@layout/fragment_proggress">
         <action
@@ -104,7 +104,7 @@
     </fragment>
     <fragment
         android:id="@+id/matchingFragment"
-        android:name="com.example.wordgame.MatchingFragment"
+        android:name="com.example.wordgame.presentation_layer.MatchingFragment"
         android:label="Matching"
         tools:layout="@layout/fragment_matching">
         <action
@@ -120,7 +120,7 @@
     </fragment>
     <fragment
         android:id="@+id/multipleChoiceFragment"
-        android:name="com.example.wordgame.MultipleChoiceFragment"
+        android:name="com.example.wordgame.presentation_layer.MultipleChoiceFragment"
         android:label="Multiple choice"
         tools:layout="@layout/fragment_multiple_choice">
         <action
@@ -136,7 +136,7 @@
     </fragment>
     <fragment
         android:id="@+id/trueFalseFragment"
-        android:name="com.example.wordgame.TrueFalseFragment"
+        android:name="com.example.wordgame.presentation_layer.TrueFalseFragment"
         android:label="True | False"
         tools:layout="@layout/true_false_adapter">
         <action
@@ -152,7 +152,7 @@
     </fragment>
     <fragment
         android:id="@+id/translationFragment"
-        android:name="com.example.wordgame.TranslationFragment"
+        android:name="com.example.wordgame.presentation_layer.TranslationFragment"
         android:label="Translation"
         tools:layout="@layout/fragment_translation">
         <action
@@ -168,7 +168,7 @@
     </fragment>
     <fragment
         android:id="@+id/results_CurrentActivity"
-        android:name="com.example.wordgame.Results_CurrentActivity"
+        android:name="com.example.wordgame.presentation_layer.GameScore"
         android:label="Exercise results"
         tools:layout="@layout/fragment_results__current_activity">
         <action

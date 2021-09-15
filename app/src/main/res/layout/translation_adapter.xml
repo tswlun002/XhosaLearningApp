@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TranslationFragment">
+    tools:context=".presentation_layer.TranslationFragment">
 
     <TextView
         android:id="@+id/pageNo"
@@ -46,7 +46,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline44" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/hintButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,7 +58,6 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline45"
-        app:layout_constraintVertical_bias="0.571"
         tools:ignore="TextContrastCheck" />
 
     <TextView
@@ -103,7 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.48" />
+        app:layout_constraintGuide_percent="0.28" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline48"
@@ -124,6 +123,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.15"  />
+        app:layout_constraintGuide_percent="0.11" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
