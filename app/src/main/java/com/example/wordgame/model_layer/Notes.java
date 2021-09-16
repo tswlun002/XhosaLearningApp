@@ -1,5 +1,8 @@
 package com.example.wordgame.model_layer;
 
+import androidx.room.Entity;
+
+@Entity
 public class Notes {
     private int notesid;
     private  String section;
