@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,7 +45,7 @@ public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Hold
                 this.questions =heading;
                 this.context =context;
                 this.layout=resource;
-                this.onTruefalse= (HandleTrueFalse) new HandleTrueFalse();
+                this.onTruefalse=  new HandleTrueFalse();
         }
 
 
@@ -110,8 +111,9 @@ public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Hold
              * helper method to set click listeners of the buttons
              */
             private   void handleButtons(){
-                        True.setOnClickListener(new Click());
-                        False.setOnClickListener(new Click());
+                        Click click = new Click();
+                        True.setOnClickListener(click);
+                        False.setOnClickListener(click);
             }
 
             /**
@@ -133,14 +135,16 @@ public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Hold
                         onTruefalse.falseButton(view,getLayoutPosition());
                 }
 
-                /**
-                 * notify holder about number of hints changes
+                 /**
+                 * notify holder about changes
+                 * If View id is  not equals to negative one ( clicked in the layout instead of buttons)
                  */
                 private void notifyChanges(){
                     holder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            notifyItemChanged(holder.getAdapterPosition());
+                            if(! (v.getId() ==-1))
+                                notifyItemChanged(holder.getAdapterPosition());
                         }
                     });
                 }

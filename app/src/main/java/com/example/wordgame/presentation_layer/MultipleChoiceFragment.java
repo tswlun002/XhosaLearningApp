@@ -88,8 +88,8 @@ public class MultipleChoiceFragment extends Fragment {
         this.inflater =inflater;
         View view =binding.getRoot();
         setUpListView(binding,view);
-        ((MainActivity)requireActivity()).setID(R.id.action_multipleChoiceFragment_to_play);
-        ((MainActivity)requireActivity()).setView(binding.getRoot());
+        /*((MainActivity)requireActivity()).setID(R.id.action_multipleChoiceFragment_to_play);
+        ((MainActivity)requireActivity()).setView(binding.getRoot());*/
         return  view;
     }
 
@@ -102,17 +102,11 @@ public class MultipleChoiceFragment extends Fragment {
         binding.mulplechoiceListviewId.setAdapter(multipleChoiceController);
         binding.mulplechoiceListviewId.setLayoutManager(new LinearLayoutManager(requireContext()));
         RecyclerView recyclerView = view.findViewById(R.id.mulplechoiceListviewId);
-        ((MainActivity) requireActivity()).setMultipleChoiceController(multipleChoiceController, recyclerView);
-
-
-
     }
 
     /**
      * created view of this fragment
      * set listview here
-     * @param view
-     * @param savedInstanceState
      */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

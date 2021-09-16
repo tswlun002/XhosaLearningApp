@@ -54,7 +54,7 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
     @NonNull
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = (LayoutInflater)LayoutInflater.from(context);
+        LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(layout,parent,false);
 
         holder=  new MultipleChoiceAdapter.Holder( view);
@@ -97,14 +97,14 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
         Button choice3,choice1,choice2,choice4, nextQ;
         public Holder(@NonNull View convertView) {
             super(convertView);
-            question = (TextView) convertView.findViewById(R.id.transQuestionTextView);
-            choice1 = (Button) convertView.findViewById(R.id.answer1textView);
+            question = convertView.findViewById(R.id.transQuestionTextView);
+            choice1 = convertView.findViewById(R.id.answer1textView);
             choice1.setBackgroundColor(Color.BLUE);
-            choice2 = (Button) convertView.findViewById(R.id.answer2TextView);
+            choice2 = convertView.findViewById(R.id.answer2TextView);
             choice2.setBackgroundColor(Color.BLUE);
-            choice3 = (Button) convertView.findViewById(R.id.answer3textView);
+            choice3 = convertView.findViewById(R.id.answer3textView);
             choice3.setBackgroundColor(Color.BLUE);
-            choice4 = (Button) convertView.findViewById(R.id.answer4TextView);
+            choice4 = convertView.findViewById(R.id.answer4TextView);
             choice4.setBackgroundColor(Color.BLUE);
             nextQ   = convertView.findViewById(R.id.moreQuestionID);
             page = convertView.findViewById(R.id.page);
@@ -119,10 +119,11 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
          * Helper method to handle click listeners
          */
         private void handleRecycleView (){
-            choice1.setOnClickListener(new HandleClickButtons(questions.length));
-            choice2.setOnClickListener(new HandleClickButtons(questions.length));
-            choice3.setOnClickListener(new HandleClickButtons(questions.length));
-            choice4.setOnClickListener(new HandleClickButtons(questions.length));
+            HandleClickButtons handleClickButtons = new HandleClickButtons(questions.length);
+            choice1.setOnClickListener(handleClickButtons);
+            choice2.setOnClickListener(handleClickButtons);
+            choice3.setOnClickListener(handleClickButtons);
+            choice4.setOnClickListener(handleClickButtons);
 
             //nextQ.setOnClickListener(new HandleClickButtons(questions.length));
         }
@@ -159,17 +160,22 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
                     }
                 }
                 else {
-                    onMCQ.choices(v,getLayoutPosition());
+                    if(v.getId()==R.id.answer1textView ||v.getId()==R.id.answer2TextView ||
+                            v.getId()==R.id.answer3textView || v.getId()==R.id.answer4TextView) {
+                        onMCQ.choices(v, getLayoutPosition());
+                    }
                 }
             }
             /**
-             * notify holder about number of hints changes
+             * notify holder about changes
+             * If View id is  not equals to negative one ( clicked in the layout instead of buttons)
              */
             private void notifyChanges(){
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        notifyItemChanged(holder.getAdapterPosition());
+                        if(! (v.getId() ==-1))
+                            notifyItemChanged(holder.getAdapterPosition());
                     }
                 });
             }

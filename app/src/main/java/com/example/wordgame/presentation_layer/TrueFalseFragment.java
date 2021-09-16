@@ -101,8 +101,6 @@ public class TrueFalseFragment extends Fragment  {
         binding = FragmentTrueBinding.inflate(inflater, container, false);
         this.inflater = inflater;
         setUpRecycleView(binding);
-        ((MainActivity)requireActivity()).setID(R.id.action_trueFalseFragment_to_play);
-        ((MainActivity)requireActivity()).setView(binding.getRoot());
         return  binding.getRoot();
 
     }

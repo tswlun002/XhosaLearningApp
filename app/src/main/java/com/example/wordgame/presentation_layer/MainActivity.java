@@ -30,10 +30,6 @@ public class MainActivity extends AppCompatActivity {
      */
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
-    private MultipleChoiceAdapter multipleChoiceController;
-    private RecyclerView recycleView;
-    private View view;
-    private int Id;
 
     /**
      * creates main activity  ,set up navigation controller
@@ -96,11 +92,6 @@ public class MainActivity extends AppCompatActivity {
                         "basic sentence building\n";
                popUp("About App",message);
             }
-
-           /* else if(item.getItemId()==R.id.resultsId){
-                ActivityResults activiyResults = new ActivityResults(getLayoutInflater(),this,getID(), getView());
-                 activiyResults.gradesActity(0,0);
-            }*/
             else if (item.getItemId() == R.id.help){
                 String message  = "Drag and drop text to edit text\n" +
                         "Or type the answer\n" +
@@ -133,34 +124,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * @return view
-     */
-    View getView(){
-        return  this.view;
-    }
-
-    /**
-     * @param v  set view
-     */
-    void setView(View v){
-        this.view=v;
-    }
-
-    /**
-     *
-     * @return action id for navigation between fragments
-     */
-    int getID(){
-        return  this.Id;
-    }
-
-    /**
-     * @param v set id for navigation
-     */
-    void setID(int v){
-        this.Id=v;
-    }
-    /**
      * set support for navigation up
      * @return true if navigation is supported else false
      */
@@ -186,15 +149,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * sets multipleChoiceController and recycle view
-     * @param multipleChoiceController multipleChoiceController
-     * @param view recycle view
-     */
-    public void setMultipleChoiceController(MultipleChoiceAdapter multipleChoiceController, RecyclerView view) {
-        this.multipleChoiceController = multipleChoiceController;
-        this.recycleView =view;
-    }
 
     //192.168.137.136
 

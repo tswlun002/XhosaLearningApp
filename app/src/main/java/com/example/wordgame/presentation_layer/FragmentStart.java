@@ -145,7 +145,7 @@ public class FragmentStart extends Fragment {
     }
 
     /**
-     * set bindind null on Destroy of this fragment
+     * set binding null on Destroy of this fragment
      */
     @Override
     public void onDestroyView() {

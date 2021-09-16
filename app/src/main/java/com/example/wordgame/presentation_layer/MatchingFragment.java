@@ -85,8 +85,6 @@ public class MatchingFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentMatchingBinding.inflate(inflater, container, false);
         this.inflater =inflater;
-        ((MainActivity)requireActivity()).setID(R.id.action_matchingFragment_to_play);
-        ((MainActivity)requireActivity()).setView(binding.getRoot());
         return binding.getRoot();
     }
 

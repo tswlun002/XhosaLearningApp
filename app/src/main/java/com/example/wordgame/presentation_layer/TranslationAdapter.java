@@ -21,7 +21,7 @@ public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.
     private final int  layout ;
     private static  OnHints onHints;
     private  static  LayoutInflater inflater;
-    private static  Holder holder;
+    private   Holder holder;
 
     public TranslationAdapter(@NonNull Context context, String[] question, int resource) {
         this.context=context;
@@ -78,9 +78,6 @@ public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.
             numberHints = itemView.findViewById(R.id.noHintsTextView);
             numberHints.setClickable(false);
 
-            /**
-             * handle hint button click
-             */
             hints.setOnClickListener(new View.OnClickListener() {
                 /**
                  * notify changes
@@ -99,13 +96,15 @@ public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.
         }
 
         /**
-         * notify holder about number of hints changes
+         * notify holder about changes
+         * If View id is  not equals to negative one ( clicked in the layout instead of buttons)
          */
         private void notifyChanges(){
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    notifyItemChanged(holder.getAdapterPosition());
+                    if(! (v.getId() ==-1))
+                        notifyItemChanged(holder.getAdapterPosition());
                 }
             });
         }
