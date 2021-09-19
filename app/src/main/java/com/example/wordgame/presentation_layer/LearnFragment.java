@@ -23,6 +23,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -97,7 +99,8 @@ public class LearnFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentLearnBinding.inflate(inflater, container, false);
         setUpListView(binding);
-        getMaterial(learnViewModel);
+        getAllLearningMaterial(learnViewModel);
+
         return binding.getRoot();
 
 
@@ -110,85 +113,35 @@ public class LearnFragment extends Fragment {
     private  void getAllLearningMaterial(LearnViewModel learnViewModel){
         learnViewModel.getAllMaterial().observe(getViewLifecycleOwner(), new Observer<List<Learn>>() {
             @Override
-            public void onChanged(List<Learn> learns) {
-                setUpListView(binding);
-                learn.setData(data);
-            }
+            public void onChanged(List<Learn> learningMaterial) {
+                String key="";
 
-        });
+                for(Learn material:learningMaterial) {
+                    List<String> content = new ArrayList<>();
+                    key = material.getSection();
+                    content.add(material.getContent());
 
+                    if(data.containsKey(key)){
+                        content.addAll(Objects.requireNonNull(data.get(key)));
+                        content=content.stream().distinct().collect(Collectors.toList());
+                        data.put(key, content);
+                    }
+                    else {
+                        content=content.stream().distinct().collect(Collectors.toList());
+                        data.put(key, content);
+                    }
 
-    }
-    private  void getMaterial(LearnViewModel learnViewModel){
-        learnViewModel.getVowels().observe(getViewLifecycleOwner(), new Observer<List<Learn>>() {
-            @Override
-            public void onChanged(List<Learn> learns) {
-                List<String> list = new ArrayList<>();
-                String key = "";
-                for(Learn learn: learns) {
-                    list.add(learn.getContent());
-                    key = learn.getSection();
                 }
-                data.put(key,list);
-                learn.setData(data);
+                for( String key1 : data.keySet()) {
+                    learn.setData(data);
+                 }
+
 
             }
-        });
-        learnViewModel.getConsonants().observe(getViewLifecycleOwner(), new Observer<List<Learn>>() {
-            @Override
-            public void onChanged(List<Learn> learns) {
-                List<String> list = new ArrayList<>();
-                String key = "";
-                for(Learn learn: learns) {
-                    list.add(learn.getContent());
-                    key = learn.getSection();
-                }
-                data.put(key,list);
-                learn.setData(data);
-            }
-        });
-        learnViewModel.getNumbers().observe(getViewLifecycleOwner(), new Observer<List<Learn>>() {
-            @Override
-            public void onChanged(List<Learn> learns) {
-                List<String> list = new ArrayList<>();
-                String key = "";
-                for(Learn learn: learns) {
-                    list.add(learn.getContent());
-                    key = learn.getSection();
-                }
-                data.put(key,list);
-                learn.setData(data);
-            }
-        });
-
-        learnViewModel.getClicks().observe(getViewLifecycleOwner(), new Observer<List<Learn>>() {
-            @Override
-            public void onChanged(List<Learn> learns) {
-                List<String> list = new ArrayList<>();
-                String key = "";
-                for(Learn learn: learns) {
-                    list.add(learn.getContent());
-                    key = learn.getSection();
-                }
-                data.put(key,list);
-                learn.setData(data);
-            }
-
 
         });
 
-    }
 
-    private HashMap<String, List<String> > addMaterial(List<Learn> learns){
-        List<String> list = new ArrayList<>();
-        String key = "";
-        for(Learn learn: learns) {
-            list.add(learn.getContent());
-            key = learn.getSection();
-        }
-        data.put(key,list);
-        list.clear();
-        return  data;
     }
     /**
      * set up List view with data content

@@ -3,9 +3,11 @@ package com.example.wordgame.presentation_layer;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -77,7 +79,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
         int y =0;
         if(data!=null)
             y= getSize();
-
+        Toast.makeText(context, y+" data size", Toast.LENGTH_SHORT).show();
         return y;
 
     }
@@ -98,20 +100,25 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(@NonNull Holder holder, @SuppressLint("RecyclerView") int position) {
-
-        this.position=position;
+       this.position =position;
         holder.descriptionView.setText(data.keySet().toArray()[position].toString());
         addRow(data);
-        this.holder=holder;
+        Toast.makeText(context, data.size()+" at binding", Toast.LENGTH_SHORT).show();
 
     }
 
     void setData(HashMap<String, List<String>> material){
         data=material;
         setSize(1);
-        notifyDataSetChanged();
-        //holder.addRow(data);
+       notifyItemChanged(0, getSize());
 
+
+    }
+    void setSize(int s) {
+        size += s;
+    }
+    int getSize(){
+        return size;
     }
 
     void addRow( HashMap<String, List<String>>  data ) {
@@ -135,20 +142,18 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
                     TableRow row1 = (TableRow) holder.tableLayout.getChildAt(0);
                     View view1 = row1.getChildAt(0);
                     view1.setBackgroundColor(Color.GREEN);
-                    ((TextView) view1).setText("Object");
+                    ((EditText) view1).setText("Object");
                     View view2 = row1.getChildAt(1);
                     view2.setBackgroundColor(Color.GREEN);
-                    ((TextView) view2).setText("Translation");
+                    ((EditText) view2).setText("Translation");
                 }
                 for (int j = 0; j < row.getChildCount(); j++) {
                     View view = row.getChildAt(j);
 
                     if (j == 0)
-                            ((TextView) view).setText(column1List.get(index));
+                            ((EditText) view).setText(column1List.get(index));
                     else
-                            ((TextView) view).setText(column2List.get(index));
-                        //iew.setBackgroundColor(R.color.green);
-                        Toast.makeText(context, ((TextView) view).getText() + " TableRowList", Toast.LENGTH_SHORT).show();
+                            ((EditText) view).setText(column2List.get(index));
 
                 }
                 break;
@@ -157,18 +162,13 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
         }
     }
     private void getContent(List<String> column1 ,List<String> column2,List<String> content){
-        for(String content1: content){
-            column1.add(content1.substring(0,content1.indexOf(";")));
-            column2.add(content1.substring(content1.indexOf(";")+1));
+        for(int i =content.size()-1; i>=0; i--){
+            column1.add(content.get(i).substring(0,content.get(i).indexOf(";")));
+            column2.add(content.get(i).substring(content.get(i).indexOf(";")+1));
         }
     }
 
-   void setSize(int s) {
-       size += s;
-   }
-   int getSize(){
-        return size;
-   }
+
 
 
     /**
@@ -192,20 +192,22 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
         @SuppressLint("ResourceType")
         void makeTable(){
 
-            for(int i=0; i<5;i++){
-                TextView column1 = new TextView(context);
-                //column1.setId(1023);
-                TextView column2 = new TextView(context);
-                //column1.setId(1024);
+            for(int i=0; i<6;i++){
+                EditText column1 = new EditText(context);
+                column1.setClickable(false);
+                column1.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+                column1.setKeyListener(null);
+                EditText column2 = new EditText(context);
+                column2.setClickable(false);
+                column2.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+                column2.setKeyListener(null);
                 TableRow tableRow = new TableRow(context);
-                column1.setText(i+"");
                 column1.setBackgroundResource(R.drawable.textbackground);
                 column1.setTextColor(Color.BLACK);
-                column1.setPadding(5, 5, 200, 25);
-                column2.setText(i+"");
+                column1.setPadding(20, 5, 200, 25);
                 column2.setBackgroundResource(R.drawable.textbackground);
                 column2.setTextColor(Color.BLACK);
-                column2.setPadding(5, 5, 500, 25);
+                column2.setPadding(20, 5, 200, 25);
                 tableRow.addView(column1);
                 tableRow.addView(column2);
                 TableRowList.add(tableRow);
