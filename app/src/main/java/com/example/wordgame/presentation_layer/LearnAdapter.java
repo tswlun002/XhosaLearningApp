@@ -1,43 +1,53 @@
 package com.example.wordgame.presentation_layer;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.MultiAutoCompleteTextView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wordgame.R;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 /**
- * Class helps to inflate content into Listview of Learn
+ * Class helps to inflate content into Listview of LearnDB
  * Subclass of ArrayAdapter<String>
  */
 public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
 
     /**
-     * @serialField hearding  list of headings of lessons
+     * @serialField heading  list of headings of lessons
      * @serialField lesson  list of lessons
      * @serialField context  of fragment LearnFragment
      */
-    private final String [] hearding;
-    private final int[] lesson;
     private final Context context;
-    private  int layout;
+    private final int layout;
+    HashMap<String, List<String> > data;
+    private  Holder holder;
+    LayoutInflater inflater;
+    TableLayout tableLayout1 ;
+    private List<TableRow> TableRowList = new ArrayList<>();
+    int position,size;
 
     /**
-     * Constructor of Learn controller to initialise the fields
+     * Constructor of LearnDB controller to initialise the fields
      * @param context of fragment LearnFragment
-     * @param heading  list of headings of lessons
-     * @param lessons   list of lessons
+
      * @param resource  number the layout to be inflated into listview
      */
-    public LearnAdapter(@NonNull Context context, String[] heading, int[] lessons, int resource) {
-        this.lesson=lessons;
-        this.hearding=heading;
+    public LearnAdapter(@NonNull Context context, int resource) {
         this.context =context;
         this.layout =resource;
     }
@@ -52,10 +62,10 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
     @NonNull
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
+        inflater = LayoutInflater.from(context);
         View view = inflater.inflate(layout,parent,false);
-
-        return new Holder(view);
+        holder = new Holder(view);
+        return holder;
     }
 
     /**
@@ -64,7 +74,20 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
      */
     @Override
     public int getItemCount() {
-        return hearding.length;
+        int y =0;
+        if(data!=null)
+            y= getSize();
+
+        return y;
+
+    }
+
+    @Override
+    public void onViewRecycled(@NonNull Holder holder) {
+        super.onViewRecycled(holder);
+        //Toast.makeText(context, data.size()+" TableRowList", Toast.LENGTH_SHORT).show();
+
+
     }
 
     /**
@@ -72,18 +95,87 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
      * @param holder for LearnFragment adapter
      * @param position position of each view
      */
+
     @Override
-    public void onBindViewHolder(@NonNull Holder holder, int position) {
-        holder.picView.setImageResource((lesson[position]));
-        holder.descriptionView.setText(hearding[position]);
+    public void onBindViewHolder(@NonNull Holder holder, @SuppressLint("RecyclerView") int position) {
+
+        this.position=position;
+        holder.descriptionView.setText(data.keySet().toArray()[position].toString());
+        addRow(data);
+        this.holder=holder;
+
     }
+
+    void setData(HashMap<String, List<String>> material){
+        data=material;
+        setSize(1);
+        notifyDataSetChanged();
+        //holder.addRow(data);
+
+    }
+
+    void addRow( HashMap<String, List<String>>  data ) {
+
+        List<String> column1List = new ArrayList<>();
+        List<String> column2List = new ArrayList<>();
+        List<String> values = data.get(data.keySet().toArray()[position].toString());
+        assert values != null;
+        getContent(column1List, column2List, values);
+        addRow(column1List, column2List, values);
+        column1List.clear();
+        column2List.clear();
+
+    }
+    @SuppressLint({"ResourceAsColor", "SetTextI18n"})
+    void addRow(List<String>column1List,List<String>column2List,List<String>values){
+        for (int index =0; index<column1List.size();index++) {
+            for (int i = index+1; i < holder.tableLayout.getChildCount(); i++) {
+                TableRow row = (TableRow) holder.tableLayout.getChildAt(i);
+                if (i -1 == 0) {
+                    TableRow row1 = (TableRow) holder.tableLayout.getChildAt(0);
+                    View view1 = row1.getChildAt(0);
+                    view1.setBackgroundColor(Color.GREEN);
+                    ((TextView) view1).setText("Object");
+                    View view2 = row1.getChildAt(1);
+                    view2.setBackgroundColor(Color.GREEN);
+                    ((TextView) view2).setText("Translation");
+                }
+                for (int j = 0; j < row.getChildCount(); j++) {
+                    View view = row.getChildAt(j);
+
+                    if (j == 0)
+                            ((TextView) view).setText(column1List.get(index));
+                    else
+                            ((TextView) view).setText(column2List.get(index));
+                        //iew.setBackgroundColor(R.color.green);
+                        Toast.makeText(context, ((TextView) view).getText() + " TableRowList", Toast.LENGTH_SHORT).show();
+
+                }
+                break;
+
+            }
+        }
+    }
+    private void getContent(List<String> column1 ,List<String> column2,List<String> content){
+        for(String content1: content){
+            column1.add(content1.substring(0,content1.indexOf(";")));
+            column2.add(content1.substring(content1.indexOf(";")+1));
+        }
+    }
+
+   void setSize(int s) {
+       size += s;
+   }
+   int getSize(){
+        return size;
+   }
 
 
     /**
      * Inner class that contain features of the element to be inflated into listview
      */
-    static  class  Holder extends RecyclerView.ViewHolder {
-        ImageView picView;
+     class  Holder extends RecyclerView.ViewHolder {
+        TableLayout tableLayout;
         TextView descriptionView;
 
         /**
@@ -92,10 +184,40 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
          */
         public Holder(@NonNull View itemView) {
             super(itemView);
-            picView = itemView.findViewById(R.id.imageAdapterId);
+            tableLayout = itemView.findViewById(R.id.tablelayoutID);
             descriptionView = itemView.findViewById(R.id.textViewAdaoterID);
+            makeTable();
         }
+
+        @SuppressLint("ResourceType")
+        void makeTable(){
+
+            for(int i=0; i<5;i++){
+                TextView column1 = new TextView(context);
+                //column1.setId(1023);
+                TextView column2 = new TextView(context);
+                //column1.setId(1024);
+                TableRow tableRow = new TableRow(context);
+                column1.setText(i+"");
+                column1.setBackgroundResource(R.drawable.textbackground);
+                column1.setTextColor(Color.BLACK);
+                column1.setPadding(5, 5, 200, 25);
+                column2.setText(i+"");
+                column2.setBackgroundResource(R.drawable.textbackground);
+                column2.setTextColor(Color.BLACK);
+                column2.setPadding(5, 5, 500, 25);
+                tableRow.addView(column1);
+                tableRow.addView(column2);
+                TableRowList.add(tableRow);
+                tableLayout.addView(tableRow);
+            }
+        }
+
+
     }
+
+
+
 
 
 }

@@ -27,7 +27,7 @@ public class FragmentStart extends Fragment {
     private FragmentStartBinding binding;
     private PlayFragment playObje;
     /**
-     * create frament start
+     * create fragment start
      * @param savedInstanceState for FragmentStart
      */
     @Override

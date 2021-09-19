@@ -174,7 +174,7 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(! (v.getId() ==-1))
+                        if(! (v.getId() ==RecyclerView.NO_POSITION))
                             notifyItemChanged(holder.getAdapterPosition());
                     }
                 });

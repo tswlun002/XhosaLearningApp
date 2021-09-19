@@ -1,17 +1,28 @@
 package com.example.wordgame.presentation_layer;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentLearnBinding;
+import com.example.wordgame.model_layer.Learn;
+import com.example.wordgame.model_layer.LearnViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,21 +39,10 @@ public class LearnFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    private final String[] headings = {
-            "Numbers/Izibalo",
-            "Vowels/Izikhamiso",
-            "Consonants/Amaqabane",
-            "Clicks/Izandi"
-    };
-
-    private final int[] lesson = {
-            R.drawable.numbers, R.drawable.vowels,
-            R.drawable.consonants, R.drawable.clicks
-    };
-
-
-     private FragmentLearnBinding  binding;
+    private LearnViewModel learnViewModel;
+    private  LearnAdapter learn;
+    private final HashMap<String, List<String> >  data = new HashMap<>();
+    private FragmentLearnBinding  binding;
 
     /**
      * Empty constructor
@@ -80,35 +80,129 @@ public class LearnFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        learnViewModel =  new ViewModelProvider(this).get(LearnViewModel.class);
+
+
     }
 
     /**
-     * creates view of the frament LearnFragment
-     * @param inflater inflates Fragemnt LearnFragment
-     * @param container container for   Fragemnt LearnFragment
-     * @param savedInstanceState state instance for Fragemnt LearnFragment
+     * creates view of the fragment LearnFragment
+     * @param inflater inflates Fragment LearnFragment
+     * @param container container for   Fragment LearnFragment
+     * @param savedInstanceState state instance for Fragment LearnFragment
      * @return view of Fragemnt LearnFragment
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         binding = FragmentLearnBinding.inflate(inflater, container, false);
         setUpListView(binding);
+        getMaterial(learnViewModel);
         return binding.getRoot();
 
 
     }
 
     /**
+     * get all learning material
+     * @param learnViewModel holder of the learning
+     */
+    private  void getAllLearningMaterial(LearnViewModel learnViewModel){
+        learnViewModel.getAllMaterial().observe(getViewLifecycleOwner(), new Observer<List<Learn>>() {
+            @Override
+            public void onChanged(List<Learn> learns) {
+                setUpListView(binding);
+                learn.setData(data);
+            }
+
+        });
+
+
+    }
+    private  void getMaterial(LearnViewModel learnViewModel){
+        learnViewModel.getVowels().observe(getViewLifecycleOwner(), new Observer<List<Learn>>() {
+            @Override
+            public void onChanged(List<Learn> learns) {
+                List<String> list = new ArrayList<>();
+                String key = "";
+                for(Learn learn: learns) {
+                    list.add(learn.getContent());
+                    key = learn.getSection();
+                }
+                data.put(key,list);
+                learn.setData(data);
+
+            }
+        });
+        learnViewModel.getConsonants().observe(getViewLifecycleOwner(), new Observer<List<Learn>>() {
+            @Override
+            public void onChanged(List<Learn> learns) {
+                List<String> list = new ArrayList<>();
+                String key = "";
+                for(Learn learn: learns) {
+                    list.add(learn.getContent());
+                    key = learn.getSection();
+                }
+                data.put(key,list);
+                learn.setData(data);
+            }
+        });
+        learnViewModel.getNumbers().observe(getViewLifecycleOwner(), new Observer<List<Learn>>() {
+            @Override
+            public void onChanged(List<Learn> learns) {
+                List<String> list = new ArrayList<>();
+                String key = "";
+                for(Learn learn: learns) {
+                    list.add(learn.getContent());
+                    key = learn.getSection();
+                }
+                data.put(key,list);
+                learn.setData(data);
+            }
+        });
+
+        learnViewModel.getClicks().observe(getViewLifecycleOwner(), new Observer<List<Learn>>() {
+            @Override
+            public void onChanged(List<Learn> learns) {
+                List<String> list = new ArrayList<>();
+                String key = "";
+                for(Learn learn: learns) {
+                    list.add(learn.getContent());
+                    key = learn.getSection();
+                }
+                data.put(key,list);
+                learn.setData(data);
+            }
+
+
+        });
+
+    }
+
+    private HashMap<String, List<String> > addMaterial(List<Learn> learns){
+        List<String> list = new ArrayList<>();
+        String key = "";
+        for(Learn learn: learns) {
+            list.add(learn.getContent());
+            key = learn.getSection();
+        }
+        data.put(key,list);
+        list.clear();
+        return  data;
+    }
+    /**
      * set up List view with data content
      * @param binding  FragmentLearnBinding
      */
+    @SuppressLint({"UseCompatLoadingForDrawables", "NotifyDataSetChanged"})
     private  void setUpListView(FragmentLearnBinding binding){
 
-        LearnAdapter learn = new LearnAdapter(requireContext(), headings, lesson, R.layout.learn_adapter);
+
+        learn = new LearnAdapter(requireContext(), R.layout.learn_adapter);
         binding.learnIDListview.setAdapter(learn);
         binding.learnIDListview.setLayoutManager(new LinearLayoutManager(requireContext()));
+
+
     }
 
 

@@ -20,7 +20,7 @@ public class Instructions {
         AlertDialog alertDialog = new AlertDialog.Builder(context).create();
         alertDialog.setMessage(
                 "1. Start from level for a beginner\n" +
-                "2. Learn all the material provided from the selected level\n" +
+                "2. LearnDB all the material provided from the selected level\n" +
                 "3. Select PlayFragment to chose games provided\n" +
                 "4. Select game from each level\n" +
                 "5. OnSubmit to get feedback\n" +

@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/answerbackground.xml" value="0.18796296296296297" />
+        <entry key="app/src/main/res/drawable/customizerecycleview.xml" value="0.18" />
         <entry key="app/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.35625" />
+        <entry key="app/src/main/res/drawable/textbackground.xml" value="0.1" />
         <entry key="app/src/main/res/layout/WelcomWindow.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.203125" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.35572916666666665" />
@@ -22,7 +25,7 @@
         <entry key="app/src/main/res/layout/image.xml" value="0.34010416666666665" />
         <entry key="app/src/main/res/layout/insructions.xml" value="0.20729166666666668" />
         <entry key="app/src/main/res/layout/learn.xml" value="0.34646739130434784" />
-        <entry key="app/src/main/res/layout/learn_adapter.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/learn_adapter.xml" value="0.2653061224489796" />
         <entry key="app/src/main/res/layout/matching.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/mcq_adapter.xml" value="0.22" />
         <entry key="app/src/main/res/layout/multiple_choice.xml" value="0.35572916666666665" />
