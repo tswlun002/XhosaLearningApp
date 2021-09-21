@@ -21,7 +21,7 @@ public abstract class LearnDB extends RoomDatabase {
 
 
         learnDB = Room.databaseBuilder(context.getApplicationContext(),
-                LearnDB.class,"Learn")
+                LearnDB.class,"WordGameDatabase")
                 .fallbackToDestructiveMigration()
                 .addCallback(roomCallBack)
                 .build();

@@ -1,4 +1,4 @@
-package com.example.wordgame.data_layer;
+package com.example.wordgame.respotory_layer;
 
 import android.app.Application;
 import android.content.Context;
@@ -6,15 +6,17 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.wordgame.data_layer.LearnDB;
+import com.example.wordgame.data_layer.LearnDao;
 import com.example.wordgame.model_layer.Learn;
 
 import java.util.List;
 
-public class FactoryDB {
+public class FactoryLearnDB {
     private final LearnDao learnDao;
     private final LiveData<List<Learn>> allNotes;
 
-    public FactoryDB(Application application){
+    public FactoryLearnDB(Application application){
         LearnDB learnDB = LearnDB.getInstanceLearnDb(application);
 
         learnDao = learnDB.learnDao();
@@ -34,21 +36,7 @@ public class FactoryDB {
            new UpdateHandler(learnDao).execute(learn);
     }
 
-    public LiveData<List<Learn>> getVowels(){
-      return learnDao.getVowels();
-    }
 
-    public LiveData<List<Learn>> getConsonants(){
-        return learnDao.getConsonants();
-    }
-
-    public LiveData<List<Learn>> getNumbers(){
-           return learnDao.getNumbers();
-    }
-
-    public LiveData<List<Learn>> getClicks(){
-        return learnDao.getClicks();
-    }
     private  static class insertHandler extends AsyncTask<Learn,Void,Void>{
         private final LearnDao learnDao;
 

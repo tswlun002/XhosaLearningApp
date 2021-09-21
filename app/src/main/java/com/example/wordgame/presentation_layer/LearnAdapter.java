@@ -102,10 +102,11 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
     @Override
     public void onBindViewHolder(@NonNull Holder holder, @SuppressLint("RecyclerView") int position) {
        this.position =position;
-        holder.descriptionView.setText(data.keySet().toArray()[position].toString());
-        addRow(data);
-        Toast.makeText(context, data.size()+" at binding", Toast.LENGTH_SHORT).show();
-
+       if(position< data.size()) {
+           holder.descriptionView.setText(data.keySet().toArray()[position].toString());
+           addRow(data);
+           Toast.makeText(context, data.size() + " at binding", Toast.LENGTH_SHORT).show();
+       }
     }
 
     void setData(HashMap<String, List<String>> material){
