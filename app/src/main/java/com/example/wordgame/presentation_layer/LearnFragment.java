@@ -115,7 +115,6 @@ public class LearnFragment extends Fragment {
             @Override
             public void onChanged(List<Learn> learningMaterial) {
                 String key="";
-
                 for(Learn material:learningMaterial) {
                     List<String> content = new ArrayList<>();
                     key = material.getSection();

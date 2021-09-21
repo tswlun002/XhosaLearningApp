@@ -3,6 +3,7 @@ package com.example.wordgame.presentation_layer;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
+import android.text.Html;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -142,18 +143,22 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
                     TableRow row1 = (TableRow) holder.tableLayout.getChildAt(0);
                     View view1 = row1.getChildAt(0);
                     view1.setBackgroundColor(Color.GREEN);
-                    ((EditText) view1).setText("Object");
+                    ((TextView) view1).setText("Object");
                     View view2 = row1.getChildAt(1);
                     view2.setBackgroundColor(Color.GREEN);
-                    ((EditText) view2).setText("Translation");
+                    ((TextView) view2).setText("Translation");
                 }
                 for (int j = 0; j < row.getChildCount(); j++) {
                     View view = row.getChildAt(j);
 
-                    if (j == 0)
-                            ((EditText) view).setText(column1List.get(index));
-                    else
-                            ((EditText) view).setText(column2List.get(index));
+                    if (j == 0) {
+                        String dataLine  =column1List.get(index);
+                        setText(dataLine,view,20);
+                    }
+                    else {
+                        String dataLine  =column2List.get(index);
+                         setText(dataLine,view,40);
+                    }
 
                 }
                 break;
@@ -161,6 +166,28 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
             }
         }
     }
+    private void  setText(String data, View view,int divider){
+        String dataConcatenated ="";
+        String dataLine  =data;
+        do {
+            int len = dataLine.length();
+
+            String newData ="";
+            if(len <divider)
+                newData = dataLine.substring(0, len);
+            else
+                newData = dataLine.substring(0,(int)len/2);
+            dataConcatenated +=newData+"\n";
+            if(newData.length() !=0)
+                dataLine = dataLine.substring(newData.length());
+            else
+                dataLine ="";
+
+
+        }while (!(dataLine.length() ==0));
+        ((TextView) view).setText(dataConcatenated);
+    }
+
     private void getContent(List<String> column1 ,List<String> column2,List<String> content){
         for(int i =content.size()-1; i>=0; i--){
             column1.add(content.get(i).substring(0,content.get(i).indexOf(";")));
@@ -193,21 +220,25 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
         void makeTable(){
 
             for(int i=0; i<6;i++){
-                EditText column1 = new EditText(context);
-                column1.setClickable(false);
+                TextView column1 = new TextView(context);
                 column1.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+                //column1.setMinLines(4);
                 column1.setKeyListener(null);
-                EditText column2 = new EditText(context);
+                column1.setSingleLine(false);
+
+                TextView column2 = new TextView(context);
                 column2.setClickable(false);
                 column2.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+                //column2.setMinLines(4);
                 column2.setKeyListener(null);
+                column2.setSingleLine(false);
+
+
                 TableRow tableRow = new TableRow(context);
-                column1.setBackgroundResource(R.drawable.textbackground);
                 column1.setTextColor(Color.BLACK);
-                column1.setPadding(20, 5, 200, 25);
-                column2.setBackgroundResource(R.drawable.textbackground);
+                column1.setPadding(20, 5, 100, 25);
                 column2.setTextColor(Color.BLACK);
-                column2.setPadding(20, 5, 200, 25);
+                column2.setPadding(20, 5, 100, 25);
                 tableRow.addView(column1);
                 tableRow.addView(column2);
                 TableRowList.add(tableRow);

@@ -15,19 +15,19 @@
         android:text="@string/heading"
         android:textSize="24dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/guideline55"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/guideline55"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TableLayout
+        android:id="@+id/tablelayoutID"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:id="@+id/tablelayoutID"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline55"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="@id/guideline57"
+        app:layout_constraintStart_toStartOf="@id/guideline56"
+        app:layout_constraintTop_toBottomOf="@id/guideline55">
 
 
     </TableLayout>
@@ -39,7 +39,19 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.07" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline56"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.03" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline57"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.97"  />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
