@@ -7,16 +7,17 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.wordgame.respotory_layer.FactoryMatchingDB;
-import com.example.wordgame.respotory_layer.FactoryMatchingDB;
+
 
 import java.util.List;
 
 public class MatchingViewModel extends AndroidViewModel {
-    private final FactoryMatchingDB factoryMatchingDB;
-    private final LiveData<List<Matching>> allMaterial;
+    private  FactoryMatchingDB factoryMatchingDB;
+    private  LiveData<List<Matching>> allMaterial;
+
     public MatchingViewModel(@NonNull Application application) {
         super(application);
-        factoryMatchingDB = new FactoryMatchingDB(application);
+       factoryMatchingDB = new FactoryMatchingDB(application);
         allMaterial = factoryMatchingDB.getQuestions();
     }
     public LiveData<List<Matching>> getGameMaterial() {

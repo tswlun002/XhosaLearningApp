@@ -13,7 +13,7 @@ import java.util.List;
 public class LearnViewModel extends AndroidViewModel {
     private final FactoryLearnDB factoryDB;
     private final LiveData<List<Learn>> allMaterial;
-    private  LiveData<List<Learn>> selectedMaterial;
+
     public LearnViewModel(@NonNull Application application) {
         super(application);
         factoryDB = new FactoryLearnDB(application);

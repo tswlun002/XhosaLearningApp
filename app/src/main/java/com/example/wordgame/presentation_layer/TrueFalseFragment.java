@@ -101,6 +101,7 @@ public class TrueFalseFragment extends Fragment  {
         binding = FragmentTrueBinding.inflate(inflater, container, false);
         this.inflater = inflater;
         setUpRecycleView(binding);
+
         return  binding.getRoot();
 
     }
@@ -113,6 +114,7 @@ public class TrueFalseFragment extends Fragment  {
         TrueFalseAdapter trueFalseController = new TrueFalseAdapter(requireContext(),questions,figure,R.layout.true_false_adapter);
         binding.listviewIDtrueAdapter.setAdapter(trueFalseController);
         binding.listviewIDtrueAdapter.setLayoutManager(new LinearLayoutManager(requireContext()));
+
 
     }
 

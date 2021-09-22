@@ -1,12 +1,11 @@
 package com.example.wordgame.respotory_layer;
 
 import android.app.Application;
-import android.content.Context;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.wordgame.data_layer.LearnDB;
+import com.example.wordgame.data_layer.WordGameDB;
 import com.example.wordgame.data_layer.LearnDao;
 import com.example.wordgame.model_layer.Learn;
 
@@ -17,9 +16,9 @@ public class FactoryLearnDB {
     private final LiveData<List<Learn>> allNotes;
 
     public FactoryLearnDB(Application application){
-        LearnDB learnDB = LearnDB.getInstanceLearnDb(application);
+        WordGameDB wordGameDB = WordGameDB.getInstanceLearnDb(application);
 
-        learnDao = learnDB.learnDao();
+        learnDao = wordGameDB.learnDao();
         allNotes = learnDao.getAll();
 
     }

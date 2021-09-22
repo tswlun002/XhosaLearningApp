@@ -14,18 +14,6 @@ public class Matching {
     private String answers;
 
 
-    @Override
-    public String toString() {
-        return "Matching{" +
-                "matchingId=" + matchingId +
-                ", level=" + level +
-                ", questions='" + questions + '\'' +
-                ", answers='" + answers + '\'' +
-                ", tittle='" + tittle + '\'' +
-                ", instructions='" + instructions + '\'' +
-                ", totalMarks=" + totalMarks +
-                '}';
-    }
     public Matching(){}
 
     public Matching(int matchingId) {
@@ -97,5 +85,17 @@ public class Matching {
 
     public void setTotalMarks(int totalMarks) {
         this.totalMarks = totalMarks;
+    }
+    @Override
+    public String toString() {
+        return "Matching{" +
+                "matchingId=" + matchingId +
+                ", level=" + level +
+                ", questions='" + questions + '\'' +
+                ", answers='" + answers + '\'' +
+                ", tittle='" + tittle + '\'' +
+                ", instructions='" + instructions + '\'' +
+                ", totalMarks=" + totalMarks +
+                '}';
     }
 }

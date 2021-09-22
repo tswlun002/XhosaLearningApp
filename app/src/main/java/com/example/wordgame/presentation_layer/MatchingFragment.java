@@ -81,6 +81,8 @@ public class MatchingFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        /*matchingViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.
+                getInstance(this.requireActivity().getApplication())).get(MatchingViewModel.class);*/
         matchingViewModel = new ViewModelProvider(this).get(MatchingViewModel.class);
     }
 
@@ -90,6 +92,7 @@ public class MatchingFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         binding = FragmentMatchingBinding.inflate(inflater, container, false);
         this.inflater =inflater;
         MatchingViewHandler matchingViewHandler = new MatchingViewHandler(binding.getRoot());
@@ -103,7 +106,7 @@ public class MatchingFragment extends Fragment {
         matchingViewModel.getGameMaterial().observe(getViewLifecycleOwner(), new Observer<List<Matching>>() {
             @Override
             public void onChanged(List<Matching> matchings) {
-
+                Toast.makeText(requireContext(), matchings.size()+"",  Toast.LENGTH_SHORT).show();
                 matchingViewHandler.setData(matchings);
             }
         });

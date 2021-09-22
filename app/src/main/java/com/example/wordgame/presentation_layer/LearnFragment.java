@@ -101,6 +101,8 @@ public class LearnFragment extends Fragment {
         setUpListView(binding);
         getAllLearningMaterial(learnViewModel);
 
+        int sidePadding  = getResources().getDimensionPixelSize(R.dimen.sidePadding);
+        int topPadding  = getResources().getDimensionPixelSize(R.dimen.topPadding);
         return binding.getRoot();
 
 

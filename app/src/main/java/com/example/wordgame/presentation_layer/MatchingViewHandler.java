@@ -22,27 +22,43 @@ public class MatchingViewHandler extends DragandDrop implements OnMatchingViewHa
     }
     public void setData(List<Matching> material){
         int level =0;
-        String Q1,Q2,Q3,Q4,A1,A2,A3,A4;String A5="";String A6="";String A7="";String A8="";
-        Q2=Q1=Q2=Q3=Q4=A1=A2=A3=A4=A5;
+        String Q1,Q2,Q3,Q4,A1,A2,A3,A4,A5,A6,A7,A8;
+        A5=A6= A7= A8= Q2=Q1=Q3=Q4=A1=A2=A3=A4 ="";
         String heading ="";
         for(Matching materialActivity :material) {
              heading = materialActivity.getTittle();
             level = materialActivity.getLevel();
             int id = materialActivity.getMatchingId();
-            if (id == 0) {
+            if (id == 1) {
                 Q1 = materialActivity.getQuestions();
                 A1 = materialActivity.getAnswers();
-            } else if (id == 1) {
+            } else if (id == 2) {
 
                 Q2 = materialActivity.getQuestions();
                 A2 = materialActivity.getAnswers();
-            } else if (id == 2) {
+            } else if (id ==3) {
                 Q3 = materialActivity.getQuestions();
                 A3 = materialActivity.getAnswers();
             } else if (id == 4){
                 Q4 = materialActivity.getQuestions();
                 A4 = materialActivity.getAnswers();
             }
+            else if (id == 5){
+                A5 = materialActivity.getQuestions();
+
+            }
+            else if (id == 6){
+                A6 = materialActivity.getAnswers();
+            }
+            else if (id == 7){
+
+                A7 = materialActivity.getAnswers();
+            }
+            else if (id == 8){
+                A8 = materialActivity.getAnswers();
+            }
+
+
         }
         TextView tittle = view.findViewById(R.id.instructionTextView);
         tittle.setText(heading);
@@ -63,9 +79,13 @@ public class MatchingViewHandler extends DragandDrop implements OnMatchingViewHa
         TextView answer4 = view.findViewById(R.id.xhosaMatchTextView4);
         answer4.setText(A4);
         TextView answer5 = view.findViewById(R.id.xhosaMatchTextView5);
+        answer5.setText(A5);
         TextView answer6 = view.findViewById(R.id.xhosaMatchTextView6);
+        answer6.setText(A6);
         TextView answer7 = view.findViewById(R.id.xhosaMatchTextView7);
+        answer7.setText(A7);
         TextView answer8 = view.findViewById(R.id.xhosaMatchTextView8);
+        answer8.setText(A8);
         if(level == 1){
             setVisible(answer5);
             setVisible(answer6);

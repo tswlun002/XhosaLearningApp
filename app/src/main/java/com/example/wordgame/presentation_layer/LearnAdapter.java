@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Class helps to inflate content into Listview of LearnDB
+ * Class helps to inflate content into Listview of WordGameDB
  * Subclass of ArrayAdapter<String>
  */
 public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
@@ -45,7 +45,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
     int position,size;
 
     /**
-     * Constructor of LearnDB controller to initialise the fields
+     * Constructor of WordGameDB controller to initialise the fields
      * @param context of fragment LearnFragment
 
      * @param resource  number the layout to be inflated into listview
@@ -80,7 +80,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
         int y =0;
         if(data!=null)
             y= getSize();
-        Toast.makeText(context, y+" data size", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, y+" data size", Toast.LENGTH_SHORT).show();
         return y;
 
     }
@@ -105,7 +105,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
        if(position< data.size()) {
            holder.descriptionView.setText(data.keySet().toArray()[position].toString());
            addRow(data);
-           Toast.makeText(context, data.size() + " at binding", Toast.LENGTH_SHORT).show();
+           //Toast.makeText(context, data.size() + " at binding", Toast.LENGTH_SHORT).show();
        }
     }
 

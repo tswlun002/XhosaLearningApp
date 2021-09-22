@@ -107,7 +107,7 @@ public class Learn  {
     @NonNull
     @Override
     public String toString() {
-        return "LearnDB{" +
+        return "WordGameDB{" +
                 "learnId=" + learnId +
                 ", level=" + level +
                 ", section="+section+

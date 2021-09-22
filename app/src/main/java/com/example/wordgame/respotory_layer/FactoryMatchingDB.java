@@ -5,23 +5,17 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.wordgame.data_layer.LearnDao;
-import com.example.wordgame.data_layer.MatchingDB;
 import com.example.wordgame.data_layer.MatchingDao;
-import com.example.wordgame.model_layer.Learn;
+import com.example.wordgame.data_layer.WordGameDB;
 import com.example.wordgame.model_layer.Matching;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class FactoryMatchingDB {
     private final MatchingDao matchingDao;
     private final LiveData<List<Matching>>  questions;
     public FactoryMatchingDB(Application application){
-        MatchingDB matchingDB = MatchingDB.getInstanceMatchingDb(application);
+        WordGameDB matchingDB = WordGameDB.getInstanceLearnDb(application);
 
         matchingDao = matchingDB.matchingDao();
         questions = matchingDao.getAll();
@@ -64,17 +58,6 @@ public class FactoryMatchingDB {
         @Override
         protected Void doInBackground(Matching... matchings) {
             matchingDao.update(matchings[0]);
-            String filename ="days.txt";
-            Scanner scanner;
-           List<String> wordMatch = new ArrayList<>();
-            try {
-                scanner = new Scanner(new File(filename));
-                while (scanner.hasNext()){
-                    wordMatch.add(scanner.nextLine());
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
 
 
             return null;
