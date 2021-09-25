@@ -36,8 +36,8 @@ public abstract class WordGameDB extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            new PopulateLearnDB(wordGameDB).execute();
-            new PopulateMatchingDB(wordGameDB,context1).execute();
+            new PopulateLearnDB(wordGameDB,context1).execute();
+            //new PopulateMatchingDB(wordGameDB,context1).execute();
 
 
         }

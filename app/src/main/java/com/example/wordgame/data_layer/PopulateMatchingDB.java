@@ -67,9 +67,6 @@ class PopulateMatchingDB extends AsyncTask<Void,Void,Void> {
 
 
         String tittleAndMarks = "";
-        String path = "assets/days.txt";
-        AssetManager assetManager = context.getAssets();
-        String [] files  = assetManager.list(path);
         String lineData = "";
         try {
 
@@ -79,18 +76,20 @@ class PopulateMatchingDB extends AsyncTask<Void,Void,Void> {
                     StandardCharsets.UTF_8));
             int count =0;
              while ( (lineData =bufferedReader.readLine() )!=null){
-                 if(count ==0) {
-                     tittleAndMarks = lineData;
-                     count++;
-                 }
-                 else if(count ==1){
-                     instructions.add(lineData);
-                     count++;
-                 }
-                 else {
-                     count++;
-                     questions.add(lineData.substring(0,lineData.indexOf(";")));
-                     answers.add(lineData.substring(lineData.indexOf(";")+1));
+                 if(lineData.trim().length() != 0){
+                     if(count ==0) {
+                         tittleAndMarks = lineData;
+                         count++;
+                     }
+                     else if(count ==1){
+                         instructions.add(lineData);
+                         count++;
+                     }
+                     else {
+                         count++;
+                         questions.add(lineData.substring(0,lineData.indexOf(";")));
+                         answers.add(lineData.substring(lineData.indexOf(";")+1));
+                     }
                  }
              }
             count =0;
