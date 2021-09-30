@@ -15,6 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wordgame.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAdapter.Holder>  {
 
     private final String[] questions;
@@ -22,6 +25,9 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
     private static Context context = null;
     private final int layout;
     private static OnMultipleChoice onMCQ ;
+    private  final  int [] buttonColors = {Color.BLUE,Color.GREEN};
+    private final List<Integer> colors = new ArrayList<>();
+    private final List<String> answers = new ArrayList<>();
     private   Holder holder;
     @SuppressLint("StaticFieldLeak")
     static  TextView question ;
@@ -45,6 +51,7 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
         this.layout = resource;
         this.questions = question;
         onMCQ = new HandleMQCButtons();
+        generateColors(question.length);
     }
     /**
      * get view of the listview
@@ -74,7 +81,12 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
         viewHolder.choice2.setText(choices[1]);
         viewHolder.choice3.setText(choices[2]);
         viewHolder.choice4.setText(choices[3]);
+        viewHolder.choice1.setBackgroundColor(getColors().get(position*4));
+        viewHolder.choice2.setBackgroundColor(getColors().get(position*4+1));
+        viewHolder.choice3.setBackgroundColor(getColors().get(position*4+2));
+        viewHolder.choice4.setBackgroundColor(getColors().get(position*4+3));
         viewHolder.page.setText((position+1)+"/"+questions.length);
+        holder.setNumberOfQuestions(questions.length+65);
     }
 
 
@@ -88,7 +100,36 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
         return questions.length;
     }
 
+    /**viewHolder
+     * generate initial list of colors of buttons for all questions
+     * List button is 4 times activity questions because each question contains four buttons
+     * All colors  initial are set to zero
+     * Even index store colors for true  buttons
+     * And odd index store  colors for false buttons
+     * @param setSize  number of questions set for activity
+     */
+    private  void generateColors(int setSize){
+        int size  = setSize*4;
+        for(int i =0 ; i<size; i++)
+            colors.add(Color.BLUE);
+    }
 
+    /**
+     * set new color into colors list at at index
+     * @param index where we set the new color
+     * @param color new color being set
+     */
+    private void setColor(int index, int color){
+        colors.set(index,color);
+        //Toast.makeText(context,"color is changes  at "+index+ "color is "+colors.get(index),Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * @return   list of  of all colors  for all questions
+     */
+    private List<Integer> getColors(){
+        return  colors;
+    }
     /**
      * Inner class that contain features of the element to be inflated into listview
      */
@@ -99,13 +140,9 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
             super(convertView);
             question = convertView.findViewById(R.id.transQuestionTextView);
             choice1 = convertView.findViewById(R.id.answer1textView);
-            choice1.setBackgroundColor(Color.BLUE);
             choice2 = convertView.findViewById(R.id.answer2TextView);
-            choice2.setBackgroundColor(Color.BLUE);
             choice3 = convertView.findViewById(R.id.answer3textView);
-            choice3.setBackgroundColor(Color.BLUE);
             choice4 = convertView.findViewById(R.id.answer4TextView);
-            choice4.setBackgroundColor(Color.BLUE);
             nextQ   = convertView.findViewById(R.id.moreQuestionID);
             page = convertView.findViewById(R.id.page);
             //onMCQ.onMultipleChoice(choice1,choice2,choice3,choice4);
@@ -124,8 +161,12 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
             choice2.setOnClickListener(handleClickButtons);
             choice3.setOnClickListener(handleClickButtons);
             choice4.setOnClickListener(handleClickButtons);
-
-            //nextQ.setOnClickListener(new HandleClickButtons(questions.length));
+        }
+        /**
+         * set number of questions for this game
+         */
+        void setNumberOfQuestions(int value){
+            onMCQ.numberOfQuestions(value);
         }
 
         /**
@@ -150,8 +191,10 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
             @Override
             public void onClick(View v) {
                 notifyChanges();
+                final  int [] buttonColors = {Color.BLUE,Color.GREEN};
+                int pos = getLayoutPosition();
                 if (v.getId() == R.id.moreQuestionID) {
-                    int pos = getLayoutPosition();
+
                     if (pos + 1 < numberOfQuestions) {
                         nextQ.setVisibility(View.VISIBLE);
                         onMCQ.scrollDown(pos);
@@ -160,12 +203,42 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
                     }
                 }
                 else {
-                    if(v.getId()==R.id.answer1textView ||v.getId()==R.id.answer2TextView ||
-                            v.getId()==R.id.answer3textView || v.getId()==R.id.answer4TextView) {
-                        onMCQ.choices(v, getLayoutPosition());
+                    if(v.getId()==R.id.answer1textView ){
+                        onMCQ.choices(v, pos);
+                        onMCQ.StoreAnswer(answers);
+                        setColor(pos*4,buttonColors[onMCQ.getColor()]);
+                        setColor(pos*4+1,buttonColors[0]);
+                        setColor(pos*4+2,buttonColors[0]);
+                        setColor(pos*4+3,buttonColors[0]);
+
                     }
+                    else if(v.getId()==R.id.answer2TextView){
+                        onMCQ.choices(v, pos);
+                        onMCQ.StoreAnswer(answers);
+                        setColor(pos*4,buttonColors[0]);
+                        setColor(pos*4+1,buttonColors[onMCQ.getColor()]);
+                        setColor(pos*4+2,buttonColors[0]);
+                        setColor(pos*4+3,buttonColors[0]);
+                    }
+                    else if(v.getId()==R.id.answer3textView){
+                        onMCQ.choices(v, pos);
+                        onMCQ.StoreAnswer(answers);
+                        setColor(pos*4,buttonColors[0]);
+                        setColor(pos*4+1,buttonColors[0]);
+                        setColor(pos*4+2,buttonColors[onMCQ.getColor()]);
+                        setColor(pos*4+3,buttonColors[0]);
+                    }
+                    else if(v.getId()==R.id.answer4TextView) {
+                        setColor(pos*4,buttonColors[0]);
+                        setColor(pos*4+1,buttonColors[0]);
+                        setColor(pos*4+2,buttonColors[0]);
+                        setColor(pos*4+3,buttonColors[onMCQ.getColor()]);
+                    }else
+                    {}
+                    notifyDataSetChanged();
                 }
             }
+
             /**
              * notify holder about changes
              * If View id is  not equals to negative one ( clicked in the layout instead of buttons)

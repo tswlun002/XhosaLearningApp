@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -28,7 +30,7 @@ import java.util.List;
  * Class helps to inflate content into Listview of WordGameDB
  * Subclass of ArrayAdapter<String>
  */
-public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
+public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> implements Filterable{
 
     /**
      * @serialField heading  list of headings of lessons
@@ -37,12 +39,12 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
      */
     private final Context context;
     private final int layout;
-    HashMap<String, List<String> > data;
+    private HashMap<String, List<String> > data;
+    private HashMap<String, List<String> > data1;
     private  Holder holder;
-    LayoutInflater inflater;
-    TableLayout tableLayout1 ;
-    private List<TableRow> TableRowList = new ArrayList<>();
+    private LayoutInflater inflater;
     int position,size;
+    int count =0;
 
     /**
      * Constructor of WordGameDB controller to initialise the fields
@@ -53,6 +55,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
     public LearnAdapter(@NonNull Context context, int resource) {
         this.context =context;
         this.layout =resource;
+
     }
 
 
@@ -80,7 +83,10 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
         int y =0;
         if(data!=null)
             y= getSize();
-        //Toast.makeText(context, y+" data size", Toast.LENGTH_SHORT).show();
+        if(y ==4) {
+            //Toast.makeText(context,  " On 31", Toast.LENGTH_SHORT).show();
+            data1 = new HashMap<>(data);
+        }
         return y;
 
     }
@@ -105,7 +111,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
        if(position< data.size()) {
            holder.descriptionView.setText(data.keySet().toArray()[position].toString());
            addRow(data);
-           //Toast.makeText(context, data.size() + " at binding", Toast.LENGTH_SHORT).show();
+
        }
     }
 
@@ -186,7 +192,10 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
 
 
         }while (!(dataLine.length() ==0));
+
+
         ((TextView) view).setText(dataConcatenated);
+
     }
 
     private void getContent(List<String> column1 ,List<String> column2,List<String> content){
@@ -223,32 +232,115 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> {
             for(int i=0; i<6;i++){
                 TextView column1 = new TextView(context);
                 column1.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
-                //column1.setMinLines(4);
                 column1.setKeyListener(null);
                 column1.setSingleLine(false);
-
                 TextView column2 = new TextView(context);
                 column2.setClickable(false);
                 column2.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
-                //column2.setMinLines(4);
                 column2.setKeyListener(null);
                 column2.setSingleLine(false);
-
-
                 TableRow tableRow = new TableRow(context);
                 column1.setTextColor(Color.BLACK);
-                column1.setPadding(20, 5, 100, 25);
+                column1.setPadding(20, 5, TableLayout.LayoutParams.MATCH_PARENT, 25);
                 column2.setTextColor(Color.BLACK);
-                column2.setPadding(20, 5, 100, 25);
+                column2.setPadding(20, 5, TableLayout.LayoutParams.MATCH_PARENT, 25);
                 tableRow.addView(column1);
                 tableRow.addView(column2);
-                TableRowList.add(tableRow);
                 tableLayout.addView(tableRow);
             }
         }
 
 
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    private  Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+
+            HashMap<String ,List<String>> filter = new HashMap<>();
+
+            if(constraint !=null || constraint.length() !=0 || !constraint.equals("")){
+                String pattern = constraint.toString().toLowerCase().trim();
+                boolean inHeading  =searchHeading(pattern,filter);
+                boolean inContent =false;
+                if(! inHeading){
+                    inContent =searchContent(pattern,filter);
+                }
+                if(! inContent){
+                    filter.putAll(data);
+                }
+
+            }
+           else {
+                 filter.putAll(data);
+            }
+            //Toast.makeText(context, filter.size()+" data size here", Toast.LENGTH_SHORT).show();
+            FilterResults filterResults = new FilterResults();
+            filterResults.values = filter;
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            if(((HashMap) results.values).size() !=data.size()) {
+                data.clear();
+                data.putAll((HashMap) results.values);
+                size = data.size();
+               notifyDataSetChanged();
+               count=0;
+            }else {
+                setSize(-data.size());
+                notifyDataSetChanged();
+                data.putAll(data1);
+                setSize(data.size());
+                notifyDataSetChanged();
+            }
+
+
+        }
+    };
+
+
+     boolean searchHeading(String pattern,HashMap<String ,List<String>> filter ){
+         boolean found = false;
+        for(String key : data.keySet()){
+            if(key.toLowerCase().trim().equalsIgnoreCase(pattern)){
+                filter.put(key,data.get(key));
+                found=true;
+                break;
+            }
+        }
+        return  found;
+     }
+     boolean searchContent(String pattern,HashMap<String ,List<String>> filter){
+         int  found =0;
+         for(String key1 : data.keySet()) {
+             List<String> list = new ArrayList<>();
+             getContent(list,data.get(key1));
+             for (String searched : list) {
+                 if (searched.toLowerCase().equalsIgnoreCase(pattern)) {
+                     filter.put(key1, data.get(key1));
+                     found ++;
+                 }
+             }
+         }
+         if(found >0)
+            return  true;
+         else
+             return false;
+     }
+    void getContent(List<String>list,List<String>values){
+        for(int i =values.size()-1; i>=0; i--){
+            list.add(values.get(i).substring(0,values.get(i).indexOf(";")));
+        }
+    }
+
+
 
 
 

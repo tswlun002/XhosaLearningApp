@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +17,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentStartBinding;
+import com.example.wordgame.model_layer.Learn;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -26,6 +28,7 @@ public class FragmentStart extends Fragment {
      */
     private FragmentStartBinding binding;
     private PlayFragment playObje;
+    private  LearnFragment learn;
     /**
      * create fragment start
      * @param savedInstanceState for FragmentStart
@@ -64,7 +67,7 @@ public class FragmentStart extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         TabAdapter tabAdapter = new TabAdapter(requireActivity());
-
+         learn = tabAdapter.getLearn();
         ViewPager2 viewPager2 = view.findViewById(R.id.viewpager);
         TabLayout tabLayout = view.findViewById(R.id.tabs);
 
@@ -130,17 +133,19 @@ public class FragmentStart extends Fragment {
         searchItem.setVisible(true);
         searchItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         SearchView searchView1 = (SearchView) searchItem.getActionView();
-        searchView1.setQueryHint("Search");
+
+        /*searchView1.setQueryHint("Search");
         searchView1.requestFocusFromTouch();
         searchView1.setIconified(false);
         searchView1.clearFocus();
         searchItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-
+                learn.filter();
+                Toast.makeText(requireContext(), "filtering ", Toast.LENGTH_SHORT).show();
                 return true;
             }
-        });
+        });*/
 
     }
 

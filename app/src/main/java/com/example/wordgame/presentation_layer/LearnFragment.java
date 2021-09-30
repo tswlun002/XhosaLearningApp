@@ -3,6 +3,7 @@ package com.example.wordgame.presentation_layer;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -10,8 +11,12 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.wordgame.R;
@@ -45,6 +50,7 @@ public class LearnFragment extends Fragment {
     private  LearnAdapter learn;
     private final HashMap<String, List<String> >  data = new HashMap<>();
     private FragmentLearnBinding  binding;
+    private OnSearch onSearch;
 
     /**
      * Empty constructor
@@ -78,6 +84,7 @@ public class LearnFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -85,6 +92,52 @@ public class LearnFragment extends Fragment {
         learnViewModel =  new ViewModelProvider(this).get(LearnViewModel.class);
 
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        MenuItem item = menu.findItem(R.id.search);
+        SearchView searchView1 = (SearchView) item.getActionView();
+        searchView1.setQueryHint("Search");
+        searchView1.requestFocusFromTouch();
+        searchView1.setIconified(false);
+        searchView1.clearFocus();
+        searchView1.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                //Toast.makeText(requireContext(), "filtering submitted "+query, Toast.LENGTH_SHORT).show();
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                if (newText == null || newText.length() == 0){
+                    filter("");
+                    Toast.makeText(requireContext(),  "here here here", Toast.LENGTH_SHORT).show();
+                 }
+                else
+                    filter(newText);
+                return true;
+            }
+
+
+        });
+        menu.findItem(R.id.search).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                return true;
+            }
+        });
+    }
+
+    void filter (String query){
+        //Toast.makeText(requireContext(), "filtering ", Toast.LENGTH_SHORT).show();
+        learn.getFilter().filter(query);
+        //onSearch.onSearch();
     }
 
     /**
@@ -100,9 +153,6 @@ public class LearnFragment extends Fragment {
         binding = FragmentLearnBinding.inflate(inflater, container, false);
         setUpListView(binding);
         getAllLearningMaterial(learnViewModel);
-
-        int sidePadding  = getResources().getDimensionPixelSize(R.dimen.sidePadding);
-        int topPadding  = getResources().getDimensionPixelSize(R.dimen.topPadding);
         return binding.getRoot();
 
 

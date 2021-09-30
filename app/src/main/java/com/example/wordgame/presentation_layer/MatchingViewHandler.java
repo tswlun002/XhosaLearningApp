@@ -109,6 +109,12 @@ public class MatchingViewHandler extends DragandDrop implements OnMatchingViewHa
     public void viewClicked(View view) {
         handleViewDrag(view);
     }
+
+    @Override
+    public void numberOfQuestions(int number) {
+
+    }
+
     /**
      * Call drag to in a super class handles drag events
      * @param view being dragged

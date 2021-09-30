@@ -1,6 +1,7 @@
 package com.example.wordgame.model_layer;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "Matching")
@@ -13,9 +14,9 @@ public class Matching {
     private  String questions;
     private String answers;
 
-
+    @Ignore
     public Matching(){}
-
+    @Ignore
     public Matching(int matchingId) {
         this.matchingId = matchingId;
     }

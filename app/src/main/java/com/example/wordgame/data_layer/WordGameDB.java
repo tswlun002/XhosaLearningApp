@@ -11,12 +11,14 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.wordgame.model_layer.Learn;
 import com.example.wordgame.model_layer.Matching;
+import com.example.wordgame.model_layer.TrueFalseGame;
 
-@Database(entities = {Learn.class, Matching.class}, version = 1, exportSchema = true)
+@Database(entities = {Learn.class, Matching.class, TrueFalseGame.class}, version = 2, exportSchema = true)
 public abstract class WordGameDB extends RoomDatabase {
     public static WordGameDB wordGameDB;
     public abstract LearnDao learnDao();
     public abstract MatchingDao matchingDao();
+    public abstract TrueFalseDao trueFalseDao();
      static  int i =0;
      static  Context context1;
     public static synchronized WordGameDB getInstanceLearnDb(Context context){
@@ -38,6 +40,7 @@ public abstract class WordGameDB extends RoomDatabase {
             super.onCreate(db);
             new PopulateLearnDB(wordGameDB).execute();
             new PopulateMatchingDB(wordGameDB,context1).execute();
+            new  PopulateTrueFalseDB(wordGameDB,context1).execute();
 
 
         }
