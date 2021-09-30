@@ -1,16 +1,10 @@
 package com.example.wordgame.presentation_layer;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
 
 /**
  * @Class CreateKeys is the class to create keys that will be used to store our answers
@@ -32,17 +26,16 @@ public  abstract class CreateKeys {
     /**
      * add view into views when user PlayFragment game
      * When user click button, clicked view is added
-     * if view  was not clicked before, change background color to green
-     * Else remove view  from views and set view background color to blue
+     * if view  was not clicked before, color int will equal to one
+     * Else remove view  from views and counter stay  equal to zero
      * Button is identified by keys,
      * key equals to position concatenate with character from ASCII 65 character upwards
      * @param view clicked view
-     * @return  all answers
+     * @return  color int
      */
     @SuppressLint("ResourceAsColor")
     public int  addView(View view, int pos){
         int color =0;
-        Toast.makeText(view.getContext(), "clicked","Added njani".length()).show();
         if(views.containsValue(view)) {
             String key ="";
             for (String key1 : views.keySet()){
@@ -52,21 +45,15 @@ public  abstract class CreateKeys {
                 }
             }
             views.remove(key);
-           // Toast.makeText(view.getContext(), "Removed",key.length()).show();
-
         }
         else {
-            String key = makeKey(pos,((Button)view).getText().toString());
+            String key = makeKey(pos);
             List<String> blueKeys = new ArrayList<>();
             getPreviousAnswers(views,blueKeys,pos);
             remove(views, pos, blueKeys);
             color=1;
             views.put(key,view);
-            //Toast.makeText(view.getContext(), "added njani","Added njani".length()).show();
-
-
         }
-        //Toast.makeText(view.getContext(), "colors ans = "+color ,"added".length()).show();
         return color;
     }
     public void storeAnswer(List<String > answers) {
@@ -97,7 +84,7 @@ public  abstract class CreateKeys {
      * @param pos  is the position of the view
      * @return key equals position + ASCII 65 character upwards
      */
-    private  String makeKey(int pos,String viewText){
+    private  String makeKey(int pos){
         for(int c = 65; c <= getNumberOfQuestions();c++) {
             char cha = ( char)c;
             characters.add(cha+"");
@@ -121,7 +108,6 @@ public  abstract class CreateKeys {
             String key1 = blueKeys.get(i);
             try {
                 if(Integer.parseInt(key1.substring(0,1).trim()) ==position) {
-                    //Toast.makeText((views.get(key1)).getContext(), "Removed",key1.length()).show();
                     views.remove(key1);
                 }
             }

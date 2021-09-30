@@ -73,7 +73,7 @@ public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Hold
         @NonNull
         @Override
         public TrueFalseAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                LayoutInflater inflater = (LayoutInflater)LayoutInflater.from(context);
+                LayoutInflater inflater =LayoutInflater.from(context);
                 View view = inflater.inflate(layout,parent,false);
                 holder= new Holder(view);
                 return holder;
@@ -180,16 +180,15 @@ public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Hold
         @Override
         protected void onPostExecute(List<Bitmap> bitmaps) {
             super.onPostExecute(bitmaps);
-            setSize(1);
+            setSize();
             notifyItemChanged(0,getSize());
         }
     }
     /**
      * set size of the data
-     * @param dataSize is the size of the data
      */
-    void  setSize(int dataSize){
-        size+=dataSize;
+    void  setSize(){
+        size+= 1;
     }
 
     /**
@@ -217,13 +216,13 @@ public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Hold
              */
             public Holder(@NonNull View convertView) {
                         super(convertView);
-                       picView = (ImageView) convertView.findViewById(R.id.QuestionImageViewID);
+                       picView =  convertView.findViewById(R.id.QuestionImageViewID);
                        picView.setOnClickListener(null);
-                       question = (TextView) convertView.findViewById(R.id.picQuestionTextViewID);
+                       question =  convertView.findViewById(R.id.picQuestionTextViewID);
                        question.setOnClickListener(null);
                        page = convertView.findViewById(R.id.page);
-                       True = (Button) convertView.findViewById(R.id.trueButton);
-                       False = (Button) convertView.findViewById(R.id.falseButton);
+                       True =  convertView.findViewById(R.id.trueButton);
+                       False =  convertView.findViewById(R.id.falseButton);
                        handleButtons();
             }
 

@@ -1,9 +1,9 @@
 package com.example.wordgame.presentation_layer;
 
-import android.annotation.SuppressLint;
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,12 +12,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentTrueBinding;
 import com.example.wordgame.model_layer.TrueFalseGame;
@@ -34,21 +28,11 @@ import java.util.List;
  */
 public class TrueFalseFragment extends Fragment  {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     public  TrueFalseViewModel trueFalseViewModel;
     public   TrueFalseAdapter trueFalseController;
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-    private int pos;
-
-    //Ini
-    @SuppressLint("StaticFieldLeak")
-
     private FragmentTrueBinding binding;
     private LayoutInflater inflater;
 
@@ -61,12 +45,10 @@ public class TrueFalseFragment extends Fragment  {
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
-     *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
      * @return A new instance of fragment BlankFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static TrueFalseFragment newInstance(String param1, String param2) {
         TrueFalseFragment fragment = new TrueFalseFragment();
         Bundle args = new Bundle();
@@ -76,13 +58,13 @@ public class TrueFalseFragment extends Fragment  {
         return fragment;
     }
 
+    /**
+     * create fragment from given  savedInstanceState
+     * @param savedInstanceState bundle to save state of the fragment
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
         trueFalseViewModel = new ViewModelProvider(this).get(TrueFalseViewModel.class);
     }
 
@@ -97,7 +79,7 @@ public class TrueFalseFragment extends Fragment  {
      */
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentTrueBinding.inflate(inflater, container, false);
         this.inflater = inflater;
@@ -162,11 +144,6 @@ public class TrueFalseFragment extends Fragment  {
         ((MainActivity) requireActivity()).backUpPressed(TrueFalseFragment.this,R.id.action_trueFalseFragment_to_play);
 
     }
-    /**
-     * handle button event
-     * Show grades for user
-     */
-
 
 
 }
