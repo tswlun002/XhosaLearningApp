@@ -152,6 +152,7 @@ public class LearnFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentLearnBinding.inflate(inflater, container, false);
         setUpListView(binding);
+        Toast.makeText(requireContext(), " Key aphaa",Toast.LENGTH_SHORT).show();
         getAllLearningMaterial(learnViewModel);
         return binding.getRoot();
 
@@ -166,8 +167,11 @@ public class LearnFragment extends Fragment {
         learnViewModel.getAllMaterial().observe(getViewLifecycleOwner(), new Observer<List<Learn>>() {
             @Override
             public void onChanged(List<Learn> learningMaterial) {
+
                 String key="";
+                Toast.makeText(requireContext(), learningMaterial.size()+" 1",Toast.LENGTH_SHORT).show();
                 for(Learn material:learningMaterial) {
+                    Toast.makeText(requireContext(), learningMaterial.size()+" 2",Toast.LENGTH_SHORT).show();
                     List<String> content = new ArrayList<>();
                     key = material.getSection();
                     content.add(material.getContent());

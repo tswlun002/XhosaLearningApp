@@ -200,8 +200,11 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
 
     private void getContent(List<String> column1 ,List<String> column2,List<String> content){
         for(int i =content.size()-1; i>=0; i--){
-            column1.add(content.get(i).substring(0,content.get(i).indexOf(";")));
-            column2.add(content.get(i).substring(content.get(i).indexOf(";")+1));
+            if(content.get(i).length()!= 0){
+                column1.add(content.get(i).substring(0,content.get(i).indexOf(";")));
+                column2.add(content.get(i).substring(content.get(i).indexOf(";")+1));
+            }
+
         }
     }
 
