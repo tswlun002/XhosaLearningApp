@@ -15,7 +15,7 @@ public class FactoryMatchingDB {
     private final MatchingDao matchingDao;
     private final LiveData<List<Matching>>  questions;
     public FactoryMatchingDB(Application application){
-        WordGameDB matchingDB = WordGameDB.getInstanceLearnDb(application);
+        WordGameDB matchingDB = WordGameDB.getInstanceWordGameDb(application);
 
         matchingDao = matchingDB.matchingDao();
         questions = matchingDao.getAll();

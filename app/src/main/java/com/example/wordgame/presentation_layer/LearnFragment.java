@@ -38,19 +38,13 @@ import java.util.stream.Collectors;
  */
 public class LearnFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
     private LearnViewModel learnViewModel;
     private  LearnAdapter learn;
     private final HashMap<String, List<String> >  data = new HashMap<>();
     private FragmentLearnBinding  binding;
-    private OnSearch onSearch;
 
     /**
      * Empty constructor
@@ -78,22 +72,27 @@ public class LearnFragment extends Fragment {
     }
 
     /**
-     *  creates Fragemnt LearnFragment
-     * @param savedInstanceState Fragemnt LearnFragment
+     *  creates Fragment LearnFragment
+     * @param savedInstanceState Fragment LearnFragment
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
         learnViewModel =  new ViewModelProvider(this).get(LearnViewModel.class);
 
 
     }
 
+    /**
+     * Get search menu item
+     * Set up search view for item search
+     * Handle event for search view
+     * Allow to search through content any word
+     * Filtering occur on query text change
+     * @param menu  of learn fragment
+     * @param inflater of the menu
+     */
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -106,9 +105,11 @@ public class LearnFragment extends Fragment {
         searchView1.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-
-                //Toast.makeText(requireContext(), "filtering submitted "+query, Toast.LENGTH_SHORT).show();
-
+                if (query == null || query.length() == 0){
+                    filter("");
+                }
+                else
+                    filter(query);
                 return true;
             }
 
@@ -117,7 +118,6 @@ public class LearnFragment extends Fragment {
 
                 if (newText == null || newText.length() == 0){
                     filter("");
-                    Toast.makeText(requireContext(),  "here here here", Toast.LENGTH_SHORT).show();
                  }
                 else
                     filter(newText);
@@ -135,9 +135,7 @@ public class LearnFragment extends Fragment {
     }
 
     void filter (String query){
-        //Toast.makeText(requireContext(), "filtering ", Toast.LENGTH_SHORT).show();
         learn.getFilter().filter(query);
-        //onSearch.onSearch();
     }
 
     /**
@@ -148,11 +146,10 @@ public class LearnFragment extends Fragment {
      * @return view of Fragemnt LearnFragment
      */
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentLearnBinding.inflate(inflater, container, false);
         setUpListView(binding);
-        Toast.makeText(requireContext(), " Key aphaa",Toast.LENGTH_SHORT).show();
         getAllLearningMaterial(learnViewModel);
         return binding.getRoot();
 
@@ -169,9 +166,7 @@ public class LearnFragment extends Fragment {
             public void onChanged(List<Learn> learningMaterial) {
 
                 String key="";
-                Toast.makeText(requireContext(), learningMaterial.size()+" 1",Toast.LENGTH_SHORT).show();
                 for(Learn material:learningMaterial) {
-                    Toast.makeText(requireContext(), learningMaterial.size()+" 2",Toast.LENGTH_SHORT).show();
                     List<String> content = new ArrayList<>();
                     key = material.getSection();
                     content.add(material.getContent());

@@ -5,10 +5,8 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.wordgame.data_layer.MatchingDao;
 import com.example.wordgame.data_layer.TrueFalseDao;
 import com.example.wordgame.data_layer.WordGameDB;
-import com.example.wordgame.model_layer.Matching;
 import com.example.wordgame.model_layer.TrueFalseGame;
 
 import java.util.List;
@@ -17,7 +15,7 @@ public class FactoryTrueFalseDB {
     private final TrueFalseDao trueFalseDao;
     private final LiveData<List<TrueFalseGame>> questions;
     public FactoryTrueFalseDB(Application application){
-        WordGameDB trueFalseDB = WordGameDB.getInstanceLearnDb(application);
+        WordGameDB trueFalseDB = WordGameDB.getInstanceWordGameDb(application);
 
         trueFalseDao = trueFalseDB.trueFalseDao();
         questions = trueFalseDao.getAll();

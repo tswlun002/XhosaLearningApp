@@ -22,11 +22,6 @@ public interface OnMultipleChoice {
      */
     public void onMultipleChoice(Button button1, Button button2, Button button3, Button button4);
 
-    /**
-     * handle  scroll down button
-     * @param pos is the position of the scroll button
-     */
-    public void scrollDown(int pos);
 
     /**
      * set number of questions

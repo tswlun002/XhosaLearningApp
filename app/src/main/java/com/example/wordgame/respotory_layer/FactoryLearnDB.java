@@ -16,7 +16,7 @@ public class FactoryLearnDB {
     private final LiveData<List<Learn>> allNotes;
 
     public FactoryLearnDB(Application application){
-        WordGameDB wordGameDB = WordGameDB.getInstanceLearnDb(application);
+        WordGameDB wordGameDB = WordGameDB.getInstanceWordGameDb(application);
 
         learnDao = wordGameDB.learnDao();
         allNotes = learnDao.getAll();

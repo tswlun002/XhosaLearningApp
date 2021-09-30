@@ -18,27 +18,23 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-class PopulateMatchingDB extends AsyncTask<Void,Void,Void> {
+class PopulateMatchingDB extends AsyncTask<Context,Void,Void> {
     private final MatchingDao matchingDao ;
-    private Context context;
-
-    protected PopulateMatchingDB(WordGameDB wordGameDB,Context context){
-
+    protected PopulateMatchingDB(WordGameDB wordGameDB){
         matchingDao=wordGameDB.matchingDao();
-        this.context =context;
 
     }
 
 
     @Override
-    protected Void doInBackground(Void... voids) {
+    protected Void doInBackground(Context... contexts) {
         List<String> questions  = new ArrayList<>();
         List<String> answers  = new ArrayList<>();
         List<String> instructions  = new ArrayList<>();
 
         String data ="";
         try {
-            data = getData(questions,answers,instructions);
+            data = getData(questions,answers,instructions,contexts[0]);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -63,7 +59,8 @@ class PopulateMatchingDB extends AsyncTask<Void,Void,Void> {
         return null;
     }
 
-    private String getData(List<String> questions,List<String> answers,List<String> instructions) throws IOException {
+    private String getData(List<String> questions,List<String> answers,List<String> instructions,
+                           Context context) throws IOException {
 
 
         String tittleAndMarks = "";
@@ -92,14 +89,12 @@ class PopulateMatchingDB extends AsyncTask<Void,Void,Void> {
                      }
                  }
              }
-            count =0;
             bufferedReader.close();
 
         }catch (Exception e){
             e.printStackTrace();
 
         }
-
 
         return  tittleAndMarks;
     }

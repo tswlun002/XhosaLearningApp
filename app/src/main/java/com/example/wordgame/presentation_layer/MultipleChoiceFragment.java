@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,6 +16,12 @@ import android.view.ViewGroup;
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentMultipleChoiceBinding;
+import com.example.wordgame.model_layer.MultipleChoice;
+import com.example.wordgame.model_layer.MultipleChoiceViewModel;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,21 +30,11 @@ import com.example.wordgame.databinding.FragmentMultipleChoiceBinding;
  */
 public class MultipleChoiceFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-    private  RecyclerView recyclerView;
-    private final String [] questions={
-            "home is called ?",
-            "chair is called?",
-            "food is called?",
-            "walking is called?"
-    };
+    private MultipleChoiceViewModel multipleChoiceViewModel;
+    MultipleChoiceAdapter multipleChoiceController;
+    HashMap<String,List<String>> data= new HashMap<>();
     private FragmentMultipleChoiceBinding binding ;
     private LayoutInflater inflater;
 
@@ -66,39 +64,67 @@ public class MultipleChoiceFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+       multipleChoiceViewModel = new ViewModelProvider(this).get(MultipleChoiceViewModel.class);
     }
 
     /**
      * creates view of the fragment
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
-     * @return
+     * @param inflater of multiple choice fragment
+     * @param container  of multiple choice fragment
+     * @param savedInstanceState of multiple choice fragment
+     * @return  multiple choice fragment view
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
         binding= FragmentMultipleChoiceBinding.inflate(inflater, container, false);
         this.inflater =inflater;
         View view =binding.getRoot();
-        setUpListView(binding,view);
-        /*((MainActivity)requireActivity()).setID(R.id.action_multipleChoiceFragment_to_play);
-        ((MainActivity)requireActivity()).setView(binding.getRoot());*/
+        setUpRecycleView(binding,view);
+        setData(multipleChoiceViewModel);
+        setRecycleView();
         return  view;
     }
 
     /**
+     * Get data of the multiple choice game from database
+     * Store questions and figures of the game that will be used during play
+     * All data is then sent to Recycle view adapter
+     * @param multipleChoiceViewModel is the view model instance of this fragment
+     */
+    private  void setData(MultipleChoiceViewModel multipleChoiceViewModel){
+        multipleChoiceViewModel.getGameMaterial().observe(getViewLifecycleOwner(), new Observer<List<MultipleChoice>>() {
+            @Override
+            public void onChanged(List<MultipleChoice> multipleChoiceData) {
+                List<String> choices = new ArrayList<>();
+                int size = multipleChoiceData.size();
+
+                for(int i =0; i< size;i++) {
+                    MultipleChoice multipleChoice = multipleChoiceData.get(i);
+                    String question =multipleChoice.getQuestion();
+                    choices.add(multipleChoice.getChoiceOne());
+                    choices.add(multipleChoice.getChoiceTwo());
+                    choices.add(multipleChoice.getChoiceThree());
+                    choices.add(multipleChoice.getChoiceFour());
+                    data.put(question,choices);
+
+                }
+                multipleChoiceController.setData(data);
+
+            }
+        });
+
+    }
+
+    private void setRecycleView(){
+         multipleChoiceController.setRecycleView(binding.mulplechoiceListviewId);
+    }
+    /**
      * set up List view with data content
      * @param binding  FragmentTranslationBinding
      */
-    private  void setUpListView(FragmentMultipleChoiceBinding binding,View view){
-        MultipleChoiceAdapter multipleChoiceController = new MultipleChoiceAdapter(requireContext(), questions,  R.layout.multiple_choice_adapter);
+    private  void setUpRecycleView(FragmentMultipleChoiceBinding binding, View view){
+        multipleChoiceController = new MultipleChoiceAdapter(requireContext(),   R.layout.multiple_choice_adapter);
         binding.mulplechoiceListviewId.setAdapter(multipleChoiceController);
         binding.mulplechoiceListviewId.setLayoutManager(new LinearLayoutManager(requireContext()));
         RecyclerView recyclerView = view.findViewById(R.id.mulplechoiceListviewId);

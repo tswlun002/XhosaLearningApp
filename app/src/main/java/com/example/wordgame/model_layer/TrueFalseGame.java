@@ -14,7 +14,6 @@ public class TrueFalseGame{
         private String instructions;
         private  int totalMarks;
 
-     public  TrueFalseGame(){}
     public TrueFalseGame(int level, String question,  String figures, String answers,String instructions,int totalMarks) {
         this.level = level;
         this.question = question;
@@ -24,9 +23,6 @@ public class TrueFalseGame{
         this.totalMarks=totalMarks;
     }
 
-    public TrueFalseGame(int trueFalseId) {
-        this.trueFalseId = trueFalseId;
-    }
 
     public int getTrueFalseId() {
         return trueFalseId;

@@ -3,6 +3,8 @@ package com.example.wordgame.presentation_layer;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 /**
@@ -10,8 +12,8 @@ import java.util.List;
  * Uses abstract class CreateKeys to store user answer and
  * implement OnMultipleChoice to handle button clicks on MQC game
  */
-public class HandleMQCButtons extends CreateKeys implements OnMultipleChoice {
-    private int color;
+public class HandleMQCButtons extends CreateKeys implements OnMultipleChoice ,OnScroll{
+    private int color,numberOfQuestions;
     public HandleMQCButtons(){
        super();
     }
@@ -40,9 +42,11 @@ public class HandleMQCButtons extends CreateKeys implements OnMultipleChoice {
      * scroll recycle view to the next position
      * @param position current position , scroll from
      */
-    @Override
-    public void scrollDown(int position) {
-        /*recycleView.scrollToPosition(position+1)*/
+     @Override
+    public void scrollDown(int position, RecyclerView recyclerView) {
+         if (position + 1 < getNumberQuestions())
+             recyclerView.scrollToPosition(position+1);
+
     }
     /**
      * set number of questions
@@ -50,6 +54,7 @@ public class HandleMQCButtons extends CreateKeys implements OnMultipleChoice {
      */
     @Override
     public void numberOfQuestions(int number) {
+        numberOfQuestions=number;
         setNumberOfQuestions(number);
     }
 
@@ -76,6 +81,9 @@ public class HandleMQCButtons extends CreateKeys implements OnMultipleChoice {
     @Override
     public void StoreAnswer(List<String> answers) {
          storeAnswer(answers);
+    }
+    int getNumberQuestions(){
+        return numberOfQuestions;
     }
 
 }
