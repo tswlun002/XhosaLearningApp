@@ -5,4 +5,5 @@ import android.view.View;
 public interface OnMatchingViewHandler {
 
     public  void viewClicked(View view);
+    public  void numberOfQuestions(int number);
 }

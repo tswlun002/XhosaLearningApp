@@ -12,6 +12,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 public class TabAdapter  extends FragmentStateAdapter {
 
     private PlayFragment status;
+    private  LearnFragment status1;
 
     /**
      * constructor initialise parent class FragmentStateAdapter
@@ -44,6 +45,7 @@ public class TabAdapter  extends FragmentStateAdapter {
                 break;
         }
         assert fragment != null;
+
         return fragment;
     }
 
@@ -62,6 +64,9 @@ public class TabAdapter  extends FragmentStateAdapter {
 
     public PlayFragment getStatus(){
         return  status;
+    }
+    public LearnFragment getLearn(){
+        return  status1;
     }
 }
 

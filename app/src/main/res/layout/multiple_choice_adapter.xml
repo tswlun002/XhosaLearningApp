@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/layoutbackground"
     tools:context=".presentation_layer.MultipleChoiceFragment">
     <TextView
         android:id="@+id/page"
@@ -14,7 +15,7 @@
         android:text="@string/pagenumber"
         app:layout_constraintBottom_toTopOf="@id/guideline20"
         app:layout_constraintEnd_toEndOf="@id/guideline37"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline25"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="RtlHardcoded" />
     <TextView
@@ -23,14 +24,16 @@
         android:layout_height="0dp"
         android:layout_marginBottom="1dp"
         android:elevation="0dp"
+        android:background="@color/purple_200"
         android:focusable="false"
+        android:textColor="@color/black"
         android:focusableInTouchMode="false"
         android:gravity="center"
         android:text="@string/english_word_or_phrase"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/guideline27"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline26"
+        app:layout_constraintStart_toStartOf="@id/guideline25"
         app:layout_constraintTop_toBottomOf="@id/guideline20" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -59,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.87" />
+        app:layout_constraintGuide_percent="0.84" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/answer2TextView"
@@ -73,7 +76,6 @@
         android:focusableInTouchMode="false"
         android:gravity="center"
         android:text="@string/answer2"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/guideline23"
         app:layout_constraintEnd_toStartOf="@id/guideline26"
         app:layout_constraintStart_toEndOf="@id/guideline24"
@@ -109,7 +111,6 @@
         android:gravity="center"
         android:includeFontPadding="false"
         android:text="@string/answer1"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/guideline22"
         app:layout_constraintEnd_toStartOf="@id/guideline24"
         app:layout_constraintStart_toEndOf="@id/guideline25"
@@ -122,14 +123,12 @@
         android:layout_gravity="center"
         android:layout_margin="3dp"
         android:layout_marginStart="5dp"
-
         android:clickable="true"
         android:contextClickable="true"
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:gravity="center"
         android:text="@string/answer3"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/guideline22"
         app:layout_constraintEnd_toStartOf="@id/guideline26"
         app:layout_constraintStart_toEndOf="@id/guideline24"
@@ -147,7 +146,6 @@
         android:focusableInTouchMode="false"
         android:gravity="center"
         android:text="@string/answer4"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/guideline23"
         app:layout_constraintEnd_toStartOf="@id/guideline24"
         app:layout_constraintStart_toEndOf="@id/guideline25"
@@ -186,12 +184,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.92" />
+        app:layout_constraintGuide_percent="0.89" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline37"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.15" />
 </androidx.constraintlayout.widget.ConstraintLayout>

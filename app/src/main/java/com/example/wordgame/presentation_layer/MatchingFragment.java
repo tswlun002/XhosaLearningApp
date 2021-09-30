@@ -4,13 +4,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentMatchingBinding;
+import com.example.wordgame.model_layer.LearnViewModel;
+import com.example.wordgame.model_layer.Matching;
+import com.example.wordgame.model_layer.MatchingViewModel;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +38,7 @@ public class MatchingFragment extends Fragment {
     OnMatchingViewHandler onMatchingViewHandler;
     private FragmentMatchingBinding binding;
     private  LayoutInflater inflater;
+    private MatchingViewModel matchingViewModel;
     //words to generate questions
     private String [] myEngWordsArr = {"dog", "sheep", "goat", "horse"};
     private String [] xhosaTransWordArr =  {
@@ -39,9 +48,6 @@ public class MatchingFragment extends Fragment {
     };
 
     //ids of textViews and edit texts
-    private final int [] idsArrayEngTVs = {R.id.engTextView1, R.id.engTextView2,R.id.engTextView3, R.id.engTextView4};
-    private int [] idsArrayXhosaTVs = {R.id.xhosaMatchTextView1, R.id.xhosaMatchTextView2,R.id.xhosaMatchTextView3, R.id.xhosaMatchTextView4};
-    private final int [] idsArrayEditText = {R.id.xhosaEditText1, R.id.xhosaEditText2,R.id.xhosaEditText3, R.id.xhosaEditText4};
 
 
     public MatchingFragment() {
@@ -75,6 +81,9 @@ public class MatchingFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        /*matchingViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.
+                getInstance(this.requireActivity().getApplication())).get(MatchingViewModel.class);*/
+        matchingViewModel = new ViewModelProvider(this).get(MatchingViewModel.class);
     }
 
     /**
@@ -83,9 +92,26 @@ public class MatchingFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         binding = FragmentMatchingBinding.inflate(inflater, container, false);
         this.inflater =inflater;
+        MatchingViewHandler matchingViewHandler = new MatchingViewHandler(binding.getRoot());
+        try {
+            onMatchingViewHandler =matchingViewHandler;
+        }catch (ClassCastException  e){
+            Toast.makeText(requireContext(), "Can't cast matchingViewHandler to  onMatchingViewHandler",
+                    Toast.LENGTH_SHORT).show();;
+        }
+
+        matchingViewModel.getGameMaterial().observe(getViewLifecycleOwner(), new Observer<List<Matching>>() {
+            @Override
+            public void onChanged(List<Matching> matchings) {
+                Toast.makeText(requireContext(), matchings.size()+"",  Toast.LENGTH_SHORT).show();
+                matchingViewHandler.setData(matchings);
+            }
+        });
         return binding.getRoot();
+
     }
 
     /**
@@ -100,7 +126,6 @@ public class MatchingFragment extends Fragment {
     }
 
     void handleDragDrop(){
-        onMatchingViewHandler = new MatchingViewHandler();
         onMatchingViewHandler.viewClicked(binding.xhosaMatchTextView1);
         onMatchingViewHandler.viewClicked(binding.xhosaMatchTextView2);
         onMatchingViewHandler.viewClicked(binding.xhosaMatchTextView3);

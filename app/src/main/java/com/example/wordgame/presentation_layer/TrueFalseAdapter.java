@@ -2,19 +2,25 @@ package com.example.wordgame.presentation_layer;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wordgame.R;
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class helps to inflate content into Listview of  Play
@@ -22,72 +28,186 @@ import com.example.wordgame.R;
  */
 public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Holder> {
         /**
-         * @serialField hearding  list of headings of lessons
+         * @serialField heading  list of headings of lessons
          * @serialField lesson  list of lessons
          * @serialField context  of fragment PlayFragment
          */
-        private final String [] questions;
-        private final int[] lesson;
+        private List<String> questions;
+        private final List<Bitmap> figures = new ArrayList<>() ;
+        private final List<String> answers = new ArrayList<>() ;
         private final Context context;
         private final int  layout;
+        private  int size;
         private Holder holder;
+        private final List<Integer>  colors = new ArrayList<>();
+        private  final  int [] buttonColors = {Color.BLUE,Color.GREEN};
         private final OnTrueFalseQuestion onTruefalse;
+
 
         /**
          * Constructor of PlayFragment controller to initialise the fields
          * @param context of fragment TrueFalse
-         * @param heading  list of headings of lessons
-         * @param lessons   list of lessons
          * @param resource  number the layout to be inflated into listview
          */
-        public TrueFalseAdapter(Context context, String[] heading, int[] lessons, int resource) {
-                this.lesson=lessons;
-                this.questions =heading;
+        public TrueFalseAdapter(Context context, int resource) {
+
                 this.context =context;
                 this.layout=resource;
                 this.onTruefalse=  new HandleTrueFalse();
-        }
 
+        }
+    /**
+     * number of elements to inflated into listview
+     * @return number of the element inflated
+     */
+
+    @Override
+    public int getItemCount() {
+        int y=0;
+        if(questions!=null)
+            y=getSize();
+
+        return y ;
+    }
 
         @NonNull
         @Override
         public TrueFalseAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                LayoutInflater inflater = (LayoutInflater)LayoutInflater.from(context);
+                LayoutInflater inflater =LayoutInflater.from(context);
                 View view = inflater.inflate(layout,parent,false);
                 holder= new Holder(view);
                 return holder;
         }
 
+    /***
+     * bit view of the holder
+     * set text for True button and False button
+     * set Figure for each item  set questions and pages number
+     * @param viewHolder is the holder  of this adapter class
+     * @param position is the current position in the recycle view
+     */
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void onBindViewHolder(@NonNull Holder viewHolder, int position) {
+            viewHolder.True.setText("True");
+            viewHolder.False.setText("False");
+            viewHolder.True.setBackgroundColor(getColors().get(position*2));
+            viewHolder.False.setBackgroundColor(getColors().get(position*2+1));
+            viewHolder.picView.setImageBitmap(figures.get(position));
+            viewHolder.question.setText(questions.get(position));
+            viewHolder.page.setText((position+1)+"/"+ questions.size()+"");
+            holder.setNumberOfQuestions(questions.size()+65);
 
-        @SuppressLint("SetTextI18n")
+
+    }
+
+
+    /**
+     * set up data into recycle view using helper class LoadImage
+     * generate initial colors for buttons
+     * @param questionsList is the data of TrueFalse being set
+     * @param pictures  is list of url of the pictures
+     */
+    public void setData(List<String> questionsList, List<String> pictures) throws IOException {
+           questions =questionsList;
+           for(String picUrl : pictures){
+               new LoadImage().execute(picUrl);
+           }
+           generateColors(questions.size());
+
+    }
+
+    /**viewHolder
+     * generate initial list of colors of buttons for all questions
+     * List button is 2 times activity questions because each question contains two buttons
+     * All colors  initial are set to zero
+     * Even index store colors for true  buttons
+     * And odd index store  colors for false buttons
+     * @param setSize  number of questions set for activity
+     */
+    private  void generateColors(int setSize){
+        int size  = setSize*2;
+         for(int i =0 ; i<size; i++)
+             colors.add(Color.BLUE);
+    }
+
+    /**
+     * set new color into colors list at at index
+     * @param index where we set the new color
+     * @param color new color being set
+     */
+    private void setColor(int index, int color){
+        colors.set(index,color);
+    }
+
+    /**
+     * @return   list of  of all colors  for all questions
+     */
+    private  List<Integer> getColors(){
+        return  colors;
+    }
+
+    /**
+     * @Class  LoadImage  is the class that runs on back ground to help to load images from internet
+     * All the images are stored in list and set on a recycle view
+     */
+    private class LoadImage extends  AsyncTask<String ,Void ,List<Bitmap>>{
+
+        /**
+         * Get images using url from database
+         * This is done on background
+         * All the loaded images are store on list called figures
+         * @param strings is the url string which used to generate images
+         * @return list of bitmap images
+         */
         @Override
-        public void onBindViewHolder(@NonNull Holder viewHolder, int position) {
-                viewHolder.picView.setImageResource((lesson[position]));
-                viewHolder.True.setText("True");
-                 viewHolder.False.setText("False");
-                viewHolder.descriptionView.setText(questions[position]);
-                viewHolder.page.setText((position+1)+"/"+ questions.length+"");
-
-
+        protected List<Bitmap> doInBackground(String... strings) {
+            Bitmap bitmap = null;
+            try {
+                bitmap = Picasso.with(context).load(strings[0]).get();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            figures.add(bitmap);
+            return figures;
         }
 
         /**
-         * number of elements to inflated into listview
-         * @return number of the element inflated
+         * Increment number of item of the recycle view as they are being loaded
+         * Notify recycle view about the data changes
+         * @param bitmaps is the list of bitmap
          */
-
         @Override
-        public int getItemCount() {
-                return questions.length;
+        protected void onPostExecute(List<Bitmap> bitmaps) {
+            super.onPostExecute(bitmaps);
+            setSize();
+            notifyItemChanged(0,getSize());
         }
+    }
+    /**
+     * set size of the data
+     */
+    void  setSize(){
+        size+= 1;
+    }
+
+    /**
+     * get size of the data
+     * @return size of the current store data
+     */
+    int getSize(){
+        return size;
+    }
 
 
-        /**
-         * @Class  Holder is the inner class that contain features of the TruFalse game
-         */
-          class  Holder  extends RecyclerView.ViewHolder{
+
+
+    /**
+     *@Class  Holder is the inner class that contain features of the TruFalse game
+     */
+     class  Holder  extends RecyclerView.ViewHolder{
             ImageView picView;
-            TextView descriptionView,page;
+            TextView question,page;
             Button  True,False;
 
             /**
@@ -96,24 +216,28 @@ public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Hold
              */
             public Holder(@NonNull View convertView) {
                         super(convertView);
-                       picView = (ImageView) convertView.findViewById(R.id.QuestionImageViewID);
-                       descriptionView = (TextView) convertView.findViewById(R.id.picQuestionTextViewID);
+                       picView =  convertView.findViewById(R.id.QuestionImageViewID);
+                       picView.setOnClickListener(null);
+                       question =  convertView.findViewById(R.id.picQuestionTextViewID);
+                       question.setOnClickListener(null);
                        page = convertView.findViewById(R.id.page);
-                       True = (Button) convertView.findViewById(R.id.trueButton);
-                       True.setBackgroundColor(Color.BLUE);
-                       False = (Button) convertView.findViewById(R.id.falseButton);
-                       False.setBackgroundColor(Color.BLUE);
+                       True =  convertView.findViewById(R.id.trueButton);
+                       False =  convertView.findViewById(R.id.falseButton);
                        handleButtons();
-
             }
 
             /**
              * helper method to set click listeners of the buttons
              */
             private   void handleButtons(){
-                        Click click = new Click();
-                        True.setOnClickListener(click);
-                        False.setOnClickListener(click);
+                        True.setOnClickListener(new Click());
+                        False.setOnClickListener(new Click());
+            }
+            /**
+             * set number of questions for this game
+             */
+            void setNumberOfQuestions(int value){
+                onTruefalse.numberOfQuestions(value);
             }
 
             /**
@@ -128,12 +252,27 @@ public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Hold
                  */
                 @Override
                 public void onClick(View view) {
+                    int pos  = getLayoutPosition();
                     notifyChanges();
-                    if(view.getId()==R.id.trueButton)
-                        onTruefalse.trueButton(view,getLayoutPosition());
-                    else if(view.getId()==R.id.falseButton)
-                        onTruefalse.falseButton(view,getLayoutPosition());
+                    if(view.getId()==R.id.trueButton) {
+                        onTruefalse.trueButton(view, pos);
+                        onTruefalse.StoreAnswer(answers);
+                        setColor(pos*2,buttonColors[onTruefalse.getColor()]);
+                        setColor(pos*2+1,buttonColors[0]);
+
+                    }
+                    else if(view.getId()==R.id.falseButton) {
+                        onTruefalse.falseButton(view, pos);
+                        onTruefalse.StoreAnswer(answers);
+                        setColor(pos*2+1,buttonColors[onTruefalse.getColor()]);
+                        setColor(pos*2,buttonColors[0]);
+                    }else {}
+
+                    notifyDataSetChanged();
+
                 }
+
+
 
                  /**
                  * notify holder about changes
@@ -143,7 +282,7 @@ public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Hold
                     holder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            if(! (v.getId() ==-1))
+                            if((v.getId() !=-1  | v.getId()!=R.id.picQuestionTextViewID | v.getId()!=R.id.picQuestionTextView))
                                 notifyItemChanged(holder.getAdapterPosition());
                         }
                     });

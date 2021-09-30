@@ -1,12 +1,15 @@
 package com.example.wordgame.presentation_layer;
 import android.view.View;
 
+import java.util.List;
+
 /**
  * @Class HandleTrueFalse is used to handle button clicks of TrueFalse game
  * Uses abstract class CreateKeys to store user answer and
  * implement OnTrueFalseQuestion to handle button clicks on TrueFalse game
  */
 public class HandleTrueFalse extends CreateKeys implements OnTrueFalseQuestion {
+    private int color ;
     public HandleTrueFalse(){
         super();
     }
@@ -17,7 +20,7 @@ public class HandleTrueFalse extends CreateKeys implements OnTrueFalseQuestion {
      */
     @Override
     public void trueButton(View view, int position) {
-        addView(view,position);
+        setColor(addView(view,position));
     }
     /**
      * handle false button on True False game
@@ -26,6 +29,38 @@ public class HandleTrueFalse extends CreateKeys implements OnTrueFalseQuestion {
      */
     @Override
     public void falseButton(View view, int position) {
-        addView(view,position);
+        setColor(addView(view,position));
+    }
+
+    /**
+     * set number of questions
+     * @param number number of questions
+     */
+    @Override
+    public void numberOfQuestions(int number) {
+          setNumberOfQuestions(number);
+    }
+
+    /**
+     * set color in the clicked button
+     * @param value of the color
+     */
+    @Override
+    public void setColor(int value){
+        color =value;
+    }
+
+    /**
+     * get value of the color
+     * @return value of the color
+     */
+    @Override
+    public int getColor(){
+        return color;
+    }
+
+    @Override
+    public void StoreAnswer(List<String > answers) {
+        storeAnswer(answers);
     }
 }

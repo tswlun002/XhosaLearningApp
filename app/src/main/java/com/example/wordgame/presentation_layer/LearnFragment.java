@@ -3,6 +3,7 @@ package com.example.wordgame.presentation_layer;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -10,8 +11,12 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.wordgame.R;
@@ -33,14 +38,9 @@ import java.util.stream.Collectors;
  */
 public class LearnFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
     private LearnViewModel learnViewModel;
     private  LearnAdapter learn;
     private final HashMap<String, List<String> >  data = new HashMap<>();
@@ -72,19 +72,70 @@ public class LearnFragment extends Fragment {
     }
 
     /**
-     *  creates Fragemnt LearnFragment
-     * @param savedInstanceState Fragemnt LearnFragment
+     *  creates Fragment LearnFragment
+     * @param savedInstanceState Fragment LearnFragment
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        setHasOptionsMenu(true);
         learnViewModel =  new ViewModelProvider(this).get(LearnViewModel.class);
 
 
+    }
+
+    /**
+     * Get search menu item
+     * Set up search view for item search
+     * Handle event for search view
+     * Allow to search through content any word
+     * Filtering occur on query text change
+     * @param menu  of learn fragment
+     * @param inflater of the menu
+     */
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        MenuItem item = menu.findItem(R.id.search);
+        SearchView searchView1 = (SearchView) item.getActionView();
+        searchView1.setQueryHint("Search");
+        searchView1.requestFocusFromTouch();
+        searchView1.setIconified(false);
+        searchView1.clearFocus();
+        searchView1.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if (query == null || query.length() == 0){
+                    filter("");
+                }
+                else
+                    filter(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                if (newText == null || newText.length() == 0){
+                    filter("");
+                 }
+                else
+                    filter(newText);
+                return true;
+            }
+
+
+        });
+        menu.findItem(R.id.search).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                return true;
+            }
+        });
+    }
+
+    void filter (String query){
+        learn.getFilter().filter(query);
     }
 
     /**
@@ -95,12 +146,11 @@ public class LearnFragment extends Fragment {
      * @return view of Fragemnt LearnFragment
      */
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentLearnBinding.inflate(inflater, container, false);
         setUpListView(binding);
         getAllLearningMaterial(learnViewModel);
-
         return binding.getRoot();
 
 
@@ -114,6 +164,7 @@ public class LearnFragment extends Fragment {
         learnViewModel.getAllMaterial().observe(getViewLifecycleOwner(), new Observer<List<Learn>>() {
             @Override
             public void onChanged(List<Learn> learningMaterial) {
+
                 String key="";
                 for(Learn material:learningMaterial) {
                     List<String> content = new ArrayList<>();
