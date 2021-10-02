@@ -50,7 +50,7 @@ public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         inflater = LayoutInflater.from(context);
         View view = inflater.inflate(layout,parent,false);
-       holder=  new Holder(view);
+       holder =  new Holder(view);
        return holder;
     }
 

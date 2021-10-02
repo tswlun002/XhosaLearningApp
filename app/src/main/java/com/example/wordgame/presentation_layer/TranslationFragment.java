@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentTranslationBinding;
@@ -84,22 +83,17 @@ public class TranslationFragment extends Fragment {
         binding= FragmentTranslationBinding.inflate(inflater, container, false);
         this.inflater =inflater;
         setUpListView(binding);
-        setData(translationViewModel);
         return binding.getRoot();
     }
 
     void setData(TranslationViewModel translationViewModel){
-        translationViewModel.getGameMaterial().observe(getViewLifecycleOwner(), new Observer<List<TranslationGame>>() {
+        translationViewModel.getGameMaterial().observe(this, new Observer<List<TranslationGame>>() {
             @Override
             public void onChanged(List<TranslationGame> translationGames) {
                 for(TranslationGame translationGame: translationGames){
-                    data.put(translationGame.getQuestion(),translationGame.getHints());
+                    data.put(translationGame.getAnswers(),translationGame.getHints());
                 }
-                Toast.makeText(requireContext(), data.size()+"",Toast.LENGTH_SHORT).show();
-                translationController.setData(data);
             }
-
-
         });
     }
     /**
