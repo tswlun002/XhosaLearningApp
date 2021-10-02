@@ -69,7 +69,7 @@ class PopulateMatchingDB extends AsyncTask<Context,Void,Void> {
 
 
             BufferedReader bufferedReader = new BufferedReader(
-                    new InputStreamReader( context.getResources().getAssets().open("days.txt"),
+                    new InputStreamReader( context.getResources().getAssets().open("matching"),
                     StandardCharsets.UTF_8));
             int count =0;
              while ( (lineData =bufferedReader.readLine() )!=null){

@@ -14,17 +14,25 @@ import java.util.List;
 public class FactoryLearnDB {
     private final LearnDao learnDao;
     private final LiveData<List<Learn>> allNotes;
+    private final LiveData<List<Learn>> allNotesLevel1;
+   // private final LiveData<List<Learn>> allNotesLeve2;
+
+
 
     public FactoryLearnDB(Application application){
         WordGameDB wordGameDB = WordGameDB.getInstanceWordGameDb(application);
 
         learnDao = wordGameDB.learnDao();
         allNotes = learnDao.getAll();
+        allNotesLevel1 = learnDao.level1();
 
     }
 
     public LiveData<List<Learn>> getAllNotes() {
         return allNotes;
+    }
+    public LiveData<List<Learn>> getAllNotesLevel1() {
+        return allNotesLevel1;
     }
 
     public  void insert(Learn learn){

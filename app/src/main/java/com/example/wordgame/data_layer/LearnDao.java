@@ -17,17 +17,12 @@ public interface LearnDao {
 
         @Query("SELECT * FROM Learn")
         LiveData<List<Learn>> getAll();
-        @Query("SELECT * FROM LEARN WHERE section= 'Vowels' AND level ==1")
-        LiveData<List<Learn>> getVowels();
-        @Query("SELECT * FROM LEARN WHERE section= 'Consonants Or Amaqabane' AND level ==1")
-        LiveData<List<Learn>> getConsonants();
-        @Query("SELECT * FROM LEARN WHERE section= 'Numbers Or Izibalo' AND level ==1")
-        LiveData<List<Learn>> getNumbers();
-        @Query("SELECT * FROM LEARN WHERE section= 'Clicks Or Izandi' AND level ==1")
-        LiveData<List<Learn>> getClicks();
-        @Query("SELECT * FROM Learn WHERE learnId IN (:userIds)")
-        List<Learn> loadAllByIds(int[] userIds);
-
+        @Query("SELECT * FROM LEARN WHERE  level ==1 or level ==2")
+        LiveData<List<Learn>> level1();
+        @Query("SELECT * FROM LEARN WHERE level ==2")
+        LiveData<List<Learn>> level2();
+        @Query("SELECT * FROM LEARN WHERE level ==3")
+        LiveData<List<Learn>> level3();
         @Query("SELECT * FROM Learn WHERE level LIKE :first AND " +
                 "section LIKE :last LIMIT 1")
         Learn findByName(String first, String last);

@@ -43,7 +43,6 @@ public class LearnFragment extends Fragment {
 
     private LearnViewModel learnViewModel;
     private  LearnAdapter learn;
-    private final HashMap<String, List<String> >  data = new HashMap<>();
     private FragmentLearnBinding  binding;
 
     /**
@@ -157,16 +156,18 @@ public class LearnFragment extends Fragment {
     }
 
     /**
-     * get all learning material
+     * get all learning material for level one
      * @param learnViewModel holder of the learning
      */
     private  void getAllLearningMaterial(LearnViewModel learnViewModel){
-        learnViewModel.getAllMaterial().observe(getViewLifecycleOwner(), new Observer<List<Learn>>() {
+        learnViewModel.getAllNotesLevel1().observe(getViewLifecycleOwner(), new Observer<List<Learn>>() {
             @Override
             public void onChanged(List<Learn> learningMaterial) {
-
                 String key="";
+                HashMap<String, List<String> >  data = new HashMap<>();
+                int count =0;
                 for(Learn material:learningMaterial) {
+                    count++;
                     List<String> content = new ArrayList<>();
                     key = material.getSection();
                     content.add(material.getContent());
@@ -182,14 +183,14 @@ public class LearnFragment extends Fragment {
                     }
 
                 }
-                for( String key1 : data.keySet()) {
-                    learn.setData(data);
-                 }
-
+                Toast.makeText(requireContext(),count+"",Toast.LENGTH_SHORT).show();
+                learn.setData(data);
 
             }
 
+
         });
+
 
 
     }

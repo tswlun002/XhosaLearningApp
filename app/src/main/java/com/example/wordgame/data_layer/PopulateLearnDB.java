@@ -64,16 +64,16 @@ class PopulateLearnDB extends AsyncTask<Context ,Void,Void> {
 
         String instructions = "Read material before attempting game";
 
-       /*String[] level1Files = {"numbers.txt" , "vowels.txt" , "consonents.txt" , "clicks.txt" , "days.txt" , "seasons.txt"};
-        */String[] section = {" Numbers or Izibalo", " Vowels or izikhamiso ", " Consonants or Amaqabane",  " Clicks or Izandi" , " Day of the week or Intsuku zeveki", " seasons"};
+       String[] level1Files = {"numbers.txt" , "vowels.txt" , "consonents.txt" , "clicks.txt" , "days.txt" , "seasons.txt"};
+        String[] section1 = {" Numbers", " Vowels ", " Consonants",  " Clicks" , " Day of the week", " Seasons"};
 
-        /*String[] level2Files = {"colours.txt" , "compusPoints.txt" , "driving.txt" , "timeDuration.txt" , "HomeAppliences.txt" , "months.txt" , "money.txt"};
-        String[] section2 = {" Colours or imibala" , " Campus Point" , " Driving" , " Time Duration" ,  " Home appliances" , " months of the year Or Inyanga Zonyaka", " money"};
+        String[] level2Files = {"colours.txt" , "compusPoints.txt" , "driving.txt" , "timeDuration.txt" , "HomeAppliences.txt" , "months.txt" , "money.txt"};
+        String[] section2 = {"Colours" , " Campus Point" , " Driving" , " Time Duration" ,  " Home appliances" , " Months of the year", "Money"};
 
-        String[] level3Files = {"DailyConversation.txt" , "xhosaBasicPhrases" , "xhosaToEng.txt"};
-        String[] section3 = {" Daily conversation " , " Xhosa to English" , " xhosa basic phrases"};
-         */
-        String[] content1 = {"0; unothi", "1; enye","2; zimbini"};
+        String[] level3Files = {"DailyConversation.txt" , "xhosaBasicPhrase.txt" , "xhosaToEng.txt","emergency.txt"};
+        String[] section3 = {" Daily conversation " , " Xhosa basic phrases", " Xhosa to English" ,"Emergency"};
+
+        /*String[] content1 = {"0; unothi", "1; enye","2; zimbini"};
         String[] content2 = {"a; like a in hard ", "e; like e in red",
                 "i; like ee in seen","o; like a in all",
                 "u; like oo in moon"};
@@ -87,10 +87,10 @@ class PopulateLearnDB extends AsyncTask<Context ,Void,Void> {
         for (String item : content1) learnDao.insert(new Learn(1, section[0], item, instructions));
         for (String value : content2) learnDao.insert(new Learn(1, section[1], value, instructions));
         for (String s : content3) learnDao.insert(new Learn(1, section[2], s, instructions));
-        for (String s : content4) learnDao.insert(new Learn(1, section[3], s, instructions));
-        /*insertData(learningMatirial1,level1Files , 1,section1, instructions,contexts[0]);
+        for (String s : content4) learnDao.insert(new Learn(1, section[3], s, instructions));*/
+        insertData(learningMatirial1,level1Files , 1,section1, instructions,contexts[0]);
         insertData(learningMatirial2,level2Files,2,section2,instructions,contexts[0]);
-        insertData(learningMatirial3,level3Files,3,section3,instructions,contexts[0]);*/
+        insertData(learningMatirial3,level3Files,3,section3,instructions,contexts[0]);
 
         return null;
 
