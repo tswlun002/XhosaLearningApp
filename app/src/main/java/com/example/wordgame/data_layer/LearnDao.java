@@ -17,7 +17,7 @@ public interface LearnDao {
 
         @Query("SELECT * FROM Learn")
         LiveData<List<Learn>> getAll();
-        @Query("SELECT * FROM LEARN WHERE  level ==1 or level ==2")
+        @Query("SELECT * FROM LEARN WHERE  level ==1")
         LiveData<List<Learn>> level1();
         @Query("SELECT * FROM LEARN WHERE level ==2")
         LiveData<List<Learn>> level2();

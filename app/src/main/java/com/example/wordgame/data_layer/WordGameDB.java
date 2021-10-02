@@ -21,6 +21,7 @@ public abstract class WordGameDB extends RoomDatabase {
     public abstract MatchingDao matchingDao();
     public abstract TrueFalseDao trueFalseDao();
     public abstract MultipleChoiceDao multipleChoiceDao();
+    public abstract TranslationDao translationDao();
     static Context context1;
 
     public static synchronized WordGameDB getInstanceWordGameDb(Context context){
@@ -46,6 +47,7 @@ public abstract class WordGameDB extends RoomDatabase {
             new PopulateMatchingDB(wordGameDB).execute(context1);
             new PopulateTrueFalseDB(wordGameDB).execute(context1);
             new PopulateMultipleChoiceDB(wordGameDB).execute(context1);
+            new PopulateTranslationGameDB(wordGameDB).execute(context1);
 
 
         }
