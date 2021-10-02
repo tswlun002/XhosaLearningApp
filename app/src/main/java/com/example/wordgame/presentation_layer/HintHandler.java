@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.List;
+
 /**
  * @Class  Handles hint requests and update number of hints
  */
@@ -13,8 +15,26 @@ public class HintHandler extends HintAdapter implements OnHints {
     /**
      * @serialField  position of the hint button a layout
      */
-    int position;
+    private  int position;
     private int[] totalHints ;
+    private int numberOfHints;
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public int getNumberOfHints() {
+        return numberOfHints;
+    }
+
+    public void setNumberOfHints(int numberOfHints) {
+        this.numberOfHints = numberOfHints;
+    }
+
 
     /**
      * Request hint
@@ -25,16 +45,15 @@ public class HintHandler extends HintAdapter implements OnHints {
      * @param position of the hint button
      */
     @Override
-    public void onRequestHint(LayoutInflater inflater,View view,int position,String [] data) {
-        int numberOfHints;
-        this.position=position;
-        numberOfHints = totalHints[position];
-        numberOfHints--;
-        if(numberOfHints <0)
+    public void onRequestHint(LayoutInflater inflater,View view,int numberHints,int position,String [] data) {
+
+        setPosition(position);
+        setNumberOfHints(numberHints);
+        if(numberOfHints <=0)
             view.setEnabled(false);
         else {
-            totalHints[position] =numberOfHints;
-            getHint(inflater,data[numberOfHints]);
+            getHint(inflater,data[3-getNumberOfHints()]);
+            setNumberOfHints(getNumberOfHints()-1);
         }
     }
     @Override
@@ -46,13 +65,12 @@ public class HintHandler extends HintAdapter implements OnHints {
     }
 
     /**
-     * Update hint number label
-     * @param view label we update
+     * Update hint number value
+     * @param hintData list we update
      */
-    @SuppressLint("SetTextI18n")
     @Override
-    public void updateNumberHints(TextView view) {
-        view.setText("No of hints: " + totalHints[position]);
+    public void updateNumberHints(List<Integer> hintData,int position) {
+            hintData.set(position,getNumberOfHints());
     }
 
 

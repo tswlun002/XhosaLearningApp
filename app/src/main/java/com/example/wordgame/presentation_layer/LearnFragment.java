@@ -183,7 +183,7 @@ public class LearnFragment extends Fragment {
                     }
 
                 }
-                Toast.makeText(requireContext(),count+"",Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(),count+"",Toast.LENGTH_LONG).show();
                 learn.setData(data);
 
             }
@@ -202,7 +202,7 @@ public class LearnFragment extends Fragment {
     private  void setUpListView(FragmentLearnBinding binding){
 
 
-        learn = new LearnAdapter(requireContext(), R.layout.learn_adapter);
+       learn = new LearnAdapter(requireContext(), R.layout.learn_adapter);
         binding.learnIDListview.setAdapter(learn);
         binding.learnIDListview.setLayoutManager(new LinearLayoutManager(requireContext()));
 

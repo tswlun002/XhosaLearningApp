@@ -1,0 +1,29 @@
+4
+1;Choose the correct word for given term or sentence description
+bird ; intaka $ int...,inta..,inta.a
+blood ; igazi $ ig... ,ig.z., ig.zi
+book ; incwadi $ incw..., incwa.. ,incwa.i
+boy ; inkwenkwe $inkwe, inkwe....,inkwe..we,inkwe.kwe
+breasts ; amabele $ amabe, amabe.., amabe.e
+bring about peace ; xolisa $ xoli, xoli..,xoli.a
+bus ; uduladula $ udul..... , udul....a , udu..dula
+car ; imoto $ im..., im..o ,imo..
+champion ; intshatsheli $ intsha...... , intsha....li , intshats..li
+cheek ; isidlele $ isid...., isidl..., isidl..e
+child ; umntwana $ umnt.... , umnt...a , umnt..na
+black ; mnyama $ mn...a , mny... , mny..a
+blue ; luhlaza $ lu.l..a, lu...za, luh..za
+green ; luhlaza $ ..hl..a, lu...za, luh..za
+red ; bomvu $ b...u ,bo..u, bom.u
+white ; mhlophe $ mhl.... , mhl...e , mh..phe
+yellow ; mthubi $ mth..., mth..i, mth.b.
+baby ; usana $ us..., us..a , us.na
+clan name ; isiduko $ is....o, is...ko, isi..ko
+Summer ; iHlobo $ iH.... , iH...o , iHl..o
+Autumn ; uKwindla $ uK.....a, uK....la, uKw..dla
+June ; eyeSilimela $ eyeSi...... , eyeSi.....a , eyeSil...la
+July ; EyeKhala $ EyeK...., EyeK...a, EyeKh..a
+August ; EyeThupha $ EyeT..... , EyeT....a , EyeTh...a
+Tuesday ; lwesibini $ lwesi...i, lwesib..., lwesi.i.i
+Wednesday ; lwesithathu $ lwesit, lwesit..... , lwesit..t.u
+Thursday ; lwesine $ lwe..n., lwes..., lwes..e

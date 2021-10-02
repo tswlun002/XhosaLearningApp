@@ -74,9 +74,11 @@ public class PopulateTrueFalseDB extends AsyncTask<Context, Void, Void> {
                     count++;
                 } else {
                     count++;
-                    figures.add(lineData.substring(0, lineData.indexOf(";")));
-                    questions.add(lineData.substring(lineData.indexOf(";")+1,lineData.indexOf("?")));
-                    answers.add(lineData.substring(lineData.indexOf("?") + 1));
+
+                        figures.add(lineData.substring(0, lineData.indexOf(";")));
+                        questions.add(lineData.substring(lineData.indexOf(";") + 1, lineData.indexOf("?")));
+                        answers.add(lineData.substring(lineData.indexOf("?") + 1));
+
                 }
             }
             bufferedReader.close();

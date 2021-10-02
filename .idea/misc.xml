@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/answerbackground.xml" value="0.18796296296296297" />
         <entry key="app/src/main/res/drawable/customer_edittet.xml" value="0.22" />
         <entry key="app/src/main/res/drawable/customizerecycleview.xml" value="0.18" />

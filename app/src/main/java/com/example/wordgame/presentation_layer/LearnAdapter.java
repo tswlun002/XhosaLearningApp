@@ -215,7 +215,8 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
             count++;
             setSize(1);
         }
-        notifyItemRangeInserted(0,getSize());
+        notifyDataSetChanged();
+        //notifyItemRangeInserted(0,getSize());
 
 
     }
