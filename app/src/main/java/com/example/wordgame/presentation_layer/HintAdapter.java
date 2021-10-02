@@ -18,14 +18,14 @@ public abstract  class HintAdapter {
      */
 
     @SuppressLint("SetTextI18n")
-    public void getHint(LayoutInflater inflater){
+    public void getHint(LayoutInflater inflater,String data){
         final View view = inflater.inflate(R.layout.hint, null);
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(inflater.getContext());
         alertDialog.setTitle("Hints !!");
 
         TextView hint  = view.findViewById(R.id.hintDialogID);
-        hint.setText("greeting your Sister");
-        alertDialog.setMessage("greeting your Sister");
+        hint.setText(data);
+        alertDialog.setMessage(data);
 
         HandleButton handleButton = new HandleButton();
         alertDialog.setNeutralButton("Close",handleButton);

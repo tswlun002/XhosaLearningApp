@@ -13,20 +13,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wordgame.R;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.Holder> {
 
-    private final String [] questions;
+    private final List<String> questions = new ArrayList<>();
+    private final HashMap<String, String[]> hintsData = new HashMap<>();
     @SuppressLint("StaticFieldLeak")
     private final Context context;
     private final int  layout ;
-    private static  OnHints onHints;
-    private  static  LayoutInflater inflater;
+    private  OnHints onHints;
+    private   LayoutInflater inflater;
     private   Holder holder;
+    private int size=0;
 
-    public TranslationAdapter(@NonNull Context context, String[] question, int resource) {
+    public TranslationAdapter(@NonNull Context context, int resource) {
         this.context=context;
         this.layout=resource;
-        this.questions=question;
         onHints =new HintHandler();
 
     }
@@ -50,16 +55,33 @@ public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull Holder viewHolder, int position) {
-        viewHolder.descriptionView.setText(questions[position]);
-        viewHolder.pageNumber.setText((position+1)+"/"+questions.length);
+        viewHolder.descriptionView.setText(questions.get(position));
+        viewHolder.pageNumber.setText((position+1)+"/"+getSize());
     }
+
+    void setData(HashMap<String,String> data){
+        for(Object key: data.keySet().toArray()){
+            questions.add(key.toString());
+            String [] list = data.get(key.toString()).split(",");
+            hintsData.put(key.toString(),list);
+        }
+        setSize(questions.size());
+        notifyItemRangeInserted(0,getSize());
+    }
+    void setSize(int value){
+        size = value;
+    }
+    int getSize(){
+        return size;
+    }
+
     /**
      * number of elements to inflated into listview
      * @return number of the element inflated
      */
     @Override
     public int getItemCount() {
-        return questions.length ;
+        return getSize() ;
     }
 
 
@@ -88,7 +110,10 @@ public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.
                 @Override
                 public void onClick(View view) {
                     notifyChanges();
-                    onHints.onRequestHint(inflater,view,getLayoutPosition());
+                    int position = getLayoutPosition();
+                    String key = questions.get(position);
+                    onHints.generateTotalHints(getSize());
+                    onHints.onRequestHint(inflater,view,position,hintsData.get(key));
                     onHints.updateNumberHints(numberHints);
                 }
             });

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -13,6 +15,12 @@ import android.view.ViewGroup;
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentTranslationBinding;
+import com.example.wordgame.model_layer.MatchingViewModel;
+import com.example.wordgame.model_layer.TranslationGame;
+import com.example.wordgame.model_layer.TranslationViewModel;
+
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,18 +32,13 @@ public class TranslationFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private String mParam1;
-    private String mParam2;
     private OnSubmit submit;
     public TranslationFragment() {
         // Required empty public constructor
     }
-    private final String [] questions={
-        "Molo sisi",
-         "Usisi uyapheka",
-         "Umama uphangele",
-         "Hlamab izandla Lulu"
-    };
+    TranslationViewModel translationViewModel;
+    TranslationAdapter translationController;
+    HashMap<String, String> data  = new HashMap<>();
     private  FragmentTranslationBinding binding;
     private  LayoutInflater inflater;
 
@@ -60,10 +63,7 @@ public class TranslationFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        translationViewModel = new ViewModelProvider(this).get(TranslationViewModel.class);
     }
 
 
@@ -85,6 +85,17 @@ public class TranslationFragment extends Fragment {
         setUpListView(binding);
         return binding.getRoot();
     }
+
+    void setData(TranslationViewModel translationViewModel){
+        translationViewModel.getGameMaterial().observe(this, new Observer<List<TranslationGame>>() {
+            @Override
+            public void onChanged(List<TranslationGame> translationGames) {
+                for(TranslationGame translationGame: translationGames){
+                    data.put(translationGame.getAnswers(),translationGame.getHints());
+                }
+            }
+        });
+    }
     /**
      * created view of translation fragment
      * @param view
@@ -104,7 +115,7 @@ public class TranslationFragment extends Fragment {
      */
     private  void setUpListView(FragmentTranslationBinding binding){
 
-        TranslationAdapter translationController = new TranslationAdapter(requireContext(), questions,  R.layout.translation_adapter);
+        translationController = new TranslationAdapter(requireContext(), R.layout.translation_adapter);
         binding.tranlationListviewID.setAdapter(translationController);
         binding.tranlationListviewID.setLayoutManager(new LinearLayoutManager(requireContext()));
     }

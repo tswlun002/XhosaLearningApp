@@ -14,7 +14,7 @@ public class HintHandler extends HintAdapter implements OnHints {
      * @serialField  position of the hint button a layout
      */
     int position;
-    private final int[] totalHints ={10,10,10,10};
+    private int[] totalHints ;
 
     /**
      * Request hint
@@ -25,7 +25,7 @@ public class HintHandler extends HintAdapter implements OnHints {
      * @param position of the hint button
      */
     @Override
-    public void onRequestHint(LayoutInflater inflater,View view, int position) {
+    public void onRequestHint(LayoutInflater inflater,View view,int position,String [] data) {
         int numberOfHints;
         this.position=position;
         numberOfHints = totalHints[position];
@@ -34,7 +34,14 @@ public class HintHandler extends HintAdapter implements OnHints {
             view.setEnabled(false);
         else {
             totalHints[position] =numberOfHints;
-            getHint(inflater);
+            getHint(inflater,data[numberOfHints]);
+        }
+    }
+    @Override
+    public void generateTotalHints(int range){
+         totalHints = new int[range];
+        for(int i=0; i<range;i++){
+            totalHints[i]=3;
         }
     }
 

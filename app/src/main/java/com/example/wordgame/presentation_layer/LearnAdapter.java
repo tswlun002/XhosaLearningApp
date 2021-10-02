@@ -431,7 +431,4 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
 
 
 
-
-
-
 }

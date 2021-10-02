@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public interface OnHints {
-    public  void  onRequestHint(LayoutInflater inflater,View v,int position);
+     public void generateTotalHints(int range);
+    public  void  onRequestHint(LayoutInflater inflater,View v,int position,String [] data);
     public  void updateNumberHints(TextView numberOfHints);
 }
