@@ -60,7 +60,7 @@ public class HandleTrueFalse extends CreateKeys implements OnTrueFalseQuestion {
     }
 
     @Override
-    public void StoreAnswer(List<String > answers) {
+    public void StoreAnswer(List<View > answers) {
         storeAnswer(answers);
     }
 }

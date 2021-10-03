@@ -4,21 +4,28 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentTrueBinding;
+import com.example.wordgame.model_layer.LevelResults;
 import com.example.wordgame.model_layer.TrueFalseGame;
 import com.example.wordgame.model_layer.TrueFalseViewModel;
+import com.example.wordgame.model_layer.User;
+import com.example.wordgame.model_layer.WordGameViewModel;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -35,7 +42,10 @@ public class TrueFalseFragment extends Fragment  {
     public   TrueFalseAdapter trueFalseController;
     private FragmentTrueBinding binding;
     private LayoutInflater inflater;
-
+    private WordGameViewModel wordGameViewModel;
+    private  OnExtractResults onExtractResults;
+    private User user = MainActivity.user;
+    private  OnSubmit onSubmit;
 
 
     public TrueFalseFragment() {
@@ -66,6 +76,7 @@ public class TrueFalseFragment extends Fragment  {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         trueFalseViewModel = new ViewModelProvider(this).get(TrueFalseViewModel.class);
+        wordGameViewModel = new ViewModelProvider(requireActivity()).get(WordGameViewModel.class);
     }
 
     /**
@@ -84,8 +95,19 @@ public class TrueFalseFragment extends Fragment  {
         binding = FragmentTrueBinding.inflate(inflater, container, false);
         this.inflater = inflater;
         setUpRecycleView(binding);
+        initExtract();
         setData(trueFalseViewModel);
+
         return  binding.getRoot();
+
+    }
+
+    private void initExtract(){
+        try{
+         onExtractResults = trueFalseController;
+        }catch (Exception e){
+            Toast.makeText(requireContext(), "cast err on trueFalse", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -108,7 +130,7 @@ public class TrueFalseFragment extends Fragment  {
                 }
 
                 try {
-                    trueFalseController.setData(questions,pictures);
+                    trueFalseController.setData(questions,pictures,trueFalseGames);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -140,10 +162,48 @@ public class TrueFalseFragment extends Fragment  {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //binding.submit.setOnClickListener(new SubmitHandler(inflater,R.id.action_trueFalseFragment_to_play,view));
+        handleSubmit(view);
         ((MainActivity) requireActivity()).backUpPressed(TrueFalseFragment.this,R.id.action_trueFalseFragment_to_play);
 
     }
+
+    private void handleSubmit(View view){
+        binding.submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int id  = R.id.action_results_CurrentActivity_to_trueFalseFragment;
+                HashMap<String,String> userAnswer =onExtractResults.getUserAnswers();
+                HashMap<String,String>gameAnswer  = onExtractResults.getGameAnswers();
+                onSubmit = new SubmitHandler(inflater,id,view,userAnswer,gameAnswer);
+                onSubmit.onSubmit(view,inflater);
+                shareData(onSubmit,onExtractResults);
+                Navigation.findNavController(view).
+                        navigate(R.id.action_trueFalseFragment_to_results_CurrentActivity);
+
+            }
+        });
+    }
+
+    private void  shareData(OnSubmit submit,OnExtractResults onExtractResults){
+        double score = submit.getScore();
+        int userId = user.getUserId();
+        String[] information  = onExtractResults.getGameInformation().split(",");
+        int gameId=0;int level=0; int totalMarks=0;
+        try {
+            gameId= Integer.parseInt(information[0].trim());
+            level= Integer.parseInt(information[1].trim());
+            totalMarks= Integer.parseInt(information[2].trim());
+        }catch (Exception e){
+            Toast.makeText(requireContext(),"Error Matching\n "+e.toString(),Toast.LENGTH_SHORT).show();
+        }
+
+        LevelResults levelResults = new LevelResults(
+                gameId,userId,level,"true false",
+                score,totalMarks
+        );
+        wordGameViewModel.setValue(levelResults);
+    }
+
 
 
 }

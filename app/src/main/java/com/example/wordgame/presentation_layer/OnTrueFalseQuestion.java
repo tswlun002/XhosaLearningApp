@@ -9,6 +9,6 @@ public interface OnTrueFalseQuestion {
     public  void numberOfQuestions(int number);
     public  void setColor(int value);
     public  int getColor();
-    public void StoreAnswer(List<String > answers);
+    public void StoreAnswer(List<View > answers);
 
 }

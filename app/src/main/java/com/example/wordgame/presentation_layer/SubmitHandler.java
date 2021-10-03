@@ -2,6 +2,7 @@ package com.example.wordgame.presentation_layer;
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -91,9 +92,10 @@ public class SubmitHandler extends ActivityResults implements OnSubmit,Comparabl
     double gradeAnswer(){
         double percent =0;
         for (Object string: userAnswers.keySet().toArray()) {
-            int value = compareTo(string+":"+userAnswers.get(string+""));
-            if(value==0)
+            int value = compareTo(string + ":" + userAnswers.get(string + ""));
+            if (value == 0)
                 percent++;
+
         }
        double marks  =Double.parseDouble(String.format("%.1f",percent));
         setScore(marks);
@@ -127,7 +129,17 @@ public class SubmitHandler extends ActivityResults implements OnSubmit,Comparabl
         String newString  = string.toString();
         String question= newString.substring(0, newString.indexOf(":")).trim().toLowerCase();
         String answer  = newString.substring(newString.indexOf(":")+1).trim().toLowerCase();
+        int value =-10;
+        if(!(answer.toString().trim().toLowerCase().equalsIgnoreCase("none"))){
+            try {
+                value=Objects.requireNonNull(AllAnswers.get(question)).compareTo(answer);
+            }catch (Exception e){
+                Toast.makeText(inflater.getContext(), question, Toast.LENGTH_SHORT).show();
+            }
+
+        }
+        else{}
         answers.add(question+" : "+AllAnswers.get(question));
-        return Objects.requireNonNull(AllAnswers.get(question)).compareTo(answer);
+        return value;
     }
 }

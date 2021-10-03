@@ -124,7 +124,7 @@ public class MatchingFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                int id  =R.id.action_matchingFragment_to_play;
+                int id  =R.id.action_results_CurrentActivity_to_matchingFragment;
                 HashMap<String ,String> userAnswer = onExtractResults.getUserAnswers();
                 HashMap<String ,String> matchingAnswers = onExtractResults.getGameAnswers();
                 Toast.makeText(requireContext(), userAnswer.size()+"",Toast.LENGTH_SHORT).show();

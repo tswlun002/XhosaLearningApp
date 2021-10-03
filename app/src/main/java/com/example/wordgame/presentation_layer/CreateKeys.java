@@ -56,8 +56,11 @@ public  abstract class CreateKeys {
         }
         return color;
     }
-    public void storeAnswer(List<String > answers) {
-        answers.addAll(views.keySet());
+    public void storeAnswer(List<View> answers) {
+        for(Object key: views.keySet().toArray()){
+            answers.add(views.get(key+""));
+        }
+
     }
     /**
      * Store keys of the previous answers in region of the current position

@@ -72,6 +72,13 @@ public class TrueFalseGame{
         this.figures = figures;
     }
 
+    @Override
+    public String toString() {
+        return trueFalseId +
+                ", " + level +
+                ", " + totalMarks ;
+    }
+
     public String getAnswers() {
         return answers;
     }

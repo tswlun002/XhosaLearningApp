@@ -20,7 +20,7 @@ public abstract  class ActivityResults {
 
     private final LayoutInflater inflater;
     private final Context context;
-    static int actionId;
+    private  int actionId;
     private final View fragmentView;
 
     public ActivityResults(LayoutInflater inflater, int Id, View fragment1){
@@ -41,7 +41,7 @@ public abstract  class ActivityResults {
     public void gradesActity(double userScore, int totalScore, List<String> correctAnswers){
         final View view = inflater.inflate(R.layout.fragment_results__current_activity, null);
         AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle("                           Score");
+        //alertDialog.setTitle("     Score");
 
 
         String CorrectAnswers = buildAnswers(correctAnswers);
@@ -61,7 +61,7 @@ public abstract  class ActivityResults {
             public void onClick(View view) {
                  Navigation.findNavController((MainActivity) inflater.getContext(),
                          R.id.nav_host_fragment_content_main).
-                         navigate(R.id.action_results_CurrentActivity_to_matchingFragment);
+                         navigate(actionId);
 
                 alertDialog.dismiss();
 

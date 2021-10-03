@@ -76,8 +76,11 @@ public class WelcomeWindow extends Fragment {
         binding.level1IDBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavHostFragment.findNavController(WelcomeWindow.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                Navigation.findNavController((MainActivity) requireActivity(),
+                        R.id.nav_host_fragment_content_main).
+                        navigate(R.id.action_FirstFragment_to_SecondFragment);
+               /* NavHostFragment.findNavController(WelcomeWindow.this)
+                        .navigate(R.id.action_FirstFragment_to_SecondFragment);*/
             }
         });
     }
@@ -88,8 +91,12 @@ public class WelcomeWindow extends Fragment {
         binding.level2IDBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Navigation.findNavController((MainActivity) requireActivity(),
+                        R.id.nav_host_fragment_content_main).
+                        navigate(R.id.action_FirstFragment_to_SecondFragment);
+                /*
                 NavHostFragment.findNavController(WelcomeWindow.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                        .navigate(R.id.action_FirstFragment_to_SecondFragment);*/
             }
         });
     }
@@ -100,8 +107,12 @@ public class WelcomeWindow extends Fragment {
         binding.level3IDBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Navigation.findNavController((MainActivity) requireActivity(),
+                        R.id.nav_host_fragment_content_main).
+                        navigate(R.id.action_FirstFragment_to_SecondFragment);
+                /*
                 NavHostFragment.findNavController(WelcomeWindow.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                        .navigate(R.id.action_FirstFragment_to_SecondFragment);*/
             }
         });
     }

@@ -104,6 +104,8 @@ public class LevelResultsFragment extends Fragment {
         view.findViewById(R.id.NextButtonId).setVisibility(View.GONE);
         view.findViewById(R.id.ExitBitton).setVisibility(View.GONE);
         view.findViewById(R.id.gradesActivity).setVisibility(View.GONE);
+        view.findViewById(R.id.CorrectionsID).setVisibility(View.GONE);
+
         return view;
     }
 }
