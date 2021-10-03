@@ -98,6 +98,10 @@ public class MultipleChoice {
         return choiceThree;
     }
 
+    /**
+     * set the choice the user chooses from
+     * @param choiceThree the paramet
+     */
     public void setChoiceThree(String choiceThree) {
         this.choiceThree = choiceThree;
     }

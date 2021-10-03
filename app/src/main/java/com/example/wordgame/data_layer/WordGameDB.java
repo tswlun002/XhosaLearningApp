@@ -10,12 +10,13 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.wordgame.model_layer.Learn;
+import com.example.wordgame.model_layer.LevelResults;
 import com.example.wordgame.model_layer.Matching;
 import com.example.wordgame.model_layer.MultipleChoice;
 import com.example.wordgame.model_layer.TranslationGame;
 import com.example.wordgame.model_layer.TrueFalseGame;
 
-@Database(entities = {Learn.class, Matching.class, TrueFalseGame.class, MultipleChoice.class, TranslationGame.class}, version =6, exportSchema = true)
+@Database(entities = {Learn.class, Matching.class, TrueFalseGame.class, MultipleChoice.class, TranslationGame.class,LevelResults.class}, version =7, exportSchema = true)
 public abstract class WordGameDB extends RoomDatabase {
     public static WordGameDB wordGameDB;
     public abstract LearnDao learnDao();
@@ -23,6 +24,7 @@ public abstract class WordGameDB extends RoomDatabase {
     public abstract TrueFalseDao trueFalseDao();
     public abstract MultipleChoiceDao multipleChoiceDao();
     public abstract TranslationDao translationDao();
+    public abstract LevelResultsDao levelResultsDao();
     static Context context1;
 
     public static synchronized WordGameDB getInstanceWordGameDb(Context context){
@@ -49,6 +51,7 @@ public abstract class WordGameDB extends RoomDatabase {
             new PopulateTrueFalseDB(wordGameDB).execute(context1);
             new PopulateMultipleChoiceDB(wordGameDB).execute(context1);
             new PopulateTranslationGameDB(wordGameDB).execute(context1);
+           // new PopulateLevelResultsDB(wordGameDB).execute(context1);
 
 
         }

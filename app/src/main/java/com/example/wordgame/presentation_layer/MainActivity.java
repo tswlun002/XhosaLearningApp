@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.ActivityMainBinding;
+import com.example.wordgame.model_layer.User;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+    public static  final User user = new User(0,1);
 
     /**
      * creates main activity  ,set up navigation controller

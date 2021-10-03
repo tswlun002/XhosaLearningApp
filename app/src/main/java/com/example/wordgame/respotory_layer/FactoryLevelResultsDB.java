@@ -6,15 +6,17 @@ import android.os.AsyncTask;
 import androidx.lifecycle.LiveData;
 
 
+import com.example.wordgame.data_layer.LevelResultsDao;
 import com.example.wordgame.data_layer.WordGameDB;
+import com.example.wordgame.model_layer.LevelResults;
 
 import java.util.List;
 
-public class FactoryGameResultsDB {
+public class FactoryLevelResultsDB {
     private final LevelResultsDao levelResultsDao;
     private final LiveData<List<LevelResults>> results;
 
-    public FactoryGameResultsDB(Application application) {
+    public FactoryLevelResultsDB(Application application) {
         WordGameDB levelResultlsDB = WordGameDB.getInstanceWordGameDb(application);
 
         levelResultsDao = levelResultlsDB.levelResultsDao();
@@ -26,11 +28,11 @@ public class FactoryGameResultsDB {
     }
 
     public void insert(LevelResults levelResults) {
-        new FactoryGameResultsDB.insertHandler(levelResultsDao).execute(levelResults);
+        new FactoryLevelResultsDB.insertHandler(levelResultsDao).execute(levelResults);
     }
 
-    public void update(LevelResults translationGame) {
-        new FactoryGameResultsDB.UpdateHandler(levelResultsDao).execute(levelResults);
+    public void update(LevelResults levelResults) {
+        new FactoryLevelResultsDB.UpdateHandler(levelResultsDao).execute(levelResults);
     }
 
 
@@ -56,7 +58,7 @@ public class FactoryGameResultsDB {
 
         @Override
         protected Void doInBackground(LevelResults... levelResults) {
-            translationDao.update(levelResults[0]);
+            levelResultsDao.update(levelResults[0]);
             return null;
         }
 

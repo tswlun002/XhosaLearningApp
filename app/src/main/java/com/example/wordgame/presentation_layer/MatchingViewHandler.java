@@ -1,26 +1,89 @@
 package com.example.wordgame.presentation_layer;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.wordgame.R;
 import com.example.wordgame.model_layer.Matching;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
  * @Class MatchingViewHandler handle click view( buttons) and
  * Call parent class  Drag andDrop to handle drag and drop events
  */
-public class MatchingViewHandler extends DragandDrop implements OnMatchingViewHandler {
+public class MatchingViewHandler extends DragandDrop implements OnMatchingViewHandler,OnExtractResults {
 
     /**
      * @serial view is the view of MatchingFragment
      */
     private  final  View view;
+    TextView firstQ,secondQ,thirdQ,fourthQ;
+    private final HashMap<String,String> userAnswers = new HashMap<>();
+    private final HashMap<String,String> matchingAnswers = new HashMap<>();
+    private  Matching matching;
+
+
+    /**
+     * Get user results
+     * @return user results
+     */
+    @Override
+    public HashMap<String, String> getUserAnswers() {
+        extractUserAnswers();
+        return userAnswers;
+    }
+
+    /**
+     * Get game results
+     * @return game results
+     */
+    @Override
+    public HashMap<String, String> getGameAnswers() {
+        return matchingAnswers;
+    }
+
+    @Override
+    public String getGameInformation() {
+        return matching.toString();
+    }
+
+    /**
+     * extract user results from the with their corresponding questions
+     * Edittext have user answers
+     * And textview have questions
+     */
+    public void extractUserAnswers(){
+        EditText userAnswer1 = view.findViewById(R.id.xhosaEditText1);
+        EditText userAnswer2 = view.findViewById(R.id.xhosaEditText2);
+        EditText userAnswer3 = view.findViewById(R.id.xhosaEditText3);
+        EditText userAnswer4 = view.findViewById(R.id.xhosaEditText4);
+
+        userAnswers.put(firstQ.getText().toString(),userAnswer1.getText().toString());
+        userAnswers.put(secondQ.getText().toString(),userAnswer2.getText().toString());
+        userAnswers.put(thirdQ.getText().toString(),userAnswer3.getText().toString());
+        userAnswers.put(fourthQ.getText().toString(),userAnswer4.getText().toString());
+    }
+
+    /**
+     * extract matching game answers with their question
+     * @param material is the object of matching material
+     */
+    void extractMatchingAnswers(List<Matching> material){
+        for(Matching answers: material){
+            matchingAnswers.put(answers.getQuestions().trim().toLowerCase()
+                    ,answers.getAnswers().trim().toLowerCase());
+        }
+
+    }
+
     public  MatchingViewHandler (View view){
         this.view=view ;
     }
     public void setData(List<Matching> material){
+        matching = material.get(0);
+        extractMatchingAnswers(material);
         int level =0;
         String Q1,Q2,Q3,Q4,A1,A2,A3,A4,A5,A6,A7,A8;
         A5=A6= A7= A8= Q2=Q1=Q3=Q4=A1=A2=A3=A4 ="";
@@ -62,13 +125,13 @@ public class MatchingViewHandler extends DragandDrop implements OnMatchingViewHa
         }
         TextView tittle = view.findViewById(R.id.instructionTextView);
         tittle.setText(heading);
-        TextView firstQ = view.findViewById(R.id.engTextView1);
+        firstQ = view.findViewById(R.id.engTextView1);
         firstQ.setText(Q1);
-        TextView secondQ = view.findViewById(R.id.engTextView2);
+         secondQ = view.findViewById(R.id.engTextView2);
         secondQ.setText(Q2);
-        TextView thirdQ = view.findViewById(R.id.engTextView3);
+        thirdQ = view.findViewById(R.id.engTextView3);
         thirdQ.setText(Q3);
-        TextView fourthQ = view.findViewById(R.id.engTextView4);
+        fourthQ = view.findViewById(R.id.engTextView4);
         fourthQ.setText(Q4);
         TextView answer1 = view.findViewById(R.id.xhosaMatchTextView1);
         answer1.setText(A1);
@@ -92,10 +155,6 @@ public class MatchingViewHandler extends DragandDrop implements OnMatchingViewHa
             setVisible(answer7);
             setVisible(answer8);
         }
-
-
-
-
     }
     private void setVisible(View view){
         view.setVisibility(View.GONE);

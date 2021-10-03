@@ -89,14 +89,9 @@ public class Matching {
     }
     @Override
     public String toString() {
-        return "Matching{" +
-                "matchingId=" + matchingId +
-                ", level=" + level +
-                ", questions='" + questions + '\'' +
-                ", answers='" + answers + '\'' +
-                ", tittle='" + tittle + '\'' +
-                ", instructions='" + instructions + '\'' +
-                ", totalMarks=" + totalMarks +
-                '}';
+        return
+                 matchingId +
+                ", " + level +
+                ", " + totalMarks ;
     }
 }

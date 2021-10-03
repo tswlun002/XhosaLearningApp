@@ -140,7 +140,7 @@ public class TrueFalseFragment extends Fragment  {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.submit.setOnClickListener(new SubmitHandler(inflater,R.id.action_trueFalseFragment_to_play,view));
+        //binding.submit.setOnClickListener(new SubmitHandler(inflater,R.id.action_trueFalseFragment_to_play,view));
         ((MainActivity) requireActivity()).backUpPressed(TrueFalseFragment.this,R.id.action_trueFalseFragment_to_play);
 
     }

@@ -168,7 +168,7 @@
     </fragment>
     <fragment
         android:id="@+id/results_CurrentActivity"
-        android:name="com.example.wordgame.presentation_layer.GameScore"
+        android:name="com.example.wordgame.presentation_layer.LevelResultsFragment"
         android:label="Exercise results"
         tools:layout="@layout/fragment_results__current_activity">
         <action
@@ -188,5 +188,10 @@
             android:id="@+id/action_results_CurrentActivity_to_translationFragment"
             app:destination="@id/translationFragment"
             app:popUpTo="@id/translationFragment" />
+        <action
+            android:id="@+id/action_results_CurrentActivity_to_play"
+            app:destination="@id/play"
+            app:popUpTo="@id/play"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

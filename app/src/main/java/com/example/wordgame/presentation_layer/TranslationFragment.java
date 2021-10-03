@@ -69,11 +69,11 @@ public class TranslationFragment extends Fragment {
 
 
     /**
-     * create view of  Tralation fragment
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
-     * @return
+     * create view of  Translation fragment
+     * @param inflater of Translation fragment
+     * @param container of Translation fragment
+     * @param savedInstanceState of Translation fragment
+     * @return  view of Translation fragment
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,29 +83,31 @@ public class TranslationFragment extends Fragment {
         binding= FragmentTranslationBinding.inflate(inflater, container, false);
         this.inflater =inflater;
         setUpListView(binding);
+        setData(translationViewModel);
         return binding.getRoot();
     }
 
     void setData(TranslationViewModel translationViewModel){
-        translationViewModel.getGameMaterial().observe(this, new Observer<List<TranslationGame>>() {
+        translationViewModel.getGameMaterial().observe(getViewLifecycleOwner(), new Observer<List<TranslationGame>>() {
             @Override
             public void onChanged(List<TranslationGame> translationGames) {
                 for(TranslationGame translationGame: translationGames){
                     data.put(translationGame.getAnswers(),translationGame.getHints());
                 }
+                translationController.setData(data);
             }
         });
     }
     /**
      * created view of translation fragment
-     * @param view
-     * @param savedInstanceState
+     * @param view of Translation fragment
+     * @param savedInstanceState of Translation fragment
      */
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.submitButton.setOnClickListener(new SubmitHandler(inflater,R.id.action_translationFragment_to_play,binding.getRoot()));
+       // binding.submitButton.setOnClickListener(new SubmitHandler(inflater,R.id.action_translationFragment_to_play,binding.getRoot()));
         ((MainActivity) requireActivity()).backUpPressed(TranslationFragment.this,R.id.action_translationFragment_to_play);
     }
 

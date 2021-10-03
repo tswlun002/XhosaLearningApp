@@ -5,5 +5,6 @@ import android.view.View;
 
 public interface OnSubmit {
 
-    public  void onSubmit(View view, LayoutInflater inflater);;
+    public  void onSubmit(View view, LayoutInflater inflater);
+    public double getScore();
 }
