@@ -8,18 +8,18 @@ import java.util.List;
 
 
 public class WordGameViewModel extends ViewModel {
-    private final MutableLiveData<List<String>> state;
+    private final MutableLiveData<LevelResults> state;
 
     public WordGameViewModel() {
         state=new MutableLiveData<>();
 
     }
 
-    public void setValue(List<String> stringValue) {
+    public void setValue(LevelResults stringValue) {
         state.setValue(stringValue);
     }
 
-    public LiveData<List<String>> getState() {
+    public LiveData<LevelResults> getState() {
         return state;
     }
 }

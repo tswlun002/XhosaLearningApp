@@ -16,11 +16,13 @@ import androidx.navigation.Navigation;
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentMatchingBinding;
 import com.example.wordgame.model_layer.LearnViewModel;
+import com.example.wordgame.model_layer.LevelResults;
 import com.example.wordgame.model_layer.Matching;
 import com.example.wordgame.model_layer.MatchingViewModel;
 import com.example.wordgame.model_layer.User;
 import com.example.wordgame.model_layer.WordGameViewModel;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -128,9 +130,7 @@ public class MatchingFragment extends Fragment {
                 Toast.makeText(requireContext(), userAnswer.size()+"",Toast.LENGTH_SHORT).show();
                 OnSubmit onSubmit =new SubmitHandler(inflater,id,binding.getRoot(), userAnswer,matchingAnswers);
                 onSubmit.onSubmit(v,inflater);
-                double score = onSubmit.getScore();
-                int userId = user.getUserId();
-                String[] information  = onExtractResults.getGameInformation().split(",");
+                shareData(onSubmit,onExtractResults);
                 Navigation.findNavController(view).
                         navigate(R.id.action_matchingFragment_to_results_CurrentActivity);
 
@@ -138,7 +138,25 @@ public class MatchingFragment extends Fragment {
         });
     }
 
-    private sharData(){}
+    private void  shareData(OnSubmit submit,OnExtractResults onExtractResults){
+        double score = submit.getScore();
+        int userId = user.getUserId();
+        String[] information  = onExtractResults.getGameInformation().split(",");
+        int gameId=0;int level=0; int totalMarks=0;
+        try {
+            gameId= Integer.parseInt(information[0].trim());
+             level= Integer.parseInt(information[1].trim());
+            totalMarks= Integer.parseInt(information[2].trim());
+        }catch (Exception e){
+            Toast.makeText(requireContext(),"Error Matching\n "+e.toString(),Toast.LENGTH_SHORT).show();
+        }
+
+        LevelResults levelResults = new LevelResults(
+                gameId,userId,level,"matching",
+                score,totalMarks
+        );
+        wordGameViewModel.setValue(levelResults);
+    }
 
     void handleDragDrop(){
         onMatchingViewHandler.viewClicked(binding.xhosaMatchTextView1);

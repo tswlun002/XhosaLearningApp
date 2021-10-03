@@ -53,6 +53,7 @@ public abstract  class ActivityResults {
         grades.setText(CorrectAnswers);
         answers.setText("Your Score and Answers:".toUpperCase()+userScore+"/"+totalScore);
         alertDialog.setView(view);
+        alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.show();
 
         tryAgainButton.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +74,6 @@ public abstract  class ActivityResults {
                 Navigation.findNavController((MainActivity) inflater.getContext(),
                         R.id.nav_host_fragment_content_main).
                         navigate(R.id.action_results_CurrentActivity_to_play);
-               //Navigation.findNavController(fragmentView).navigate(actionId);
             }
         });
     }
