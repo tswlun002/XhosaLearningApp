@@ -59,8 +59,8 @@ public class LevelResultsFragment extends Fragment {
         super.onCreate(savedInstanceState);
         levelResultsViewModel = new ViewModelProvider(this).get(LevelResultsViewModel.class);
         wordGameViewModel = new ViewModelProvider(requireActivity()).get(WordGameViewModel.class);
-        Toast.makeText(requireContext(),"results inserted",
-                Toast.LENGTH_SHORT).show();
+        /*Toast.makeText(requireContext(),"results inserted",
+                Toast.LENGTH_SHORT).show();*/
     }
 
     @Override
@@ -98,7 +98,7 @@ public class LevelResultsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Toast.makeText(requireContext(),"Here On results",Toast.LENGTH_LONG).show();
+       // Toast.makeText(requireContext(),"Here On results",Toast.LENGTH_LONG).show();
         View view= inflater.inflate(R.layout.fragment_results__current_activity, container, false);
 
         view.findViewById(R.id.NextButtonId).setVisibility(View.GONE);

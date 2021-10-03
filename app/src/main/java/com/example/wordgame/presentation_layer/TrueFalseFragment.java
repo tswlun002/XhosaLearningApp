@@ -174,6 +174,8 @@ public class TrueFalseFragment extends Fragment  {
                 int id  = R.id.action_results_CurrentActivity_to_trueFalseFragment;
                 HashMap<String,String> userAnswer =onExtractResults.getUserAnswers();
                 HashMap<String,String>gameAnswer  = onExtractResults.getGameAnswers();
+                Toast.makeText(requireContext(), userAnswer.size()+""+gameAnswer.size(),
+                        Toast.LENGTH_SHORT).show();
                 onSubmit = new SubmitHandler(inflater,id,view,userAnswer,gameAnswer);
                 onSubmit.onSubmit(view,inflater);
                 shareData(onSubmit,onExtractResults);

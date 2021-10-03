@@ -33,11 +33,11 @@ public class SubmitHandler extends ActivityResults implements OnSubmit,Comparabl
      * @param view current view or fragment of the score
      */
     public SubmitHandler(LayoutInflater inflater, int Id, View view,
-                         HashMap<String,String> userAnswer, HashMap<String,String> matchingAnswers) {
+                         HashMap<String,String> userAnswer, HashMap<String,String> gameAnswers) {
         super(inflater,Id,view);
         this.inflater=inflater;
         this.userAnswers= userAnswer;
-        this.AllAnswers =matchingAnswers;
+        this.AllAnswers =gameAnswers;
 
     }
 
@@ -48,6 +48,7 @@ public class SubmitHandler extends ActivityResults implements OnSubmit,Comparabl
      */
     @Override
     public void onSubmit(View view, LayoutInflater inflater) {
+
         gradesActity(gradeAnswer(),getUserAnswers().size(), answers);
     }
     /**
@@ -91,6 +92,7 @@ public class SubmitHandler extends ActivityResults implements OnSubmit,Comparabl
     @SuppressLint("DefaultLocale")
     double gradeAnswer(){
         double percent =0;
+        //Toast.makeText(inflater.getContext(),userAnswers+"\n\nall a",Toast.LENGTH_SHORT).show();
         for (Object string: userAnswers.keySet().toArray()) {
             int value = compareTo(string + ":" + userAnswers.get(string + ""));
             if (value == 0)
@@ -129,17 +131,17 @@ public class SubmitHandler extends ActivityResults implements OnSubmit,Comparabl
         String newString  = string.toString();
         String question= newString.substring(0, newString.indexOf(":")).trim().toLowerCase();
         String answer  = newString.substring(newString.indexOf(":")+1).trim().toLowerCase();
+        answers.add(question+" : "+AllAnswers.get(question));
         int value =-10;
-        if(!(answer.toString().trim().toLowerCase().equalsIgnoreCase("none"))){
+        if(!(answer.equalsIgnoreCase("none"))){
             try {
                 value=Objects.requireNonNull(AllAnswers.get(question)).compareTo(answer);
             }catch (Exception e){
-                Toast.makeText(inflater.getContext(), question, Toast.LENGTH_SHORT).show();
+                Toast.makeText(inflater.getContext(), question+"\n\n "+e.toString(), Toast.LENGTH_SHORT).show();
             }
 
         }
-        else{}
-        answers.add(question+" : "+AllAnswers.get(question));
+
         return value;
     }
 }

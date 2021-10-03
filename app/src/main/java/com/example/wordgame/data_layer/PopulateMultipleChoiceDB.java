@@ -45,7 +45,7 @@ public class PopulateMultipleChoiceDB extends AsyncTask<Context, Void, Void> {
             String question = line.substring(0, line.indexOf(";"));
             String answer  = line.substring(line.indexOf(";")+1);
             multipleChoiceDao.insert(new MultipleChoice(level,question,Data.get(i+1),Data.get(i+2),
-                    Data.get(i+3),Data.get(i+4),answer,instruction,totalmarks));
+                    Data.get(i+3),Data.get(i+4),instruction,answer,totalmarks));
             i+=5;
         }
         return null;

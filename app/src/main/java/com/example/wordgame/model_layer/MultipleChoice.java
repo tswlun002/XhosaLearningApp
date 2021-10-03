@@ -41,18 +41,9 @@ public class MultipleChoice {
 
     @Override
     public String toString() {
-        return "MultipleChoice{" +
-                "multipleId=" + multipleId +
-                ", level=" + level +
-                ", question='" + question + '\'' +
-                ", choiceOne='" + choiceOne + '\'' +
-                ", choiceTwo='" + choiceTwo + '\'' +
-                ", choiceThree='" + choiceThree + '\'' +
-                ", choiceFour='" + choiceFour + '\'' +
-                ", answer='" + answer + '\'' +
-                ", instructions='" + instructions + '\'' +
-                ", totalMarks=" + totalMarks +
-                '}';
+        return  multipleId +
+                ", " + level +
+                ", " + totalMarks ;
     }
     public String getAnswer() {
         return answer;

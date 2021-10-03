@@ -1,36 +1,36 @@
 4
 1;Choose the correct word for given term or sentence description  
-Sunday is called ?;Cawe
+Sunday;Cawe
 Lwesithathu
 Cawe
 Mvulo
 Lwesibini
-Monday is called ?;Mvulo
+Monday;Mvulo
 Lwesibini
 Mgqibelo
 Mvulo
 Lwesihlanu
-Tuesday is called ?;Lwesibini
+Tuesday;Lwesibini
 Lwesihlanu
 Lwesibini
 Mvulo
 Cawe
-Wednesday is called ?;Lwesithathu
+Wednesday;Lwesithathu
 Lwesithathu
 Mgqibelo
 Mvulo
 Lwesihlanu
-Thursday is called ?;Lwesine
+Thursday;Lwesine
 Mgqibelo
 Mvulo
 Lwesihlanu
 Lwesine
-Friday is called ?;Lwesihlanu
+Friday;Lwesihlanu
 Mgqibelo
 Mvulo
 Lwesihlanu
 Lwesibini
-Saturday is called ?;Mgqibelo
+Saturday;Mgqibelo
 Lwesibini
 Mgqibelo
 Lwesihlanu

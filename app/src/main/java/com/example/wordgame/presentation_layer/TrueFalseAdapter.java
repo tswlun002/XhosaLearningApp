@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,11 +38,8 @@ public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Hold
          * @serialField context  of fragment PlayFragment
          */
         private List<String> questions;
-
         private final List<Bitmap> figures = new ArrayList<>() ;
-
-
-    private final List<View> answers = new ArrayList<>() ;
+        private final List<View> answers = new ArrayList<>() ;
         private final Context context;
         private final int  layout;
         private  int size;
@@ -188,15 +186,19 @@ public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Hold
      */
     private  HashMap<String ,String> getUserFinalAnswers(){
         HashMap<String,String > ans = new HashMap<>();
+
+        int count =0;
         for(int i = 0 ; i < questions.size();i++){
+            count++;
             if(colors.get(2*i)==Color.GREEN){
                 ans.put(questions.get(i),"true");
             }else if(colors.get(2*i+1)==Color.GREEN){
                 ans.put(questions.get(i),"false");
             }else {
-                ans.put(questions.get(i),"None");
+                ans.put(questions.get(i),"none");
             }
         }
+        //Toast.makeText(context, ans.size()+" apha "+count, Toast.LENGTH_SHORT).show();
         return ans;
     }
 
@@ -215,7 +217,6 @@ public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Hold
      */
     private  HashMap<String, String> gameAnswers(){
         HashMap<String ,String> ans = new HashMap<>();
-
         for(TrueFalseGame trueFalseGame: trueFalse){
             String answer = trueFalseGame.getAnswers().
                     substring(trueFalseGame.getAnswers().indexOf(",")+1);
