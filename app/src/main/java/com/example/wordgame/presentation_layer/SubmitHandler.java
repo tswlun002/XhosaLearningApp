@@ -135,7 +135,9 @@ public class SubmitHandler extends ActivityResults implements OnSubmit,Comparabl
         int value =-10;
         if(!(answer.equalsIgnoreCase("none"))){
             try {
-                value=Objects.requireNonNull(AllAnswers.get(question)).compareTo(answer);
+                value=Objects.requireNonNull(AllAnswers.get(question)).
+                        trim().toLowerCase()
+                        .compareTo(answer);
             }catch (Exception e){
                 Toast.makeText(inflater.getContext(), question+"\n\n "+e.toString(), Toast.LENGTH_SHORT).show();
             }

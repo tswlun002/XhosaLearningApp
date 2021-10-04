@@ -18,16 +18,10 @@ public class TranslationGame {
 
     @Override
     public String toString() {
-        return "TranslationGame{" +
-                "translationId=" + translationId +
-                ", level=" + level +
-                ", question='" + question + '\'' +
-                ", answers='" + answers + '\'' +
-                ", hints='" + hints + '\'' +
-                ", hintCounter=" + hintCounter +
-                ", instructions='" + instructions + '\'' +
-                ", totalMarks=" + totalMarks +
-                '}';
+        return
+                translationId +
+                "," + level +
+                "," + totalMarks ;
     }
 
 

@@ -9,6 +9,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -57,17 +60,14 @@ public class LevelResultsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         levelResultsViewModel = new ViewModelProvider(this).get(LevelResultsViewModel.class);
         wordGameViewModel = new ViewModelProvider(requireActivity()).get(WordGameViewModel.class);
-        /*Toast.makeText(requireContext(),"results inserted",
-                Toast.LENGTH_SHORT).show();*/
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
-    }
+
+
 
     private void insertToResultsDB(LevelResultsViewModel levelResultsViewModel){
           wordGameViewModel.getState().observe(getViewLifecycleOwner(), new Observer<LevelResults>() {
