@@ -147,7 +147,7 @@ public class TranslationFragment extends Fragment {
                  //       Toast.LENGTH_LONG).show();
                OnSubmit onSubmit = new SubmitHandler(inflater,id,view,userAnswer,gameAnswer);
                 onSubmit.onSubmit(view,inflater);
-                shareData(onSubmit,onExtractResults);
+                shareData(onSubmit,onExtractResults,userAnswer );
                 Navigation.findNavController(view).
                         navigate(R.id.action_translationFragment_to_results_CurrentActivity);
 
@@ -155,7 +155,7 @@ public class TranslationFragment extends Fragment {
         });
     }
 
-    private void  shareData(OnSubmit submit,OnExtractResults onExtractResults){
+    private void  shareData(OnSubmit submit,OnExtractResults onExtractResults,HashMap<String,String>gameAnswer ){
         double score = submit.getScore();
         int userId = user.getUserId();
         String[] information  = onExtractResults.getGameInformation().split(",");
@@ -163,7 +163,7 @@ public class TranslationFragment extends Fragment {
         try {
             gameId= Integer.parseInt(information[0].trim());
             level= Integer.parseInt(information[1].trim());
-            totalMarks= Integer.parseInt(information[2].trim());
+            totalMarks= gameAnswer.size()/*Integer.parseInt(information[2].trim())*/;
         }catch (Exception e){
             Toast.makeText(requireContext(),"Error Translation\n "+e.toString(),Toast.LENGTH_SHORT).show();
         }

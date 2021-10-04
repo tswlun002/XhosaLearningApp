@@ -174,7 +174,7 @@ public class MultipleChoiceFragment extends Fragment {
                 submit = new SubmitHandler(inflater, id, view, userAnswer, gameAnswer);
                 OnSubmit onSubmit =submit;
                 onSubmit.onSubmit(view,inflater);
-                shareData(onSubmit,onExtractResults);
+                shareData(onSubmit,onExtractResults, userAnswer );
                 Navigation.findNavController(view).
                         navigate(R.id.action_multipleChoiceFragment_to_results_CurrentActivity);
 
@@ -187,7 +187,7 @@ public class MultipleChoiceFragment extends Fragment {
      * @param submit submits the user score
      * @param onExtractResults  extract user answers and game answers
      */
-    private void  shareData(OnSubmit submit,OnExtractResults onExtractResults){
+    private void  shareData(OnSubmit submit,OnExtractResults onExtractResults,HashMap<String,String>gameAnswer ){
         double score = submit.getScore();
         int userId = user.getUserId();
         String[] information  = onExtractResults.getGameInformation().split(",");
@@ -195,7 +195,7 @@ public class MultipleChoiceFragment extends Fragment {
         try {
             gameId= Integer.parseInt(information[0].trim());
             level= Integer.parseInt(information[1].trim());
-            totalMarks= Integer.parseInt(information[2].trim());
+            totalMarks= gameAnswer.size() /*Integer.parseInt(information[2].trim())*/;
         }catch (Exception e){
             Toast.makeText(requireContext(),"Error Matching\n "+e.toString(),Toast.LENGTH_SHORT).show();
         }

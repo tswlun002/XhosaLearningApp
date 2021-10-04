@@ -17,7 +17,7 @@ import com.example.wordgame.model_layer.ProgressReport;
 import com.example.wordgame.model_layer.TranslationGame;
 import com.example.wordgame.model_layer.TrueFalseGame;
 
-@Database(entities = {Learn.class, Matching.class, TrueFalseGame.class, MultipleChoice.class, TranslationGame.class,LevelResults.class, ProgressReport.class}, version =8, exportSchema = true)
+@Database(entities = {Learn.class, Matching.class, TrueFalseGame.class, MultipleChoice.class, TranslationGame.class,LevelResults.class, ProgressReport.class}, version =9, exportSchema = true)
 public abstract class WordGameDB extends RoomDatabase {
     public static WordGameDB wordGameDB;
     public abstract LearnDao learnDao();
@@ -53,7 +53,7 @@ public abstract class WordGameDB extends RoomDatabase {
             new PopulateTrueFalseDB(wordGameDB).execute(context1);
             new PopulateMultipleChoiceDB(wordGameDB).execute(context1);
             new PopulateTranslationGameDB(wordGameDB).execute(context1);
-           // new PopulateLevelResultsDB(wordGameDB).execute(context1);
+            new PopulateProgressDB(wordGameDB).execute();
 
 
         }

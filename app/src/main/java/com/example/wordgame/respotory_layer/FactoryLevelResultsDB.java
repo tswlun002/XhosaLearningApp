@@ -15,18 +15,28 @@ import java.util.List;
 public class FactoryLevelResultsDB {
     private final LevelResultsDao levelResultsDao;
     private final LiveData<List<LevelResults>> results;
+    private final LiveData<List<LevelResults>> resultsLevelOne;
 
     public FactoryLevelResultsDB(Application application) {
         WordGameDB levelResultlsDB = WordGameDB.getInstanceWordGameDb(application);
 
         levelResultsDao = levelResultlsDB.levelResultsDao();
         results = levelResultsDao.getAll();
+        resultsLevelOne = levelResultsDao.level1();
+
 
     }
     public LiveData<List<LevelResults>> getResults() {
         return results;
     }
-
+    /**
+     * get all results and then average them
+     *
+     * @return  the results you have returned
+     */
+    public LiveData<List<LevelResults>> getAllGradesLevelOne() {
+        return resultsLevelOne;
+    }
     public void insert(LevelResults levelResults) {
         new FactoryLevelResultsDB.insertHandler(levelResultsDao).execute(levelResults);
     }

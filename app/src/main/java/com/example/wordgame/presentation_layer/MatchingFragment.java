@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -113,8 +114,7 @@ public class MatchingFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         wordGameViewModel = new ViewModelProvider(requireActivity()).get(WordGameViewModel.class);
-          handClick(view);
-
+        handClick(view);
         ((MainActivity) requireActivity()).backUpPressed(MatchingFragment.this,R.id.action_matchingFragment_to_play);
         handleDragDrop();
     }
@@ -126,19 +126,20 @@ public class MatchingFragment extends Fragment {
 
                 int id  =R.id.action_results_CurrentActivity_to_matchingFragment;
                 HashMap<String ,String> userAnswer = onExtractResults.getUserAnswers();
-                HashMap<String ,String> matchingAnswers = onExtractResults.getGameAnswers();
+                HashMap<String ,String> gameAnswer = onExtractResults.getGameAnswers();
                 Toast.makeText(requireContext(), userAnswer.size()+"",Toast.LENGTH_SHORT).show();
-                OnSubmit onSubmit =new SubmitHandler(inflater,id,binding.getRoot(), userAnswer,matchingAnswers);
+                OnSubmit onSubmit =new SubmitHandler(inflater,id,binding.getRoot(), userAnswer,gameAnswer);
                 onSubmit.onSubmit(v,inflater);
-                shareData(onSubmit,onExtractResults);
+                shareData(onSubmit,onExtractResults,userAnswer );
                 Navigation.findNavController(view).
                         navigate(R.id.action_matchingFragment_to_results_CurrentActivity);
+
 
             }
         });
     }
 
-    private void  shareData(OnSubmit submit,OnExtractResults onExtractResults){
+    private void  shareData(OnSubmit submit,OnExtractResults onExtractResults,HashMap<String,String>gameAnswer ){
         double score = submit.getScore();
         int userId = user.getUserId();
         String[] information  = onExtractResults.getGameInformation().split(",");
@@ -146,7 +147,7 @@ public class MatchingFragment extends Fragment {
         try {
             gameId= Integer.parseInt(information[0].trim());
              level= Integer.parseInt(information[1].trim());
-            totalMarks= Integer.parseInt(information[2].trim());
+            totalMarks= gameAnswer.size()/*Integer.parseInt(information[2].trim())*/;
         }catch (Exception e){
             Toast.makeText(requireContext(),"Error Matching\n "+e.toString(),Toast.LENGTH_SHORT).show();
         }

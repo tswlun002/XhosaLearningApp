@@ -174,11 +174,11 @@ public class TrueFalseFragment extends Fragment  {
                 int id  = R.id.action_results_CurrentActivity_to_trueFalseFragment;
                 HashMap<String,String> userAnswer =onExtractResults.getUserAnswers();
                 HashMap<String,String>gameAnswer  = onExtractResults.getGameAnswers();
-                Toast.makeText(requireContext(), userAnswer.size()+""+gameAnswer.size(),
-                        Toast.LENGTH_SHORT).show();
+                //Toast.makeText(requireContext(), userAnswer.size()+""+gameAnswer.size(),
+                       // Toast.LENGTH_SHORT).show();
                 onSubmit = new SubmitHandler(inflater,id,view,userAnswer,gameAnswer);
                 onSubmit.onSubmit(view,inflater);
-                shareData(onSubmit,onExtractResults);
+                shareData(onSubmit,onExtractResults, userAnswer);
                 Navigation.findNavController(view).
                         navigate(R.id.action_trueFalseFragment_to_results_CurrentActivity);
 
@@ -186,7 +186,7 @@ public class TrueFalseFragment extends Fragment  {
         });
     }
 
-    private void  shareData(OnSubmit submit,OnExtractResults onExtractResults){
+    private void  shareData(OnSubmit submit,OnExtractResults onExtractResults,HashMap<String,String> gameAnswers){
         double score = submit.getScore();
         int userId = user.getUserId();
         String[] information  = onExtractResults.getGameInformation().split(",");
@@ -194,7 +194,7 @@ public class TrueFalseFragment extends Fragment  {
         try {
             gameId= Integer.parseInt(information[0].trim());
             level= Integer.parseInt(information[1].trim());
-            totalMarks= Integer.parseInt(information[2].trim());
+            totalMarks= gameAnswers.size()/*Integer.parseInt(information[2].trim())*/;
         }catch (Exception e){
             Toast.makeText(requireContext(),"Error Matching\n "+e.toString(),Toast.LENGTH_SHORT).show();
         }

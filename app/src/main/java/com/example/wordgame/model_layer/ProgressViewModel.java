@@ -18,7 +18,7 @@ public class ProgressViewModel extends AndroidViewModel {
     /**
      * construct to initialise serial fields
      *
-     * @param application is the context of prgressResults
+     * @param application is the context of progressResults
      */
     public ProgressViewModel(@NonNull Application application) {
         super(application);
@@ -38,18 +38,18 @@ public class ProgressViewModel extends AndroidViewModel {
     /**
      * insert data of matching
      *
-     * @param porgressReport is a data being inserted
+     * @param progressReport is a data being inserted
      */
-    public void insert(ProgressReport porgressReport) {
-        factoryProgressReportDB.insert(porgressReport);
+    public void insert(ProgressReport progressReport) {
+        factoryProgressReportDB.insert(progressReport);
     }
 
     /**
      * update data of prgressResults
      *
-     * @param porgressReport is the data being updated
+     * @param progressReport is the data being updated
      */
-    public void update(ProgressReport porgressReport) {
-        factoryProgressReportDB.update(porgressReport);
+    public void update(ProgressReport progressReport) {
+        factoryProgressReportDB.update(progressReport);
     }
 }

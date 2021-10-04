@@ -14,6 +14,7 @@ import java.util.List;
 public class LevelResultsViewModel extends AndroidViewModel {
         private final FactoryLevelResultsDB factoryGameResultsDB;
         private final LiveData<List<LevelResults>> allGrades;
+    //private final LiveData<List<LevelResults>> allGradesLevelone;
 
         /**
          * construct to initialise serial fields
@@ -31,11 +32,20 @@ public class LevelResultsViewModel extends AndroidViewModel {
          *
          * @return return the results you have returned
          */
-        public LiveData<List<LevelResults>> getAverage() {
-            return allGrades;
+        public LiveData<List<LevelResults>> getAllGradesLevelone() {
+            return factoryGameResultsDB.getAllGradesLevelOne();
         }
 
-        /**
+    /**
+     * get all results and then average them
+     *
+     * @return return the results you have returned
+     */
+    public LiveData<List<LevelResults>> getAverage() {
+        return allGrades;
+    }
+
+    /**
          * insert the results fo each game into the database
          *
          * @param levelResults grade of the level inserted

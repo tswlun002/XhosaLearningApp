@@ -11,7 +11,7 @@ import com.example.wordgame.model_layer.ProgressViewModel;
 import java.util.HashMap;
 import java.util.List;
 
-public class ProgressReportHandler {
+public class ComputeProgressReport {
     private  int levelOneAverage;
     private  int levelTwoAverage;
     private  int levelThreeAverage;
@@ -22,19 +22,22 @@ public class ProgressReportHandler {
     private double trueFalseScore;
     private int  totalScore ;
     private HashMap<String,Double> gameScoresLevelOne = new HashMap<>();
+    private HashMap<String,Double> distinctResults = new HashMap<>();
     private List<LevelResults> levelResultsList;
     private Application context;
     private ProgressViewModel progressViewModel;
-    public ProgressReportHandler(Application context) {
+    public ComputeProgressReport(Application context) {
         this.context=context;
-        progressViewModel = new ProgressViewModel((Application) context);
+        gameScoresLevelOne = new HashMap<>();
+
     }
-    public ProgressReportHandler(double multipleChoiceScore, double translationScore,
+    public ComputeProgressReport(double multipleChoiceScore, double translationScore,
                                  double matchingScore, double trueFalseScore) {
         this.multipleChoiceScore = multipleChoiceScore;
         this.translationScore = translationScore;
         this.matchingScore = matchingScore;
         this.trueFalseScore = trueFalseScore;
+        gameScoresLevelOne = new HashMap<>();
     }
     public int getTotalScore() {
         return totalScore;
@@ -52,25 +55,43 @@ public class ProgressReportHandler {
         this.gameScoresLevelOne = gameScoresLevelOne;
     }
 
+
+    /**
+     *
+     * @return latest scores  of the user
+     */
     public List<LevelResults> getLevelResultsList() {
         return levelResultsList;
     }
+
+    /**
+     *
+     * @param levelResultsList all latest scores of the user
+     */
     public void setLevelResultsList(List<LevelResults> levelResultsList) {
 
         this.levelResultsList = levelResultsList;
     }
+     void orderResults(){
+         for(LevelResults levelResults:levelResultsList) {
+             distinctResults.put(levelResults.getGameType().trim().toLowerCase(),levelResults.getUserMarks());
+         }
 
+     }
     /**
      * compute score for each level
      */
       void computeScores(){
+          orderResults();
         int count=1;
         for(LevelResults levelResults:levelResultsList){
+
             int level = levelResults.getLevel();
             String gameType  = levelResults.getGameType().trim().toLowerCase();
-            double marks  = levelResults.getUserMarks();
+            double marks  = distinctResults.get(gameType);
             double totalMarks  = levelResults.getTotalMarks();
-            double overAllMarks  = marks/totalMarks;
+            double overAllMarks  = marks/(double) totalMarks;
+
             if(level ==1) {
                 if (gameScoresLevelOne.get(gameType) != null) {
                     double value = gameScoresLevelOne.get(gameType) + overAllMarks;
@@ -92,12 +113,15 @@ public class ProgressReportHandler {
      */
     public int getLevelOneAverage() {
         double value =0;
+
         double size  = gameScoresLevelOne.size();
-       Object[] value1=gameScoresLevelOne.keySet().toArray();
-       for(Object value2 :value1){
-            value+=gameScoresLevelOne.get(value2+"");
+
+        Object[] keys=gameScoresLevelOne.keySet().toArray();
+
+        for(Object key :keys){
+            value+=gameScoresLevelOne.get(key+"");
         }
-        double value3 = (int) (value/size)*100;
+        double value3 =  (value/4)*100;
         //int value2 = Integer.parseInt(String.format("%.0f",value1));
        // setLevelOneAverage(value1);
 
@@ -149,17 +173,25 @@ public class ProgressReportHandler {
      *
      */
      void  insert(){
+         progressViewModel = new ProgressViewModel((Application) context);
         int avScore  =getLevelOneAverage();
+
         String status = "";
         if(avScore>50){
             status="In good progress";
         }
         else
             status ="In progress";
-         Toast.makeText(context.getApplicationContext(),
-                 gameScoresLevelOne+" \n\nsize in progress\n ", Toast.LENGTH_SHORT).show();
-        progressViewModel.insert(
-                new ProgressReport(0,avScore,0,0,avScore,status));
+         //Toast.makeText(context.getApplicationContext(),
+         //        gameScoresLevelOne+" \n\nsize in progress\n ", Toast.LENGTH_SHORT).show();
+         ProgressReport  progressReport =new ProgressReport(0,avScore,
+                 0,0,avScore/3,status);
+         progressReport.setProgressId(0);
+        progressViewModel.update(progressReport);
+        gameScoresLevelOne.clear();
+        setLevelOneAverage(0);
+         setGameScoresLevelOne(gameScoresLevelOne);
+         Toast.makeText(context, gameScoresLevelOne.size()+" here wena", Toast.LENGTH_SHORT).show();
     }
 
 

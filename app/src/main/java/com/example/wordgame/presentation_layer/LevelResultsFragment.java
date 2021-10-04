@@ -32,6 +32,7 @@ public class LevelResultsFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private LevelResultsViewModel levelResultsViewModel;
+    int count  =0;
     public LevelResultsFragment() {
         // Required empty public constructor
     }
@@ -63,50 +64,6 @@ public class LevelResultsFragment extends Fragment {
     }
 
 
-
-
-
-    private void insertToLevelResultsDB(LevelResultsViewModel levelResultsViewModel){
-          wordGameViewModel.getState().observe(getViewLifecycleOwner(), new Observer<LevelResults>() {
-              @Override
-              public void onChanged(LevelResults levelResults) {
-                  levelResultsViewModel.insert(levelResults);
-                  getHighestScore(levelResultsViewModel);
-
-
-              }
-          });
-
-    }
-
-    private void getHighestScore(LevelResultsViewModel levelResultsViewModel){
-        levelResultsViewModel.getAverage().observe(getViewLifecycleOwner(), new Observer<List<LevelResults>>() {
-            @Override
-            public void onChanged(List<LevelResults> levelResults) {
-               ProgressReportHandler progressReportHandler =
-                       new ProgressReportHandler(requireActivity().getApplication());
-               progressReportHandler.setLevelResultsList(levelResults);
-               progressReportHandler.computeScores();
-               progressReportHandler.insert();
-            }
-        });
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Toolbar toolbar  = requireActivity().findViewById(R.id.toolbar);
-        toolbar.setVisibility(View.GONE);
-        insertToLevelResultsDB(levelResultsViewModel);
-    }
-
-    @Override
-    public void onDestroyView() {
-        Toolbar toolbar  = requireActivity().findViewById(R.id.toolbar);
-        toolbar.setVisibility(View.VISIBLE);
-        super.onDestroyView();
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -117,7 +74,55 @@ public class LevelResultsFragment extends Fragment {
         view.findViewById(R.id.ExitBitton).setVisibility(View.GONE);
         view.findViewById(R.id.gradesActivity).setVisibility(View.GONE);
         view.findViewById(R.id.CorrectionsID).setVisibility(View.GONE);
+        insertToLevelResultsDB(levelResultsViewModel);
 
         return view;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Toolbar toolbar  = requireActivity().findViewById(R.id.toolbar);
+        toolbar.setVisibility(View.GONE);
+
+
+    }
+    private void insertToLevelResultsDB(LevelResultsViewModel levelResultsViewModel){
+        wordGameViewModel.getState().observe(getViewLifecycleOwner(), new Observer<LevelResults>() {
+            @Override
+            public void onChanged(LevelResults levelResults) {
+                levelResultsViewModel.insert(levelResults);
+                getHighestScore();
+
+            }
+        });
+
+
+    }
+
+    void getHighestScore(){
+        levelResultsViewModel.getAllGradesLevelone().observe(getViewLifecycleOwner(), new Observer<List<LevelResults>>() {
+            @Override
+            public void onChanged(List<LevelResults> levelResults) {
+                ComputeProgressReport computeProgressReport =
+                        new ComputeProgressReport(requireActivity().getApplication());
+                computeProgressReport.setLevelResultsList(levelResults);
+                computeProgressReport.computeScores();
+                computeProgressReport.insert();
+                count++;
+               // Toast.makeText(requireActivity(),count+"",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
+    @Override
+    public void onDestroyView() {
+        Toolbar toolbar  = requireActivity().findViewById(R.id.toolbar);
+        toolbar.setVisibility(View.VISIBLE);
+
+        super.onDestroyView();
+    }
+
 }

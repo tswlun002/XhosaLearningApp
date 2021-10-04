@@ -5,7 +5,9 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "ProgressReport")
 public class ProgressReport {
 
-    @PrimaryKey(autoGenerate = true)
+
+
+    @PrimaryKey(autoGenerate = false)
     public  int progressId=0;
     private int userId;
     private int levelOneScore;
@@ -21,6 +23,10 @@ public class ProgressReport {
         this.levelThreeScore = levelThreeScore;
         this.AverageScore = averageScore;
         this.status = status;
+    }
+
+    public void setProgressId(int progressId) {
+        this.progressId = progressId;
     }
 
     public int getProgressId() {

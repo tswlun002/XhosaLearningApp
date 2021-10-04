@@ -27,12 +27,12 @@ public class FactoryProgressReportDB {
         return results;
     }
 
-    public void insert(ProgressReport porgressReport) {
-        new FactoryProgressReportDB.insertHandler(progressReportDao).execute(porgressReport);
+    public void insert(ProgressReport progressReport) {
+        new FactoryProgressReportDB.insertHandler(progressReportDao).execute(progressReport);
     }
 
-    public void update(ProgressReport porgressReport) {
-        new FactoryProgressReportDB.UpdateHandler(progressReportDao).execute(porgressReport);
+    public void update(ProgressReport progressReport) {
+        new FactoryProgressReportDB.UpdateHandler(progressReportDao).execute(progressReport);
     }
 
 
@@ -44,8 +44,8 @@ public class FactoryProgressReportDB {
         }
 
         @Override
-        protected Void doInBackground(ProgressReport... porgressReports) {
-            progressReportDao.insert(porgressReports[0]);
+        protected Void doInBackground(ProgressReport... progressReport) {
+            progressReportDao.insert(progressReport[0]);
             return null;
         }
     }
@@ -58,8 +58,8 @@ public class FactoryProgressReportDB {
         }
 
         @Override
-        protected Void doInBackground(ProgressReport... porgressReports) {
-            progressReportDao.update(porgressReports[0]);
+        protected Void doInBackground(ProgressReport... progressReport) {
+            progressReportDao.update(progressReport[0]);
             return null;
         }
 
