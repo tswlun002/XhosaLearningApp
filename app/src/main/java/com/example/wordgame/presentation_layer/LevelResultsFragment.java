@@ -2,19 +2,14 @@ package com.example.wordgame.presentation_layer;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.wordgame.R;
@@ -22,6 +17,8 @@ import com.example.wordgame.model_layer.LevelResults;
 import com.example.wordgame.model_layer.LevelResultsViewModel;
 import com.example.wordgame.model_layer.User;
 import com.example.wordgame.model_layer.WordGameViewModel;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,15 +66,30 @@ public class LevelResultsFragment extends Fragment {
 
 
 
-    private void insertToResultsDB(LevelResultsViewModel levelResultsViewModel){
+    private void insertToLevelResultsDB(LevelResultsViewModel levelResultsViewModel){
           wordGameViewModel.getState().observe(getViewLifecycleOwner(), new Observer<LevelResults>() {
               @Override
               public void onChanged(LevelResults levelResults) {
                   levelResultsViewModel.insert(levelResults);
+                  getHighestScore(levelResultsViewModel);
+
 
               }
           });
 
+    }
+
+    private void getHighestScore(LevelResultsViewModel levelResultsViewModel){
+        levelResultsViewModel.getAverage().observe(getViewLifecycleOwner(), new Observer<List<LevelResults>>() {
+            @Override
+            public void onChanged(List<LevelResults> levelResults) {
+               ProgressReportHandler progressReportHandler =
+                       new ProgressReportHandler(requireActivity().getApplication());
+               progressReportHandler.setLevelResultsList(levelResults);
+               progressReportHandler.computeScores();
+               progressReportHandler.insert();
+            }
+        });
     }
 
     @Override
@@ -85,7 +97,7 @@ public class LevelResultsFragment extends Fragment {
         super.onResume();
         Toolbar toolbar  = requireActivity().findViewById(R.id.toolbar);
         toolbar.setVisibility(View.GONE);
-        insertToResultsDB(levelResultsViewModel);
+        insertToLevelResultsDB(levelResultsViewModel);
     }
 
     @Override

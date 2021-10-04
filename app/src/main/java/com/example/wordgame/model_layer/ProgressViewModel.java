@@ -7,11 +7,13 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.wordgame.respotory_layer.FactoryLevelResultsDB;
+import com.example.wordgame.respotory_layer.FactoryProgressReportDB;
+
 import java.util.List;
 
 public class ProgressViewModel extends AndroidViewModel {
-    private final FactoryLevelResultsDB factoryLevelResultsDB;
-    private final LiveData<List<PorgressReport>> allMaterial;
+    private final FactoryProgressReportDB factoryProgressReportDB;
+    private final LiveData<List<ProgressReport>> allMaterial;
 
     /**
      * construct to initialise serial fields
@@ -20,8 +22,8 @@ public class ProgressViewModel extends AndroidViewModel {
      */
     public ProgressViewModel(@NonNull Application application) {
         super(application);
-        factoryTranslationDB = new FactoryLevelResultsDB(application);
-        allMaterial = factoryTranslationDB.getQuestions();
+        factoryProgressReportDB = new FactoryProgressReportDB(application);
+        allMaterial = factoryProgressReportDB.getResults();
     }
 
     /**
@@ -29,7 +31,7 @@ public class ProgressViewModel extends AndroidViewModel {
      *
      * @return matching material
      */
-    public LiveData<List<PorgressReport>> getGameMaterial() {
+    public LiveData<List<ProgressReport>> getGameMaterial() {
         return allMaterial;
     }
 
@@ -38,8 +40,8 @@ public class ProgressViewModel extends AndroidViewModel {
      *
      * @param porgressReport is a data being inserted
      */
-    public void insert(PorgressReport porgressReport) {
-        FactoryLevelResultsDB.insert(porgressReport);
+    public void insert(ProgressReport porgressReport) {
+        factoryProgressReportDB.insert(porgressReport);
     }
 
     /**
@@ -47,7 +49,7 @@ public class ProgressViewModel extends AndroidViewModel {
      *
      * @param porgressReport is the data being updated
      */
-    public void update(PorgressReport porgressReport) {
-        FactoryLevelResultsDB.update(porgressReport);
+    public void update(ProgressReport porgressReport) {
+        factoryProgressReportDB.update(porgressReport);
     }
 }

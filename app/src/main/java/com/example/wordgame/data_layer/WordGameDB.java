@@ -13,10 +13,11 @@ import com.example.wordgame.model_layer.Learn;
 import com.example.wordgame.model_layer.LevelResults;
 import com.example.wordgame.model_layer.Matching;
 import com.example.wordgame.model_layer.MultipleChoice;
+import com.example.wordgame.model_layer.ProgressReport;
 import com.example.wordgame.model_layer.TranslationGame;
 import com.example.wordgame.model_layer.TrueFalseGame;
 
-@Database(entities = {Learn.class, Matching.class, TrueFalseGame.class, MultipleChoice.class, TranslationGame.class,LevelResults.class}, version =7, exportSchema = true)
+@Database(entities = {Learn.class, Matching.class, TrueFalseGame.class, MultipleChoice.class, TranslationGame.class,LevelResults.class, ProgressReport.class}, version =8, exportSchema = true)
 public abstract class WordGameDB extends RoomDatabase {
     public static WordGameDB wordGameDB;
     public abstract LearnDao learnDao();
@@ -25,6 +26,7 @@ public abstract class WordGameDB extends RoomDatabase {
     public abstract MultipleChoiceDao multipleChoiceDao();
     public abstract TranslationDao translationDao();
     public abstract LevelResultsDao levelResultsDao();
+    public abstract ProgressReportDao progressReportDao();
     static Context context1;
 
     public static synchronized WordGameDB getInstanceWordGameDb(Context context){

@@ -92,14 +92,6 @@ public class ProggressFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentProggressBinding.inflate(inflater, container, false);
 
-        //TextView textView =view.findViewById(R.id.learnnextID);
-
-       /* textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_proggress_to_SecondFragment);
-            }
-        });*/
         Toolbar toolbar = requireActivity().findViewById(R.id.toolbar);
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
                 getActivity(),
