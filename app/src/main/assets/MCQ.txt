@@ -1,0 +1,120 @@
+7
+1;Choose the correct word for given term or sentence description  
+Sunday;Cawe
+Lwesithathu
+Cawe
+Mvulo
+Lwesibini
+Monday;Mvulo
+Lwesibini
+Mgqibelo
+Mvulo
+Lwesihlanu
+Tuesday;Lwesibini
+Lwesihlanu
+Lwesibini
+Mvulo
+Cawe
+Wednesday;Lwesithathu
+Lwesithathu
+Mgqibelo
+Mvulo
+Lwesihlanu
+Thursday;Lwesine
+Mgqibelo
+Mvulo
+Lwesihlanu
+Lwesine
+Friday;Lwesihlanu
+Mgqibelo
+Mvulo
+Lwesihlanu
+Lwesibini
+Saturday;Mgqibelo
+Lwesibini
+Mgqibelo
+Lwesihlanu
+Lwesibini
+black ; mnyama
+bomvu
+mhlophe
+mthubi
+brown ; ntsundu
+luhlaza
+bomvu
+mhlophe
+brown ; ntsundu
+bomvu
+mnyama
+mhlophe
+Turn ; jika
+ekhohlo
+ekunene
+hamba
+Left ; ekhohlo
+ekunene
+jika
+hamba
+Forward ; phambili
+jika
+ekhohlo
+ekunene
+my sister ; dadewethu
+mystery ; intsumantsumane
+neighbour ; ummelwane
+outside ; phandle
+question ; Umbuzo
+reason ; isizathu
+my sister ; dadewethu
+ubhuti
+umama
+utata
+mystery ; intsumantsumane
+ungazi
+uhlakanipha
+ubumnyama
+outside ; phandle
+pakathi
+ecaleni
+ekhohlo
+question ; Umbuzo
+isizathu
+impendulo
+isitulo
+reason ; isizathu
+impendulo
+umbuzo
+inja
+Money ; Imali
+ukutya
+igolide
+umbona
+In cash ; eziinkozo
+imali
+igolide
+umbona
+Summer ; iHlobo
+ukwindla
+entlakohlaza
+ubusika
+Autumn ; uKwindla
+ubusika
+intlakohlaza
+isibunzi
+Winter ; uBusika
+intwasahlobo
+ukwindla
+entlakohlaza
+Hello ; Molo
+uyaphi
+awe
+bayabuya
+How are you ; Kunjani
+uyaphi
+ubuyanini
+ukuhamba
+You're welcome ; wamkelekile
+phuma
+phupha
+goduka
+
