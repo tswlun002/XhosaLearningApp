@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.wordgame.R;
@@ -21,12 +22,14 @@ import com.example.wordgame.model_layer.LevelResults;
 import com.example.wordgame.model_layer.TrueFalseGame;
 import com.example.wordgame.model_layer.TrueFalseViewModel;
 import com.example.wordgame.model_layer.User;
+import com.example.wordgame.model_layer.UserViewModel;
 import com.example.wordgame.model_layer.WordGameViewModel;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,7 +47,7 @@ public class TrueFalseFragment extends Fragment  {
     private LayoutInflater inflater;
     private WordGameViewModel wordGameViewModel;
     private  OnExtractResults onExtractResults;
-    private User user = MainActivity.user;
+    private final UserViewModel userViewModel = MainActivity.userViewModel;
     private  OnSubmit onSubmit;
 
 
@@ -123,14 +126,15 @@ public class TrueFalseFragment extends Fragment  {
             public void onChanged(List<TrueFalseGame> trueFalseGames) {
                  List<String> questions = new ArrayList<>();
                  List<String> pictures =new ArrayList<>();
-
-                for (TrueFalseGame material: trueFalseGames){
+                int numberOfQuestions =5;
+                List<TrueFalseGame> trueFalseGames1 = randomiseData(trueFalseGames, numberOfQuestions);
+                for (TrueFalseGame material: trueFalseGames1){
                     questions.add(material.getQuestion());
                     pictures.add(material.getFigures());
                 }
 
                 try {
-                    trueFalseController.setData(questions,pictures,trueFalseGames);
+                    trueFalseController.setData(questions,pictures,trueFalseGames1);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -138,6 +142,25 @@ public class TrueFalseFragment extends Fragment  {
         });
 
 
+    }
+
+    /**
+     * Randomise questions for game
+     * @param trueFalseGames list of game material of true false game
+     * @param numberQuestions is the number of questions for game
+     * @return new list of questions of true false game
+     */
+    private  List<TrueFalseGame> randomiseData(List<TrueFalseGame> trueFalseGames,int numberQuestions){
+        Random rand = new Random();
+        List<TrueFalseGame> newList = new ArrayList<>();
+        for (int i = 0; i < numberQuestions; i++) {
+
+            int randomIndex = rand.nextInt(trueFalseGames.size());
+            newList.add(trueFalseGames.get(randomIndex));
+            trueFalseGames.remove(randomIndex);
+        }
+
+        return newList;
     }
 
 
@@ -163,6 +186,7 @@ public class TrueFalseFragment extends Fragment  {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         handleSubmit(view);
+        handleFab();
         ((MainActivity) requireActivity()).backUpPressed(TrueFalseFragment.this,R.id.action_trueFalseFragment_to_play);
 
     }
@@ -174,37 +198,29 @@ public class TrueFalseFragment extends Fragment  {
                 int id  = R.id.action_results_CurrentActivity_to_trueFalseFragment;
                 HashMap<String,String> userAnswer =onExtractResults.getUserAnswers();
                 HashMap<String,String>gameAnswer  = onExtractResults.getGameAnswers();
-                //Toast.makeText(requireContext(), userAnswer.size()+""+gameAnswer.size(),
-                       // Toast.LENGTH_SHORT).show();
                 onSubmit = new SubmitHandler(inflater,id,view,userAnswer,gameAnswer);
                 onSubmit.onSubmit(view,inflater);
-                shareData(onSubmit,onExtractResults, userAnswer);
                 Navigation.findNavController(view).
                         navigate(R.id.action_trueFalseFragment_to_results_CurrentActivity);
+                new LevelResultsHandler(requireContext(),userViewModel,wordGameViewModel,
+                        getViewLifecycleOwner()).shareData(onSubmit,onExtractResults,userAnswer,"true false");
 
             }
         });
     }
 
-    private void  shareData(OnSubmit submit,OnExtractResults onExtractResults,HashMap<String,String> gameAnswers){
-        double score = submit.getScore();
-        int userId = user.getUserId();
-        String[] information  = onExtractResults.getGameInformation().split(",");
-        int gameId=0;int level=0; int totalMarks=0;
-        try {
-            gameId= Integer.parseInt(information[0].trim());
-            level= Integer.parseInt(information[1].trim());
-            totalMarks= gameAnswers.size()/*Integer.parseInt(information[2].trim())*/;
-        }catch (Exception e){
-            Toast.makeText(requireContext(),"Error Matching\n "+e.toString(),Toast.LENGTH_SHORT).show();
-        }
-
-        LevelResults levelResults = new LevelResults(
-                gameId,userId,level,"true false",
-                score,totalMarks
-        );
-        wordGameViewModel.setValue(levelResults);
+    private void handleFab(){
+        binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(TrueFalseFragment.this).
+                        navigate(R.id.action_trueFalseFragment_to_proggress);
+                
+            }
+        });
     }
+
+
 
 
 

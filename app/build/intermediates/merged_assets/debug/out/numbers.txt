@@ -1,0 +1,24 @@
+0 ; unothi/ qanda
+1 ; nye 
+2 ; mbini 
+3 ; ntathu 
+4 ; ne 
+5 ; ntlanu 
+6 ; ntandathu 
+7 ; sixhenxe 
+8 ; sibhozo
+9 ; lithoba
+10 ;lishumi
+11 ; lishumi elinanye 
+14 ; lishumi elinesine
+19 ;lishumi elinethoba
+20 ; ngashumi amabini
+21 ; ngashumi amabini ananye
+22 ; ngashumi amabini anambini
+25 ; ngashumi amabini anesihlanu
+29 ; ngashumi amabini anethoba
+30 ; ngashumi amathathu
+100 ; likhulu
+1 000 ; liwaka
+1 000 000 ; sigidi
+

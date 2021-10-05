@@ -1,0 +1,13 @@
+in the morning ; kusasa
+during the day ; emini
+in the evening ; ngokuhlwa
+in the afternoon ; emvakwemini
+at night ; ebsuku
+yesterday ; izolo
+today ; namhlanje
+tomorrow ; ngomso
+day after tomorrow ; ngomso omnye
+next week ; kulenyaga izayo
+next month ; kulenyanga izayo
+next year ; kulonyaka uzayo
+

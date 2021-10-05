@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -22,11 +23,14 @@ import com.example.wordgame.model_layer.LevelResults;
 import com.example.wordgame.model_layer.MatchingViewModel;
 import com.example.wordgame.model_layer.TranslationGame;
 import com.example.wordgame.model_layer.TranslationViewModel;
+import com.example.wordgame.model_layer.TrueFalseGame;
 import com.example.wordgame.model_layer.User;
 import com.example.wordgame.model_layer.WordGameViewModel;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,7 +52,7 @@ public class TranslationFragment extends Fragment {
     private  FragmentTranslationBinding binding;
     private  LayoutInflater inflater;
     private WordGameViewModel wordGameViewModel;
-    private final  User user = MainActivity.user;
+    //private final  User user = MainActivity.user;
 
 
     /**
@@ -103,12 +107,32 @@ public class TranslationFragment extends Fragment {
         translationViewModel.getGameMaterial().observe(getViewLifecycleOwner(), new Observer<List<TranslationGame>>() {
             @Override
             public void onChanged(List<TranslationGame> translationGames) {
-                for(TranslationGame translationGame: translationGames){
+                int numberOfQuestions =5;
+                List<TranslationGame> translationGameList = randomiseData(translationGames, numberOfQuestions);
+                for(TranslationGame translationGame: translationGameList){
                     data.put(translationGame.getQuestion(),translationGame.getHints());
                 }
-                translationController.setData(data,translationGames);
+                translationController.setData(data,translationGameList);
             }
         });
+    }
+    /**
+     * Randomise questions for game
+     * @param translationGameList list of game material of translation  game
+     * @param numberQuestions is the number of questions for game
+     * @return new list of questions of translation game
+     */
+    private  List<TranslationGame> randomiseData(List<TranslationGame> translationGameList, int numberQuestions){
+        Random rand = new Random();
+        List<TranslationGame> newList = new ArrayList<>();
+        for (int i = 0; i < numberQuestions; i++) {
+
+            int randomIndex = rand.nextInt(translationGameList.size());
+            newList.add(translationGameList.get(randomIndex));
+            translationGameList.remove(randomIndex);
+        }
+
+        return newList;
     }
     /**
      * created view of translation fragment
@@ -120,6 +144,7 @@ public class TranslationFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         handleSubmit(view);
+        handleFab();
         ((MainActivity) requireActivity()).backUpPressed(TranslationFragment.this,R.id.action_translationFragment_to_play);
     }
 
@@ -143,11 +168,10 @@ public class TranslationFragment extends Fragment {
                 int id  = R.id.action_results_CurrentActivity_to_translationFragment;
                 HashMap<String,String> userAnswer =onExtractResults.getUserAnswers();
                 HashMap<String,String>gameAnswer  = onExtractResults.getGameAnswers();
-                //Toast.makeText(requireContext(), userAnswer+"\n\n"+gameAnswer.size(),
-                 //       Toast.LENGTH_LONG).show();
-               OnSubmit onSubmit = new SubmitHandler(inflater,id,view,userAnswer,gameAnswer);
+                OnSubmit onSubmit = new SubmitHandler(inflater,id,view,userAnswer,gameAnswer);
                 onSubmit.onSubmit(view,inflater);
-                shareData(onSubmit,onExtractResults,userAnswer );
+                new LevelResultsHandler(requireContext(),MainActivity.userViewModel,wordGameViewModel,
+                        getViewLifecycleOwner()).shareData(onSubmit,onExtractResults,userAnswer,"multiple choice");
                 Navigation.findNavController(view).
                         navigate(R.id.action_translationFragment_to_results_CurrentActivity);
 
@@ -155,25 +179,18 @@ public class TranslationFragment extends Fragment {
         });
     }
 
-    private void  shareData(OnSubmit submit,OnExtractResults onExtractResults,HashMap<String,String>gameAnswer ){
-        double score = submit.getScore();
-        int userId = user.getUserId();
-        String[] information  = onExtractResults.getGameInformation().split(",");
-        int gameId=0;int level=0; int totalMarks=0;
-        try {
-            gameId= Integer.parseInt(information[0].trim());
-            level= Integer.parseInt(information[1].trim());
-            totalMarks= gameAnswer.size()/*Integer.parseInt(information[2].trim())*/;
-        }catch (Exception e){
-            Toast.makeText(requireContext(),"Error Translation\n "+e.toString(),Toast.LENGTH_SHORT).show();
-        }
+    /**
+     * sets a popup to progress view
+     */
+    private void handleFab(){
+        binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(TranslationFragment.this).
+                        navigate(R.id.action_translationFragment_to_proggress);
 
-        LevelResults levelResults = new LevelResults(
-                gameId,userId,level,"translation",
-                score,totalMarks
-        );
-        wordGameViewModel.setValue(levelResults);
+            }
+        });
     }
-
 
 }

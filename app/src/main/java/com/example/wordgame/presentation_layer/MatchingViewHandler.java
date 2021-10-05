@@ -19,10 +19,15 @@ public class MatchingViewHandler extends DragandDrop implements OnMatchingViewHa
      * @serial view is the view of MatchingFragment
      */
     private  final  View view;
-    TextView firstQ,secondQ,thirdQ,fourthQ;
+    private TextView firstQ,secondQ,thirdQ,fourthQ;
     private final HashMap<String,String> userAnswers = new HashMap<>();
     private final HashMap<String,String> matchingAnswers = new HashMap<>();
     private  Matching matching;
+    private HashMap<Integer, String> questions= new HashMap<>();
+    HashMap<Integer, String>  answers=new HashMap<>();
+    private int level = 0;
+    private String heading = "";
+
 
 
     /**
@@ -59,7 +64,6 @@ public class MatchingViewHandler extends DragandDrop implements OnMatchingViewHa
         EditText userAnswer2 = view.findViewById(R.id.xhosaEditText2);
         EditText userAnswer3 = view.findViewById(R.id.xhosaEditText3);
         EditText userAnswer4 = view.findViewById(R.id.xhosaEditText4);
-
         userAnswers.put(firstQ.getText().toString(),userAnswer1.getText().toString());
         userAnswers.put(secondQ.getText().toString(),userAnswer2.getText().toString());
         userAnswers.put(thirdQ.getText().toString(),userAnswer3.getText().toString());
@@ -72,88 +76,77 @@ public class MatchingViewHandler extends DragandDrop implements OnMatchingViewHa
      */
     void extractMatchingAnswers(List<Matching> material){
         for(Matching answers: material){
-            matchingAnswers.put(answers.getQuestions().trim().toLowerCase()
-                    ,answers.getAnswers().trim().toLowerCase());
+            String question,answer;
+            question=answers.getQuestions().trim().toLowerCase();
+            answer =answers.getAnswers().trim().toLowerCase();
+            matchingAnswers.put(question,answer);
         }
 
+    }
+
+    private void initQuestionAnswers(List<Matching> material){
+        int count  = 1;
+        for (Matching materialActivity : material) {
+
+            level = materialActivity.getLevel();
+            heading = materialActivity.getTittle();
+            String question,answer;
+            question =materialActivity.getQuestions().trim().toLowerCase();
+            answer =materialActivity.getAnswers().trim().toLowerCase();
+            questions.put(count,question);
+            answers.put(count,answer);
+            count++;
+        }
     }
 
     public  MatchingViewHandler (View view){
         this.view=view ;
     }
+
+
     public void setData(List<Matching> material){
-        matching = material.get(0);
-        extractMatchingAnswers(material);
-        int level =0;
-        String Q1,Q2,Q3,Q4,A1,A2,A3,A4,A5,A6,A7,A8;
-        A5=A6= A7= A8= Q2=Q1=Q3=Q4=A1=A2=A3=A4 ="";
-        String heading ="";
-        for(Matching materialActivity :material) {
-             heading = materialActivity.getTittle();
-            level = materialActivity.getLevel();
-            int id = materialActivity.getMatchingId();
-            if (id == 1) {
-                Q1 = materialActivity.getQuestions();
-                A1 = materialActivity.getAnswers();
-            } else if (id == 2) {
-
-                Q2 = materialActivity.getQuestions();
-                A2 = materialActivity.getAnswers();
-            } else if (id ==3) {
-                Q3 = materialActivity.getQuestions();
-                A3 = materialActivity.getAnswers();
-            } else if (id == 4){
-                Q4 = materialActivity.getQuestions();
-                A4 = materialActivity.getAnswers();
+        if(material != null) {
+            initQuestionAnswers(material);
+            matching = material.get(0);
+            extractMatchingAnswers(material);
+            if(questions !=null & answers !=null) {
+                TextView tittle = view.findViewById(R.id.instructionTextView);
+                tittle.setText(heading);
+                firstQ = view.findViewById(R.id.engTextView1);
+                firstQ.setText(questions.get(1));
+                secondQ = view.findViewById(R.id.engTextView2);
+                secondQ.setText(questions.get(2));
+                thirdQ = view.findViewById(R.id.engTextView3);
+                thirdQ.setText(questions.get(3));
+                fourthQ = view.findViewById(R.id.engTextView4);
+                fourthQ.setText(questions.get(4));
+                TextView answer1 = view.findViewById(R.id.xhosaMatchTextView1);
+                answer1.setText(answers.get(1));
+                TextView answer2 = view.findViewById(R.id.xhosaMatchTextView2);
+                answer2.setText(answers.get(2));
+                TextView answer3 = view.findViewById(R.id.xhosaMatchTextView3);
+                answer3.setText(answers.get(3));
+                TextView answer4 = view.findViewById(R.id.xhosaMatchTextView4);
+                answer4.setText(answers.get(4));
+                TextView answer5 = view.findViewById(R.id.xhosaMatchTextView5);
+                answer5.setText(answers.get(5));
+                TextView answer6 = view.findViewById(R.id.xhosaMatchTextView6);
+                answer6.setText(answers.get(6));
+                TextView answer7 = view.findViewById(R.id.xhosaMatchTextView7);
+                answer7.setText(answers.get(7));
+                TextView answer8 = view.findViewById(R.id.xhosaMatchTextView8);
+                answer8.setText(answers.get(8));
+                if (level == 1) {
+                    setVisible(answer5);
+                    setVisible(answer6);
+                    setVisible(answer7);
+                    setVisible(answer8);
+                }
+                if(level ==2){
+                    setVisible(answer7);
+                    setVisible(answer8);
+                }
             }
-            else if (id == 5){
-                A5 = materialActivity.getQuestions();
-
-            }
-            else if (id == 6){
-                A6 = materialActivity.getAnswers();
-            }
-            else if (id == 7){
-
-                A7 = materialActivity.getAnswers();
-            }
-            else if (id == 8){
-                A8 = materialActivity.getAnswers();
-            }
-
-
-        }
-        TextView tittle = view.findViewById(R.id.instructionTextView);
-        tittle.setText(heading);
-        firstQ = view.findViewById(R.id.engTextView1);
-        firstQ.setText(Q1);
-         secondQ = view.findViewById(R.id.engTextView2);
-        secondQ.setText(Q2);
-        thirdQ = view.findViewById(R.id.engTextView3);
-        thirdQ.setText(Q3);
-        fourthQ = view.findViewById(R.id.engTextView4);
-        fourthQ.setText(Q4);
-        TextView answer1 = view.findViewById(R.id.xhosaMatchTextView1);
-        answer1.setText(A1);
-        TextView answer2 = view.findViewById(R.id.xhosaMatchTextView2);
-        answer2.setText(A2);
-        TextView answer3 = view.findViewById(R.id.xhosaMatchTextView3);
-        answer3.setText(A3);
-        TextView answer4 = view.findViewById(R.id.xhosaMatchTextView4);
-        answer4.setText(A4);
-        TextView answer5 = view.findViewById(R.id.xhosaMatchTextView5);
-        answer5.setText(A5);
-        TextView answer6 = view.findViewById(R.id.xhosaMatchTextView6);
-        answer6.setText(A6);
-        TextView answer7 = view.findViewById(R.id.xhosaMatchTextView7);
-        answer7.setText(A7);
-        TextView answer8 = view.findViewById(R.id.xhosaMatchTextView8);
-        answer8.setText(A8);
-        if(level == 1){
-            setVisible(answer5);
-            setVisible(answer6);
-            setVisible(answer7);
-            setVisible(answer8);
         }
     }
     private void setVisible(View view){
