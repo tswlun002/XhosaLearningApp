@@ -46,6 +46,7 @@ public class MatchingFragment extends Fragment {
     private  LayoutInflater inflater;
     private MatchingViewModel matchingViewModel;
     private WordGameViewModel wordGameViewModel;
+    private  MatchingViewHandler matchingViewHandler;
     //private final User user = MainActivity.user;
 
 
@@ -88,7 +89,7 @@ public class MatchingFragment extends Fragment {
 
         binding = FragmentMatchingBinding.inflate(inflater, container, false);
         this.inflater =inflater;
-        MatchingViewHandler matchingViewHandler = new MatchingViewHandler(binding.getRoot());
+        matchingViewHandler = new MatchingViewHandler(binding.getRoot());
         try {
             onMatchingViewHandler =matchingViewHandler;
             onExtractResults =matchingViewHandler;
@@ -97,23 +98,59 @@ public class MatchingFragment extends Fragment {
             Toast.makeText(requireContext(), "Can't cast matchingViewHandler to  onMatchingViewHandler",
                     Toast.LENGTH_SHORT).show();;
         }
-        setData(matchingViewHandler,matchingViewModel);
+        //setData(matchingViewHandler,matchingViewModel,level);
+        getUserInformation();
 
         return binding.getRoot();
 
     }
 
-    private void setData(MatchingViewHandler matchingViewHandler,MatchingViewModel matchingViewModel){
-        matchingViewModel.getGameMaterial().observe(getViewLifecycleOwner(), new Observer<List<Matching>>() {
+    /**
+     * get user id for matching and setting it to access each level.
+     * user that id to store the average grades for the current level
+     */
+    private void getUserInformation(){
+        wordGameViewModel.getUserLevel().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
-            public void onChanged(List<Matching> matchings) {
-                int numberOfQuestions  =8;
-                List<Matching> newList = randomiseData(matchings,numberOfQuestions);
-                matchingViewHandler.setData(newList);
+            public void onChanged(Integer integer) {
+                setData(matchingViewModel,matchingViewHandler,integer);
             }
         });
     }
+    private void setData(MatchingViewModel matchingViewModel,MatchingViewHandler matchingViewHandler,int level){
+        if(level==1) {
+            matchingViewModel.getQuestionsLevelOne().observe(getViewLifecycleOwner(), new Observer<List<Matching>>() {
+                @Override
+                public void onChanged(List<Matching> matching) {
+                        setData(matching,matchingViewHandler);
+                }
+            });
+        }else if(level ==2) {
+            matchingViewModel.getQuestionsLevelTwo().observe(getViewLifecycleOwner(), new Observer<List<Matching>>() {
+                @Override
+                public void onChanged(List<Matching> matching) {
+                    setData(matching,matchingViewHandler);
+                }
+            });
+        }else {
+            matchingViewModel.getQuestionsLevelThree().observe(getViewLifecycleOwner(), new Observer<List<Matching>>() {
+                @Override
+                public void onChanged(List<Matching> matching) {
+                        setData(matching,matchingViewHandler);
+                }
+            });
+        }
+    }
 
+    /**
+     * sets the data then randomise it before access for use
+     * @param matching gets data from the database
+     */
+    private void setData(List<Matching> matching,MatchingViewHandler matchingViewHandler){
+        int numberOfQuestions = 8;
+        List<Matching> newList = randomiseData(matching, numberOfQuestions);
+        matchingViewHandler.setData(newList);
+    }
     /**
      * Randomise questions for game
      * @param matchingList list of game material of matching game

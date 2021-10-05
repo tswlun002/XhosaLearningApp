@@ -13,7 +13,8 @@ import java.util.List;
 
 public class MatchingViewModel extends AndroidViewModel {
     private final FactoryMatchingDB factoryMatchingDB;
-    private final LiveData<List<Matching>> allMaterial;
+    private final LiveData<List<Matching>> allMaterial,questionsLevelOne,
+            questionsLevelTwo,questionsLevelThree;
 
     /**
      * construct to initialise serial fields
@@ -23,6 +24,9 @@ public class MatchingViewModel extends AndroidViewModel {
         super(application);
        factoryMatchingDB = new FactoryMatchingDB(application);
         allMaterial = factoryMatchingDB.getQuestions();
+        questionsLevelOne = factoryMatchingDB.getQuestionsLevelOne();
+        questionsLevelTwo = factoryMatchingDB.getQuestionsLevelTwo();
+        questionsLevelThree = factoryMatchingDB.getQuestionsLevelThree();
     }
 
     /**
@@ -32,7 +36,16 @@ public class MatchingViewModel extends AndroidViewModel {
     public LiveData<List<Matching>> getGameMaterial() {
         return allMaterial;
     }
+    public LiveData<List<Matching>> getQuestionsLevelOne() {
+        return questionsLevelOne;
+    }
 
+    public LiveData<List<Matching>> getQuestionsLevelTwo(){
+        return questionsLevelTwo;
+    }
+    public LiveData<List<Matching>> getQuestionsLevelThree() {
+        return questionsLevelThree;
+    }
     /**
      * insert data of matching
      * @param match is a data being inserted

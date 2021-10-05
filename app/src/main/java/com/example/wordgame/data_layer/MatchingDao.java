@@ -15,12 +15,12 @@ public interface MatchingDao {
 
     @Query("SELECT * FROM MATCHING where level=1")
     LiveData<List<Matching>> getAll();
-    /*@Query("SELECT * FROM Matching WHERE level =1")
-    LiveData<List<Matching>> loadLevelOne(int[] userIds);
+    @Query("SELECT * FROM Matching WHERE level =1")
+    LiveData<List<Matching>> loadLevelOne();
     @Query("SELECT * FROM Matching WHERE level =2")
-    LiveData<List<Matching>> loadLevelTwo(int[] userIds);
+    LiveData<List<Matching>> loadLevelTwo();
     @Query("SELECT * FROM Matching WHERE level =3")
-    LiveData<List<Matching>> loadLevelThree(int[] userIds);*/
+    LiveData<List<Matching>> loadLevelThree();
     @Update
     void update(Matching activity);
     @Insert

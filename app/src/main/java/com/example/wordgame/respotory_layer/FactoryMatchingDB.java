@@ -14,18 +14,38 @@ import java.util.List;
 public class FactoryMatchingDB {
     private final MatchingDao matchingDao;
     private final LiveData<List<Matching>>  questions;
+    private final LiveData<List<Matching>>  questionsLevelOne;
+    private final LiveData<List<Matching>>  questionsLevelTwo;
+    private final LiveData<List<Matching>>  questionsLevelThree;
     public FactoryMatchingDB(Application application){
         WordGameDB matchingDB = WordGameDB.getInstanceWordGameDb(application);
 
         matchingDao = matchingDB.matchingDao();
         questions = matchingDao.getAll();
+        questionsLevelOne = matchingDao.loadLevelOne();
+        questionsLevelTwo = matchingDao.loadLevelTwo();
+        questionsLevelThree = matchingDao.loadLevelThree();
+
 
     }
 
+    /**
+     * initial
+     * @return
+     */
     public LiveData<List<Matching>> getQuestions() {
         return questions;
     }
+    public LiveData<List<Matching>> getQuestionsLevelOne() {
+        return questionsLevelOne;
+    }
 
+    public LiveData<List<Matching>> getQuestionsLevelTwo(){
+        return questionsLevelTwo;
+    }
+    public LiveData<List<Matching>> getQuestionsLevelThree() {
+        return questionsLevelThree;
+    }
     public  void insert(Matching matching){
         new insertHandler(matchingDao).execute(matching);
     }
