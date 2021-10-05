@@ -9,23 +9,30 @@ import com.example.wordgame.respotory_layer.FactoryMultipleChoiceDB;
 import java.util.List;
 public class MultipleChoiceViewModel extends AndroidViewModel {
     private final FactoryMultipleChoiceDB factoryMultipleChoiceDB;
-    private final LiveData<List<MultipleChoice>> allMaterial;
+    private final LiveData<List<MultipleChoice>> questionsLevelOne,questionsLevelTwo,
+    questionsLevelThree;
     public MultipleChoiceViewModel(@NonNull Application application) {
         super(application);
         factoryMultipleChoiceDB = new FactoryMultipleChoiceDB(application);
-        allMaterial = factoryMultipleChoiceDB.getQuestions();
+        questionsLevelOne = factoryMultipleChoiceDB.getQuestionsLevelOne();
+        questionsLevelTwo= factoryMultipleChoiceDB.getQuestionsLevelTwo();
+        questionsLevelThree= factoryMultipleChoiceDB.getQuestionsLevelThree();
+
     }
-    /**
-     * get all material for matching game
-     * @return matching material
-     */
-    public LiveData<List<MultipleChoice>> getGameMaterial() {
-        return allMaterial;
+    public LiveData<List<MultipleChoice>> getQuestionsLevelOne() {
+        return questionsLevelOne;
     }
-    /**
-     * insert data of matching
-     * @param multipleChoice is a data being inserted
-     */
+    public LiveData<List<MultipleChoice>> getQuestionsLevelTwo() {
+        return questionsLevelTwo;
+    }
+    public LiveData<List<MultipleChoice>> getQuestionsLevelThree() {
+        return questionsLevelThree;
+    }
+
+        /**
+         * insert data of matching
+         * @param multipleChoice is a data being inserted
+         */
     public  void insert(MultipleChoice multipleChoice){
         factoryMultipleChoiceDB.insert(multipleChoice);
     }

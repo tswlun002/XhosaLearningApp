@@ -24,10 +24,12 @@ import com.example.wordgame.model_layer.MultipleChoice;
 import com.example.wordgame.model_layer.MultipleChoiceViewModel;
 import com.example.wordgame.model_layer.TranslationGame;
 import com.example.wordgame.model_layer.TrueFalseGame;
+import com.example.wordgame.model_layer.TrueFalseViewModel;
 import com.example.wordgame.model_layer.User;
 import com.example.wordgame.model_layer.UserViewModel;
 import com.example.wordgame.model_layer.WordGameViewModel;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -96,9 +98,23 @@ public class MultipleChoiceFragment extends Fragment {
         View view =binding.getRoot();
         setUpRecycleView(binding,view);
         onExtractResults =multipleChoiceController;
-        setData(multipleChoiceViewModel);
+        getUserInformation();
         setRecycleView();
         return  view;
+    }
+
+
+    /**
+     * Get user information such as level
+     * Use the user level to set data for that level
+     */
+    private void getUserInformation(){
+        wordGameViewModel.getUserLevel().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                setData(multipleChoiceViewModel,integer);
+            }
+        });
     }
 
     /**
@@ -107,30 +123,52 @@ public class MultipleChoiceFragment extends Fragment {
      * All data is then sent to Recycle view adapter
      * @param multipleChoiceViewModel is the view model instance of this fragment
      */
-    private  void setData(MultipleChoiceViewModel multipleChoiceViewModel){
-        multipleChoiceViewModel.getGameMaterial().observe(getViewLifecycleOwner(), new Observer<List<MultipleChoice>>() {
-            @Override
-            public void onChanged(List<MultipleChoice> multipleChoiceData) {
-                List<String> choices ;
-                int numberOfQuestions =5;
-                List<MultipleChoice> multipleChoiceList = randomiseData(multipleChoiceData, numberOfQuestions);
-                int size = multipleChoiceList.size();
-
-                for(int i =0; i< size;i++) {
-                    choices = new ArrayList<>();
-                    MultipleChoice multipleChoice = multipleChoiceList.get(i);
-                    String question =multipleChoice.getQuestion();
-                    choices.add(multipleChoice.getChoiceOne());
-                    choices.add(multipleChoice.getChoiceTwo());
-                    choices.add(multipleChoice.getChoiceThree());
-                    choices.add(multipleChoice.getChoiceFour());
-                    data.put(question,choices);
-
+    private  void setData(MultipleChoiceViewModel multipleChoiceViewModel, int level){
+        if(level ==1) {
+            multipleChoiceViewModel.getQuestionsLevelOne().observe(getViewLifecycleOwner(), new Observer<List<MultipleChoice>>() {
+                @Override
+                public void onChanged(List<MultipleChoice> multipleChoices) {
+                    setData(multipleChoices);
                 }
-                multipleChoiceController.setData(data,multipleChoiceList);
+            });
+        }else if(level==2){
+            multipleChoiceViewModel.getQuestionsLevelTwo().observe(getViewLifecycleOwner(), new Observer<List<MultipleChoice>>() {
+                @Override
+                public void onChanged(List<MultipleChoice> multipleChoices) {
+                    setData(multipleChoices);
+                }
+            });
+        }
+        else if(level ==3){
+            multipleChoiceViewModel.getQuestionsLevelThree().observe(getViewLifecycleOwner(), new Observer<List<MultipleChoice>>() {
+                @Override
+                public void onChanged(List<MultipleChoice> multipleChoices) {
+                    setData(multipleChoices);
+                }
+            });
+        }
 
-            }
-        });
+
+    }
+
+    private void  setData(List<MultipleChoice> multipleChoiceData){
+        List<String> choices ;
+        int numberOfQuestions =5;
+        List<MultipleChoice> multipleChoiceList = randomiseData(multipleChoiceData, numberOfQuestions);
+        int size = multipleChoiceList.size();
+
+        for(int i =0; i< size;i++) {
+            choices = new ArrayList<>();
+            MultipleChoice multipleChoice = multipleChoiceList.get(i);
+            String question =multipleChoice.getQuestion();
+            choices.add(multipleChoice.getChoiceOne());
+            choices.add(multipleChoice.getChoiceTwo());
+            choices.add(multipleChoice.getChoiceThree());
+            choices.add(multipleChoice.getChoiceFour());
+            data.put(question,choices);
+
+        }
+        multipleChoiceController.setData(data,multipleChoiceList);
 
     }
 
