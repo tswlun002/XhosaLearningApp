@@ -51,6 +51,7 @@ public class TrueFalseFragment extends Fragment  {
     private  OnSubmit onSubmit;
 
 
+
     public TrueFalseFragment() {
         // Required empty public constructor
     }
@@ -99,12 +100,15 @@ public class TrueFalseFragment extends Fragment  {
         this.inflater = inflater;
         setUpRecycleView(binding);
         initExtract();
-        setData(trueFalseViewModel);
+       getUserInformation();
 
         return  binding.getRoot();
 
     }
 
+    /**
+     * initial  the extract interface
+     */
     private void initExtract(){
         try{
          onExtractResults = trueFalseController;
@@ -115,35 +119,68 @@ public class TrueFalseFragment extends Fragment  {
     }
 
     /**
+     * Get user information such as level
+     * Use the user level to set data for that level
+     */
+    private void getUserInformation(){
+        wordGameViewModel.getUserLevel().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                setData(trueFalseViewModel,integer);
+            }
+        });
+    }
+
+    /**
      * Get data of the TrueFalse game from database
      * Store questions and figures of the game that will be used during play
      * All data is then sent to Recycle view adapter which class TrueFalseAdapter
      * @param trueFalseViewModel is the view model instance of this fragment, TrueFalseFragment
      */
-    private  void setData(TrueFalseViewModel trueFalseViewModel){
-        trueFalseViewModel.getGameMaterial().observe(getViewLifecycleOwner(), new Observer<List<TrueFalseGame>>() {
-            @Override
-            public void onChanged(List<TrueFalseGame> trueFalseGames) {
-                 List<String> questions = new ArrayList<>();
-                 List<String> pictures =new ArrayList<>();
-                int numberOfQuestions =5;
-                List<TrueFalseGame> trueFalseGames1 = randomiseData(trueFalseGames, numberOfQuestions);
-                for (TrueFalseGame material: trueFalseGames1){
-                    questions.add(material.getQuestion());
-                    pictures.add(material.getFigures());
+    private  void setData(TrueFalseViewModel trueFalseViewModel, int level){
+        if(level ==1) {
+            trueFalseViewModel.getQuestionsLevelOne().observe(getViewLifecycleOwner(), new Observer<List<TrueFalseGame>>() {
+                @Override
+                public void onChanged(List<TrueFalseGame> trueFalseGames) {
+                    setData(trueFalseGames);
                 }
-
-                try {
-                    trueFalseController.setData(questions,pictures,trueFalseGames1);
-                } catch (IOException e) {
-                    e.printStackTrace();
+            });
+        }else if(level==2){
+            trueFalseViewModel.getQuestionsLevelTwo().observe(getViewLifecycleOwner(), new Observer<List<TrueFalseGame>>() {
+                @Override
+                public void onChanged(List<TrueFalseGame> trueFalseGames) {
+                    setData(trueFalseGames);
                 }
-            }
-        });
+            });
+        }
+        else if(level ==3){
+            trueFalseViewModel.getQuestionsLevelThree().observe(getViewLifecycleOwner(), new Observer<List<TrueFalseGame>>() {
+                @Override
+                public void onChanged(List<TrueFalseGame> trueFalseGames) {
+                    setData(trueFalseGames);
+                }
+            });
+        }
 
 
     }
 
+    private void  setData(List<TrueFalseGame> trueFalseGames){
+        List<String> questions = new ArrayList<>();
+        List<String> pictures =new ArrayList<>();
+        int numberOfQuestions =5;
+        List<TrueFalseGame> trueFalseGames1 = randomiseData(trueFalseGames, numberOfQuestions);
+        for (TrueFalseGame material: trueFalseGames1){
+            questions.add(material.getQuestion());
+            pictures.add(material.getFigures());
+        }
+
+        try {
+            trueFalseController.setData(questions,pictures,trueFalseGames1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * Randomise questions for game
      * @param trueFalseGames list of game material of true false game

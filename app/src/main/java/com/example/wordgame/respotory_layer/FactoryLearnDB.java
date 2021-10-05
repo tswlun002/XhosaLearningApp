@@ -14,7 +14,7 @@ import java.util.List;
 public class FactoryLearnDB {
     private final LearnDao learnDao;
     private final LiveData<List<Learn>> allNotes;
-    private final LiveData<List<Learn>> allNotesLevel1;
+    private final LiveData<List<Learn>> allNotesLevel1, allNotesLevel2,allNotesLevel3;
    // private final LiveData<List<Learn>> allNotesLeve2;
 
 
@@ -25,6 +25,8 @@ public class FactoryLearnDB {
         learnDao = wordGameDB.learnDao();
         allNotes = learnDao.getAll();
         allNotesLevel1 = learnDao.level1();
+        allNotesLevel2 = learnDao.level2();
+        allNotesLevel3 = learnDao.level3();
 
     }
 
@@ -33,6 +35,12 @@ public class FactoryLearnDB {
     }
     public LiveData<List<Learn>> getAllNotesLevel1() {
         return allNotesLevel1;
+    }
+    public LiveData<List<Learn>> getAllNotesLevel2() {
+        return allNotesLevel2;
+    }
+    public LiveData<List<Learn>> getAllNotesLevel3() {
+        return allNotesLevel3;
     }
 
     public  void insert(Learn learn){

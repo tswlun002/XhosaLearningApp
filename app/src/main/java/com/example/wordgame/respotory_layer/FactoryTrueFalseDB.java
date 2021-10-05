@@ -14,17 +14,34 @@ import java.util.List;
 public class FactoryTrueFalseDB {
     private final TrueFalseDao trueFalseDao;
     private final LiveData<List<TrueFalseGame>> questions;
+    private final LiveData<List<TrueFalseGame>> questionsLevelOne;
+    private final LiveData<List<TrueFalseGame>> questionsLevelTwo;
+    private final LiveData<List<TrueFalseGame>> questionsLevelThree;
+
     public FactoryTrueFalseDB(Application application){
         WordGameDB trueFalseDB = WordGameDB.getInstanceWordGameDb(application);
 
         trueFalseDao = trueFalseDB.trueFalseDao();
         questions = trueFalseDao.getAll();
+        questionsLevelOne = trueFalseDao.loadLevelOne();
+        questionsLevelTwo=trueFalseDao.loadLevelTwo();
+        questionsLevelThree=trueFalseDao.loadLevelThree();
 
     }
 
     public LiveData<List<TrueFalseGame>> getQuestions() {
         return questions;
     }
+    public LiveData<List<TrueFalseGame>> getQuestionsLevelOne() {
+        return questionsLevelOne;
+    }
+    public LiveData<List<TrueFalseGame>> getQuestionsLevelTwo() {
+        return questionsLevelTwo;
+    }
+    public LiveData<List<TrueFalseGame>> getQuestionsLevelThree() {
+        return questionsLevelThree;
+    }
+
 
     public  void insert(TrueFalseGame trueFalse){
         new FactoryTrueFalseDB.insertHandler(trueFalseDao).execute(trueFalse);

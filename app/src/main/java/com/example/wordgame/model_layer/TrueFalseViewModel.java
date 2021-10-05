@@ -15,11 +15,15 @@ import java.util.List;
 
 public class TrueFalseViewModel extends AndroidViewModel {
     private final FactoryTrueFalseDB factoryTrueFalseDB;
-    private final LiveData<List<TrueFalseGame>> allMaterial;
+    private final LiveData<List<TrueFalseGame>> allMaterial,
+            questionsLevelOne,questionsLevelTwo,questionsLevelThree;
     public TrueFalseViewModel(@NonNull Application application) {
         super(application);
         factoryTrueFalseDB = new FactoryTrueFalseDB(application);
         allMaterial = factoryTrueFalseDB.getQuestions();
+        questionsLevelOne= factoryTrueFalseDB.getQuestionsLevelOne();
+        questionsLevelTwo= factoryTrueFalseDB.getQuestionsLevelTwo();
+        questionsLevelThree= factoryTrueFalseDB.getQuestionsLevelThree();
     }
     /**
      * get all material for matching game
@@ -28,7 +32,15 @@ public class TrueFalseViewModel extends AndroidViewModel {
     public LiveData<List<TrueFalseGame>> getGameMaterial() {
         return allMaterial;
     }
-
+    public LiveData<List<TrueFalseGame>> getQuestionsLevelOne() {
+        return questionsLevelOne;
+    }
+    public LiveData<List<TrueFalseGame>> getQuestionsLevelTwo() {
+        return questionsLevelTwo;
+    }
+    public LiveData<List<TrueFalseGame>> getQuestionsLevelThree() {
+        return questionsLevelThree;
+    }
     /**
      * insert data of matching
      * @param trueFalseGame is a data being inserted

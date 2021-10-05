@@ -14,7 +14,8 @@ import java.util.List;
 
 public class TranslationViewModel extends AndroidViewModel {
     private final FactoryTranslationDB factoryTranslationDB;
-    private final LiveData<List<TranslationGame>> allMaterial;
+    private final LiveData<List<TranslationGame>> allMaterial,questionsLevelOne
+            ,questionsLevelTwo,questionsLevelThree;
 
     /**
      * construct to initialise serial fields
@@ -25,6 +26,9 @@ public class TranslationViewModel extends AndroidViewModel {
         super(application);
         factoryTranslationDB = new FactoryTranslationDB(application);
         allMaterial = factoryTranslationDB.getQuestions();
+        questionsLevelOne= factoryTranslationDB.getQuestionsLevelOne();
+        questionsLevelTwo= factoryTranslationDB.getQuestionsLevelTwo();
+        questionsLevelThree= factoryTranslationDB.getQuestionsLevelThree();
     }
 
     /**
@@ -35,7 +39,15 @@ public class TranslationViewModel extends AndroidViewModel {
     public LiveData<List<TranslationGame>> getGameMaterial() {
         return allMaterial;
     }
-
+    public LiveData<List<TranslationGame>> getQuestionsLevelOne() {
+        return questionsLevelOne;
+    }
+    public LiveData<List<TranslationGame>> getQuestionsLevelTwo() {
+        return questionsLevelTwo;
+    }
+    public LiveData<List<TranslationGame>> getQuestionsLevelThree() {
+        return questionsLevelThree;
+    }
     /**
      * insert data of matching
      *

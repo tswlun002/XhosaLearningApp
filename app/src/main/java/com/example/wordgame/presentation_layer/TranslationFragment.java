@@ -97,24 +97,56 @@ public class TranslationFragment extends Fragment {
         binding= FragmentTranslationBinding.inflate(inflater, container, false);
         this.inflater =inflater;
         setUpListView(binding);
-        setData(translationViewModel);
+        getUserInformation();
 
 
         return binding.getRoot();
     }
-
-    void setData(TranslationViewModel translationViewModel){
-        translationViewModel.getGameMaterial().observe(getViewLifecycleOwner(), new Observer<List<TranslationGame>>() {
+    /**
+     * Get user information such as level
+     * Use the user level to set data for that level
+     */
+    private void getUserInformation(){
+        wordGameViewModel.getUserLevel().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
-            public void onChanged(List<TranslationGame> translationGames) {
-                int numberOfQuestions =5;
-                List<TranslationGame> translationGameList = randomiseData(translationGames, numberOfQuestions);
-                for(TranslationGame translationGame: translationGameList){
-                    data.put(translationGame.getQuestion(),translationGame.getHints());
-                }
-                translationController.setData(data,translationGameList);
+            public void onChanged(Integer integer) {
+                setData(translationViewModel,integer);
             }
         });
+    }
+    void setData(TranslationViewModel translationViewModel,int level ){
+        if(level ==1) {
+            translationViewModel.getQuestionsLevelOne().observe(getViewLifecycleOwner(), new Observer<List<TranslationGame>>() {
+                @Override
+                public void onChanged(List<TranslationGame> translationGames) {
+                   setData(translationGames);
+                }
+            });
+        }else if(level ==2){
+            translationViewModel.getQuestionsLevelTwo().observe(getViewLifecycleOwner(), new Observer<List<TranslationGame>>() {
+                @Override
+                public void onChanged(List<TranslationGame> translationGames) {
+                    setData(translationGames);
+                }
+            });
+        }
+        else  if(level ==3){
+            translationViewModel.getQuestionsLevelThree().observe(getViewLifecycleOwner(), new Observer<List<TranslationGame>>() {
+                @Override
+                public void onChanged(List<TranslationGame> translationGames) {
+                    setData(translationGames);
+                }
+            });
+        }
+    }
+
+    private  void setData(List<TranslationGame> translationGames){
+        int numberOfQuestions = 5;
+        List<TranslationGame> translationGameList = randomiseData(translationGames, numberOfQuestions);
+        for (TranslationGame translationGame : translationGameList) {
+            data.put(translationGame.getQuestion(), translationGame.getHints());
+        }
+        translationController.setData(data, translationGameList);
     }
     /**
      * Randomise questions for game

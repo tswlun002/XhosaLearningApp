@@ -14,12 +14,12 @@ import java.util.List;
 public interface MultipleChoiceDao {
     @Query("SELECT * FROM MultipleChoice")
     LiveData<List<MultipleChoice>> getAll();
-    /*@Query("SELECT * FROM Matching WHERE level =1")
-    LiveData<List<Matching>> loadLevelOne(int[] userIds);
+    @Query("SELECT * FROM Matching WHERE level =1")
+    LiveData<List<MultipleChoice>> loadLevelOne(int[] userIds);
     @Query("SELECT * FROM Matching WHERE level =2")
-    LiveData<List<Matching>> loadLevelTwo(int[] userIds);
+    LiveData<List<MultipleChoice>> loadLevelTwo(int[] userIds);
     @Query("SELECT * FROM Matching WHERE level =3")
-    LiveData<List<Matching>> loadLevelThree(int[] userIds);*/
+    LiveData<List<MultipleChoice>> loadLevelThree(int[] userIds);
     @Update
     void update(MultipleChoice activity);
     @Insert

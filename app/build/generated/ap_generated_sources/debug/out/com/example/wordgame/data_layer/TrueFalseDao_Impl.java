@@ -187,6 +187,198 @@ public final class TrueFalseDao_Impl implements TrueFalseDao {
     });
   }
 
+  @Override
+  public LiveData<List<TrueFalseGame>> loadLevelOne() {
+    final String _sql = "SELECT * FROM TrueOfFalse WHERE level =1";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    return __db.getInvalidationTracker().createLiveData(new String[]{"TrueOfFalse"}, false, new Callable<List<TrueFalseGame>>() {
+      @Override
+      public List<TrueFalseGame> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfTrueFalseId = CursorUtil.getColumnIndexOrThrow(_cursor, "trueFalseId");
+          final int _cursorIndexOfLevel = CursorUtil.getColumnIndexOrThrow(_cursor, "level");
+          final int _cursorIndexOfQuestion = CursorUtil.getColumnIndexOrThrow(_cursor, "question");
+          final int _cursorIndexOfFigures = CursorUtil.getColumnIndexOrThrow(_cursor, "figures");
+          final int _cursorIndexOfAnswers = CursorUtil.getColumnIndexOrThrow(_cursor, "answers");
+          final int _cursorIndexOfInstructions = CursorUtil.getColumnIndexOrThrow(_cursor, "instructions");
+          final int _cursorIndexOfTotalMarks = CursorUtil.getColumnIndexOrThrow(_cursor, "totalMarks");
+          final List<TrueFalseGame> _result = new ArrayList<TrueFalseGame>(_cursor.getCount());
+          while(_cursor.moveToNext()) {
+            final TrueFalseGame _item;
+            final int _tmpLevel;
+            _tmpLevel = _cursor.getInt(_cursorIndexOfLevel);
+            final String _tmpQuestion;
+            if (_cursor.isNull(_cursorIndexOfQuestion)) {
+              _tmpQuestion = null;
+            } else {
+              _tmpQuestion = _cursor.getString(_cursorIndexOfQuestion);
+            }
+            final String _tmpFigures;
+            if (_cursor.isNull(_cursorIndexOfFigures)) {
+              _tmpFigures = null;
+            } else {
+              _tmpFigures = _cursor.getString(_cursorIndexOfFigures);
+            }
+            final String _tmpAnswers;
+            if (_cursor.isNull(_cursorIndexOfAnswers)) {
+              _tmpAnswers = null;
+            } else {
+              _tmpAnswers = _cursor.getString(_cursorIndexOfAnswers);
+            }
+            final String _tmpInstructions;
+            if (_cursor.isNull(_cursorIndexOfInstructions)) {
+              _tmpInstructions = null;
+            } else {
+              _tmpInstructions = _cursor.getString(_cursorIndexOfInstructions);
+            }
+            final int _tmpTotalMarks;
+            _tmpTotalMarks = _cursor.getInt(_cursorIndexOfTotalMarks);
+            _item = new TrueFalseGame(_tmpLevel,_tmpQuestion,_tmpFigures,_tmpAnswers,_tmpInstructions,_tmpTotalMarks);
+            _item.trueFalseId = _cursor.getInt(_cursorIndexOfTrueFalseId);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
+      }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
+  }
+
+  @Override
+  public LiveData<List<TrueFalseGame>> loadLevelTwo() {
+    final String _sql = "SELECT * FROM TrueOfFalse WHERE level =2";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    return __db.getInvalidationTracker().createLiveData(new String[]{"TrueOfFalse"}, false, new Callable<List<TrueFalseGame>>() {
+      @Override
+      public List<TrueFalseGame> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfTrueFalseId = CursorUtil.getColumnIndexOrThrow(_cursor, "trueFalseId");
+          final int _cursorIndexOfLevel = CursorUtil.getColumnIndexOrThrow(_cursor, "level");
+          final int _cursorIndexOfQuestion = CursorUtil.getColumnIndexOrThrow(_cursor, "question");
+          final int _cursorIndexOfFigures = CursorUtil.getColumnIndexOrThrow(_cursor, "figures");
+          final int _cursorIndexOfAnswers = CursorUtil.getColumnIndexOrThrow(_cursor, "answers");
+          final int _cursorIndexOfInstructions = CursorUtil.getColumnIndexOrThrow(_cursor, "instructions");
+          final int _cursorIndexOfTotalMarks = CursorUtil.getColumnIndexOrThrow(_cursor, "totalMarks");
+          final List<TrueFalseGame> _result = new ArrayList<TrueFalseGame>(_cursor.getCount());
+          while(_cursor.moveToNext()) {
+            final TrueFalseGame _item;
+            final int _tmpLevel;
+            _tmpLevel = _cursor.getInt(_cursorIndexOfLevel);
+            final String _tmpQuestion;
+            if (_cursor.isNull(_cursorIndexOfQuestion)) {
+              _tmpQuestion = null;
+            } else {
+              _tmpQuestion = _cursor.getString(_cursorIndexOfQuestion);
+            }
+            final String _tmpFigures;
+            if (_cursor.isNull(_cursorIndexOfFigures)) {
+              _tmpFigures = null;
+            } else {
+              _tmpFigures = _cursor.getString(_cursorIndexOfFigures);
+            }
+            final String _tmpAnswers;
+            if (_cursor.isNull(_cursorIndexOfAnswers)) {
+              _tmpAnswers = null;
+            } else {
+              _tmpAnswers = _cursor.getString(_cursorIndexOfAnswers);
+            }
+            final String _tmpInstructions;
+            if (_cursor.isNull(_cursorIndexOfInstructions)) {
+              _tmpInstructions = null;
+            } else {
+              _tmpInstructions = _cursor.getString(_cursorIndexOfInstructions);
+            }
+            final int _tmpTotalMarks;
+            _tmpTotalMarks = _cursor.getInt(_cursorIndexOfTotalMarks);
+            _item = new TrueFalseGame(_tmpLevel,_tmpQuestion,_tmpFigures,_tmpAnswers,_tmpInstructions,_tmpTotalMarks);
+            _item.trueFalseId = _cursor.getInt(_cursorIndexOfTrueFalseId);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
+      }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
+  }
+
+  @Override
+  public LiveData<List<TrueFalseGame>> loadLevelThree() {
+    final String _sql = "SELECT * FROM TrueOfFalse WHERE level =3";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    return __db.getInvalidationTracker().createLiveData(new String[]{"TrueOfFalse"}, false, new Callable<List<TrueFalseGame>>() {
+      @Override
+      public List<TrueFalseGame> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfTrueFalseId = CursorUtil.getColumnIndexOrThrow(_cursor, "trueFalseId");
+          final int _cursorIndexOfLevel = CursorUtil.getColumnIndexOrThrow(_cursor, "level");
+          final int _cursorIndexOfQuestion = CursorUtil.getColumnIndexOrThrow(_cursor, "question");
+          final int _cursorIndexOfFigures = CursorUtil.getColumnIndexOrThrow(_cursor, "figures");
+          final int _cursorIndexOfAnswers = CursorUtil.getColumnIndexOrThrow(_cursor, "answers");
+          final int _cursorIndexOfInstructions = CursorUtil.getColumnIndexOrThrow(_cursor, "instructions");
+          final int _cursorIndexOfTotalMarks = CursorUtil.getColumnIndexOrThrow(_cursor, "totalMarks");
+          final List<TrueFalseGame> _result = new ArrayList<TrueFalseGame>(_cursor.getCount());
+          while(_cursor.moveToNext()) {
+            final TrueFalseGame _item;
+            final int _tmpLevel;
+            _tmpLevel = _cursor.getInt(_cursorIndexOfLevel);
+            final String _tmpQuestion;
+            if (_cursor.isNull(_cursorIndexOfQuestion)) {
+              _tmpQuestion = null;
+            } else {
+              _tmpQuestion = _cursor.getString(_cursorIndexOfQuestion);
+            }
+            final String _tmpFigures;
+            if (_cursor.isNull(_cursorIndexOfFigures)) {
+              _tmpFigures = null;
+            } else {
+              _tmpFigures = _cursor.getString(_cursorIndexOfFigures);
+            }
+            final String _tmpAnswers;
+            if (_cursor.isNull(_cursorIndexOfAnswers)) {
+              _tmpAnswers = null;
+            } else {
+              _tmpAnswers = _cursor.getString(_cursorIndexOfAnswers);
+            }
+            final String _tmpInstructions;
+            if (_cursor.isNull(_cursorIndexOfInstructions)) {
+              _tmpInstructions = null;
+            } else {
+              _tmpInstructions = _cursor.getString(_cursorIndexOfInstructions);
+            }
+            final int _tmpTotalMarks;
+            _tmpTotalMarks = _cursor.getInt(_cursorIndexOfTotalMarks);
+            _item = new TrueFalseGame(_tmpLevel,_tmpQuestion,_tmpFigures,_tmpAnswers,_tmpInstructions,_tmpTotalMarks);
+            _item.trueFalseId = _cursor.getInt(_cursorIndexOfTrueFalseId);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
+      }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
+  }
+
   public static List<Class<?>> getRequiredConverters() {
     return Collections.emptyList();
   }

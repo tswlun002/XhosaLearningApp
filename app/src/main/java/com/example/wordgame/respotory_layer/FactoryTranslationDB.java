@@ -14,18 +14,33 @@ import java.util.List;
 
 public class FactoryTranslationDB {
     private final TranslationDao translationDao;
-    private final LiveData<List<TranslationGame>> questions;
+    private final LiveData<List<TranslationGame>> questions,questionsLevelOne
+            ,questionsLevelTwo,questionsLevelThree;
 
     public FactoryTranslationDB(Application application) {
         WordGameDB translationDB = WordGameDB.getInstanceWordGameDb(application);
 
         translationDao = translationDB.translationDao();
         questions = translationDao.getAll();
+        questionsLevelOne = translationDao.level1();
+        questionsLevelTwo = translationDao.level2();
+        questionsLevelThree=translationDao.level3();
 
     }
     public LiveData<List<TranslationGame>> getQuestions() {
         return questions;
     }
+    public LiveData<List<TranslationGame>> getQuestionsLevelOne() {
+        return questionsLevelOne;
+    }
+    public LiveData<List<TranslationGame>> getQuestionsLevelTwo() {
+        return questionsLevelTwo;
+    }
+    public LiveData<List<TranslationGame>> getQuestionsLevelThree() {
+        return questionsLevelThree;
+    }
+
+
 
     public void insert(TranslationGame translationGame) {
         new FactoryTranslationDB.insertHandler(translationDao).execute(translationGame);

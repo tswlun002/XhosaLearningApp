@@ -9,9 +9,11 @@ import java.util.List;
 
 public class WordGameViewModel extends ViewModel {
     private final MutableLiveData<LevelResults> state;
+    private final MutableLiveData<Integer> userLevel;
 
     public WordGameViewModel() {
         state=new MutableLiveData<>();
+        userLevel = new MutableLiveData<>();
 
     }
 
@@ -21,5 +23,12 @@ public class WordGameViewModel extends ViewModel {
 
     public LiveData<LevelResults> getState() {
         return state;
+    }
+    public void setUserLevel(int value) {
+        userLevel.setValue(value);
+    }
+
+    public LiveData<Integer> getUserLevel() {
+        return userLevel;
     }
 }

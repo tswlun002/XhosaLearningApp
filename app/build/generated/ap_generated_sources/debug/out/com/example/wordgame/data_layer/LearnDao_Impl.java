@@ -221,7 +221,7 @@ public final class LearnDao_Impl implements LearnDao {
 
   @Override
   public LiveData<List<Learn>> level2() {
-    final String _sql = "SELECT * FROM LEARN WHERE level ==2";
+    final String _sql = "SELECT * FROM LEARN WHERE level ==1 or level==2 ";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
     return __db.getInvalidationTracker().createLiveData(new String[]{"LEARN"}, false, new Callable<List<Learn>>() {
       @Override
@@ -275,7 +275,7 @@ public final class LearnDao_Impl implements LearnDao {
 
   @Override
   public LiveData<List<Learn>> level3() {
-    final String _sql = "SELECT * FROM LEARN WHERE level ==3";
+    final String _sql = "SELECT * FROM LEARN WHERE level ==1 or level ==2 or level ==3";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
     return __db.getInvalidationTracker().createLiveData(new String[]{"LEARN"}, false, new Callable<List<Learn>>() {
       @Override

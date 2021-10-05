@@ -14,12 +14,12 @@ import java.util.List;
 public interface TrueFalseDao {
     @Query("SELECT * FROM TrueOfFalse")
     LiveData<List<TrueFalseGame>> getAll();
-    /*@Query("SELECT * FROM Matching WHERE level =1")
-    LiveData<List<Matching>> loadLevelOne(int[] userIds);
-    @Query("SELECT * FROM Matching WHERE level =2")
-    LiveData<List<Matching>> loadLevelTwo(int[] userIds);
-    @Query("SELECT * FROM Matching WHERE level =3")
-    LiveData<List<Matching>> loadLevelThree(int[] userIds);*/
+    @Query("SELECT * FROM TrueOfFalse WHERE level =1")
+    LiveData<List<TrueFalseGame>> loadLevelOne();
+    @Query("SELECT * FROM TrueOfFalse WHERE level =2")
+    LiveData<List<TrueFalseGame>> loadLevelTwo();
+    @Query("SELECT * FROM TrueOfFalse WHERE level =3")
+    LiveData<List<TrueFalseGame>> loadLevelThree();
     @Update
     void update(TrueFalseGame activity);
     @Insert

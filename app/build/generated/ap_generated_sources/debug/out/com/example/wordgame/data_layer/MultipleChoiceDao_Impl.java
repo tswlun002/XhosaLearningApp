@@ -8,12 +8,14 @@ import androidx.room.RoomDatabase;
 import androidx.room.RoomSQLiteQuery;
 import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
+import androidx.room.util.StringUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
 import com.example.wordgame.model_layer.MultipleChoice;
 import java.lang.Class;
 import java.lang.Exception;
 import java.lang.Override;
 import java.lang.String;
+import java.lang.StringBuilder;
 import java.lang.SuppressWarnings;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -223,6 +225,141 @@ public final class MultipleChoiceDao_Impl implements MultipleChoiceDao {
             _tmpTotalMarks = _cursor.getInt(_cursorIndexOfTotalMarks);
             _item = new MultipleChoice(_tmpLevel,_tmpQuestion,_tmpChoiceOne,_tmpChoiceTwo,_tmpChoiceThree,_tmpChoiceFour,_tmpInstructions,_tmpAnswer,_tmpTotalMarks);
             _item.multipleId = _cursor.getInt(_cursorIndexOfMultipleId);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
+      }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
+  }
+
+  @Override
+  public LiveData<List<MultipleChoice>> loadLevelOne(final int[] userIds) {
+    StringBuilder _stringBuilder = StringUtil.newStringBuilder();
+    _stringBuilder.append("SELECT * FROM Matching WHERE level =1");
+    final String _sql = _stringBuilder.toString();
+    final int _argCount = 0;
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, _argCount);
+    int _argIndex = 1;
+    return __db.getInvalidationTracker().createLiveData(new String[]{"Matching"}, false, new Callable<List<MultipleChoice>>() {
+      @Override
+      public List<MultipleChoice> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfLevel = CursorUtil.getColumnIndexOrThrow(_cursor, "level");
+          final int _cursorIndexOfInstructions = CursorUtil.getColumnIndexOrThrow(_cursor, "instructions");
+          final int _cursorIndexOfTotalMarks = CursorUtil.getColumnIndexOrThrow(_cursor, "totalMarks");
+          final List<MultipleChoice> _result = new ArrayList<MultipleChoice>(_cursor.getCount());
+          while(_cursor.moveToNext()) {
+            final MultipleChoice _item;
+            final int _tmpLevel;
+            _tmpLevel = _cursor.getInt(_cursorIndexOfLevel);
+            final String _tmpInstructions;
+            if (_cursor.isNull(_cursorIndexOfInstructions)) {
+              _tmpInstructions = null;
+            } else {
+              _tmpInstructions = _cursor.getString(_cursorIndexOfInstructions);
+            }
+            final int _tmpTotalMarks;
+            _tmpTotalMarks = _cursor.getInt(_cursorIndexOfTotalMarks);
+            _item = new MultipleChoice(_tmpLevel,null,null,null,null,null,_tmpInstructions,null,_tmpTotalMarks);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
+      }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
+  }
+
+  @Override
+  public LiveData<List<MultipleChoice>> loadLevelTwo(final int[] userIds) {
+    StringBuilder _stringBuilder = StringUtil.newStringBuilder();
+    _stringBuilder.append("SELECT * FROM Matching WHERE level =2");
+    final String _sql = _stringBuilder.toString();
+    final int _argCount = 0;
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, _argCount);
+    int _argIndex = 1;
+    return __db.getInvalidationTracker().createLiveData(new String[]{"Matching"}, false, new Callable<List<MultipleChoice>>() {
+      @Override
+      public List<MultipleChoice> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfLevel = CursorUtil.getColumnIndexOrThrow(_cursor, "level");
+          final int _cursorIndexOfInstructions = CursorUtil.getColumnIndexOrThrow(_cursor, "instructions");
+          final int _cursorIndexOfTotalMarks = CursorUtil.getColumnIndexOrThrow(_cursor, "totalMarks");
+          final List<MultipleChoice> _result = new ArrayList<MultipleChoice>(_cursor.getCount());
+          while(_cursor.moveToNext()) {
+            final MultipleChoice _item;
+            final int _tmpLevel;
+            _tmpLevel = _cursor.getInt(_cursorIndexOfLevel);
+            final String _tmpInstructions;
+            if (_cursor.isNull(_cursorIndexOfInstructions)) {
+              _tmpInstructions = null;
+            } else {
+              _tmpInstructions = _cursor.getString(_cursorIndexOfInstructions);
+            }
+            final int _tmpTotalMarks;
+            _tmpTotalMarks = _cursor.getInt(_cursorIndexOfTotalMarks);
+            _item = new MultipleChoice(_tmpLevel,null,null,null,null,null,_tmpInstructions,null,_tmpTotalMarks);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
+      }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
+  }
+
+  @Override
+  public LiveData<List<MultipleChoice>> loadLevelThree(final int[] userIds) {
+    StringBuilder _stringBuilder = StringUtil.newStringBuilder();
+    _stringBuilder.append("SELECT * FROM Matching WHERE level =3");
+    final String _sql = _stringBuilder.toString();
+    final int _argCount = 0;
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, _argCount);
+    int _argIndex = 1;
+    return __db.getInvalidationTracker().createLiveData(new String[]{"Matching"}, false, new Callable<List<MultipleChoice>>() {
+      @Override
+      public List<MultipleChoice> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfLevel = CursorUtil.getColumnIndexOrThrow(_cursor, "level");
+          final int _cursorIndexOfInstructions = CursorUtil.getColumnIndexOrThrow(_cursor, "instructions");
+          final int _cursorIndexOfTotalMarks = CursorUtil.getColumnIndexOrThrow(_cursor, "totalMarks");
+          final List<MultipleChoice> _result = new ArrayList<MultipleChoice>(_cursor.getCount());
+          while(_cursor.moveToNext()) {
+            final MultipleChoice _item;
+            final int _tmpLevel;
+            _tmpLevel = _cursor.getInt(_cursorIndexOfLevel);
+            final String _tmpInstructions;
+            if (_cursor.isNull(_cursorIndexOfInstructions)) {
+              _tmpInstructions = null;
+            } else {
+              _tmpInstructions = _cursor.getString(_cursorIndexOfInstructions);
+            }
+            final int _tmpTotalMarks;
+            _tmpTotalMarks = _cursor.getInt(_cursorIndexOfTotalMarks);
+            _item = new MultipleChoice(_tmpLevel,null,null,null,null,null,_tmpInstructions,null,_tmpTotalMarks);
             _result.add(_item);
           }
           return _result;

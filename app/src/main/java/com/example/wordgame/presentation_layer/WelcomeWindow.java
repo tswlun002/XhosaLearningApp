@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -22,6 +23,7 @@ import com.example.wordgame.R;
 import com.example.wordgame.databinding.WelcomwindowBinding;
 import com.example.wordgame.model_layer.User;
 import com.example.wordgame.model_layer.UserViewModel;
+import com.example.wordgame.model_layer.WordGameViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -40,10 +42,12 @@ public class WelcomeWindow extends Fragment {
     private WelcomwindowBinding binding;
     private final  UserViewModel userViewModel = MainActivity.userViewModel;
     private List<User> userList;
+    private WordGameViewModel wordGameViewModel;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        wordGameViewModel = new ViewModelProvider(requireActivity()).get(WordGameViewModel.class);
 
     }
     /**
@@ -79,9 +83,18 @@ public class WelcomeWindow extends Fragment {
         });
     }
 
+    /**
+     * @return user current level
+     */
     private  int getUserLevel(){
         User user = userList.get(0);
         return user.getCurrentLevel();
+    }
+    /***
+     * share user level with other fragments
+     */
+    private  void shareUserLevel(){
+        wordGameViewModel.setUserLevel(getUserLevel());
     }
 
     /**
@@ -105,6 +118,7 @@ public class WelcomeWindow extends Fragment {
         binding.level1IDBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                shareUserLevel();
                 Navigation.findNavController((MainActivity) requireActivity(),
                         R.id.nav_host_fragment_content_main).
                         navigate(R.id.action_FirstFragment_to_SecondFragment);
@@ -118,10 +132,12 @@ public class WelcomeWindow extends Fragment {
         binding.level2IDBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(getUserLevel()>=2)
-                Navigation.findNavController((MainActivity) requireActivity(),
-                        R.id.nav_host_fragment_content_main).
-                        navigate(R.id.action_FirstFragment_to_SecondFragment);
+                if(getUserLevel()>=2) {
+                    shareUserLevel();
+                    Navigation.findNavController((MainActivity) requireActivity(),
+                            R.id.nav_host_fragment_content_main).
+                            navigate(R.id.action_FirstFragment_to_SecondFragment);
+                }
                 else
                     popUpDialog();
             }
@@ -134,10 +150,12 @@ public class WelcomeWindow extends Fragment {
         binding.level3IDBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(getUserLevel()>=3)
-                Navigation.findNavController((MainActivity) requireActivity(),
-                        R.id.nav_host_fragment_content_main).
-                        navigate(R.id.action_FirstFragment_to_SecondFragment);
+                if(getUserLevel()>=3) {
+                    shareUserLevel();
+                    Navigation.findNavController((MainActivity) requireActivity(),
+                            R.id.nav_host_fragment_content_main).
+                            navigate(R.id.action_FirstFragment_to_SecondFragment);
+                }
                 else
                     popUpDialog();
             }

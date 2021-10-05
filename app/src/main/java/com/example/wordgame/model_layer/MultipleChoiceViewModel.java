@@ -22,7 +22,6 @@ public class MultipleChoiceViewModel extends AndroidViewModel {
     public LiveData<List<MultipleChoice>> getGameMaterial() {
         return allMaterial;
     }
-
     /**
      * insert data of matching
      * @param multipleChoice is a data being inserted
