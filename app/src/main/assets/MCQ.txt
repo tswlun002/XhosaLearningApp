@@ -23,7 +23,7 @@ Lwesihlanu
 Thursday;Lwesine
 Mgqibelo
 Mvulo
-Lwesihlanu
+LwesihlanuCawe
 Lwesine
 Friday;Lwesihlanu
 Mgqibelo
@@ -51,6 +51,8 @@ Turn ; jika
 ekhohlo
 ekunene
 hamba
+
+2;Choose the correct word for given term or sentence description
 Left ; ekhohlo
 ekunene
 jika
@@ -60,15 +62,79 @@ jika
 ekhohlo
 ekunene
 my sister ; dadewethu
-mystery ; intsumantsumane
-neighbour ; ummelwane
-outside ; phandle
-question ; Umbuzo
-reason ; isizathu
-my sister ; dadewethu
 ubhuti
 umama
 utata
+Money ; Imali
+eziinkozo
+isonka
+amaphepha
+Cheque ; itsheke
+itshekhi
+isibane
+inja
+Coins ; imali eziinkozo
+imali engamaphepha
+imali engamagaqa
+imali esencwadini
+Notes ; imali engamaphepa
+isibunzi
+inja
+imali yencwadi
+bird ; intaka
+ihobe
+inkonjane
+isibabula
+blood ; igazi
+ingozi
+ububomvu
+isitulo
+book ; incwadi
+amaphepha
+amathole
+isihobe
+boy ; inkwenkwe
+intombazane
+usana
+ikhehle
+bring about peace ; xolisa
+bulala
+dubula
+jakela
+bus ; uduladula
+inqwelo ntaka
+inqwelo mafutha
+ihashe
+car ; inqwelo-mafutha
+ihashe
+ihagu
+ibhanoyi
+champion ; intshatsheli
+izizamva
+amagqilela ka nqoyi
+isidlele
+child ; umntwana
+usana
+udadewethu
+umntakwethu
+baby ; usana
+umntwana
+isibunzi
+intombazana
+cliff ; iliwa
+intaba
+um-mango
+ithambeke
+close by ; kufutshane
+kude
+phambili
+misa
+country ; ilizwe
+iphondo
+isixeko
+ingingqi
+
+3;Choose the correct word for given term or sentence description
 mystery ; intsumantsumane
 ungazi
 uhlakanipha
@@ -117,4 +183,47 @@ You're welcome ; wamkelekile
 phuma
 phupha
 goduka
-
+meal ; Isidlo
+inyama
+isonka
+ihlobo
+Beverages ;Isiselo
+itafile
+ingca
+impahla
+Supper ; Isidlo sangokuhlwa
+Isidlo sasemini
+Isidlo sasemvakwemini
+itafile
+Kitchen ; Igumbi lokuphekela
+Icephe
+indlu yangasese
+igumbi lokuphumla
+Pot ; Imbiza
+icephe
+itafile
+isitya
+table ; itafile
+umandlalo
+isitulo
+umthi
+chair ; isitulo
+umadlalo
+umbona
+ukutya
+television ; umabonakude
+unomathotholo
+isibane
+inja
+radio ; unomathotholo
+umavakude
+ucingo
+ihagu
+light ; isibane
+isintya
+intambo
+igusha
+dish ; isitya
+ihagu
+isihlangu
+ukutya
