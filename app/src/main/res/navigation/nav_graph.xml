@@ -117,6 +117,11 @@
             app:destination="@id/results_CurrentActivity"
             app:popUpTo="@id/results_CurrentActivity"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_matchingFragment_to_proggress"
+            app:destination="@id/proggress"
+            app:popUpTo="@id/proggress"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/multipleChoiceFragment"
@@ -132,6 +137,11 @@
             android:id="@+id/action_multipleChoiceFragment_to_results_CurrentActivity"
             app:destination="@id/results_CurrentActivity"
             app:popUpTo="@id/results_CurrentActivity"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_multipleChoiceFragment_to_proggress"
+            app:destination="@id/proggress"
+            app:popUpTo="@id/proggress"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -149,6 +159,11 @@
             app:destination="@id/results_CurrentActivity"
             app:popUpTo="@id/results_CurrentActivity"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_trueFalseFragment_to_proggress"
+            app:destination="@id/proggress"
+            app:popUpTo="@id/proggress"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/translationFragment"
@@ -164,6 +179,11 @@
             android:id="@+id/action_translationFragment_to_results_CurrentActivity"
             app:destination="@id/results_CurrentActivity"
             app:popUpTo="@id/results_CurrentActivity"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_translationFragment_to_proggress"
+            app:destination="@id/proggress"
+            app:popUpTo="@id/proggress"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -193,5 +213,8 @@
             app:destination="@id/play"
             app:popUpTo="@id/play"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_results_CurrentActivity_self"
+            app:destination="@id/results_CurrentActivity" />
     </fragment>
 </navigation>

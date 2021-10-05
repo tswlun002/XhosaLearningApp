@@ -16,8 +16,13 @@ import com.example.wordgame.model_layer.MultipleChoice;
 import com.example.wordgame.model_layer.ProgressReport;
 import com.example.wordgame.model_layer.TranslationGame;
 import com.example.wordgame.model_layer.TrueFalseGame;
+import com.example.wordgame.model_layer.User;
 
-@Database(entities = {Learn.class, Matching.class, TrueFalseGame.class, MultipleChoice.class, TranslationGame.class,LevelResults.class, ProgressReport.class}, version =9, exportSchema = true)
+import java.security.PublicKey;
+
+@Database(entities = {Learn.class, Matching.class, TrueFalseGame.class, MultipleChoice.class,
+        TranslationGame.class,LevelResults.class, ProgressReport.class, User.class},
+        version =10, exportSchema = true)
 public abstract class WordGameDB extends RoomDatabase {
     public static WordGameDB wordGameDB;
     public abstract LearnDao learnDao();
@@ -27,6 +32,7 @@ public abstract class WordGameDB extends RoomDatabase {
     public abstract TranslationDao translationDao();
     public abstract LevelResultsDao levelResultsDao();
     public abstract ProgressReportDao progressReportDao();
+    public  abstract  UserDao userDao();
     static Context context1;
 
     public static synchronized WordGameDB getInstanceWordGameDb(Context context){
@@ -48,14 +54,13 @@ public abstract class WordGameDB extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
+            new PopulateUser(wordGameDB).execute();
             new PopulateLearnDB(wordGameDB).execute(context1);
             new PopulateMatchingDB(wordGameDB).execute(context1);
             new PopulateTrueFalseDB(wordGameDB).execute(context1);
             new PopulateMultipleChoiceDB(wordGameDB).execute(context1);
             new PopulateTranslationGameDB(wordGameDB).execute(context1);
             new PopulateProgressDB(wordGameDB).execute();
-
-
         }
 
         /*@Override

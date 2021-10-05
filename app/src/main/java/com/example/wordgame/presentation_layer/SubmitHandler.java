@@ -99,7 +99,7 @@ public class SubmitHandler extends ActivityResults implements OnSubmit,Comparabl
                 percent++;
 
         }
-       double marks  =Double.parseDouble(String.format("%.1f",percent));
+       double marks  =Double.parseDouble(String.format("%.0f",percent));
         setScore(marks);
       return  marks;
     }

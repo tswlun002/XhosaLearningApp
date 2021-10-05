@@ -1,8 +1,13 @@
 package com.example.wordgame.model_layer;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+@Entity(tableName = "User")
 public class User {
 
+    @PrimaryKey
     private  int userId;
+    private  int currentLevel;
 
     public int getCurrentLevel() {
         return currentLevel;
@@ -16,8 +21,6 @@ public class User {
     public String toString() {
         return  userId + ", " + currentLevel;
     }
-
-    private  int currentLevel;
 
     public User(){}
 

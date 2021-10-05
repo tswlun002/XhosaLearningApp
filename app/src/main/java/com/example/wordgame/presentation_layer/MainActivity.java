@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.ActivityMainBinding;
 import com.example.wordgame.model_layer.User;
+import com.example.wordgame.model_layer.UserViewModel;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
      */
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
-    public static  final User user = new User(0,1);
+    //public static  final User user = new User(0,1);
+    public static UserViewModel userViewModel;
 
     /**
      * creates main activity  ,set up navigation controller
@@ -40,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         // upon click allow the fragment to get another fragment
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -55,7 +58,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 
     /**
      * inflate created menu in a tool bar (drop down menu)

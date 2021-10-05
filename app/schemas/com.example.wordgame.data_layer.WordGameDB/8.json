@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 8,
-    "identityHash": "17e3650b8189b35451d7a91fddecd9c3",
+    "identityHash": "690e4f7bf8aefcba162e1d826b585a38",
     "entities": [
       {
         "tableName": "Learn",
@@ -354,7 +354,7 @@
       },
       {
         "tableName": "ProgressReport",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`progressId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `userId` INTEGER NOT NULL, `levelOneScore` INTEGER NOT NULL, `levelTwoScore` INTEGER NOT NULL, `levelThreeScore` INTEGER NOT NULL, `AverageScore` INTEGER NOT NULL, `status` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`progressId` INTEGER NOT NULL, `userId` INTEGER NOT NULL, `levelOneScore` INTEGER NOT NULL, `levelTwoScore` INTEGER NOT NULL, `levelThreeScore` INTEGER NOT NULL, `AverageScore` INTEGER NOT NULL, `status` TEXT, PRIMARY KEY(`progressId`))",
         "fields": [
           {
             "fieldPath": "progressId",
@@ -403,7 +403,7 @@
           "columnNames": [
             "progressId"
           ],
-          "autoGenerate": true
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
@@ -412,7 +412,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '17e3650b8189b35451d7a91fddecd9c3')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '690e4f7bf8aefcba162e1d826b585a38')"
     ]
   }
 }

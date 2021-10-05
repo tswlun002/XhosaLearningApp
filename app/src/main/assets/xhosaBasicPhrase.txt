@@ -1,0 +1,28 @@
+Hello ; Molo
+Hello (to more than 1) ; Molweni
+How are you? ; Kunjani?
+Fine, thank you ; Ndiyaphila, enkosi
+And how are you? ; Kunjani kuwe?
+What is your name? ; Ngubani igama lakho?
+My name is  ; Igama lam ngu
+Nice to meet you ; Ndiyavuya ukukwazi
+Please ; Ndicela ('Ndiyacela' )
+Thank you ; Enkosi or ('Ndiyabulela')
+You're welcome ; ('wamkelekile')
+Yes ; Ewe
+No ; Hayi
+Excuse me (getting attention) ; ('uxolo )
+Excuse me (begging pardon) ; Uxolo andivanga.
+I'm sorry Xolo ; ndicela uxolo ('ndixolele' )
+Goodbye ; Uhambe/Usale kakuhle.
+I can't speak Xhosa ; Andisithethi isiXhosa
+Do you speak English? ; Uyasithetha isingesi na?
+Is there someone here who speaks English? ; ('Ukhona apha umntu othetha isiNgesi' ?)
+Good night ; Ulale kakuhle
+I don't know ; Andazi
+I don't understand ; Andiqondisisi
+I dont't think so ; Andiqondi
+I know ; Ndiyazi
+I know it ; Ndiyayazi
+Where is the toilet? ; Iphi indlu yangasese?
+

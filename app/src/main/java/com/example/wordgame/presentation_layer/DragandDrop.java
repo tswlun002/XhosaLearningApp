@@ -36,15 +36,17 @@ public abstract class DragandDrop {
 
                 case DragEvent.ACTION_DROP:
                     TextView dropped = (TextView) event.getLocalState();
-                    if((v.getId()== R.id.xhosaEditText1 ||v.getId()==R.id.xhosaEditText2
-                            ||v.getId()==R.id.xhosaEditText3 ||v.getId()==R.id.xhosaEditText4 )
-                            &
-                            !(dropped.getId()== R.id.xhosaEditText1 ||dropped.getId()==R.id.xhosaEditText2
-                                    ||dropped.getId()== R.id.xhosaEditText3 ||dropped.getId()== R.id.xhosaEditText4 )
+                    if (v != null){
+                        if ((v.getId() == R.id.xhosaEditText1 || v.getId() == R.id.xhosaEditText2
+                                || v.getId() == R.id.xhosaEditText3 || v.getId() == R.id.xhosaEditText4)
+                                &
+                                !(dropped.getId() == R.id.xhosaEditText1 || dropped.getId() == R.id.xhosaEditText2
+                                        || dropped.getId() == R.id.xhosaEditText3 || dropped.getId() == R.id.xhosaEditText4)
 
-                    ) {
-                        ((EditText) v).setText(dropped.getText());
-                        ((EditText)v).setBackgroundResource(R.drawable.answerbackground);
+                        ) {
+                            ((EditText) v).setText(dropped.getText());
+                            ((EditText) v).setBackgroundResource(R.drawable.answerbackground);
+                        }
                     }
 
                     break;

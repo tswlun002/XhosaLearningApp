@@ -13,7 +13,7 @@ import java.util.List;
 @Dao
 public interface MatchingDao {
 
-    @Query("SELECT * FROM MATCHING")
+    @Query("SELECT * FROM MATCHING where level=1")
     LiveData<List<Matching>> getAll();
     /*@Query("SELECT * FROM Matching WHERE level =1")
     LiveData<List<Matching>> loadLevelOne(int[] userIds);

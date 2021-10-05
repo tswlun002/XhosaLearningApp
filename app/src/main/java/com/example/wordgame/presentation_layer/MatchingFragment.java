@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentMatchingBinding;
@@ -20,12 +21,14 @@ import com.example.wordgame.model_layer.LearnViewModel;
 import com.example.wordgame.model_layer.LevelResults;
 import com.example.wordgame.model_layer.Matching;
 import com.example.wordgame.model_layer.MatchingViewModel;
+import com.example.wordgame.model_layer.MultipleChoice;
 import com.example.wordgame.model_layer.User;
 import com.example.wordgame.model_layer.WordGameViewModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,7 +46,7 @@ public class MatchingFragment extends Fragment {
     private  LayoutInflater inflater;
     private MatchingViewModel matchingViewModel;
     private WordGameViewModel wordGameViewModel;
-    private final User user = MainActivity.user;
+    //private final User user = MainActivity.user;
 
 
     public MatchingFragment() {
@@ -94,16 +97,40 @@ public class MatchingFragment extends Fragment {
             Toast.makeText(requireContext(), "Can't cast matchingViewHandler to  onMatchingViewHandler",
                     Toast.LENGTH_SHORT).show();;
         }
+        setData(matchingViewHandler,matchingViewModel);
 
+        return binding.getRoot();
+
+    }
+
+    private void setData(MatchingViewHandler matchingViewHandler,MatchingViewModel matchingViewModel){
         matchingViewModel.getGameMaterial().observe(getViewLifecycleOwner(), new Observer<List<Matching>>() {
             @Override
             public void onChanged(List<Matching> matchings) {
-                Toast.makeText(requireContext(), matchings.size()+"",  Toast.LENGTH_SHORT).show();
-                matchingViewHandler.setData(matchings);
+                int numberOfQuestions  =8;
+                List<Matching> newList = randomiseData(matchings,numberOfQuestions);
+                matchingViewHandler.setData(newList);
             }
         });
-        return binding.getRoot();
+    }
 
+    /**
+     * Randomise questions for game
+     * @param matchingList list of game material of matching game
+     * @param numberQuestions is the number of questions for game
+     * @return new list of questions of matching game
+     */
+    private  List<Matching> randomiseData(List<Matching> matchingList, int numberQuestions){
+        Random rand = new Random();
+        List<Matching> newList = new ArrayList<>();
+        for (int i = 0; i < numberQuestions; i++) {
+
+            int randomIndex = rand.nextInt(matchingList.size());
+            newList.add(matchingList.get(randomIndex));
+            matchingList.remove(randomIndex);
+        }
+
+        return newList;
     }
 
 
@@ -115,6 +142,7 @@ public class MatchingFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         wordGameViewModel = new ViewModelProvider(requireActivity()).get(WordGameViewModel.class);
         handClick(view);
+        handleFab();
         ((MainActivity) requireActivity()).backUpPressed(MatchingFragment.this,R.id.action_matchingFragment_to_play);
         handleDragDrop();
     }
@@ -130,7 +158,8 @@ public class MatchingFragment extends Fragment {
                 Toast.makeText(requireContext(), userAnswer.size()+"",Toast.LENGTH_SHORT).show();
                 OnSubmit onSubmit =new SubmitHandler(inflater,id,binding.getRoot(), userAnswer,gameAnswer);
                 onSubmit.onSubmit(v,inflater);
-                shareData(onSubmit,onExtractResults,userAnswer );
+                new LevelResultsHandler(requireContext(),MainActivity.userViewModel,wordGameViewModel,
+                        getViewLifecycleOwner()).shareData(onSubmit,onExtractResults,userAnswer,"matching");
                 Navigation.findNavController(view).
                         navigate(R.id.action_matchingFragment_to_results_CurrentActivity);
 
@@ -138,25 +167,15 @@ public class MatchingFragment extends Fragment {
             }
         });
     }
+    private void handleFab(){
+        binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(MatchingFragment.this).
+                        navigate(R.id.action_matchingFragment_to_proggress);
 
-    private void  shareData(OnSubmit submit,OnExtractResults onExtractResults,HashMap<String,String>gameAnswer ){
-        double score = submit.getScore();
-        int userId = user.getUserId();
-        String[] information  = onExtractResults.getGameInformation().split(",");
-        int gameId=0;int level=0; int totalMarks=0;
-        try {
-            gameId= Integer.parseInt(information[0].trim());
-             level= Integer.parseInt(information[1].trim());
-            totalMarks= gameAnswer.size()/*Integer.parseInt(information[2].trim())*/;
-        }catch (Exception e){
-            Toast.makeText(requireContext(),"Error Matching\n "+e.toString(),Toast.LENGTH_SHORT).show();
-        }
-
-        LevelResults levelResults = new LevelResults(
-                gameId,userId,level,"matching",
-                score,totalMarks
-        );
-        wordGameViewModel.setValue(levelResults);
+            }
+        });
     }
 
     void handleDragDrop(){

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,12 +22,16 @@ import com.example.wordgame.databinding.FragmentMultipleChoiceBinding;
 import com.example.wordgame.model_layer.LevelResults;
 import com.example.wordgame.model_layer.MultipleChoice;
 import com.example.wordgame.model_layer.MultipleChoiceViewModel;
+import com.example.wordgame.model_layer.TranslationGame;
+import com.example.wordgame.model_layer.TrueFalseGame;
 import com.example.wordgame.model_layer.User;
+import com.example.wordgame.model_layer.UserViewModel;
 import com.example.wordgame.model_layer.WordGameViewModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,7 +48,7 @@ public class MultipleChoiceFragment extends Fragment {
     private FragmentMultipleChoiceBinding binding ;
     private LayoutInflater inflater;
     private SubmitHandler submit;
-    private final User user = MainActivity.user;
+    //private final User user = MainActivity.user;
     private OnExtractResults onExtractResults;
     private WordGameViewModel wordGameViewModel;
     public MultipleChoiceFragment() {
@@ -107,11 +112,13 @@ public class MultipleChoiceFragment extends Fragment {
             @Override
             public void onChanged(List<MultipleChoice> multipleChoiceData) {
                 List<String> choices ;
-                int size = multipleChoiceData.size();
+                int numberOfQuestions =5;
+                List<MultipleChoice> multipleChoiceList = randomiseData(multipleChoiceData, numberOfQuestions);
+                int size = multipleChoiceList.size();
 
                 for(int i =0; i< size;i++) {
                     choices = new ArrayList<>();
-                    MultipleChoice multipleChoice = multipleChoiceData.get(i);
+                    MultipleChoice multipleChoice = multipleChoiceList.get(i);
                     String question =multipleChoice.getQuestion();
                     choices.add(multipleChoice.getChoiceOne());
                     choices.add(multipleChoice.getChoiceTwo());
@@ -120,11 +127,30 @@ public class MultipleChoiceFragment extends Fragment {
                     data.put(question,choices);
 
                 }
-                multipleChoiceController.setData(data,multipleChoiceData);
+                multipleChoiceController.setData(data,multipleChoiceList);
 
             }
         });
 
+    }
+
+    /**
+     * Randomise questions for game
+     * @param multipleChoiceList list of game material of multiple choice  game
+     * @param numberQuestions is the number of questions for game
+     * @return new list of questions of multiple choice game
+     */
+    private  List<MultipleChoice> randomiseData(List<MultipleChoice> multipleChoiceList, int numberQuestions){
+        Random rand = new Random();
+        List<MultipleChoice> newList = new ArrayList<>();
+        for (int i = 0; i < numberQuestions; i++) {
+
+            int randomIndex = rand.nextInt(multipleChoiceList.size());
+            newList.add(multipleChoiceList.get(randomIndex));
+            multipleChoiceList.remove(randomIndex);
+        }
+
+        return newList;
     }
 
     private void setRecycleView(){
@@ -148,8 +174,8 @@ public class MultipleChoiceFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //binding.submit.setOnClickListener(new SubmitHandler(inflater,R.id.action_multipleChoiceFragment_to_play,binding.getRoot()));
         handleSubmit(view);
+        handleFab();
         ((MainActivity) requireActivity()).backUpPressed(MultipleChoiceFragment.this,R.id.action_multipleChoiceFragment_to_play);
     }
 
@@ -170,11 +196,12 @@ public class MultipleChoiceFragment extends Fragment {
                 int id  = R.id.action_results_CurrentActivity_to_multipleChoiceFragment;
                 HashMap<String,String> userAnswer =onExtractResults.getUserAnswers();
                 HashMap<String,String>gameAnswer  = onExtractResults.getGameAnswers();
-                //Toast.makeText(requireContext(), userAnswer+" | "+gameAnswer,Toast.LENGTH_SHORT).show();
                 submit = new SubmitHandler(inflater, id, view, userAnswer, gameAnswer);
                 OnSubmit onSubmit =submit;
                 onSubmit.onSubmit(view,inflater);
-                shareData(onSubmit,onExtractResults, userAnswer );
+                UserViewModel userViewModel =MainActivity.userViewModel;
+                new LevelResultsHandler(requireContext(),userViewModel,wordGameViewModel,
+                        getViewLifecycleOwner()).shareData(onSubmit,onExtractResults,userAnswer,"multiple choice");
                 Navigation.findNavController(view).
                         navigate(R.id.action_multipleChoiceFragment_to_results_CurrentActivity);
 
@@ -182,31 +209,16 @@ public class MultipleChoiceFragment extends Fragment {
         });
     }
 
-    /**
-     * set user results into level results
-     * @param submit submits the user score
-     * @param onExtractResults  extract user answers and game answers
-     */
-    private void  shareData(OnSubmit submit,OnExtractResults onExtractResults,HashMap<String,String>gameAnswer ){
-        double score = submit.getScore();
-        int userId = user.getUserId();
-        String[] information  = onExtractResults.getGameInformation().split(",");
-        int gameId=0;int level=0; int totalMarks=0;
-        try {
-            gameId= Integer.parseInt(information[0].trim());
-            level= Integer.parseInt(information[1].trim());
-            totalMarks= gameAnswer.size() /*Integer.parseInt(information[2].trim())*/;
-        }catch (Exception e){
-            Toast.makeText(requireContext(),"Error Matching\n "+e.toString(),Toast.LENGTH_SHORT).show();
-        }
+    private void handleFab(){
+        binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(MultipleChoiceFragment.this).
+                        navigate(R.id.action_multipleChoiceFragment_to_proggress);
 
-        LevelResults levelResults = new LevelResults(
-                gameId,userId,level,"multiple choice",
-                score,totalMarks
-        );
-        wordGameViewModel.setValue(levelResults);
+            }
+        });
     }
-
 
     /**
      * set binding to nul on destroy

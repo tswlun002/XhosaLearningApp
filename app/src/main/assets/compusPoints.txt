@@ -1,0 +1,4 @@
+North ; uMntla
+East ; eMpuma
+South ; uMzantsi
+West ; eNtshona

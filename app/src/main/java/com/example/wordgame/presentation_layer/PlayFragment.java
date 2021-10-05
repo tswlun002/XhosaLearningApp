@@ -23,16 +23,11 @@ import com.example.wordgame.databinding.FragmentPlayBinding;
  */
 public class PlayFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     public static PlayFragment onplay;
     private Menu menu;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
     private @NonNull FragmentPlayBinding binding;
     private boolean tabs;
     public PlayFragment() {
@@ -61,10 +56,6 @@ public class PlayFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override

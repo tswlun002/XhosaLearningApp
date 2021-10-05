@@ -1,0 +1,8 @@
+black ; mnyama
+blue ; luhlaza
+brown ; ntsundu
+green ; luhlaza
+orange ; orenji
+red ; bomvu
+white ; mhlophe
+yellow ; mthubi

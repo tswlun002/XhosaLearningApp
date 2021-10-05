@@ -1,0 +1,90 @@
+a fly ; impukane
+air plane ; inqwelo moya
+an ant ; imbovane
+army ; imajoni
+baby animal (chicken, piglet) ; intshontsho
+baby goat/sheep/deer ; itakane
+beg/ask (depends on situation) ; cela
+beginning ; isiqalo
+bird ; intaka
+blood ; igazi
+book ; incwadi
+boy ; inkwenkwe
+breasts ; amabele
+bring about peace ; xolisa
+bus ; uduladula
+car ; inqwelo-mafutha
+champion ; intshatsheli
+cheek ; isidlele
+child ; umntwana
+baby ; usana
+clan name ; isiduko
+cliff ; iliwa
+close by ; kufutshane
+conspiracy ; iyelenqe
+country ; ilizwe
+danger ; ingozi
+day ; usuku
+date ; umhla
+dirty person (dwellings and personal) ; ixelegu
+doctor ; ugqirha
+dog ; inja
+ears ; indlebe 
+hair ; inwele
+earth ; umhlaba 
+hand ; isandla
+eyes ; amehlo
+elephant ; indlovu
+hero ; igokra
+hill ; ummango
+feet ; inyawo
+fingers ; iminwe
+How are you/How are things? ; Kunjani
+humanity/he is humane/ ; ubuntu/unobuntu
+inheritance ; ilifa
+insult ; isithuko
+kindness/generosity ; ububele
+laughing stock ; intlekisa
+lazy person ; inqenerha
+lesson ; isifundo
+liar ; ixoki
+look/search ; khangela
+madness ; impambano
+man ; indoda
+married woman ; umfazi
+me ; mna
+meeting ; intlanganiso/ umhlangano
+my sister ; dadewethu
+mystery ; intsumantsumane
+neighbour ; ummelwane
+outside ; phandle
+question ; Umbuzo
+reason ; isizathu
+respond to a call ; sabela
+road ; indlela
+sea ; ulwandle
+shadow ; isithunzi
+umthunzi ; shade 
+the answer ; impendulo
+them ; bona
+to be pregnant ; ukukhulelwa
+to cause a fight while not fighting ; thelekisa
+to clean ; ukucoca
+to close ; ukuvala
+to cook ; ukupheka
+to cry ; ukupheka
+to fall ; ukuwa
+to give birth ; ukuzala
+to get mad/angry ; ukucaphuka
+to laugh ; ukuhleka
+to open ; ukuvula
+to write ; ukubhala
+tree ; umthi
+ups and downs ; amahlandenyuka
+you ; wena
+yours ; Yakho
+
+
+
+
+

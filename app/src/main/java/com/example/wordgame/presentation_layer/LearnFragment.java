@@ -40,7 +40,6 @@ public class LearnFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
     private LearnViewModel learnViewModel;
     private  LearnAdapter learn;
     private FragmentLearnBinding  binding;
@@ -185,13 +184,8 @@ public class LearnFragment extends Fragment {
                 }
                 Toast.makeText(requireContext(),count+"",Toast.LENGTH_LONG).show();
                 learn.setData(data);
-
             }
-
-
         });
-
-
 
     }
     /**
