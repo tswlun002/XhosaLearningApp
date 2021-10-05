@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "851363774689",
+    "project_id": "wgame-c2f27",
+    "storage_bucket": "wgame-c2f27.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:851363774689:android:2924c168d9ee16982cf7a0",
+        "android_client_info": {
+          "package_name": "com.example.wordgame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "851363774689-jd9liji3t0ou7do1q2s784hcagnbrmm1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4lrar_xhX1k0VXg-hfUVYn5BiDuDhLH0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "851363774689-jd9liji3t0ou7do1q2s784hcagnbrmm1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
