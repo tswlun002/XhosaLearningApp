@@ -82,7 +82,12 @@ public class HandleMQCButtons extends CreateKeys implements OnMultipleChoice ,On
     public void StoreAnswer(List<String> answers) {
          //storeAnswer(answers);
     }
-    int getNumberQuestions(){
+
+    /**
+     * Get number of questions of  multiple choice
+     * @return number of questions for multiple choice
+     */
+    public int getNumberQuestions(){
         return numberOfQuestions;
     }
 

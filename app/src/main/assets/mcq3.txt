@@ -1,4 +1,4 @@
-23
+25
 3;Choose the correct word for given term or sentence description
 mystery ; intsumantsumane
 ungazi
@@ -10,25 +10,30 @@ pakathi
 ecaleni
 phandle
 ekhohlo
+kuyatshisa phandle;it's hot outside
+hot
+it's raining
+it's hot outside
+raining outside
 question ; Umbuzo
 isizathu
 impendulo
 Umbuzo
 isitulo
-reason ; isizathu
-impendulo
-umbuzo
-inja
-isizathu
-Money ; Imali
-ukutya
-Imali
+nika isizathu ; give a reason
+correct answer
+give a reason
+give answer
+correct reason
+imali ; money
+gold
+money
+notes
+coins
+In cash ; imali eziinkozo
+imali eziinkozo
 igolide
-umbona
-In cash ; eziinkozo
-imali
-igolide
-eziinkozo
+eligadaqa
 umbona
 Summer ; iHlobo
 iHlobo
@@ -60,7 +65,7 @@ wamkelekile
 phuma
 wamkelekile
 goduka
-meal ; Isidlo
+isidlo ; meal
 inyama
 Isidlo
 isonka

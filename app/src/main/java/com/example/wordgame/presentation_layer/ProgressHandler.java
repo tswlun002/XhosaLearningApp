@@ -17,16 +17,28 @@ public class ProgressHandler {
     private  ProgressBar levelOneBar,levelTwoBar,levelThreeBar,averageBar;
     private TextView textViewLevelOne,textViewLevelTwo,textViewLevelThree,textViewAverage;
 
+    /**
+     * initialise the serial field for this class
+     * @param view of the progress fragment
+     */
     public  ProgressHandler(View view){
         this.progressView=view;
     }
 
+    /**
+
+     * @param progressReportList is the list iof the progress data
+     *
+     */
     public void setData(List<ProgressReport> progressReportList){
         this.progressReportList=progressReportList;
         initViews();
         setDataIntoInterface();
     }
 
+    /**
+     * initialise view of the progress fragment
+     */
     private void initViews (){
          levelOneBar = progressView.findViewById(R.id.determinateBar1);
          levelTwoBar = progressView.findViewById(R.id.determinateBar2);
@@ -38,6 +50,9 @@ public class ProgressHandler {
          textViewAverage = progressView.findViewById(R.id.AverProgressBar);
     }
 
+    /**
+     * set data into the view of the progress fragment
+     */
     @SuppressLint("SetTextI18n")
     private  void setDataIntoInterface(){
         ProgressReport progressReport = progressReportList.get(0);

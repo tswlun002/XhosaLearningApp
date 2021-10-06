@@ -183,6 +183,12 @@ public class MatchingFragment extends Fragment {
         handleDragDrop();
     }
 
+    /**
+     *  handles submit button click
+     *  Then submit user results  using class SubmitHandler
+     *  Navigate to level results fragment to show user results
+     * @param view of this fragment
+     */
     private void handClick(View view){
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -203,6 +209,11 @@ public class MatchingFragment extends Fragment {
             }
         });
     }
+
+    /**
+     * handle fab button click
+     * Navigate to progress window to display user results
+     */
     private void handleFab(){
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -214,6 +225,9 @@ public class MatchingFragment extends Fragment {
         });
     }
 
+    /**
+     * handle drag and drop of the views
+     */
     void handleDragDrop(){
         onMatchingViewHandler.viewClicked(binding.xhosaMatchTextView1);
         onMatchingViewHandler.viewClicked(binding.xhosaMatchTextView2);

@@ -61,6 +61,8 @@ public class FragmentStart extends Fragment {
     /**
      * set up tab layout which help of LearnAdapter class
      * handle events of the tab layout
+     * if position zero selected , learnFragment will be displayed
+     * Else if position is one , playFragment is inflated
      * @param view start fragment view
      * @param savedInstanceState for start fragment
      */
@@ -69,10 +71,7 @@ public class FragmentStart extends Fragment {
         TabAdapter tabAdapter = new TabAdapter(requireActivity());
         ViewPager2 viewPager2 = view.findViewById(R.id.viewpager);
         TabLayout tabLayout = view.findViewById(R.id.tabs);
-
         viewPager2.setAdapter(tabAdapter);
-
-
         new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
@@ -93,19 +92,14 @@ public class FragmentStart extends Fragment {
             public void onTabSelected(TabLayout.Tab tab) {
 
                 viewPager2.setCurrentItem(tab.getPosition());
-
-
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
-
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
 

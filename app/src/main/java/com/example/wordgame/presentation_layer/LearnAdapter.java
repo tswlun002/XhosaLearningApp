@@ -103,7 +103,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
         int size = position+1;
         String key  = getHeadings()[position]+"";
         holder.setIsRecyclable(false);
-        holder.pageNumber.setText((size)+"/"+getSize());
+        holder.pageNumber.setText((size)+"/"+ data.size());
         addRow(data2.get(position*2), data2.get(position*2+1),key,holder);
     }
     /**
@@ -341,6 +341,11 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
                 boolean inContent =false;
                 boolean inHeadins  = false;
                 if(! inHeading){
+                   // Toast.makeText(context,filter.toString()+"\n\ndon't come here",filter.size());
+                    inContent =searchContent(pattern,filter);
+                    if(! inContent){
+                        filter.putAll(data1);
+                    }
                 }
                 if(inHeading==true){
                      found=true;
@@ -350,7 +355,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
 
 
             }
-           else if(!found ) {
+           else if(!found) {
                  filter.putAll(data1);
             }
             FilterResults filterResults = new FilterResults();
@@ -394,7 +399,26 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
         return  found;
      }
 
-
+    /**
+     * Helper method to search the word on the content (first column)
+     * @param pattern word being searched
+     * @param filter hash map to store filter results
+     * @return true if found else false
+     */
+     boolean searchContent(String pattern,HashMap<String ,List<String>> filter){
+         int  found =0;
+         for(String key1 : data.keySet()) {
+             List<String> list = new ArrayList<>();
+             getContent(list, Objects.requireNonNull(data.get(key1)));
+             for (String searched : list) {
+                 if (searched.toLowerCase().equalsIgnoreCase(pattern)) {
+                     filter.put(key1, data.get(key1));
+                     found ++;
+                 }
+             }
+         }
+         return found > 0;
+     }
 
     /**
      * get content of the first column

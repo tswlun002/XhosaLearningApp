@@ -27,7 +27,6 @@ import java.util.List;
 public class LevelResultsFragment extends Fragment {
 
     private  WordGameViewModel wordGameViewModel;
-    //private final User user = MainActivity.user;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private LevelResultsViewModel levelResultsViewModel;
@@ -44,7 +43,6 @@ public class LevelResultsFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment LevelResultsFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static LevelResultsFragment newInstance(String param1, String param2) {
         LevelResultsFragment fragment = new LevelResultsFragment();
         Bundle args = new Bundle();
@@ -54,6 +52,12 @@ public class LevelResultsFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * creates the fragment level results
+     * Initialise levelResultsViewModel  and wordGameViewModel;
+     * levelResultsViewModel is given ownership of the fragment lifecycle
+     * @param savedInstanceState of level results fragment
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,13 +66,18 @@ public class LevelResultsFragment extends Fragment {
         wordGameViewModel = new ViewModelProvider(requireActivity()).get(WordGameViewModel.class);
     }
 
-
+    /**
+     * Hides all its view but open them as a dialog
+     * @param inflater of LevelResultsFragment
+     * @param container of LevelResultsFragment
+     * @param savedInstanceState of LevelResultsFragment
+     * @return view of LevelResultsFragment
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-       // Toast.makeText(requireContext(),"Here On results",Toast.LENGTH_LONG).show();
-        View view= inflater.inflate(R.layout.fragment_results__current_activity, container, false);
 
+        View view= inflater.inflate(R.layout.fragment_results__current_activity, container, false);
         view.findViewById(R.id.NextButtonId).setVisibility(View.GONE);
         view.findViewById(R.id.ExitBitton).setVisibility(View.GONE);
         view.findViewById(R.id.gradesActivity).setVisibility(View.GONE);
@@ -79,6 +88,9 @@ public class LevelResultsFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Hide the toolbar of the application
+     */
     @Override
     public void onResume() {
         super.onResume();
@@ -88,6 +100,13 @@ public class LevelResultsFragment extends Fragment {
 
     }
 
+    /**
+     * Insert data of the level results  into database using help of view model wordGameViewModel
+     * which is shared by all fragments
+     * After insert each results , we get maximum  results of each game and update
+     * Progress of the user
+     * @param levelResultsViewModel is the view model of  level results instance
+     */
     private void insertToLevelResultsDB(LevelResultsViewModel levelResultsViewModel){
         wordGameViewModel.getResults().observe(getViewLifecycleOwner(), new Observer<LevelResults>() {
             @Override
@@ -102,6 +121,11 @@ public class LevelResultsFragment extends Fragment {
 
     }
 
+    /**
+     * Get  maximum score of current level of each game
+     * Use class  ComputeProgressReport  to compute scores
+     * And update progress of the user
+     */
     void getHighestScore(){
         levelResultsViewModel.getallgradeslevelone().observe(getViewLifecycleOwner(), new Observer<List<LevelResults>>() {
             @Override
@@ -111,14 +135,14 @@ public class LevelResultsFragment extends Fragment {
                 computeProgressReport.setLevelResultsList(levelResults);
                 computeProgressReport.computeScores();
                 computeProgressReport.insert(getViewLifecycleOwner());
-                count++;
-               //Toast.makeText(requireActivity(),count+"",Toast.LENGTH_SHORT).show();
             }
         });
     }
 
 
-
+    /**
+     * On view destroy Toolbar of the application is set visible again
+     */
     @Override
     public void onDestroyView() {
         Toolbar toolbar  = requireActivity().findViewById(R.id.toolbar);

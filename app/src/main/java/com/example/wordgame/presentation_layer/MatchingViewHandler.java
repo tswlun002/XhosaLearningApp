@@ -84,6 +84,10 @@ public class MatchingViewHandler extends DragandDrop implements OnMatchingViewHa
 
     }
 
+    /**
+     * intialise questions
+     * @param material set material
+     */
     private void initQuestionAnswers(List<Matching> material){
         int count  = 1;
         for (Matching materialActivity : material) {
@@ -103,7 +107,13 @@ public class MatchingViewHandler extends DragandDrop implements OnMatchingViewHa
         this.view=view ;
     }
 
-
+    /**
+     * set data into view of the game
+     * level one  four choice shown
+     * level two 6 choice
+     * level 3 8 choices
+     * @param material data to set
+     */
     public void setData(List<Matching> material){
         if(material != null) {
             initQuestionAnswers(material);
