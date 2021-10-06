@@ -10,7 +10,7 @@ class PopulateUser extends AsyncTask<Void,Void,Void> {
     }
     @Override
     protected Void doInBackground(Void... voids) {
-        userDao.insert(new User(0,2));
+        userDao.insert(new User(0,1));
         return null;
     }
 

@@ -15,7 +15,6 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.wordgame.R;
 import com.example.wordgame.model_layer.LevelResults;
 import com.example.wordgame.model_layer.LevelResultsViewModel;
-import com.example.wordgame.model_layer.User;
 import com.example.wordgame.model_layer.WordGameViewModel;
 
 import java.util.List;
@@ -101,16 +100,16 @@ public class LevelResultsFragment extends Fragment {
     }
 
     void getHighestScore(){
-        levelResultsViewModel.getAllGradesLevelone().observe(getViewLifecycleOwner(), new Observer<List<LevelResults>>() {
+        levelResultsViewModel.getallgradeslevelone().observe(getViewLifecycleOwner(), new Observer<List<LevelResults>>() {
             @Override
             public void onChanged(List<LevelResults> levelResults) {
                 ComputeProgressReport computeProgressReport =
                         new ComputeProgressReport(requireActivity().getApplication());
                 computeProgressReport.setLevelResultsList(levelResults);
                 computeProgressReport.computeScores();
-                computeProgressReport.insert();
+                computeProgressReport.insert(getViewLifecycleOwner());
                 count++;
-               // Toast.makeText(requireActivity(),count+"",Toast.LENGTH_SHORT).show();
+               //Toast.makeText(requireActivity(),count+"",Toast.LENGTH_SHORT).show();
             }
         });
     }

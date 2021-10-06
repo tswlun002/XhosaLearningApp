@@ -18,16 +18,16 @@ public class UserViewModel extends AndroidViewModel {
     }
 
     /**
-     * get all material for matching game
+     * get all material for matching3.txt game
      *
-     * @return matching material
+     * @return matching3.txt material
      */
     public LiveData<List<User>> getGameMaterial() {
         return allMaterial;
     }
 
     /**
-     * insert data of matching
+     * insert data of matching3.txt
      *
      * @param user is a data being inserted
      */
@@ -36,7 +36,7 @@ public class UserViewModel extends AndroidViewModel {
     }
 
     /**
-     * update data of matching game
+     * update data of matching3.txt game
      *
      * @param user is the data being updated
      */

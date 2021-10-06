@@ -71,8 +71,8 @@ public class MatchingViewHandler extends DragandDrop implements OnMatchingViewHa
     }
 
     /**
-     * extract matching game answers with their question
-     * @param material is the object of matching material
+     * extract matching3.txt game answers with their question
+     * @param material is the object of matching3.txt material
      */
     void extractMatchingAnswers(List<Matching> material){
         for(Matching answers: material){

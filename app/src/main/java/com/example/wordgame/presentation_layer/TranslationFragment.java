@@ -203,7 +203,7 @@ public class TranslationFragment extends Fragment {
                 OnSubmit onSubmit = new SubmitHandler(inflater,id,view,userAnswer,gameAnswer);
                 onSubmit.onSubmit(view,inflater);
                 new LevelResultsHandler(requireContext(),MainActivity.userViewModel,wordGameViewModel,
-                        getViewLifecycleOwner()).shareData(onSubmit,onExtractResults,userAnswer,"multiple choice");
+                        getViewLifecycleOwner()).shareData(onSubmit,onExtractResults,userAnswer,"translation");
                 Navigation.findNavController(view).
                         navigate(R.id.action_translationFragment_to_results_CurrentActivity);
 

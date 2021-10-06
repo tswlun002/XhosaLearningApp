@@ -20,13 +20,21 @@ public interface LevelResultsDao {
             "or userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'true false'and level ==1) " +
             "GROUP BY gameType ")
     LiveData<List<LevelResults>> level1();
-    @Query("SELECT * FROM LevelResults WHERE level ==2")
+    @Query("SELECT  * FROM LevelResults  WHERE  userMarks= " +
+            "( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'matching' and level ==2)" +
+            "or userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'multiple choice'and level ==2) \n" +
+            "or userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'translation'and level ==2)\n" +
+            "or userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'true false'and level ==2) " +
+            "GROUP BY gameType ")
+
     LiveData<List<LevelResults>> level2();
-    @Query("SELECT * FROM LevelResults WHERE level ==3")
+    @Query("SELECT  * FROM LevelResults  WHERE  userMarks= " +
+            "( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'matching' and level ==3)" +
+            "or userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'multiple choice'and level ==3) \n" +
+            "or userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'translation'and level ==3)\n" +
+            "or userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'true false'and level ==3) " +
+            "GROUP BY gameType ")
     LiveData<List<LevelResults>> level3();
-    @Query("SELECT * FROM LevelResults WHERE level LIKE :first AND " +
-            "userId LIKE :last LIMIT 1")
-    LevelResults findByName(String first, String last);
     @Update
     void update(LevelResults levelResults );
     @Insert
@@ -34,12 +42,20 @@ public interface LevelResultsDao {
 
     /**
      *SELECT * FROM LevelResults  WHERE
-     * userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'matching'and level ==1)
+     * userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'matching3.txt'and level ==1)
      *  or
      * userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'multiple choice'and level ==1)
      * or
      *  userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'translation'and level ==1)
      *  or
      *  userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'true false'and level ==1)
+     */
+
+    /**
+     SELECT  * FROM LevelResults  WHERE  userMarks=
+     ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'matching' and level ==1)
+     or userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'multiple choice'and level ==1)
+     or userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'translation'and level ==1)
+     or userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'true false'and level ==1) GROUP BY gameType
      */
 }

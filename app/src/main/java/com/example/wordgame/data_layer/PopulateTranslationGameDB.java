@@ -9,8 +9,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PopulateTranslationGameDB extends AsyncTask<Context, Void, Void> {
     private final TranslationDao translationDao;
@@ -23,9 +21,10 @@ public class PopulateTranslationGameDB extends AsyncTask<Context, Void, Void> {
 
     @Override
     protected Void doInBackground(Context... contexts) {
-
+        String[] filenames ={"translation1.txt","translation2.txt","translation3.txt"};
         try {
-            getData(contexts[0]);
+            for(String filename: filenames)
+                getData(contexts[0],filename);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -34,7 +33,7 @@ public class PopulateTranslationGameDB extends AsyncTask<Context, Void, Void> {
         return null;
     }
 
-    private String getData(Context context) throws IOException {
+    private String getData(Context context,String filename) throws IOException {
 
 
         String Marks = "";
@@ -43,7 +42,7 @@ public class PopulateTranslationGameDB extends AsyncTask<Context, Void, Void> {
         try {
 
             BufferedReader bufferedReader = new BufferedReader(
-                    new InputStreamReader(context.getResources().getAssets().open("translation.txt"),
+                    new InputStreamReader(context.getResources().getAssets().open(filename),
                             StandardCharsets.UTF_8));
             int count = 0;
             int level=1;

@@ -187,6 +187,198 @@ public final class MatchingDao_Impl implements MatchingDao {
     });
   }
 
+  @Override
+  public LiveData<List<Matching>> loadLevelOne() {
+    final String _sql = "SELECT * FROM Matching WHERE level =1";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    return __db.getInvalidationTracker().createLiveData(new String[]{"Matching"}, false, new Callable<List<Matching>>() {
+      @Override
+      public List<Matching> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfMatchingId = CursorUtil.getColumnIndexOrThrow(_cursor, "matchingId");
+          final int _cursorIndexOfLevel = CursorUtil.getColumnIndexOrThrow(_cursor, "level");
+          final int _cursorIndexOfTittle = CursorUtil.getColumnIndexOrThrow(_cursor, "tittle");
+          final int _cursorIndexOfInstructions = CursorUtil.getColumnIndexOrThrow(_cursor, "instructions");
+          final int _cursorIndexOfQuestions = CursorUtil.getColumnIndexOrThrow(_cursor, "questions");
+          final int _cursorIndexOfAnswers = CursorUtil.getColumnIndexOrThrow(_cursor, "answers");
+          final int _cursorIndexOfTotalMarks = CursorUtil.getColumnIndexOrThrow(_cursor, "totalMarks");
+          final List<Matching> _result = new ArrayList<Matching>(_cursor.getCount());
+          while(_cursor.moveToNext()) {
+            final Matching _item;
+            final int _tmpLevel;
+            _tmpLevel = _cursor.getInt(_cursorIndexOfLevel);
+            final String _tmpTittle;
+            if (_cursor.isNull(_cursorIndexOfTittle)) {
+              _tmpTittle = null;
+            } else {
+              _tmpTittle = _cursor.getString(_cursorIndexOfTittle);
+            }
+            final String _tmpInstructions;
+            if (_cursor.isNull(_cursorIndexOfInstructions)) {
+              _tmpInstructions = null;
+            } else {
+              _tmpInstructions = _cursor.getString(_cursorIndexOfInstructions);
+            }
+            final String _tmpQuestions;
+            if (_cursor.isNull(_cursorIndexOfQuestions)) {
+              _tmpQuestions = null;
+            } else {
+              _tmpQuestions = _cursor.getString(_cursorIndexOfQuestions);
+            }
+            final String _tmpAnswers;
+            if (_cursor.isNull(_cursorIndexOfAnswers)) {
+              _tmpAnswers = null;
+            } else {
+              _tmpAnswers = _cursor.getString(_cursorIndexOfAnswers);
+            }
+            final int _tmpTotalMarks;
+            _tmpTotalMarks = _cursor.getInt(_cursorIndexOfTotalMarks);
+            _item = new Matching(_tmpLevel,_tmpQuestions,_tmpAnswers,_tmpTittle,_tmpInstructions,_tmpTotalMarks);
+            _item.matchingId = _cursor.getInt(_cursorIndexOfMatchingId);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
+      }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
+  }
+
+  @Override
+  public LiveData<List<Matching>> loadLevelTwo() {
+    final String _sql = "SELECT * FROM Matching WHERE level =2";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    return __db.getInvalidationTracker().createLiveData(new String[]{"Matching"}, false, new Callable<List<Matching>>() {
+      @Override
+      public List<Matching> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfMatchingId = CursorUtil.getColumnIndexOrThrow(_cursor, "matchingId");
+          final int _cursorIndexOfLevel = CursorUtil.getColumnIndexOrThrow(_cursor, "level");
+          final int _cursorIndexOfTittle = CursorUtil.getColumnIndexOrThrow(_cursor, "tittle");
+          final int _cursorIndexOfInstructions = CursorUtil.getColumnIndexOrThrow(_cursor, "instructions");
+          final int _cursorIndexOfQuestions = CursorUtil.getColumnIndexOrThrow(_cursor, "questions");
+          final int _cursorIndexOfAnswers = CursorUtil.getColumnIndexOrThrow(_cursor, "answers");
+          final int _cursorIndexOfTotalMarks = CursorUtil.getColumnIndexOrThrow(_cursor, "totalMarks");
+          final List<Matching> _result = new ArrayList<Matching>(_cursor.getCount());
+          while(_cursor.moveToNext()) {
+            final Matching _item;
+            final int _tmpLevel;
+            _tmpLevel = _cursor.getInt(_cursorIndexOfLevel);
+            final String _tmpTittle;
+            if (_cursor.isNull(_cursorIndexOfTittle)) {
+              _tmpTittle = null;
+            } else {
+              _tmpTittle = _cursor.getString(_cursorIndexOfTittle);
+            }
+            final String _tmpInstructions;
+            if (_cursor.isNull(_cursorIndexOfInstructions)) {
+              _tmpInstructions = null;
+            } else {
+              _tmpInstructions = _cursor.getString(_cursorIndexOfInstructions);
+            }
+            final String _tmpQuestions;
+            if (_cursor.isNull(_cursorIndexOfQuestions)) {
+              _tmpQuestions = null;
+            } else {
+              _tmpQuestions = _cursor.getString(_cursorIndexOfQuestions);
+            }
+            final String _tmpAnswers;
+            if (_cursor.isNull(_cursorIndexOfAnswers)) {
+              _tmpAnswers = null;
+            } else {
+              _tmpAnswers = _cursor.getString(_cursorIndexOfAnswers);
+            }
+            final int _tmpTotalMarks;
+            _tmpTotalMarks = _cursor.getInt(_cursorIndexOfTotalMarks);
+            _item = new Matching(_tmpLevel,_tmpQuestions,_tmpAnswers,_tmpTittle,_tmpInstructions,_tmpTotalMarks);
+            _item.matchingId = _cursor.getInt(_cursorIndexOfMatchingId);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
+      }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
+  }
+
+  @Override
+  public LiveData<List<Matching>> loadLevelThree() {
+    final String _sql = "SELECT * FROM Matching WHERE level =3";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    return __db.getInvalidationTracker().createLiveData(new String[]{"Matching"}, false, new Callable<List<Matching>>() {
+      @Override
+      public List<Matching> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfMatchingId = CursorUtil.getColumnIndexOrThrow(_cursor, "matchingId");
+          final int _cursorIndexOfLevel = CursorUtil.getColumnIndexOrThrow(_cursor, "level");
+          final int _cursorIndexOfTittle = CursorUtil.getColumnIndexOrThrow(_cursor, "tittle");
+          final int _cursorIndexOfInstructions = CursorUtil.getColumnIndexOrThrow(_cursor, "instructions");
+          final int _cursorIndexOfQuestions = CursorUtil.getColumnIndexOrThrow(_cursor, "questions");
+          final int _cursorIndexOfAnswers = CursorUtil.getColumnIndexOrThrow(_cursor, "answers");
+          final int _cursorIndexOfTotalMarks = CursorUtil.getColumnIndexOrThrow(_cursor, "totalMarks");
+          final List<Matching> _result = new ArrayList<Matching>(_cursor.getCount());
+          while(_cursor.moveToNext()) {
+            final Matching _item;
+            final int _tmpLevel;
+            _tmpLevel = _cursor.getInt(_cursorIndexOfLevel);
+            final String _tmpTittle;
+            if (_cursor.isNull(_cursorIndexOfTittle)) {
+              _tmpTittle = null;
+            } else {
+              _tmpTittle = _cursor.getString(_cursorIndexOfTittle);
+            }
+            final String _tmpInstructions;
+            if (_cursor.isNull(_cursorIndexOfInstructions)) {
+              _tmpInstructions = null;
+            } else {
+              _tmpInstructions = _cursor.getString(_cursorIndexOfInstructions);
+            }
+            final String _tmpQuestions;
+            if (_cursor.isNull(_cursorIndexOfQuestions)) {
+              _tmpQuestions = null;
+            } else {
+              _tmpQuestions = _cursor.getString(_cursorIndexOfQuestions);
+            }
+            final String _tmpAnswers;
+            if (_cursor.isNull(_cursorIndexOfAnswers)) {
+              _tmpAnswers = null;
+            } else {
+              _tmpAnswers = _cursor.getString(_cursorIndexOfAnswers);
+            }
+            final int _tmpTotalMarks;
+            _tmpTotalMarks = _cursor.getInt(_cursorIndexOfTotalMarks);
+            _item = new Matching(_tmpLevel,_tmpQuestions,_tmpAnswers,_tmpTittle,_tmpInstructions,_tmpTotalMarks);
+            _item.matchingId = _cursor.getInt(_cursorIndexOfMatchingId);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
+      }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
+  }
+
   public static List<Class<?>> getRequiredConverters() {
     return Collections.emptyList();
   }

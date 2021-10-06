@@ -26,8 +26,8 @@ public class TrueFalseViewModel extends AndroidViewModel {
         questionsLevelThree= factoryTrueFalseDB.getQuestionsLevelThree();
     }
     /**
-     * get all material for matching game
-     * @return matching material
+     * get all material for matching3.txt game
+     * @return matching3.txt material
      */
     public LiveData<List<TrueFalseGame>> getGameMaterial() {
         return allMaterial;
@@ -42,7 +42,7 @@ public class TrueFalseViewModel extends AndroidViewModel {
         return questionsLevelThree;
     }
     /**
-     * insert data of matching
+     * insert data of matching3.txt
      * @param trueFalseGame is a data being inserted
      */
     public  void insert(TrueFalseGame trueFalseGame){
@@ -50,7 +50,7 @@ public class TrueFalseViewModel extends AndroidViewModel {
     }
 
     /**
-     * update data of matching game
+     * update data of matching3.txt game
      * @param trueFalseGame is the data being updated
      */
     public  void update(TrueFalseGame trueFalseGame){

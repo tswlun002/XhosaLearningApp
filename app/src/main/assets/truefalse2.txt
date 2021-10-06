@@ -1,0 +1,12 @@
+12
+2;All answer question have appropriate answers
+https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/dinning%20room.jpg;igumbi lokuhlala?igumbi lokuhlala,true
+https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/dog.jpg;umntu?inja,false
+https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/handshake.jpg;ukubulisa?ukubulisa,true
+https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/hospital.png;isikolo?isibhedlele,false
+https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/indlu.jpg;indlu?indlu,true
+https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/isikolo.jpg;isikolo?isikolo,false
+https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/kitchen.jpg;igumbi lokupheka?igumbi lokupheka,true
+https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/light.jpeg;ubumnyama?ukukhanya,false
+https://raw.githubusercontent.com/tswlun002/lunga/main/washing.jpg;ukuhlamba?ukuhlamba,true
+https://raw.githubusercontent.com/tswlun002/lunga/main/water.jpg;amanzi?amanzi,true

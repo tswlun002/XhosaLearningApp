@@ -20,38 +20,41 @@ public class PopulateMultipleChoiceDB extends AsyncTask<Context, Void, Void> {
 
     @Override
     protected Void doInBackground(Context... contexts) {
-        List<String> Data  = new ArrayList<>();
-        List<String> instructions  = new ArrayList<>();
 
-        String data ="";
-        try {
-            data = getData(Data,instructions,contexts[0]);
+        String[] filenames ={"mcq1.txt","mcq2.txt","mcq3.txt"};
+       for(String filename:filenames) {
+           List<String> Data  = new ArrayList<>();
+           List<String> instructions  = new ArrayList<>();
+           String data = "";
+           try {
+               data = getData(Data, instructions, contexts[0],filename);
 
-        } catch (IOException e) {
+           } catch (IOException e) {
 
-            e.printStackTrace();
-        }
+               e.printStackTrace();
+           }
 
-        int totalmarks  = Integer.parseInt(data.trim());
-        String instruction =  instructions.get(0).substring(instructions.get(0).indexOf(";")+1);
+           int totalmarks = Integer.parseInt(data.trim());
+           String instruction = instructions.get(0).substring(instructions.get(0).indexOf(";") + 1);
 
 
-        int level =  Integer.parseInt(instructions.get(0).substring(0,instructions.get(0)
-                .indexOf(";")).trim());
+           int level = Integer.parseInt(instructions.get(0).substring(0, instructions.get(0)
+                   .indexOf(";")).trim());
 
-        int size = Data.size();
-        for(int i =0; i< size;) {
-            String line  = Data.get(i);
-            String question = line.substring(0, line.indexOf(";"));
-            String answer  = line.substring(line.indexOf(";")+1);
-            multipleChoiceDao.insert(new MultipleChoice(level,question,Data.get(i+1),Data.get(i+2),
-                    Data.get(i+3),Data.get(i+4),instruction,answer,totalmarks));
-            i+=5;
-        }
+           int size = Data.size();
+           for (int i = 0; i < size; ) {
+               String line = Data.get(i);
+               String question = line.substring(0, line.indexOf(";"));
+               String answer = line.substring(line.indexOf(";") + 1);
+               multipleChoiceDao.insert(new MultipleChoice(level, question, Data.get(i + 1), Data.get(i + 2),
+                       Data.get(i + 3), Data.get(i + 4), instruction, answer, totalmarks));
+               i += 5;
+           }
+       }
         return null;
     }
 
-    private String getData(List<String> Data,List<String> instructions,Context context) throws IOException {
+    private String getData(List<String> Data,List<String> instructions,Context context,String filename) throws IOException {
 
 
         String Marks = "";
@@ -60,7 +63,7 @@ public class PopulateMultipleChoiceDB extends AsyncTask<Context, Void, Void> {
         try {
 
             BufferedReader bufferedReader = new BufferedReader(
-                    new InputStreamReader(context.getResources().getAssets().open("MCQ.txt"),
+                    new InputStreamReader(context.getResources().getAssets().open(filename),
                             StandardCharsets.UTF_8));
             int count = 0;
             while ((lineData = bufferedReader.readLine()) != null) {

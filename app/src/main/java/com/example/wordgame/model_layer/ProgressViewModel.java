@@ -27,7 +27,7 @@ public class ProgressViewModel extends AndroidViewModel {
     }
 
     /**
-     * get all material for matching game
+     * get all material for progressReport game
      *
      * @return matching material
      */
@@ -36,7 +36,7 @@ public class ProgressViewModel extends AndroidViewModel {
     }
 
     /**
-     * insert data of matching
+     * insert data of progressReport
      *
      * @param progressReport is a data being inserted
      */
@@ -45,7 +45,7 @@ public class ProgressViewModel extends AndroidViewModel {
     }
 
     /**
-     * update data of prgressResults
+     * update data of progressResults
      *
      * @param progressReport is the data being updated
      */

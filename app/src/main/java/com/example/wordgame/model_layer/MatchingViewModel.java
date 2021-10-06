@@ -18,7 +18,7 @@ public class MatchingViewModel extends AndroidViewModel {
 
     /**
      * construct to initialise serial fields
-     * @param application is the context of matching
+     * @param application is the context of matching3.txt
      */
     public MatchingViewModel(@NonNull Application application) {
         super(application);
@@ -30,8 +30,8 @@ public class MatchingViewModel extends AndroidViewModel {
     }
 
     /**
-     * get all material for matching game
-     * @return matching material
+     * get all material for matching3.txt game
+     * @return matching3.txt material
      */
     public LiveData<List<Matching>> getGameMaterial() {
         return allMaterial;
@@ -47,7 +47,7 @@ public class MatchingViewModel extends AndroidViewModel {
         return questionsLevelThree;
     }
     /**
-     * insert data of matching
+     * insert data of matching3.txt
      * @param match is a data being inserted
      */
     public  void insert(Matching match){
@@ -55,7 +55,7 @@ public class MatchingViewModel extends AndroidViewModel {
     }
 
     /**
-     * update data of matching game
+     * update data of matching3.txt game
      * @param match is the data being updated
      */
     public  void update(Matching match){

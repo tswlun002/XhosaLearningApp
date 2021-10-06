@@ -25,7 +25,7 @@ public interface ProgressReportDao {
             "levelTwoScore LIKE :last LIMIT 1")
     ProgressReport findByName(String first, String last);
     @Update
-    void update(ProgressReport progressReport );
+    void update(ProgressReport progressReport);
     @Insert
     void insert(ProgressReport progressReport);
 

@@ -207,7 +207,9 @@ public final class LevelResultsDao_Impl implements LevelResultsDao {
 
   @Override
   public LiveData<List<LevelResults>> level2() {
-    final String _sql = "SELECT * FROM LevelResults WHERE level ==2";
+    final String _sql = "SELECT  * FROM LevelResults  WHERE  userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'matching' and level ==2)or userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'multiple choice'and level ==2) \n"
+            + "or userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'translation'and level ==2)\n"
+            + "or userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'true false'and level ==2) GROUP BY gameType ";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
     return __db.getInvalidationTracker().createLiveData(new String[]{"LevelResults"}, false, new Callable<List<LevelResults>>() {
       @Override
@@ -259,7 +261,9 @@ public final class LevelResultsDao_Impl implements LevelResultsDao {
 
   @Override
   public LiveData<List<LevelResults>> level3() {
-    final String _sql = "SELECT * FROM LevelResults WHERE level ==3";
+    final String _sql = "SELECT  * FROM LevelResults  WHERE  userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'matching' and level ==3)or userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'multiple choice'and level ==3) \n"
+            + "or userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'translation'and level ==3)\n"
+            + "or userMarks= ( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'true false'and level ==3) GROUP BY gameType ";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
     return __db.getInvalidationTracker().createLiveData(new String[]{"LevelResults"}, false, new Callable<List<LevelResults>>() {
       @Override
@@ -307,62 +311,6 @@ public final class LevelResultsDao_Impl implements LevelResultsDao {
         _statement.release();
       }
     });
-  }
-
-  @Override
-  public LevelResults findByName(final String first, final String last) {
-    final String _sql = "SELECT * FROM LevelResults WHERE level LIKE ? AND userId LIKE ? LIMIT 1";
-    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 2);
-    int _argIndex = 1;
-    if (first == null) {
-      _statement.bindNull(_argIndex);
-    } else {
-      _statement.bindString(_argIndex, first);
-    }
-    _argIndex = 2;
-    if (last == null) {
-      _statement.bindNull(_argIndex);
-    } else {
-      _statement.bindString(_argIndex, last);
-    }
-    __db.assertNotSuspendingTransaction();
-    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
-    try {
-      final int _cursorIndexOfLevelResultsId = CursorUtil.getColumnIndexOrThrow(_cursor, "level_resultsId");
-      final int _cursorIndexOfGameId = CursorUtil.getColumnIndexOrThrow(_cursor, "gameId");
-      final int _cursorIndexOfUserId = CursorUtil.getColumnIndexOrThrow(_cursor, "userId");
-      final int _cursorIndexOfLevel = CursorUtil.getColumnIndexOrThrow(_cursor, "level");
-      final int _cursorIndexOfGameType = CursorUtil.getColumnIndexOrThrow(_cursor, "gameType");
-      final int _cursorIndexOfUserMarks = CursorUtil.getColumnIndexOrThrow(_cursor, "userMarks");
-      final int _cursorIndexOfTotalMarks = CursorUtil.getColumnIndexOrThrow(_cursor, "totalMarks");
-      final LevelResults _result;
-      if(_cursor.moveToFirst()) {
-        final int _tmpGameId;
-        _tmpGameId = _cursor.getInt(_cursorIndexOfGameId);
-        final int _tmpUserId;
-        _tmpUserId = _cursor.getInt(_cursorIndexOfUserId);
-        final int _tmpLevel;
-        _tmpLevel = _cursor.getInt(_cursorIndexOfLevel);
-        final String _tmpGameType;
-        if (_cursor.isNull(_cursorIndexOfGameType)) {
-          _tmpGameType = null;
-        } else {
-          _tmpGameType = _cursor.getString(_cursorIndexOfGameType);
-        }
-        final double _tmpUserMarks;
-        _tmpUserMarks = _cursor.getDouble(_cursorIndexOfUserMarks);
-        final int _tmpTotalMarks;
-        _tmpTotalMarks = _cursor.getInt(_cursorIndexOfTotalMarks);
-        _result = new LevelResults(_tmpGameId,_tmpUserId,_tmpLevel,_tmpGameType,_tmpUserMarks,_tmpTotalMarks);
-        _result.level_resultsId = _cursor.getInt(_cursorIndexOfLevelResultsId);
-      } else {
-        _result = null;
-      }
-      return _result;
-    } finally {
-      _cursor.close();
-      _statement.release();
-    }
   }
 
   public static List<Class<?>> getRequiredConverters() {

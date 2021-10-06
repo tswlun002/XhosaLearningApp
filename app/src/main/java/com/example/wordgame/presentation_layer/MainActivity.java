@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
      */
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
-    //public static  final User user = new User(0,1);
     public static UserViewModel userViewModel;
 
     /**

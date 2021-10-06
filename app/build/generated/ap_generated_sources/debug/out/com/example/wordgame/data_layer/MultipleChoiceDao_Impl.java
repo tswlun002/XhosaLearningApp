@@ -8,14 +8,12 @@ import androidx.room.RoomDatabase;
 import androidx.room.RoomSQLiteQuery;
 import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
-import androidx.room.util.StringUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
 import com.example.wordgame.model_layer.MultipleChoice;
 import java.lang.Class;
 import java.lang.Exception;
 import java.lang.Override;
 import java.lang.String;
-import java.lang.StringBuilder;
 import java.lang.SuppressWarnings;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -241,19 +239,22 @@ public final class MultipleChoiceDao_Impl implements MultipleChoiceDao {
   }
 
   @Override
-  public LiveData<List<MultipleChoice>> loadLevelOne(final int[] userIds) {
-    StringBuilder _stringBuilder = StringUtil.newStringBuilder();
-    _stringBuilder.append("SELECT * FROM Matching WHERE level =1");
-    final String _sql = _stringBuilder.toString();
-    final int _argCount = 0;
-    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, _argCount);
-    int _argIndex = 1;
-    return __db.getInvalidationTracker().createLiveData(new String[]{"Matching"}, false, new Callable<List<MultipleChoice>>() {
+  public LiveData<List<MultipleChoice>> loadLevelOne() {
+    final String _sql = "SELECT * FROM MultipleChoice WHERE level =1";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    return __db.getInvalidationTracker().createLiveData(new String[]{"MultipleChoice"}, false, new Callable<List<MultipleChoice>>() {
       @Override
       public List<MultipleChoice> call() throws Exception {
         final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
         try {
+          final int _cursorIndexOfMultipleId = CursorUtil.getColumnIndexOrThrow(_cursor, "multipleId");
           final int _cursorIndexOfLevel = CursorUtil.getColumnIndexOrThrow(_cursor, "level");
+          final int _cursorIndexOfQuestion = CursorUtil.getColumnIndexOrThrow(_cursor, "question");
+          final int _cursorIndexOfChoiceOne = CursorUtil.getColumnIndexOrThrow(_cursor, "choiceOne");
+          final int _cursorIndexOfChoiceTwo = CursorUtil.getColumnIndexOrThrow(_cursor, "choiceTwo");
+          final int _cursorIndexOfChoiceThree = CursorUtil.getColumnIndexOrThrow(_cursor, "choiceThree");
+          final int _cursorIndexOfChoiceFour = CursorUtil.getColumnIndexOrThrow(_cursor, "choiceFour");
+          final int _cursorIndexOfAnswer = CursorUtil.getColumnIndexOrThrow(_cursor, "answer");
           final int _cursorIndexOfInstructions = CursorUtil.getColumnIndexOrThrow(_cursor, "instructions");
           final int _cursorIndexOfTotalMarks = CursorUtil.getColumnIndexOrThrow(_cursor, "totalMarks");
           final List<MultipleChoice> _result = new ArrayList<MultipleChoice>(_cursor.getCount());
@@ -261,6 +262,42 @@ public final class MultipleChoiceDao_Impl implements MultipleChoiceDao {
             final MultipleChoice _item;
             final int _tmpLevel;
             _tmpLevel = _cursor.getInt(_cursorIndexOfLevel);
+            final String _tmpQuestion;
+            if (_cursor.isNull(_cursorIndexOfQuestion)) {
+              _tmpQuestion = null;
+            } else {
+              _tmpQuestion = _cursor.getString(_cursorIndexOfQuestion);
+            }
+            final String _tmpChoiceOne;
+            if (_cursor.isNull(_cursorIndexOfChoiceOne)) {
+              _tmpChoiceOne = null;
+            } else {
+              _tmpChoiceOne = _cursor.getString(_cursorIndexOfChoiceOne);
+            }
+            final String _tmpChoiceTwo;
+            if (_cursor.isNull(_cursorIndexOfChoiceTwo)) {
+              _tmpChoiceTwo = null;
+            } else {
+              _tmpChoiceTwo = _cursor.getString(_cursorIndexOfChoiceTwo);
+            }
+            final String _tmpChoiceThree;
+            if (_cursor.isNull(_cursorIndexOfChoiceThree)) {
+              _tmpChoiceThree = null;
+            } else {
+              _tmpChoiceThree = _cursor.getString(_cursorIndexOfChoiceThree);
+            }
+            final String _tmpChoiceFour;
+            if (_cursor.isNull(_cursorIndexOfChoiceFour)) {
+              _tmpChoiceFour = null;
+            } else {
+              _tmpChoiceFour = _cursor.getString(_cursorIndexOfChoiceFour);
+            }
+            final String _tmpAnswer;
+            if (_cursor.isNull(_cursorIndexOfAnswer)) {
+              _tmpAnswer = null;
+            } else {
+              _tmpAnswer = _cursor.getString(_cursorIndexOfAnswer);
+            }
             final String _tmpInstructions;
             if (_cursor.isNull(_cursorIndexOfInstructions)) {
               _tmpInstructions = null;
@@ -269,7 +306,8 @@ public final class MultipleChoiceDao_Impl implements MultipleChoiceDao {
             }
             final int _tmpTotalMarks;
             _tmpTotalMarks = _cursor.getInt(_cursorIndexOfTotalMarks);
-            _item = new MultipleChoice(_tmpLevel,null,null,null,null,null,_tmpInstructions,null,_tmpTotalMarks);
+            _item = new MultipleChoice(_tmpLevel,_tmpQuestion,_tmpChoiceOne,_tmpChoiceTwo,_tmpChoiceThree,_tmpChoiceFour,_tmpInstructions,_tmpAnswer,_tmpTotalMarks);
+            _item.multipleId = _cursor.getInt(_cursorIndexOfMultipleId);
             _result.add(_item);
           }
           return _result;
@@ -286,19 +324,22 @@ public final class MultipleChoiceDao_Impl implements MultipleChoiceDao {
   }
 
   @Override
-  public LiveData<List<MultipleChoice>> loadLevelTwo(final int[] userIds) {
-    StringBuilder _stringBuilder = StringUtil.newStringBuilder();
-    _stringBuilder.append("SELECT * FROM Matching WHERE level =2");
-    final String _sql = _stringBuilder.toString();
-    final int _argCount = 0;
-    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, _argCount);
-    int _argIndex = 1;
-    return __db.getInvalidationTracker().createLiveData(new String[]{"Matching"}, false, new Callable<List<MultipleChoice>>() {
+  public LiveData<List<MultipleChoice>> loadLevelTwo() {
+    final String _sql = "SELECT * FROM MultipleChoice WHERE level =2";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    return __db.getInvalidationTracker().createLiveData(new String[]{"MultipleChoice"}, false, new Callable<List<MultipleChoice>>() {
       @Override
       public List<MultipleChoice> call() throws Exception {
         final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
         try {
+          final int _cursorIndexOfMultipleId = CursorUtil.getColumnIndexOrThrow(_cursor, "multipleId");
           final int _cursorIndexOfLevel = CursorUtil.getColumnIndexOrThrow(_cursor, "level");
+          final int _cursorIndexOfQuestion = CursorUtil.getColumnIndexOrThrow(_cursor, "question");
+          final int _cursorIndexOfChoiceOne = CursorUtil.getColumnIndexOrThrow(_cursor, "choiceOne");
+          final int _cursorIndexOfChoiceTwo = CursorUtil.getColumnIndexOrThrow(_cursor, "choiceTwo");
+          final int _cursorIndexOfChoiceThree = CursorUtil.getColumnIndexOrThrow(_cursor, "choiceThree");
+          final int _cursorIndexOfChoiceFour = CursorUtil.getColumnIndexOrThrow(_cursor, "choiceFour");
+          final int _cursorIndexOfAnswer = CursorUtil.getColumnIndexOrThrow(_cursor, "answer");
           final int _cursorIndexOfInstructions = CursorUtil.getColumnIndexOrThrow(_cursor, "instructions");
           final int _cursorIndexOfTotalMarks = CursorUtil.getColumnIndexOrThrow(_cursor, "totalMarks");
           final List<MultipleChoice> _result = new ArrayList<MultipleChoice>(_cursor.getCount());
@@ -306,6 +347,42 @@ public final class MultipleChoiceDao_Impl implements MultipleChoiceDao {
             final MultipleChoice _item;
             final int _tmpLevel;
             _tmpLevel = _cursor.getInt(_cursorIndexOfLevel);
+            final String _tmpQuestion;
+            if (_cursor.isNull(_cursorIndexOfQuestion)) {
+              _tmpQuestion = null;
+            } else {
+              _tmpQuestion = _cursor.getString(_cursorIndexOfQuestion);
+            }
+            final String _tmpChoiceOne;
+            if (_cursor.isNull(_cursorIndexOfChoiceOne)) {
+              _tmpChoiceOne = null;
+            } else {
+              _tmpChoiceOne = _cursor.getString(_cursorIndexOfChoiceOne);
+            }
+            final String _tmpChoiceTwo;
+            if (_cursor.isNull(_cursorIndexOfChoiceTwo)) {
+              _tmpChoiceTwo = null;
+            } else {
+              _tmpChoiceTwo = _cursor.getString(_cursorIndexOfChoiceTwo);
+            }
+            final String _tmpChoiceThree;
+            if (_cursor.isNull(_cursorIndexOfChoiceThree)) {
+              _tmpChoiceThree = null;
+            } else {
+              _tmpChoiceThree = _cursor.getString(_cursorIndexOfChoiceThree);
+            }
+            final String _tmpChoiceFour;
+            if (_cursor.isNull(_cursorIndexOfChoiceFour)) {
+              _tmpChoiceFour = null;
+            } else {
+              _tmpChoiceFour = _cursor.getString(_cursorIndexOfChoiceFour);
+            }
+            final String _tmpAnswer;
+            if (_cursor.isNull(_cursorIndexOfAnswer)) {
+              _tmpAnswer = null;
+            } else {
+              _tmpAnswer = _cursor.getString(_cursorIndexOfAnswer);
+            }
             final String _tmpInstructions;
             if (_cursor.isNull(_cursorIndexOfInstructions)) {
               _tmpInstructions = null;
@@ -314,7 +391,8 @@ public final class MultipleChoiceDao_Impl implements MultipleChoiceDao {
             }
             final int _tmpTotalMarks;
             _tmpTotalMarks = _cursor.getInt(_cursorIndexOfTotalMarks);
-            _item = new MultipleChoice(_tmpLevel,null,null,null,null,null,_tmpInstructions,null,_tmpTotalMarks);
+            _item = new MultipleChoice(_tmpLevel,_tmpQuestion,_tmpChoiceOne,_tmpChoiceTwo,_tmpChoiceThree,_tmpChoiceFour,_tmpInstructions,_tmpAnswer,_tmpTotalMarks);
+            _item.multipleId = _cursor.getInt(_cursorIndexOfMultipleId);
             _result.add(_item);
           }
           return _result;
@@ -331,19 +409,22 @@ public final class MultipleChoiceDao_Impl implements MultipleChoiceDao {
   }
 
   @Override
-  public LiveData<List<MultipleChoice>> loadLevelThree(final int[] userIds) {
-    StringBuilder _stringBuilder = StringUtil.newStringBuilder();
-    _stringBuilder.append("SELECT * FROM Matching WHERE level =3");
-    final String _sql = _stringBuilder.toString();
-    final int _argCount = 0;
-    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, _argCount);
-    int _argIndex = 1;
-    return __db.getInvalidationTracker().createLiveData(new String[]{"Matching"}, false, new Callable<List<MultipleChoice>>() {
+  public LiveData<List<MultipleChoice>> loadLevelThree() {
+    final String _sql = "SELECT * FROM MultipleChoice WHERE level =3";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    return __db.getInvalidationTracker().createLiveData(new String[]{"MultipleChoice"}, false, new Callable<List<MultipleChoice>>() {
       @Override
       public List<MultipleChoice> call() throws Exception {
         final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
         try {
+          final int _cursorIndexOfMultipleId = CursorUtil.getColumnIndexOrThrow(_cursor, "multipleId");
           final int _cursorIndexOfLevel = CursorUtil.getColumnIndexOrThrow(_cursor, "level");
+          final int _cursorIndexOfQuestion = CursorUtil.getColumnIndexOrThrow(_cursor, "question");
+          final int _cursorIndexOfChoiceOne = CursorUtil.getColumnIndexOrThrow(_cursor, "choiceOne");
+          final int _cursorIndexOfChoiceTwo = CursorUtil.getColumnIndexOrThrow(_cursor, "choiceTwo");
+          final int _cursorIndexOfChoiceThree = CursorUtil.getColumnIndexOrThrow(_cursor, "choiceThree");
+          final int _cursorIndexOfChoiceFour = CursorUtil.getColumnIndexOrThrow(_cursor, "choiceFour");
+          final int _cursorIndexOfAnswer = CursorUtil.getColumnIndexOrThrow(_cursor, "answer");
           final int _cursorIndexOfInstructions = CursorUtil.getColumnIndexOrThrow(_cursor, "instructions");
           final int _cursorIndexOfTotalMarks = CursorUtil.getColumnIndexOrThrow(_cursor, "totalMarks");
           final List<MultipleChoice> _result = new ArrayList<MultipleChoice>(_cursor.getCount());
@@ -351,6 +432,42 @@ public final class MultipleChoiceDao_Impl implements MultipleChoiceDao {
             final MultipleChoice _item;
             final int _tmpLevel;
             _tmpLevel = _cursor.getInt(_cursorIndexOfLevel);
+            final String _tmpQuestion;
+            if (_cursor.isNull(_cursorIndexOfQuestion)) {
+              _tmpQuestion = null;
+            } else {
+              _tmpQuestion = _cursor.getString(_cursorIndexOfQuestion);
+            }
+            final String _tmpChoiceOne;
+            if (_cursor.isNull(_cursorIndexOfChoiceOne)) {
+              _tmpChoiceOne = null;
+            } else {
+              _tmpChoiceOne = _cursor.getString(_cursorIndexOfChoiceOne);
+            }
+            final String _tmpChoiceTwo;
+            if (_cursor.isNull(_cursorIndexOfChoiceTwo)) {
+              _tmpChoiceTwo = null;
+            } else {
+              _tmpChoiceTwo = _cursor.getString(_cursorIndexOfChoiceTwo);
+            }
+            final String _tmpChoiceThree;
+            if (_cursor.isNull(_cursorIndexOfChoiceThree)) {
+              _tmpChoiceThree = null;
+            } else {
+              _tmpChoiceThree = _cursor.getString(_cursorIndexOfChoiceThree);
+            }
+            final String _tmpChoiceFour;
+            if (_cursor.isNull(_cursorIndexOfChoiceFour)) {
+              _tmpChoiceFour = null;
+            } else {
+              _tmpChoiceFour = _cursor.getString(_cursorIndexOfChoiceFour);
+            }
+            final String _tmpAnswer;
+            if (_cursor.isNull(_cursorIndexOfAnswer)) {
+              _tmpAnswer = null;
+            } else {
+              _tmpAnswer = _cursor.getString(_cursorIndexOfAnswer);
+            }
             final String _tmpInstructions;
             if (_cursor.isNull(_cursorIndexOfInstructions)) {
               _tmpInstructions = null;
@@ -359,7 +476,8 @@ public final class MultipleChoiceDao_Impl implements MultipleChoiceDao {
             }
             final int _tmpTotalMarks;
             _tmpTotalMarks = _cursor.getInt(_cursorIndexOfTotalMarks);
-            _item = new MultipleChoice(_tmpLevel,null,null,null,null,null,_tmpInstructions,null,_tmpTotalMarks);
+            _item = new MultipleChoice(_tmpLevel,_tmpQuestion,_tmpChoiceOne,_tmpChoiceTwo,_tmpChoiceThree,_tmpChoiceFour,_tmpInstructions,_tmpAnswer,_tmpTotalMarks);
+            _item.multipleId = _cursor.getInt(_cursorIndexOfMultipleId);
             _result.add(_item);
           }
           return _result;

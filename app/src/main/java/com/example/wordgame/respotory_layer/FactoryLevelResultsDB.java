@@ -15,14 +15,16 @@ import java.util.List;
 public class FactoryLevelResultsDB {
     private final LevelResultsDao levelResultsDao;
     private final LiveData<List<LevelResults>> results;
-    private final LiveData<List<LevelResults>> resultsLevelOne;
+    private final LiveData<List<LevelResults>> resultsLevelOne,resultsLevelTwo,resultsLevelThree;
 
     public FactoryLevelResultsDB(Application application) {
         WordGameDB levelResultlsDB = WordGameDB.getInstanceWordGameDb(application);
 
         levelResultsDao = levelResultlsDB.levelResultsDao();
-        results = levelResultsDao.getAll();
+       results = levelResultsDao.getAll();
         resultsLevelOne = levelResultsDao.level1();
+        resultsLevelTwo = levelResultsDao.level2();
+        resultsLevelThree = levelResultsDao.level3();
 
 
     }
@@ -37,6 +39,14 @@ public class FactoryLevelResultsDB {
     public LiveData<List<LevelResults>> getAllGradesLevelOne() {
         return resultsLevelOne;
     }
+    public LiveData<List<LevelResults>> getAllGradesLevelTwo() {
+        return resultsLevelTwo;
+    }
+    public LiveData<List<LevelResults>> getAllGradesLevelThree() {
+        return resultsLevelThree;
+    }
+
+
     public void insert(LevelResults levelResults) {
         new FactoryLevelResultsDB.insertHandler(levelResultsDao).execute(levelResults);
     }
