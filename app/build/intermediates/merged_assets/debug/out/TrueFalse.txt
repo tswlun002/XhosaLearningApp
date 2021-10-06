@@ -8,6 +8,7 @@ https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173dec
 https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/cleaning.jpg;ukucoca?ukucoca,true
 https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/clothes.jpg;ithwala?impahla,false
 https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/cooking.jpg;ukupheka?ukupheka,true
+2;All answer question have appropriate answers
 https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/dinning%20room.jpg;igumbi lokuhlala?igumbi lokuhlala,true
 https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/dog.jpg;umntu?inja,false
 https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/handshake.jpg;ukubulisa?ukubulisa,true
@@ -16,6 +17,7 @@ https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173dec
 https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/isikolo.jpg;isikolo?isikolo,false
 https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/kitchen.jpg;igumbi lokupheka?igumbi lokupheka,true
 https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/light.jpeg;ubumnyama?ukukhanya,false
+3;All answer question have appropriate answers
 https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/phone.jpg;ifowuni?phone,false
 https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/plate.jpg;isitya?isitya,true
 https://raw.githubusercontent.com/tswlun002/lunga/deeefe755a588377741d5fab173decc46b61c34d/road.jpg;indlela?indlela,true

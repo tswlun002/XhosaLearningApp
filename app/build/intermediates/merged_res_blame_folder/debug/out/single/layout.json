@@ -1,102 +1,102 @@
 [
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_proggress.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_proggress.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_results__current_activity.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_results__current_activity.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/activity_main.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/hint.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/hint.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_true.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_true.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_translation.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_translation.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/hint.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/hint.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_proggress.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_proggress.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/multiple_choice_adapter.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/multiple_choice_adapter.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/welcomwindow.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/welcomwindow.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/translation_adapter.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/translation_adapter.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/true_false_adapter.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/true_false_adapter.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/welcomwindow.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/welcomwindow.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_learn.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_learn.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_level_one_results.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_level_one_results.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_true.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_true.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_matching.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_matching.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/header.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/header.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/mcq_adapter.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/mcq_adapter.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_level_two_results.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_level_two_results.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_start.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_start.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_level_one_results.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_level_one_results.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/image.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/image.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/customisedview.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/customisedview.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/true_false_adapter.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/true_false_adapter.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/image.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/image.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_results__current_activity.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_results__current_activity.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_matching.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_matching.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/header.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/header.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/translation_adapter.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/translation_adapter.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_multiple_choice.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_multiple_choice.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/content_main.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/content_main.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_level_two_results.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_level_two_results.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_level_three_results.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_level_three_results.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/customisedview.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/customisedview.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_play.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_play.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_level_three_results.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_level_three_results.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_start.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_start.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/content_main.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/content_main.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_multiple_choice.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_multiple_choice.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_average_results.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_average_results.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/multiple_choice_adapter.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/multiple_choice_adapter.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_play.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_play.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_average_results.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_average_results.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_learn.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_learn.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/mcq_adapter.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/mcq_adapter.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/learn_adapter.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/learn_adapter.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/activity_main.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_translation.xml",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_translation.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/learn_adapter.xml",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/learn_adapter.xml"
     }
 ]

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-w600dp-v13/values-w600dp-v13.xml",
+            "outputFile": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-w600dp-v13/values-w600dp-v13.xml",
             "map": [
                 {
-                    "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/values-w600dp/dimens.xml",
+                    "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/values-w600dp/dimens.xml",
                     "from": {
                         "startLines": "1",
                         "startColumns": "4",

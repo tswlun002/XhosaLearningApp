@@ -1,11 +1,11 @@
 [
   {
-    "name": "results_nav_host",
+    "name": "nav_graph",
     "navigationXmlIds": [],
     "deepLinks": []
   },
   {
-    "name": "nav_graph",
+    "name": "results_nav_host",
     "navigationXmlIds": [],
     "deepLinks": []
   }

@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.zip.Inflater;
 
-public class ActiviyResults {
+class ActiviyResults {
 
     private final LayoutInflater inflater;
     private final Context context;

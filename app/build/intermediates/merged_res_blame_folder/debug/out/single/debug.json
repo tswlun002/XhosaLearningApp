@@ -1,358 +1,358 @@
 [
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_fragment_true.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_true.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcherlogo.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-anydpi-v26/ic_launcherlogo.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcherlogo.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-xxhdpi/ic_launcherlogo.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_true_false_adapter.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/true_false_adapter.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable-v24_dailyconversations.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable-v24/dailyconversations.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable_ic_baseline_menu_open_24.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable/ic_baseline_menu_open_24.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcherlogo.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-hdpi/ic_launcherlogo.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_fragment_multiple_choice.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_multiple_choice.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable_textbackground.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable/textbackground.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_fragment_matching.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_matching.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_fragment_play.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_play.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_fragment_level_three_results.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_level_three_results.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_customisedview.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/customisedview.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable_xlogo.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable/xlogo.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable_ic_baseline_search_24.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable/ic_baseline_search_24.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable_ic_baseline_maximize_24.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable/ic_baseline_maximize_24.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcherlogo.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-xhdpi/ic_launcherlogo.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable_ic_baseline_menu_24.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable/ic_baseline_menu_24.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable_normalbackground.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable/normalbackground.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable_ic_baseline_keyboard_arrow_right_24.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable/ic_baseline_keyboard_arrow_right_24.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcherlogo_round.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-hdpi/ic_launcherlogo_round.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_fragment_translation.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_translation.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/menu_welcome_menu.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/menu/welcome_menu.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/navigation_results_nav_host.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/navigation/results_nav_host.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_activity_main.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/activity_main.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/menu_menu_main.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/menu/menu_main.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcherlogo_foreground.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-hdpi/ic_launcherlogo_foreground.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcherlogo_round.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-xxxhdpi/ic_launcherlogo_round.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable-v24_consonants.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable-v24/consonants.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcherlogo_foreground.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-xxhdpi/ic_launcherlogo_foreground.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable-v24/ic_launcher_foreground.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable_layoutbackground.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable/layoutbackground.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcherlogo_foreground.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-xhdpi/ic_launcherlogo_foreground.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcherlogo_round.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-xxhdpi/ic_launcherlogo_round.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-hdpi/ic_launcher.webp"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable-v24_lodging.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable-v24/lodging.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcherlogo_round.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-xxhdpi/ic_launcherlogo_round.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable-v24_numbers.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable-v24/numbers.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/menu_bottom_menu.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/menu/bottom_menu.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcherlogo_round.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-xhdpi/ic_launcherlogo_round.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable_lo.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable/lo.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcherlogo.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-mdpi/ic_launcherlogo.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_true_false_adapter.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/true_false_adapter.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable-v24_problems.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable-v24/problems.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcherlogo.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-hdpi/ic_launcherlogo.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_fragment_matching.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_matching.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable_answerbackground.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable/answerbackground.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_fragment_proggress.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_proggress.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcherlogo.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-xxxhdpi/ic_launcherlogo.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher_foreground.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable_customizerecycleview.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable/customizerecycleview.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable_ic_baseline_auto_graph_24.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable/ic_baseline_auto_graph_24.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable-v24_problems.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable-v24/problems.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_fragment_results__current_activity.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_results__current_activity.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable-v24_numbers.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable-v24/numbers.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable-v24_clicks.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable-v24/clicks.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcherlogo.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-xxxhdpi/ic_launcherlogo.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable_ic_baseline_keyboard_arrow_right_24.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable/ic_baseline_keyboard_arrow_right_24.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_fragment_level_two_results.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_level_two_results.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable_ic_baseline_menu_24.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable/ic_baseline_menu_24.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_content_main.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/content_main.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable_xlogo.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable/xlogo.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/navigation_results_nav_host.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/navigation/results_nav_host.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_mcq_adapter.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/mcq_adapter.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/menu_bottom_menu.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/menu/bottom_menu.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable-v24_lodging.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable-v24/lodging.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable_customizerecycleview.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable/customizerecycleview.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcherlogo_foreground.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-xxhdpi/ic_launcherlogo_foreground.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-mdpi/ic_launcher.webp"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher_foreground.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_activity_main.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/activity_main.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable-v24_consonants.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable-v24/consonants.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcherlogo.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-mdpi/ic_launcherlogo.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable_lo.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable/lo.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable-v24_vowels.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable-v24/vowels.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_fragment_level_two_results.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_level_two_results.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcherlogo_foreground.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-mdpi/ic_launcherlogo_foreground.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_translation_adapter.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/translation_adapter.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcherlogo_foreground.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-xxxhdpi/ic_launcherlogo_foreground.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_content_main.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/content_main.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcherlogo.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-anydpi-v26/ic_launcherlogo.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_header.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/header.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable_customer_edittet.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable/customer_edittet.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable_ic_baseline_search_24.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable/ic_baseline_search_24.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/menu_menu_main.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/menu/menu_main.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcherlogo_round.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-hdpi/ic_launcherlogo_round.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_image.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/image.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_customisedview.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/customisedview.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_welcomwindow.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/welcomwindow.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable_answerbackground.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable/answerbackground.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcherlogo_round.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-xxxhdpi/ic_launcherlogo_round.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_hint.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/hint.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/navigation_nav_graph.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/navigation/nav_graph.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_fragment_proggress.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_proggress.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_fragment_true.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_true.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-hdpi/ic_launcher.webp"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_fragment_multiple_choice.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_multiple_choice.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable-v24_vowels.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable-v24/vowels.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_fragment_level_three_results.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_level_three_results.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable-v24_dailyconversations.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable-v24/dailyconversations.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-mdpi/ic_launcher.webp"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcherlogo_foreground.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-xhdpi/ic_launcherlogo_foreground.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable-v24_colors.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable-v24/colors.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_fragment_play.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_play.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_image.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/image.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcherlogo.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-xxhdpi/ic_launcherlogo.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/menu_results_menu.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/menu/results_menu.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_mcq_adapter.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/mcq_adapter.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcherlogo.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-xhdpi/ic_launcherlogo.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_fragment_translation.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_translation.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_welcomwindow.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/welcomwindow.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable-v24_colors.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable-v24/colors.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcherlogo_foreground.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-hdpi/ic_launcherlogo_foreground.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable-v24_ic_launcher_foreground.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable-v24/ic_launcher_foreground.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcherlogo_round.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-xhdpi/ic_launcherlogo_round.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_fragment_level_one_results.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_level_one_results.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable-v24_clicks.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable-v24/clicks.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable_xhosa.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable/xhosa.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcherlogo_round.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-mdpi/ic_launcherlogo_round.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable_ic_baseline_home_24.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable/ic_baseline_home_24.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable_ic_baseline_auto_graph_24.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable/ic_baseline_auto_graph_24.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_fragment_average_results.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_average_results.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_hint.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/hint.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/menu_results_menu.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/menu/results_menu.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_translation_adapter.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/translation_adapter.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable_customer_edittet.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable/customer_edittet.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_fragment_learn.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_learn.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_learn_adapter.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/learn_adapter.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_fragment_learn.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_learn.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable_igusha.jpeg.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable/igusha.jpeg"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable_textbackground.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable/textbackground.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcherlogo_round.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-anydpi-v26/ic_launcherlogo_round.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable_ic_baseline_maximize_24.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable/ic_baseline_maximize_24.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_fragment_results__current_activity.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_results__current_activity.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_multiple_choice_adapter.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/multiple_choice_adapter.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_header.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/header.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcherlogo_foreground.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-mdpi/ic_launcherlogo_foreground.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable_normalbackground.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable/normalbackground.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcherlogo_round.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-mdpi/ic_launcherlogo_round.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable_xhosa.png.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable/xhosa.png"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable_arrow_down_24.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable/arrow_down_24.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable_ic_baseline_home_24.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable/ic_baseline_home_24.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcher_foreground.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable_layoutbackground.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable/layoutbackground.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_fragment_start.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_start.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable_ic_baseline_menu_open_24.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable/ic_baseline_menu_open_24.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/drawable_igusha.jpeg.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/drawable/igusha.jpeg"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_multiple_choice_adapter.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/multiple_choice_adapter.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcherlogo_round.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-anydpi-v26/ic_launcherlogo_round.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_fragment_start.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_start.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/drawable_arrow_down_24.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/drawable/arrow_down_24.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcherlogo_foreground.png.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-xxxhdpi/ic_launcherlogo_foreground.png"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_learn_adapter.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/learn_adapter.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/layout_fragment_level_one_results.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/layout/fragment_level_one_results.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/menu_welcome_menu.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/menu/welcome_menu.xml"
     },
     {
-        "merged": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/build/intermediates/merged_res/debug/navigation_nav_graph.xml.flat",
-        "source": "/home/lunga/Desktop/CSC/CSC3003S/Project/app/src/main/res/navigation/nav_graph.xml"
+        "merged": "/home/kuhle/Documents/csc3003/wordgame/app/build/intermediates/merged_res/debug/layout_fragment_average_results.xml.flat",
+        "source": "/home/kuhle/Documents/csc3003/wordgame/app/src/main/res/layout/fragment_average_results.xml"
     }
 ]
