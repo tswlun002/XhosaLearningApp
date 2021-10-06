@@ -332,7 +332,6 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
         protected FilterResults performFiltering(CharSequence constraint) {
 
             HashMap<String ,List<String>> filter = new HashMap<>();
-            Toast.makeText(context,constraint.toString()+" here ",Toast.LENGTH_SHORT).show();
             boolean found =false;
             if(constraint !=null || constraint.length()!=0){
 
@@ -350,7 +349,6 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
                 if(inHeading==true){
                      found=true;
                      inHeading=true;
-                     Toast.makeText(context," hayibo",filter.size());
                 }
 
 
@@ -377,7 +375,6 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
                 data.clear();
                 data2.clear();
                 setData((HashMap) results.values);
-                Toast.makeText(context, getItemCount()+" count",Toast.LENGTH_SHORT).show();
         }
     };
 

@@ -83,7 +83,7 @@ public class FactoryMatchingDB {
         }
         /**]
          * insert into the database all the learning material
-         * @param learns insert into the database of the application
+         * @param matchings insert into the database of the application
          * @return
          */
         @Override
