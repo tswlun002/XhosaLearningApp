@@ -27,13 +27,12 @@ public  class LevelResultsWindow {
 
 
     /**
-     * This method display user score, the answers they had wrong with corrections.
-     * @param userScore stores the user score for each of the exercises
-     * @param totalScore stores the user average score of each of the levels.
+     * This method display user score of each level.
+     * Dispaly user level ,score , game type and total score
+     * @param correctAnswers  is the user scores for by level
      */
     @SuppressLint("SetTextI18n")
-    //introduced new parameters userScore and total Score
-    public void gradesActity(double userScore, int totalScore, List<String> correctAnswers){
+    public void displayScore(List<String> correctAnswers){
         if(correctAnswers==null || correctAnswers.size()==0)
             correctAnswers.add("You still need to play this level");
         final View view = inflater.inflate(R.layout.fragment_level_one_results, null);
@@ -55,6 +54,11 @@ public  class LevelResultsWindow {
         });
 
     }
+
+    /**
+     * @param correctAnswers build answer to fit window
+     * @return string that fit the window
+     */
     String  buildAnswers( List<String> correctAnswers){
         StringBuilder answers = new StringBuilder();
         for (Object key:correctAnswers) {

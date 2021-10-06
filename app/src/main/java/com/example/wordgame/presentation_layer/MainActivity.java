@@ -38,13 +38,13 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * creates main activity  ,set up navigation controller
+     * Initialise the  userViewModel so that is accessed though out the application
      * @param savedInstanceState of main activity
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
-        // upon click allow the fragment to get another fragment
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

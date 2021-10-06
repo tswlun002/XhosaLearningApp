@@ -13,24 +13,39 @@ import java.util.List;
 public class HintHandler extends HintAdapter implements OnHints {
 
     /**
-     * @serialField  position of the hint button a layout
+     * @serialField  position of the hint button on a recycle view layout
+     * @serialField  totalHints is hint total and decreases as user request hint
+     * @serialField numberOfHints number of hint for question
      */
     private  int position;
     private int[] totalHints ;
     private int numberOfHints;
 
+    /**
+     * @return position of the hint in the recycle view
+     */
     public int getPosition() {
         return position;
     }
 
+    /**
+     * sets position of the hint the recycle view
+     * @param position  in the recycle view
+     */
     public void setPosition(int position) {
         this.position = position;
     }
 
+    /**
+     * @return number of hints
+     */
     public int getNumberOfHints() {
         return numberOfHints;
     }
 
+    /**
+     * @param numberOfHints set current number of hints
+     */
     public void setNumberOfHints(int numberOfHints) {
         this.numberOfHints = numberOfHints;
     }
@@ -56,6 +71,11 @@ public class HintHandler extends HintAdapter implements OnHints {
             setNumberOfHints(getNumberOfHints()-1);
         }
     }
+
+    /**
+     * Generates 3 hints for each questions
+     * @param range is number of question to be hinted
+     */
     @Override
     public void generateTotalHints(int range){
          totalHints = new int[range];

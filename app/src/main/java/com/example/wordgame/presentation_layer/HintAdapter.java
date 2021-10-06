@@ -10,11 +10,17 @@ import android.widget.TextView;
 
 import com.example.wordgame.R;
 
+/**
+ * @Class  HintAdapter handle hints for for translation game
+ */
 public abstract  class HintAdapter {
 
+
     /**
-     * Hint user with answer
-     * Click close to dismiss dialog
+     * Inflate window with the appropriate hint for user
+     * Window has close button to close window dialog
+     * @param inflater of the hint window dialog
+     * @param data is the hint data
      */
 
     @SuppressLint("SetTextI18n")
@@ -36,6 +42,10 @@ public abstract  class HintAdapter {
 
     }
 
+    /**
+     * @Class  Handles click of close button in the hint dialog window
+     * When close button clicked , window is shutting down
+     */
     private static  class HandleButton implements  DialogInterface.OnClickListener{
         @Override
         public void onClick(DialogInterface dialog, int which) {

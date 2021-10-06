@@ -44,7 +44,6 @@ public class PlayFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment PlayFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static PlayFragment newInstance(String param1, String param2) {
         PlayFragment fragment = new PlayFragment();
         Bundle args = new Bundle();
@@ -121,7 +120,9 @@ public class PlayFragment extends Fragment {
                         .navigate(R.id.translationFragment);
             }
         });
-
+        /**
+         * handle click for  fab and navigate to score of the user
+         */
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

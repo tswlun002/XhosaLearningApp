@@ -11,22 +11,43 @@ import android.widget.TextView;
 
 import com.example.wordgame.R;
 
+/**
+ * @Class Drag and Drop set drag and drop of the answer of matching game
+ * Drag and drop are allowed from textview (answers) to EditText
+ */
 public abstract class DragandDrop {
 
+    /**
+     * Initiate drag and drops  matching view
+     * Set  setOnTouchListener of the view @Class TouchChoices
+     * Set  setOnDragListener of the view  @Class Choice
+     * @param view is the view being drag and dropped (matching game views)
+     */
     @SuppressLint("ClickableViewAccessibility")
     public void handleDragDrop(View view){
 
         view.setOnTouchListener(new TouchChoices());
-        view.setOnDragListener(new choice());
+        view.setOnDragListener(new Choice());
 
 
     }
 
-    private static class  choice implements  View.OnDragListener{
+    /**
+     * @Class Choice allow user to drag answers( text views) and drop them at editText view
+     */
 
+    private static class  Choice implements  View.OnDragListener{
+
+        /**
+         * Allow dragging and dropping of views
+         * Only drop at the EditText and TextEdit cannot be be drag and dropped
+         * @param view  view being dragged and dropped
+         * @param event of the view
+         * @return true if the drag was successful else false
+         */
         @SuppressLint({"UseCompatLoadingForDrawables", "UseCompatTextViewDrawableApis", "SetTextI18n"})
         @Override
-        public boolean onDrag(View v, DragEvent event) {
+        public boolean onDrag(View view, DragEvent event) {
             switch(event.getAction()) {
 
                 case DragEvent.ACTION_DRAG_ENTERED:
@@ -36,16 +57,16 @@ public abstract class DragandDrop {
 
                 case DragEvent.ACTION_DROP:
                     TextView dropped = (TextView) event.getLocalState();
-                    if (v != null){
-                        if ((v.getId() == R.id.xhosaEditText1 || v.getId() == R.id.xhosaEditText2
-                                || v.getId() == R.id.xhosaEditText3 || v.getId() == R.id.xhosaEditText4)
+                    if (view != null){
+                        if ((view.getId() == R.id.xhosaEditText1 || view.getId() == R.id.xhosaEditText2
+                                || view.getId() == R.id.xhosaEditText3 || view.getId() == R.id.xhosaEditText4)
                                 &
                                 !(dropped.getId() == R.id.xhosaEditText1 || dropped.getId() == R.id.xhosaEditText2
                                         || dropped.getId() == R.id.xhosaEditText3 || dropped.getId() == R.id.xhosaEditText4)
 
                         ) {
-                            ((EditText) v).setText(dropped.getText());
-                            ((EditText) v).setBackgroundResource(R.drawable.answerbackground);
+                            ((EditText) view).setText(dropped.getText());
+                            ((EditText) view).setBackgroundResource(R.drawable.answerbackground);
                         }
                     }
 
@@ -57,16 +78,25 @@ public abstract class DragandDrop {
 
     }
 
+    /***
+     * @Class   TouchChoices triggered when view is being touched for dragging
+     * Store  information about the view dragged
+     */
     private static class TouchChoices implements  View.OnTouchListener{
 
-
+        /**
+         *
+         * @param view touched view
+         * @param event of the touched view
+         * @return  true if motion event is down else false
+         */
         @SuppressLint("ClickableViewAccessibility")
         @Override
-        public boolean onTouch(View v, MotionEvent event) {
+        public boolean onTouch(View view, MotionEvent event) {
             if (event.getAction() == MotionEvent.ACTION_DOWN )  {
                 ClipData data = ClipData.newPlainText("", "");
-                View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
-                v.startDragAndDrop(data, shadowBuilder, v, 0);
+                View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
+                view.startDragAndDrop(data, shadowBuilder, view, 0);
 
                 return true;
             } else {

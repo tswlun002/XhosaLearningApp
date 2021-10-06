@@ -16,28 +16,42 @@ import com.example.wordgame.R;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * @Class  ActivityResults displays the  the results of the user after submission
+ * Allow user to redo same game by pressing try again button or
+ * play next game by pressing next button
+ */
 public abstract  class ActivityResults {
-
+    /**
+     * @serialField  inflater used to inflates the window of the results
+     * @serialField  context is the context at which the window will be displayed on
+     * @serialField  actionId is used for navigation from the window results to game(s)
+     */
     private final LayoutInflater inflater;
     private final Context context;
-    private  int actionId;
-    private final View fragmentView;
+    private final int actionId;
 
+    /**
+     * initialise all serial fields of this class Activity results
+     * @param inflater inflater of the window
+     * @param Id for navigation to game(s)
+     */
     public ActivityResults(LayoutInflater inflater, int Id, View fragment1){
         this.inflater=inflater;
         this.context=inflater.getContext();
         actionId = Id;
-        fragmentView = fragment1;
     }
 
 
     /**
-     * This method display user score, the answers they had wrong with corrections.
-     * @param userScore stores the user score for each of the exercises
+     * This method display user score and correct answers.
+     * Next button to play next game
+     * try again button to replay same game
+     * @param userScore stores the user score for each of the game
      * @param totalScore stores the user average score of each of the levels.
+     * @param correctAnswers  list of user scores
      */
     @SuppressLint("SetTextI18n")
-    //introduced new parameters userScore and total Score
     public void gradesActity(double userScore, int totalScore, List<String> correctAnswers){
         final View view = inflater.inflate(R.layout.fragment_results__current_activity, null);
         AlertDialog alertDialog = new AlertDialog.Builder(context).create();
@@ -77,6 +91,13 @@ public abstract  class ActivityResults {
             }
         });
     }
+
+    /**
+     * Helper method to build the string answer to fit the
+     * results window
+     * @param correctAnswers is the list of correct answers in string type
+     * @return appropriate string format that fits in the window
+     */
     String  buildAnswers( List<String> correctAnswers){
         StringBuilder answers = new StringBuilder();
         int count =0;

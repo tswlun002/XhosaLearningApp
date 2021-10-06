@@ -2,7 +2,6 @@ package com.example.wordgame.presentation_layer;
 
 import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,18 +14,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentProggressBinding;
-import com.example.wordgame.databinding.FragmentTranslationBinding;
 import com.example.wordgame.model_layer.LevelResults;
 import com.example.wordgame.model_layer.LevelResultsViewModel;
 import com.example.wordgame.model_layer.WordGameViewModel;
@@ -326,7 +322,7 @@ public class ProggressFragment extends Fragment {
                 }
                 LevelResultsWindow levelResultsWindow  = new LevelResultsWindow(
                         requireActivity().getLayoutInflater());
-                levelResultsWindow.gradesActity(0,0,list);
+                levelResultsWindow.displayScore(list);
             }
         });
     }

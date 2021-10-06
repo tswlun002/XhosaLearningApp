@@ -63,6 +63,11 @@ public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.
        return holder;
     }
 
+    /**
+     * Bind user data
+     * @param viewHolder   holds view of translation
+     * @param position of the view in the recycle view
+     */
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull Holder viewHolder, int position) {
@@ -74,6 +79,12 @@ public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.
 
 
     }
+
+    /**
+     * set data for the game from database
+     * @param data being set
+     * @param translationGameList is the list of instance of TranslationGame
+     */
 
     void setData(HashMap<String,String> data,List<TranslationGame>translationGameList){
         translationGame =translationGameList;
@@ -88,6 +99,10 @@ public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.
         notifyDataSetChanged();
 
     }
+
+    /**
+     * hint for user
+     */
     private void generateTotalHints(){
         for (String question : questions) {
             int size = Objects.requireNonNull(hintsData.get(question)).length;
@@ -95,20 +110,37 @@ public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.
         }
     }
 
+    /**
+     * initialise the editText with full stop
+     */
     private void initEditText()
     {
         for(int i=0; i<getSize();i++){
             userEditText.add(0,".");
         }
     }
-    void setUserEditText(int pos , String text)
-    {
-        userEditText.set(pos,text);
-    }
 
+    /**
+     * get user text from EditText
+     * @param position number the question
+     * @param text answer of the user
+     */
+    void setUserEditText(int position , String text)
+    {
+        userEditText.set(position,text);
+    }
+    /**
+
+     * @param value set size of questions
+     */
     void setSize(int value){
         size = value;
     }
+
+    /**
+     *
+     * @return size of the question
+     */
     int getSize(){
         return size;
     }
@@ -142,6 +174,9 @@ public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.
         return hash;
     }
 
+    /**
+     * @return game answers were given in the game
+     */
     @Override
     public HashMap<String, String> getGameAnswers() {
         HashMap<String ,String> hash = new HashMap<>();
@@ -154,6 +189,10 @@ public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.
         return hash;
     }
 
+    /**
+     * get  id , level and total marks of the game
+     * @return the string information of the  game
+     */
     @Override
     public String getGameInformation() {
         String infor ="";
@@ -203,6 +242,10 @@ public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.
 
         }
 
+        /***
+         * handle typing in the EditText
+         * Notify recycle view as user type the message for binding
+         */
         void handleEditText(){
             final StringBuilder[] stringBuilder = new StringBuilder[1];
             answerEditText.addTextChangedListener(new TextWatcher() {

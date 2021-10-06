@@ -24,11 +24,21 @@ import java.util.List;
  */
 public class AverageResults extends Fragment {
 
+    /**
+     * build in android fields
+     */
+    private FragmentAverageResultsBinding binding;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private FragmentAverageResultsBinding binding;
-    private WordGameViewModel wordGameViewModel;
+
+    /**
+     * @serialField  progressViewModel is the instance of the  progress view model
+     */
     private ProgressViewModel progressViewModel;
+
+    /**
+     * defaulted constructor of  AverageResults fragment
+     */
     public AverageResults() {
         // Required empty public constructor
     }
@@ -41,7 +51,6 @@ public class AverageResults extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment AverageResults.
      */
-    // TODO: Rename and change types and number of parameters
     public static AverageResults newInstance(String param1, String param2) {
         AverageResults fragment = new AverageResults();
         Bundle args = new Bundle();
@@ -51,14 +60,25 @@ public class AverageResults extends Fragment {
         return fragment;
     }
 
+    /**
+     * creates the fragment average AverageResults
+     * Initialise the progressViewModel instance
+     * @param savedInstanceState is the state instance of  AverageResults
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        //wordGameViewModel = new ViewModelProvider(requireActivity()).get(WordGameViewModel.class);
         progressViewModel = new ViewModelProvider(this).get(ProgressViewModel.class);
     }
 
+    /**
+     * creates all the view components of the AverageResults
+     * @param inflater inflate the AverageResults
+     * @param container of AverageResults
+     * @param savedInstanceState of AverageResults
+     * @return view of AverageResults
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,12 +86,23 @@ public class AverageResults extends Fragment {
         return binding.getRoot();
     }
 
+    /**
+     * Created view of AverageResults
+     * When  view is being created, we get  progress data
+     * @param view is the of AverageResults
+     * @param savedInstanceState is the of AverageResults
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getProgressData(view);
     }
 
+    /**
+     * Used to get all data of progress of the user  using livedata
+     * Uses ProgressHandler class to display all the progress data 
+     * @param view is the view of  AverageResults
+     */
     private void getProgressData(View view){
         progressViewModel.getGameMaterial().observe(getViewLifecycleOwner(), new Observer<List<ProgressReport>>() {
             @Override

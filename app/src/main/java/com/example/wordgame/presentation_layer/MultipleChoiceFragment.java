@@ -151,6 +151,8 @@ public class MultipleChoiceFragment extends Fragment {
 
     }
 
+
+
     private void  setData(List<MultipleChoice> multipleChoiceData){
         List<String> choices ;
         int numberOfQuestions =5;
