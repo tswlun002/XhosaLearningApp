@@ -169,17 +169,19 @@ public class TrueFalseFragment extends Fragment  {
         List<String> questions = new ArrayList<>();
         List<String> pictures =new ArrayList<>();
         int numberOfQuestions =5;
-        List<TrueFalseGame> trueFalseGames1 = randomiseData(trueFalseGames, numberOfQuestions);
-        for (TrueFalseGame material: trueFalseGames1){
-            questions.add(material.getQuestion());
-            pictures.add(material.getFigures());
-        }
 
-        try {
-            trueFalseController.setData(questions,pictures,trueFalseGames1);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            List<TrueFalseGame> trueFalseGames1 = randomiseData(trueFalseGames, numberOfQuestions);
+            for (TrueFalseGame material : trueFalseGames1) {
+                questions.add(material.getQuestion());
+                pictures.add(material.getFigures());
+            }
+
+            try {
+                trueFalseController.setData(questions, pictures, trueFalseGames1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
     }
     /**
      * Randomise questions for game
@@ -191,10 +193,11 @@ public class TrueFalseFragment extends Fragment  {
         Random rand = new Random();
         List<TrueFalseGame> newList = new ArrayList<>();
         for (int i = 0; i < numberQuestions; i++) {
-
-            int randomIndex = rand.nextInt(trueFalseGames.size());
-            newList.add(trueFalseGames.get(randomIndex));
-            trueFalseGames.remove(randomIndex);
+            if(trueFalseGames.size()>0) {
+                int randomIndex = rand.nextInt(trueFalseGames.size());
+                newList.add(trueFalseGames.get(randomIndex));
+                trueFalseGames.remove(randomIndex);
+            }
         }
 
         return newList;

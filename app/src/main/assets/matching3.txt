@@ -1,31 +1,32 @@
 Match English days of the week words with Xhosa words;31
 3;answer all questions
-bird ; intaka
-blood ; igazi
+intaka ; bird
+igazi; blood
 book ; incwadi
-boy ; inkwenkwe
+inkwenkwe;boy
 breasts ; amabele
 bring about peace ; xolisa
 bus ; uduladula
 champion ; intshatsheli
 cheek ; isidlele
-child ; umntwana
+umntwana ; child
 baby ; usana
-clan name ; isiduko
+ isiduko; clan name
 cliff ; iliwa
 close by ; kufutshane
 conspiracy ; iyelenqe
-country ; ilizwe
+ilizwe ; country
 danger ; ingozi
-shadow ; isithunzi
+isithunzi ; shadow
 in the morning ; kusasa
-yesterday ; izolo
+izolo ; yesterday
 today ; namhlanje
-tomorrow ; ngomso
+ngomso ; tomorrow
 day after tomorrow ; ngomso omnye
 next week ; kulenyaga izayo
-the answer ; impendulo
-them ; bona
+impendulo ; answer
+bona ; them
+thina; Us
 My name is  ; Igama lam ngu
 Nice to meet you ; Ndiyavuya ukukwazi
 Look out ; Qaphela

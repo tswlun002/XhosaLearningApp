@@ -75,6 +75,7 @@ public class LevelResultsFragment extends Fragment {
         view.findViewById(R.id.CorrectionsID).setVisibility(View.GONE);
         insertToLevelResultsDB(levelResultsViewModel);
 
+
         return view;
     }
 
@@ -86,8 +87,9 @@ public class LevelResultsFragment extends Fragment {
 
 
     }
+
     private void insertToLevelResultsDB(LevelResultsViewModel levelResultsViewModel){
-        wordGameViewModel.getState().observe(getViewLifecycleOwner(), new Observer<LevelResults>() {
+        wordGameViewModel.getResults().observe(getViewLifecycleOwner(), new Observer<LevelResults>() {
             @Override
             public void onChanged(LevelResults levelResults) {
                 levelResultsViewModel.insert(levelResults);
@@ -95,6 +97,7 @@ public class LevelResultsFragment extends Fragment {
 
             }
         });
+
 
 
     }

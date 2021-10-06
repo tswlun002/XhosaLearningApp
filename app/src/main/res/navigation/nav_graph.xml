@@ -85,6 +85,11 @@
             app:destination="@id/SecondFragment"
             app:popUpTo="@id/SecondFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_play_to_proggress"
+            app:destination="@id/proggress"
+            app:popUpTo="@id/proggress"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/proggress"
@@ -217,4 +222,10 @@
             android:id="@+id/action_results_CurrentActivity_self"
             app:destination="@id/results_CurrentActivity" />
     </fragment>
+
+    <action
+        android:id="@+id/startfrag_progress"
+        app:destination="@id/proggress"
+        app:popUpTo="@id/proggress" />
+
 </navigation>

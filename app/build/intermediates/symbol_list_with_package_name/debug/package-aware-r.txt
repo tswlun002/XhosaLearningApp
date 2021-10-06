@@ -1999,6 +1999,7 @@ id action_multipleChoiceFragment_to_results_CurrentActivity
 id action_play_to_SecondFragment
 id action_play_to_matchingFragment
 id action_play_to_multipleChoiceFragment
+id action_play_to_proggress
 id action_play_to_translationFragment
 id action_play_to_trueFalseFragment
 id action_proggress_to_FirstFragment
@@ -2447,6 +2448,7 @@ id search_mag_icon
 id search_plate
 id search_src_text
 id search_voice_btn
+id secondfragment
 id select_dialog_listview
 id selected
 id selection_type
@@ -2481,6 +2483,7 @@ id start
 id startHorizontal
 id startToEnd
 id startVertical
+id startfrag_progress
 id staticLayout
 id staticPostLayout
 id status_bar_latest_event_content

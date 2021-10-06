@@ -158,10 +158,11 @@ public class TranslationFragment extends Fragment {
         Random rand = new Random();
         List<TranslationGame> newList = new ArrayList<>();
         for (int i = 0; i < numberQuestions; i++) {
-
-            int randomIndex = rand.nextInt(translationGameList.size());
-            newList.add(translationGameList.get(randomIndex));
-            translationGameList.remove(randomIndex);
+             if(translationGameList.size()>0) {
+                 int randomIndex = rand.nextInt(translationGameList.size());
+                 newList.add(translationGameList.get(randomIndex));
+                 translationGameList.remove(randomIndex);
+             }
         }
 
         return newList;

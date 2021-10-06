@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDestination;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -117,6 +119,22 @@ public class PlayFragment extends Fragment {
             public void onClick(View v) {
                 NavHostFragment.findNavController(PlayFragment.this)
                         .navigate(R.id.translationFragment);
+            }
+        });
+
+        binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavDestination navDestination = Navigation.findNavController((MainActivity) requireActivity(),
+                        R.id.nav_host_fragment_content_main).getCurrentDestination();
+                if(navDestination.getId()==R.id.play)
+                NavHostFragment.findNavController(PlayFragment.this).
+                        navigate(R.id.action_play_to_proggress);
+                else {
+                    NavHostFragment.findNavController(PlayFragment.this).
+                            navigate(R.id.action_SecondFragment_to_proggress);
+                }
+
             }
         });
 

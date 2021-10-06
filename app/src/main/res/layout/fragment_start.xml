@@ -2,23 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/secondfragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation_layer.FragmentStart"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".presentation_layer.FragmentStart">
 
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="0dp"
-       android:elevation="10dp"
         android:background="@color/blue"
+        android:elevation="10dp"
         app:tabIndicatorColor="@color/white"
-        app:tabSelectedTextColor="@color/white"
         app:tabIndicatorHeight="3dp"
+        app:tabSelectedTextColor="@color/white"
         app:tabTextColor="@color/material_on_primary_disabled"
-        android:id="@+id/tabs">
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"

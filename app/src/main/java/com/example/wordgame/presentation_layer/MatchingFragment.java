@@ -143,9 +143,11 @@ public class MatchingFragment extends Fragment {
      * @param matching gets data from the database
      */
     private void setData(List<Matching> matching,MatchingViewHandler matchingViewHandler){
-        int numberOfQuestions = 8;
-        List<Matching> newList = randomiseData(matching, numberOfQuestions);
-        matchingViewHandler.setData(newList);
+       if(matching.size()>0) {
+            int numberOfQuestions = 8;
+            List<Matching> newList = randomiseData(matching, numberOfQuestions);
+            matchingViewHandler.setData(newList);
+        }
     }
     /**
      * Randomise questions for game
@@ -157,10 +159,11 @@ public class MatchingFragment extends Fragment {
         Random rand = new Random();
         List<Matching> newList = new ArrayList<>();
         for (int i = 0; i < numberQuestions; i++) {
-
-            int randomIndex = rand.nextInt(matchingList.size());
-            newList.add(matchingList.get(randomIndex));
-            matchingList.remove(randomIndex);
+            if(matchingList.size()>0) {
+                int randomIndex = rand.nextInt(matchingList.size());
+                newList.add(matchingList.get(randomIndex));
+                matchingList.remove(randomIndex);
+            }
         }
 
         return newList;

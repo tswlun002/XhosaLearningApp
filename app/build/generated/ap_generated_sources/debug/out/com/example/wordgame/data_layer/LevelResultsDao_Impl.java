@@ -101,7 +101,7 @@ public final class LevelResultsDao_Impl implements LevelResultsDao {
 
   @Override
   public LiveData<List<LevelResults>> getAll() {
-    final String _sql = "SELECT  DISTINCT level_resultsId,gameId,userId,level,gameType,userMarks,totalMarks FROM LevelResults";
+    final String _sql = "SELECT *From LevelResults";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
     return __db.getInvalidationTracker().createLiveData(new String[]{"LevelResults"}, false, new Callable<List<LevelResults>>() {
       @Override

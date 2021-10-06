@@ -11,7 +11,7 @@ import com.example.wordgame.model_layer.LevelResults;
 import java.util.List;
 @Dao
 public interface LevelResultsDao {
-    @Query("SELECT  DISTINCT level_resultsId,gameId,userId,level,gameType,userMarks,totalMarks FROM LevelResults")
+    @Query("SELECT *From LevelResults")
     LiveData<List<LevelResults>> getAll();
     @Query("SELECT  * FROM LevelResults  WHERE  userMarks= " +
             "( SELECT MAX(userMarks) FROM LevelResults WHERE gameType == 'matching' and level ==1)" +
