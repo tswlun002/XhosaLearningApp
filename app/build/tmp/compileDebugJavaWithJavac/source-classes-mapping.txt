@@ -1,0 +1,330 @@
+com/example/wordgame/presentation_layer/FragmentStart.java
+ com.example.wordgame.presentation_layer.FragmentStart
+ com.example.wordgame.presentation_layer.FragmentStart$1
+ com.example.wordgame.presentation_layer.FragmentStart$2
+com/example/wordgame/respotory_layer/FactoryTranslationDB.java
+ com.example.wordgame.respotory_layer.FactoryTranslationDB
+ com.example.wordgame.respotory_layer.FactoryTranslationDB$1
+ com.example.wordgame.respotory_layer.FactoryTranslationDB$UpdateHandler
+ com.example.wordgame.respotory_layer.FactoryTranslationDB$insertHandler
+com/example/wordgame/presentation_layer/CreateKeys.java
+ com.example.wordgame.presentation_layer.CreateKeys
+com/example/wordgame/data_layer/FileReader.java
+ com.example.wordgame.data_layer.FileReader
+com/example/wordgame/presentation_layer/OnMatchingViewHandler.java
+ com.example.wordgame.presentation_layer.OnMatchingViewHandler
+com/example/wordgame/presentation_layer/LevelOneResults.java
+ com.example.wordgame.presentation_layer.LevelOneResults
+com/example/wordgame/databinding/FragmentStartBinding.java
+ com.example.wordgame.databinding.FragmentStartBinding
+com/example/wordgame/databinding/FragmentAverageResultsBinding.java
+ com.example.wordgame.databinding.FragmentAverageResultsBinding
+com/example/wordgame/databinding/WelcomwindowBinding.java
+ com.example.wordgame.databinding.WelcomwindowBinding
+com/example/wordgame/presentation_layer/OnTrueFalseQuestion.java
+ com.example.wordgame.presentation_layer.OnTrueFalseQuestion
+com/example/wordgame/presentation_layer/MultipleChoiceAdapter.java
+ com.example.wordgame.presentation_layer.MultipleChoiceAdapter
+ com.example.wordgame.presentation_layer.MultipleChoiceAdapter$Holder
+ com.example.wordgame.presentation_layer.MultipleChoiceAdapter$Holder$HandleClickButtons
+ com.example.wordgame.presentation_layer.MultipleChoiceAdapter$Holder$HandleClickButtons$1
+com/example/wordgame/presentation_layer/ProgressHandler.java
+ com.example.wordgame.presentation_layer.ProgressHandler
+com/example/wordgame/data_layer/TranslationDao.java
+ com.example.wordgame.data_layer.TranslationDao
+com/example/wordgame/databinding/FragmentProggressBinding.java
+ com.example.wordgame.databinding.FragmentProggressBinding
+com/example/wordgame/presentation_layer/HintHandler.java
+ com.example.wordgame.presentation_layer.HintHandler
+com/example/wordgame/presentation_layer/OnScroll.java
+ com.example.wordgame.presentation_layer.OnScroll
+com/example/wordgame/data_layer/ProgressReportDao.java
+ com.example.wordgame.data_layer.ProgressReportDao
+com/example/wordgame/presentation_layer/LevelThreeResults.java
+ com.example.wordgame.presentation_layer.LevelThreeResults
+com/example/wordgame/model_layer/Learn.java
+ com.example.wordgame.model_layer.Learn
+com/example/wordgame/data_layer/MultipleChoiceDao.java
+ com.example.wordgame.data_layer.MultipleChoiceDao
+com/example/wordgame/presentation_layer/DragandDrop.java
+ com.example.wordgame.presentation_layer.DragandDrop
+ com.example.wordgame.presentation_layer.DragandDrop$1
+ com.example.wordgame.presentation_layer.DragandDrop$TouchChoices
+ com.example.wordgame.presentation_layer.DragandDrop$choice
+com/example/wordgame/databinding/FragmentPlayBinding.java
+ com.example.wordgame.databinding.FragmentPlayBinding
+com/example/wordgame/respotory_layer/FactoryMatchingDB.java
+ com.example.wordgame.respotory_layer.FactoryMatchingDB
+ com.example.wordgame.respotory_layer.FactoryMatchingDB$1
+ com.example.wordgame.respotory_layer.FactoryMatchingDB$UpdateHandler
+ com.example.wordgame.respotory_layer.FactoryMatchingDB$insertHandler
+com/example/wordgame/presentation_layer/PlayFragment.java
+ com.example.wordgame.presentation_layer.PlayFragment
+ com.example.wordgame.presentation_layer.PlayFragment$1
+ com.example.wordgame.presentation_layer.PlayFragment$2
+ com.example.wordgame.presentation_layer.PlayFragment$3
+ com.example.wordgame.presentation_layer.PlayFragment$4
+ com.example.wordgame.presentation_layer.PlayFragment$5
+com/example/wordgame/presentation_layer/HintAdapter.java
+ com.example.wordgame.presentation_layer.HintAdapter
+ com.example.wordgame.presentation_layer.HintAdapter$1
+ com.example.wordgame.presentation_layer.HintAdapter$HandleButton
+ com.example.wordgame.presentation_layer.HintAdapter$HandleButton$1
+com/example/wordgame/databinding/CustomisedviewBinding.java
+ com.example.wordgame.databinding.CustomisedviewBinding
+com/example/wordgame/presentation_layer/OnHints.java
+ com.example.wordgame.presentation_layer.OnHints
+com/example/wordgame/presentation_layer/LevelTwoResults.java
+ com.example.wordgame.presentation_layer.LevelTwoResults
+com/example/wordgame/respotory_layer/FactoryTrueFalseDB.java
+ com.example.wordgame.respotory_layer.FactoryTrueFalseDB
+ com.example.wordgame.respotory_layer.FactoryTrueFalseDB$1
+ com.example.wordgame.respotory_layer.FactoryTrueFalseDB$UpdateHandler
+ com.example.wordgame.respotory_layer.FactoryTrueFalseDB$insertHandler
+com/example/wordgame/presentation_layer/MatchingViewHandler.java
+ com.example.wordgame.presentation_layer.MatchingViewHandler
+com/example/wordgame/data_layer/UserDao.java
+ com.example.wordgame.data_layer.UserDao
+com/example/wordgame/model_layer/User.java
+ com.example.wordgame.model_layer.User
+com/example/wordgame/presentation_layer/OnSearch.java
+ com.example.wordgame.presentation_layer.OnSearch
+com/example/wordgame/presentation_layer/MatchingFragment.java
+ com.example.wordgame.presentation_layer.MatchingFragment
+ com.example.wordgame.presentation_layer.MatchingFragment$1
+ com.example.wordgame.presentation_layer.MatchingFragment$2
+ com.example.wordgame.presentation_layer.MatchingFragment$3
+ com.example.wordgame.presentation_layer.MatchingFragment$4
+ com.example.wordgame.presentation_layer.MatchingFragment$5
+ com.example.wordgame.presentation_layer.MatchingFragment$6
+com/example/wordgame/databinding/HeaderBinding.java
+ com.example.wordgame.databinding.HeaderBinding
+com/example/wordgame/databinding/FragmentLevelOneResultsBinding.java
+ com.example.wordgame.databinding.FragmentLevelOneResultsBinding
+com/example/wordgame/data_layer/LearnDao.java
+ com.example.wordgame.data_layer.LearnDao
+com/example/wordgame/model_layer/ProgressReport.java
+ com.example.wordgame.model_layer.ProgressReport
+com/example/wordgame/presentation_layer/TrueFalseAdapter.java
+ com.example.wordgame.presentation_layer.TrueFalseAdapter
+ com.example.wordgame.presentation_layer.TrueFalseAdapter$1
+ com.example.wordgame.presentation_layer.TrueFalseAdapter$Holder
+ com.example.wordgame.presentation_layer.TrueFalseAdapter$Holder$Click
+ com.example.wordgame.presentation_layer.TrueFalseAdapter$Holder$Click$1
+ com.example.wordgame.presentation_layer.TrueFalseAdapter$LoadImage
+com/example/wordgame/presentation_layer/SubmitHandler.java
+ com.example.wordgame.presentation_layer.SubmitHandler
+com/example/wordgame/respotory_layer/FactoryMultipleChoiceDB.java
+ com.example.wordgame.respotory_layer.FactoryMultipleChoiceDB
+ com.example.wordgame.respotory_layer.FactoryMultipleChoiceDB$1
+ com.example.wordgame.respotory_layer.FactoryMultipleChoiceDB$UpdateHandler
+ com.example.wordgame.respotory_layer.FactoryMultipleChoiceDB$insertHandler
+com/example/wordgame/databinding/ActivityMainBinding.java
+ com.example.wordgame.databinding.ActivityMainBinding
+com/example/wordgame/model_layer/MultipleChoice.java
+ com.example.wordgame.model_layer.MultipleChoice
+com/example/wordgame/presentation_layer/ActivityResults.java
+ com.example.wordgame.presentation_layer.ActivityResults
+ com.example.wordgame.presentation_layer.ActivityResults$1
+ com.example.wordgame.presentation_layer.ActivityResults$2
+com/example/wordgame/presentation_layer/Instructions.java
+ com.example.wordgame.presentation_layer.Instructions
+ com.example.wordgame.presentation_layer.Instructions$1
+ com.example.wordgame.presentation_layer.Instructions$2
+com/example/wordgame/databinding/FragmentMatchingBinding.java
+ com.example.wordgame.databinding.FragmentMatchingBinding
+com/example/wordgame/presentation_layer/OnExtractResults.java
+ com.example.wordgame.presentation_layer.OnExtractResults
+com/example/wordgame/model_layer/TranslationGame.java
+ com.example.wordgame.model_layer.TranslationGame
+com/example/wordgame/databinding/TrueFalseAdapterBinding.java
+ com.example.wordgame.databinding.TrueFalseAdapterBinding
+com/example/wordgame/databinding/FragmentLevelTwoResultsBinding.java
+ com.example.wordgame.databinding.FragmentLevelTwoResultsBinding
+com/example/wordgame/databinding/FragmentTrueBinding.java
+ com.example.wordgame.databinding.FragmentTrueBinding
+com/example/wordgame/model_layer/TrueFalseGame.java
+ com.example.wordgame.model_layer.TrueFalseGame
+com/example/wordgame/databinding/ImageBinding.java
+ com.example.wordgame.databinding.ImageBinding
+com/example/wordgame/data_layer/TrueFalseDao.java
+ com.example.wordgame.data_layer.TrueFalseDao
+com/example/wordgame/respotory_layer/FactoryLearnDB.java
+ com.example.wordgame.respotory_layer.FactoryLearnDB
+ com.example.wordgame.respotory_layer.FactoryLearnDB$1
+ com.example.wordgame.respotory_layer.FactoryLearnDB$UpdateHandler
+ com.example.wordgame.respotory_layer.FactoryLearnDB$insertHandler
+com/example/wordgame/databinding/LearnAdapterBinding.java
+ com.example.wordgame.databinding.LearnAdapterBinding
+com/example/wordgame/databinding/ContentMainBinding.java
+ com.example.wordgame.databinding.ContentMainBinding
+com/example/wordgame/model_layer/LearnViewModel.java
+ com.example.wordgame.model_layer.LearnViewModel
+com/example/wordgame/presentation_layer/HandleMQCButtons.java
+ com.example.wordgame.presentation_layer.HandleMQCButtons
+com/example/wordgame/model_layer/MatchingViewModel.java
+ com.example.wordgame.model_layer.MatchingViewModel
+com/example/wordgame/presentation_layer/OnSubmit.java
+ com.example.wordgame.presentation_layer.OnSubmit
+com/example/wordgame/databinding/MultipleChoiceAdapterBinding.java
+ com.example.wordgame.databinding.MultipleChoiceAdapterBinding
+com/example/wordgame/model_layer/Matching.java
+ com.example.wordgame.model_layer.Matching
+com/example/wordgame/presentation_layer/TranslationAdapter.java
+ com.example.wordgame.presentation_layer.TranslationAdapter
+ com.example.wordgame.presentation_layer.TranslationAdapter$Holder
+ com.example.wordgame.presentation_layer.TranslationAdapter$Holder$1
+ com.example.wordgame.presentation_layer.TranslationAdapter$Holder$2
+ com.example.wordgame.presentation_layer.TranslationAdapter$Holder$3
+com/example/wordgame/BuildConfig.java
+ com.example.wordgame.BuildConfig
+com/example/wordgame/model_layer/ProgressViewModel.java
+ com.example.wordgame.model_layer.ProgressViewModel
+com/example/wordgame/data_layer/MatchingDao.java
+ com.example.wordgame.data_layer.MatchingDao
+com/example/wordgame/model_layer/UserViewModel.java
+ com.example.wordgame.model_layer.UserViewModel
+com/example/wordgame/model_layer/TrueFalseViewModel.java
+ com.example.wordgame.model_layer.TrueFalseViewModel
+com/example/wordgame/databinding/HintBinding.java
+ com.example.wordgame.databinding.HintBinding
+com/example/wordgame/databinding/FragmentResultsCurrentActivityBinding.java
+ com.example.wordgame.databinding.FragmentResultsCurrentActivityBinding
+com/example/wordgame/databinding/FragmentLevelThreeResultsBinding.java
+ com.example.wordgame.databinding.FragmentLevelThreeResultsBinding
+com/example/wordgame/databinding/FragmentMultipleChoiceBinding.java
+ com.example.wordgame.databinding.FragmentMultipleChoiceBinding
+com/example/wordgame/presentation_layer/OnMultipleChoice.java
+ com.example.wordgame.presentation_layer.OnMultipleChoice
+com/example/wordgame/databinding/FragmentLearnBinding.java
+ com.example.wordgame.databinding.FragmentLearnBinding
+com/example/wordgame/model_layer/MultipleChoiceViewModel.java
+ com.example.wordgame.model_layer.MultipleChoiceViewModel
+com/example/wordgame/presentation_layer/HandleTrueFalse.java
+ com.example.wordgame.presentation_layer.HandleTrueFalse
+com/example/wordgame/respotory_layer/FactoryProgressReportDB.java
+ com.example.wordgame.respotory_layer.FactoryProgressReportDB
+ com.example.wordgame.respotory_layer.FactoryProgressReportDB$1
+ com.example.wordgame.respotory_layer.FactoryProgressReportDB$UpdateHandler
+ com.example.wordgame.respotory_layer.FactoryProgressReportDB$insertHandler
+com/example/wordgame/databinding/McqAdapterBinding.java
+ com.example.wordgame.databinding.McqAdapterBinding
+com/example/wordgame/presentation_layer/MainActivity.java
+ com.example.wordgame.presentation_layer.MainActivity
+ com.example.wordgame.presentation_layer.MainActivity$1
+ com.example.wordgame.presentation_layer.MainActivity$2
+com/example/wordgame/databinding/TranslationAdapterBinding.java
+ com.example.wordgame.databinding.TranslationAdapterBinding
+com/example/wordgame/respotory_layer/UserRespotory.java
+ com.example.wordgame.respotory_layer.UserRespotory
+ com.example.wordgame.respotory_layer.UserRespotory$1
+ com.example.wordgame.respotory_layer.UserRespotory$UpdateHandler
+ com.example.wordgame.respotory_layer.UserRespotory$insertHandler
+com/example/wordgame/presentation_layer/TrueFalseFragment.java
+ com.example.wordgame.presentation_layer.TrueFalseFragment
+ com.example.wordgame.presentation_layer.TrueFalseFragment$1
+ com.example.wordgame.presentation_layer.TrueFalseFragment$2
+ com.example.wordgame.presentation_layer.TrueFalseFragment$3
+ com.example.wordgame.presentation_layer.TrueFalseFragment$4
+ com.example.wordgame.presentation_layer.TrueFalseFragment$5
+ com.example.wordgame.presentation_layer.TrueFalseFragment$6
+com/example/wordgame/model_layer/TranslationViewModel.java
+ com.example.wordgame.model_layer.TranslationViewModel
+com/example/wordgame/databinding/FragmentTranslationBinding.java
+ com.example.wordgame.databinding.FragmentTranslationBinding
+com/example/wordgame/presentation_layer/TranslationFragment.java
+ com.example.wordgame.presentation_layer.TranslationFragment
+ com.example.wordgame.presentation_layer.TranslationFragment$1
+ com.example.wordgame.presentation_layer.TranslationFragment$2
+ com.example.wordgame.presentation_layer.TranslationFragment$3
+ com.example.wordgame.presentation_layer.TranslationFragment$4
+ com.example.wordgame.presentation_layer.TranslationFragment$5
+ com.example.wordgame.presentation_layer.TranslationFragment$6
+com/example/wordgame/presentation_layer/AverageResults.java
+ com.example.wordgame.presentation_layer.AverageResults
+ com.example.wordgame.presentation_layer.AverageResults$1
+com/example/wordgame/presentation_layer/WelcomeWindow.java
+ com.example.wordgame.presentation_layer.WelcomeWindow
+ com.example.wordgame.presentation_layer.WelcomeWindow$1
+ com.example.wordgame.presentation_layer.WelcomeWindow$2
+ com.example.wordgame.presentation_layer.WelcomeWindow$3
+ com.example.wordgame.presentation_layer.WelcomeWindow$4
+ com.example.wordgame.presentation_layer.WelcomeWindow$5
+com/example/wordgame/data_layer/PopulateTrueFalseDB.java
+ com.example.wordgame.data_layer.PopulateTrueFalseDB
+com/example/wordgame/data_layer/WordGameDB.java
+ com.example.wordgame.data_layer.WordGameDB
+ com.example.wordgame.data_layer.WordGameDB$1
+com/example/wordgame/presentation_layer/LevelResultsWindow.java
+ com.example.wordgame.presentation_layer.LevelResultsWindow
+ com.example.wordgame.presentation_layer.LevelResultsWindow$1
+com/example/wordgame/presentation_layer/LevelResultsFragment.java
+ com.example.wordgame.presentation_layer.LevelResultsFragment
+ com.example.wordgame.presentation_layer.LevelResultsFragment$1
+ com.example.wordgame.presentation_layer.LevelResultsFragment$2
+com/example/wordgame/model_layer/WordGameViewModel.java
+ com.example.wordgame.model_layer.WordGameViewModel
+com/example/wordgame/data_layer/PopulateMultipleChoiceDB.java
+ com.example.wordgame.data_layer.PopulateMultipleChoiceDB
+com/example/wordgame/presentation_layer/ProggressFragment.java
+ com.example.wordgame.presentation_layer.ProggressFragment
+ com.example.wordgame.presentation_layer.ProggressFragment$1
+ com.example.wordgame.presentation_layer.ProggressFragment$2
+ com.example.wordgame.presentation_layer.ProggressFragment$2$1
+ com.example.wordgame.presentation_layer.ProggressFragment$2$2
+ com.example.wordgame.presentation_layer.ProggressFragment$2$3
+ com.example.wordgame.presentation_layer.ProggressFragment$3
+ com.example.wordgame.presentation_layer.ProggressFragment$4
+ com.example.wordgame.presentation_layer.ProggressFragment$5
+com/example/wordgame/model_layer/LevelResultsViewModel.java
+ com.example.wordgame.model_layer.LevelResultsViewModel
+com/example/wordgame/data_layer/PopulateUser.java
+ com.example.wordgame.data_layer.PopulateUser
+com/example/wordgame/respotory_layer/FactoryLevelResultsDB.java
+ com.example.wordgame.respotory_layer.FactoryLevelResultsDB
+ com.example.wordgame.respotory_layer.FactoryLevelResultsDB$1
+ com.example.wordgame.respotory_layer.FactoryLevelResultsDB$UpdateHandler
+ com.example.wordgame.respotory_layer.FactoryLevelResultsDB$insertHandler
+com/example/wordgame/data_layer/PopulateTranslationGameDB.java
+ com.example.wordgame.data_layer.PopulateTranslationGameDB
+com/example/wordgame/model_layer/LevelResults.java
+ com.example.wordgame.model_layer.LevelResults
+com/example/wordgame/data_layer/PopulateProgressDB.java
+ com.example.wordgame.data_layer.PopulateProgressDB
+com/example/wordgame/presentation_layer/LevelResultsHandler.java
+ com.example.wordgame.presentation_layer.LevelResultsHandler
+ com.example.wordgame.presentation_layer.LevelResultsHandler$1
+com/example/wordgame/data_layer/LevelResultsDao.java
+ com.example.wordgame.data_layer.LevelResultsDao
+com/example/wordgame/data_layer/PopulateMatchingDB.java
+ com.example.wordgame.data_layer.PopulateMatchingDB
+com/example/wordgame/presentation_layer/ComputeProgressReport.java
+ com.example.wordgame.presentation_layer.ComputeProgressReport
+ com.example.wordgame.presentation_layer.ComputeProgressReport$1
+ com.example.wordgame.presentation_layer.ComputeProgressReport$2
+ com.example.wordgame.presentation_layer.ComputeProgressReport$3
+ com.example.wordgame.presentation_layer.ComputeProgressReport$4
+com/example/wordgame/data_layer/PopulateLearnDB.java
+ com.example.wordgame.data_layer.PopulateLearnDB
+com/example/wordgame/presentation_layer/MultipleChoiceFragment.java
+ com.example.wordgame.presentation_layer.MultipleChoiceFragment
+ com.example.wordgame.presentation_layer.MultipleChoiceFragment$1
+ com.example.wordgame.presentation_layer.MultipleChoiceFragment$2
+ com.example.wordgame.presentation_layer.MultipleChoiceFragment$3
+ com.example.wordgame.presentation_layer.MultipleChoiceFragment$4
+ com.example.wordgame.presentation_layer.MultipleChoiceFragment$5
+ com.example.wordgame.presentation_layer.MultipleChoiceFragment$6
+com/example/wordgame/presentation_layer/TabAdapter.java
+ com.example.wordgame.presentation_layer.TabAdapter
+com/example/wordgame/presentation_layer/LearnFragment.java
+ com.example.wordgame.presentation_layer.LearnFragment
+ com.example.wordgame.presentation_layer.LearnFragment$1
+ com.example.wordgame.presentation_layer.LearnFragment$2
+ com.example.wordgame.presentation_layer.LearnFragment$3
+ com.example.wordgame.presentation_layer.LearnFragment$4
+ com.example.wordgame.presentation_layer.LearnFragment$5
+ com.example.wordgame.presentation_layer.LearnFragment$6
+com/example/wordgame/presentation_layer/LearnAdapter.java
+ com.example.wordgame.presentation_layer.LearnAdapter
+ com.example.wordgame.presentation_layer.LearnAdapter$1
+ com.example.wordgame.presentation_layer.LearnAdapter$Holder

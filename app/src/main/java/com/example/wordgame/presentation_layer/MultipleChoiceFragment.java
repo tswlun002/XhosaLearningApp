@@ -182,10 +182,11 @@ public class MultipleChoiceFragment extends Fragment {
         Random rand = new Random();
         List<MultipleChoice> newList = new ArrayList<>();
         for (int i = 0; i < numberQuestions; i++) {
-
-            int randomIndex = rand.nextInt(multipleChoiceList.size());
-            newList.add(multipleChoiceList.get(randomIndex));
-            multipleChoiceList.remove(randomIndex);
+               if(multipleChoiceList.size()> 0){
+                int randomIndex = rand.nextInt(multipleChoiceList.size());
+                newList.add(multipleChoiceList.get(randomIndex));
+                multipleChoiceList.remove(randomIndex);
+            }
         }
 
         return newList;

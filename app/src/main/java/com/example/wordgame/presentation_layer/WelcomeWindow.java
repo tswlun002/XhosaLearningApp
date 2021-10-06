@@ -16,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDestination;
+import androidx.navigation.NavHost;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -119,7 +121,10 @@ public class WelcomeWindow extends Fragment {
             @Override
             public void onClick(View v) {
                 shareUserLevel();
-                Navigation.findNavController((MainActivity) requireActivity(),
+                NavDestination  navDestination =Navigation.findNavController((MainActivity) requireActivity(),
+                        R.id.nav_host_fragment_content_main).getCurrentDestination();
+                if(navDestination.getId()==R.id.FirstFragment)
+                    Navigation.findNavController((MainActivity) requireActivity(),
                         R.id.nav_host_fragment_content_main).
                         navigate(R.id.action_FirstFragment_to_SecondFragment);
             }
@@ -134,6 +139,9 @@ public class WelcomeWindow extends Fragment {
             public void onClick(View v) {
                 if(getUserLevel()>=2) {
                     shareUserLevel();
+                    NavDestination  navDestination =Navigation.findNavController((MainActivity) requireActivity(),
+                            R.id.nav_host_fragment_content_main).getCurrentDestination();
+                    if(navDestination.getId()==R.id.FirstFragment)
                     Navigation.findNavController((MainActivity) requireActivity(),
                             R.id.nav_host_fragment_content_main).
                             navigate(R.id.action_FirstFragment_to_SecondFragment);
@@ -152,6 +160,9 @@ public class WelcomeWindow extends Fragment {
             public void onClick(View v) {
                 if(getUserLevel()>=3) {
                     shareUserLevel();
+                    NavDestination  navDestination =Navigation.findNavController((MainActivity) requireActivity(),
+                            R.id.nav_host_fragment_content_main).getCurrentDestination();
+                    if(navDestination.getId()==R.id.FirstFragment)
                     Navigation.findNavController((MainActivity) requireActivity(),
                             R.id.nav_host_fragment_content_main).
                             navigate(R.id.action_FirstFragment_to_SecondFragment);

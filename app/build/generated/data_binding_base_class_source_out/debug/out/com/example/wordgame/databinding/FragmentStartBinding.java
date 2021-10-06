@@ -21,14 +21,18 @@ public final class FragmentStartBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
+  public final LinearLayout secondfragment;
+
+  @NonNull
   public final TabLayout tabs;
 
   @NonNull
   public final ViewPager2 viewpager;
 
-  private FragmentStartBinding(@NonNull LinearLayout rootView, @NonNull TabLayout tabs,
-      @NonNull ViewPager2 viewpager) {
+  private FragmentStartBinding(@NonNull LinearLayout rootView, @NonNull LinearLayout secondfragment,
+      @NonNull TabLayout tabs, @NonNull ViewPager2 viewpager) {
     this.rootView = rootView;
+    this.secondfragment = secondfragment;
     this.tabs = tabs;
     this.viewpager = viewpager;
   }
@@ -60,6 +64,8 @@ public final class FragmentStartBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      LinearLayout secondfragment = (LinearLayout) rootView;
+
       id = R.id.tabs;
       TabLayout tabs = ViewBindings.findChildViewById(rootView, id);
       if (tabs == null) {
@@ -72,7 +78,7 @@ public final class FragmentStartBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentStartBinding((LinearLayout) rootView, tabs, viewpager);
+      return new FragmentStartBinding((LinearLayout) rootView, secondfragment, tabs, viewpager);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

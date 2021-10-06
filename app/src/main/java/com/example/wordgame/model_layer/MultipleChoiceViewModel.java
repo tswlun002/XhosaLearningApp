@@ -30,7 +30,7 @@ public class MultipleChoiceViewModel extends AndroidViewModel {
     }
 
         /**
-         * insert data of matching
+         * insert data of matching3.txt
          * @param multipleChoice is a data being inserted
          */
     public  void insert(MultipleChoice multipleChoice){
@@ -38,7 +38,7 @@ public class MultipleChoiceViewModel extends AndroidViewModel {
     }
 
     /**
-     * update data of matching game
+     * update data of matching3.txt game
      * @param multipleChoice is the data being updated
      */
     public  void update(MultipleChoice multipleChoice){

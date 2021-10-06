@@ -49,7 +49,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
     private  Holder holder;
     private   Object[] keys;
     int size=0;
-    int count =0;
+    boolean dataSet =false;
 
     /**
      * Constructor of WordGameDB controller to initialise the fields
@@ -87,10 +87,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
     public int getItemCount() {
         int y =0;
         if(data!=null)
-            y= getSize();
-        if(y ==4) {
-            data1 = new HashMap<>(data);
-        }
+            y= data.size();
         return y;
 
     }
@@ -118,7 +115,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
      */
     @SuppressLint({"ResourceAsColor", "SetTextI18n"})
     void addRow(List<String>column1List,List<String>column2List,String key,Holder holder){
-        Toast.makeText(context,column1List.size()+" | "+key,Toast.LENGTH_SHORT).show();
+       // Toast.makeText(context,column1List.size()+" | "+key,Toast.LENGTH_SHORT).show();
         holder.descriptionView.setText(key);
         for (int index =0; index<column1List.size();index++) {
             int i = index+1;
@@ -213,9 +210,14 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
             data2.put(count*2,column1List);
             data2.put(count*2+1,column2List);
             count++;
-            setSize(1);
+
         }
+        setSize(data.size());
         notifyDataSetChanged();
+        if(!dataSet) {
+            data1 = new HashMap<>(data);
+            dataSet=true;
+        }
         //notifyItemRangeInserted(0,getSize());
 
 
@@ -226,7 +228,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
      * @param materialSize size of the learning
      */
     void setSize(int materialSize) {
-        size += materialSize;
+        size = materialSize;
     }
 
     /**
@@ -330,21 +332,26 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
         protected FilterResults performFiltering(CharSequence constraint) {
 
             HashMap<String ,List<String>> filter = new HashMap<>();
+            Toast.makeText(context,constraint.toString()+" here ",Toast.LENGTH_SHORT).show();
+            boolean found =false;
+            if(constraint !=null || constraint.length()!=0){
 
-            if(constraint !=null  || !constraint.toString().trim().equals("")){
                 String pattern = constraint.toString().toLowerCase().trim();
                 boolean inHeading  =searchHeading(pattern,filter);
                 boolean inContent =false;
+                boolean inHeadins  = false;
                 if(! inHeading){
-                    inContent =searchContent(pattern,filter);
                 }
-                if(! inContent){
-                    filter.putAll(data);
+                if(inHeading==true){
+                     found=true;
+                     inHeading=true;
+                     Toast.makeText(context," hayibo",filter.size());
                 }
 
+
             }
-           else {
-                 filter.putAll(data);
+           else if(!found ) {
+                 filter.putAll(data1);
             }
             FilterResults filterResults = new FilterResults();
             filterResults.values = filter;
@@ -361,21 +368,11 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
          */
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            if(((HashMap) results.values).size() !=data.size()) {
+            //if(((HashMap) results.values).size() !=0) {
                 data.clear();
-                data.putAll((HashMap) results.values);
-                size = data.size();
-               notifyDataSetChanged();
-               count=0;
-            }else {
-                setSize(-data.size());
-                notifyDataSetChanged();
-                data.putAll(data1);
-                setSize(data.size());
-                notifyDataSetChanged();
-            }
-
-
+                data2.clear();
+                setData((HashMap) results.values);
+                Toast.makeText(context, getItemCount()+" count",Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -391,32 +388,13 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
             if(key.toLowerCase().trim().equalsIgnoreCase(pattern)){
                 filter.put(key,data.get(key));
                 found=true;
-                break;
+                //break;
             }
         }
         return  found;
      }
 
-    /**
-     * Helper method to search the word on the content (first column)
-     * @param pattern word being searched
-     * @param filter hash map to store filter results
-     * @return true if found else false
-     */
-     boolean searchContent(String pattern,HashMap<String ,List<String>> filter){
-         int  found =0;
-         for(String key1 : data.keySet()) {
-             List<String> list = new ArrayList<>();
-             getContent(list, Objects.requireNonNull(data.get(key1)));
-             for (String searched : list) {
-                 if (searched.toLowerCase().equalsIgnoreCase(pattern)) {
-                     filter.put(key1, data.get(key1));
-                     found ++;
-                 }
-             }
-         }
-         return found > 0;
-     }
+
 
     /**
      * get content of the first column

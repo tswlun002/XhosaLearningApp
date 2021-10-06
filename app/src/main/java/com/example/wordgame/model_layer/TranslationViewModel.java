@@ -20,7 +20,7 @@ public class TranslationViewModel extends AndroidViewModel {
     /**
      * construct to initialise serial fields
      *
-     * @param application is the context of matching
+     * @param application is the context of matching3.txt
      */
     public TranslationViewModel(@NonNull Application application) {
         super(application);
@@ -32,9 +32,9 @@ public class TranslationViewModel extends AndroidViewModel {
     }
 
     /**
-     * get all material for matching game
+     * get all material for matching3.txt game
      *
-     * @return matching material
+     * @return matching3.txt material
      */
     public LiveData<List<TranslationGame>> getGameMaterial() {
         return allMaterial;
@@ -49,7 +49,7 @@ public class TranslationViewModel extends AndroidViewModel {
         return questionsLevelThree;
     }
     /**
-     * insert data of matching
+     * insert data of matching3.txt
      *
      * @param translation is a data being inserted
      */
@@ -58,7 +58,7 @@ public class TranslationViewModel extends AndroidViewModel {
     }
 
     /**
-     * update data of matching game
+     * update data of matching3.txt game
      *
      * @param translation is the data being updated
      */

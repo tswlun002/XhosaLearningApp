@@ -11,6 +11,7 @@ import android.view.View;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
      */
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
-    //public static  final User user = new User(0,1);
     public static UserViewModel userViewModel;
 
     /**
@@ -84,10 +84,13 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        NavDestination navDestination = Navigation.findNavController(this,
+                R.id.nav_host_fragment_content_main).getCurrentDestination();
 
-            if( item.getItemId() == R.id.progressIdItem)
+            if( item.getItemId() == R.id.progressIdItem & navDestination.getId()==R.id.FirstFragment)
                 Navigation.findNavController(this,R.id.nav_host_fragment_content_main).navigate(R.id.action_FirstFragment_to_proggress);
-            else if(item.getItemId()==R.id.homeIdItem)
+            else if(item.getItemId()==R.id.homeIdItem & navDestination.getId()!=R.id.FirstFragment)
+
                 Navigation.findNavController(this,R.id.nav_host_fragment_content_main).navigate(R.id.action_proggress_to_FirstFragment);
             else if(item.getItemId()==R.id.instructions){
                 Instructions instructions = new Instructions(this , getLayoutInflater());

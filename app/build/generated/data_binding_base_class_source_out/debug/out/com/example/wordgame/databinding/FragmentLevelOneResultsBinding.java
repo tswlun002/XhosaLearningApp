@@ -4,25 +4,62 @@ package com.example.wordgame.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.Guideline;
 import androidx.viewbinding.ViewBinding;
+import androidx.viewbinding.ViewBindings;
 import com.example.wordgame.R;
+import com.google.android.material.button.MaterialButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
+import java.lang.String;
 
 public final class FragmentLevelOneResultsBinding implements ViewBinding {
   @NonNull
-  private final FrameLayout rootView;
+  private final ConstraintLayout rootView;
 
-  private FragmentLevelOneResultsBinding(@NonNull FrameLayout rootView) {
+  @NonNull
+  public final TextView CorrectionsID;
+
+  @NonNull
+  public final MaterialButton NextButtonId;
+
+  @NonNull
+  public final TextView gradesActivity;
+
+  @NonNull
+  public final Guideline guideline5;
+
+  @NonNull
+  public final Guideline guideline51;
+
+  @NonNull
+  public final Guideline guideline52;
+
+  @NonNull
+  public final Guideline guideline6;
+
+  private FragmentLevelOneResultsBinding(@NonNull ConstraintLayout rootView,
+      @NonNull TextView CorrectionsID, @NonNull MaterialButton NextButtonId,
+      @NonNull TextView gradesActivity, @NonNull Guideline guideline5,
+      @NonNull Guideline guideline51, @NonNull Guideline guideline52,
+      @NonNull Guideline guideline6) {
     this.rootView = rootView;
+    this.CorrectionsID = CorrectionsID;
+    this.NextButtonId = NextButtonId;
+    this.gradesActivity = gradesActivity;
+    this.guideline5 = guideline5;
+    this.guideline51 = guideline51;
+    this.guideline52 = guideline52;
+    this.guideline6 = guideline6;
   }
 
   @Override
   @NonNull
-  public FrameLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -43,10 +80,56 @@ public final class FragmentLevelOneResultsBinding implements ViewBinding {
 
   @NonNull
   public static FragmentLevelOneResultsBinding bind(@NonNull View rootView) {
-    if (rootView == null) {
-      throw new NullPointerException("rootView");
-    }
+    // The body of this method is generated in a way you would not otherwise write.
+    // This is done to optimize the compiled bytecode for size and performance.
+    int id;
+    missingId: {
+      id = R.id.CorrectionsID;
+      TextView CorrectionsID = ViewBindings.findChildViewById(rootView, id);
+      if (CorrectionsID == null) {
+        break missingId;
+      }
 
-    return new FragmentLevelOneResultsBinding((FrameLayout) rootView);
+      id = R.id.NextButtonId;
+      MaterialButton NextButtonId = ViewBindings.findChildViewById(rootView, id);
+      if (NextButtonId == null) {
+        break missingId;
+      }
+
+      id = R.id.gradesActivity;
+      TextView gradesActivity = ViewBindings.findChildViewById(rootView, id);
+      if (gradesActivity == null) {
+        break missingId;
+      }
+
+      id = R.id.guideline5;
+      Guideline guideline5 = ViewBindings.findChildViewById(rootView, id);
+      if (guideline5 == null) {
+        break missingId;
+      }
+
+      id = R.id.guideline51;
+      Guideline guideline51 = ViewBindings.findChildViewById(rootView, id);
+      if (guideline51 == null) {
+        break missingId;
+      }
+
+      id = R.id.guideline52;
+      Guideline guideline52 = ViewBindings.findChildViewById(rootView, id);
+      if (guideline52 == null) {
+        break missingId;
+      }
+
+      id = R.id.guideline6;
+      Guideline guideline6 = ViewBindings.findChildViewById(rootView, id);
+      if (guideline6 == null) {
+        break missingId;
+      }
+
+      return new FragmentLevelOneResultsBinding((ConstraintLayout) rootView, CorrectionsID,
+          NextButtonId, gradesActivity, guideline5, guideline51, guideline52, guideline6);
+    }
+    String missingId = rootView.getResources().getResourceName(id);
+    throw new NullPointerException("Missing required view with ID: ".concat(missingId));
   }
 }

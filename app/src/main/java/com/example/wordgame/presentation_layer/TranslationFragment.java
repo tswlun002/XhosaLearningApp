@@ -158,10 +158,11 @@ public class TranslationFragment extends Fragment {
         Random rand = new Random();
         List<TranslationGame> newList = new ArrayList<>();
         for (int i = 0; i < numberQuestions; i++) {
-
-            int randomIndex = rand.nextInt(translationGameList.size());
-            newList.add(translationGameList.get(randomIndex));
-            translationGameList.remove(randomIndex);
+             if(translationGameList.size()>0) {
+                 int randomIndex = rand.nextInt(translationGameList.size());
+                 newList.add(translationGameList.get(randomIndex));
+                 translationGameList.remove(randomIndex);
+             }
         }
 
         return newList;
@@ -203,7 +204,7 @@ public class TranslationFragment extends Fragment {
                 OnSubmit onSubmit = new SubmitHandler(inflater,id,view,userAnswer,gameAnswer);
                 onSubmit.onSubmit(view,inflater);
                 new LevelResultsHandler(requireContext(),MainActivity.userViewModel,wordGameViewModel,
-                        getViewLifecycleOwner()).shareData(onSubmit,onExtractResults,userAnswer,"multiple choice");
+                        getViewLifecycleOwner()).shareData(onSubmit,onExtractResults,userAnswer,"translation");
                 Navigation.findNavController(view).
                         navigate(R.id.action_translationFragment_to_results_CurrentActivity);
 

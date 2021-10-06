@@ -83,5 +83,11 @@ public class LevelResults {
                 "," + userMarks +
                 ", " + totalMarks;
     }
+    public  String getInformation(){
+        return "Level  : Game Type  : User Mark : Total Mark\n"+
+                "     "+level +"         "+ gameType +"              " +
+                userMarks + "           " +
+                totalMarks;
+    }
 
 }

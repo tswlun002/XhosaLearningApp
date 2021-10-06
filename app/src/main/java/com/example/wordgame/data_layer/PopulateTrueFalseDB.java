@@ -23,37 +23,42 @@ public class PopulateTrueFalseDB extends AsyncTask<Context, Void, Void> {
 
     @Override
     protected Void doInBackground(Context... contexts) {
-        List<String> pictures  = new ArrayList<>();
-        List<String> questions  = new ArrayList<>();
-        List<String> answers  = new ArrayList<>();
-        List<String> instructions  = new ArrayList<>();
 
-        String data ="";
-        try {
-            data = getData(pictures,answers,questions,instructions,contexts[0]);
+        String[] filenames ={"truefalse1.txt","truefalse2.txt","truefalse3.txt"};
+        for(String filename :filenames) {
+            List<String> pictures  = new ArrayList<>();
+            List<String> questions  = new ArrayList<>();
+            List<String> answers  = new ArrayList<>();
+            List<String> instructions  = new ArrayList<>();
+            String data = "";
+            try {
+                data = getData(pictures, answers, questions, instructions, contexts[0], filename);
 
-        } catch (IOException e) {
+            } catch (IOException e) {
 
-            e.printStackTrace();
-        }
+                e.printStackTrace();
+            }
 
-        int totalmarks  = Integer.parseInt(data.trim());
-
-
-        String instruction =  instructions.get(0).substring(instructions.get(0).indexOf(";")+1);
-
-
-        int level =  Integer.parseInt(instructions.get(0).substring(0,instructions.get(0)
-                .indexOf(";")).trim());
+            int totalmarks = Integer.parseInt(data.trim());
 
 
-        for(int i =0; i< pictures.size(); i++) {
-            trueFalseDao.insert(new TrueFalseGame(level, questions.get(i), pictures.get(i), answers.get(i),instruction,totalmarks));
+            String instruction = instructions.get(0).substring(instructions.get(0).indexOf(";") + 1);
+
+
+            int level = Integer.parseInt(instructions.get(0).substring(0, instructions.get(0)
+                    .indexOf(";")).trim());
+
+
+            for (int i = 0; i < pictures.size(); i++) {
+                trueFalseDao.insert(new TrueFalseGame(level, questions.get(i), pictures.get(i), answers.get(i), instruction, totalmarks));
+            }
+
         }
         return null;
     }
 
-    private String getData(List<String> figures,List<String> answers,List<String>questions,List<String> instructions,Context context) throws IOException {
+    private String getData(List<String> figures,List<String> answers,List<String>questions,
+                           List<String> instructions,Context context, String filename) throws IOException {
 
 
         String Marks = "";
@@ -62,7 +67,7 @@ public class PopulateTrueFalseDB extends AsyncTask<Context, Void, Void> {
         try {
 
             BufferedReader bufferedReader = new BufferedReader(
-                    new InputStreamReader(context.getResources().getAssets().open("TrueFalse.txt"),
+                    new InputStreamReader(context.getResources().getAssets().open(filename),
                             StandardCharsets.UTF_8));
             int count = 0;
             while ((lineData = bufferedReader.readLine()) != null) {

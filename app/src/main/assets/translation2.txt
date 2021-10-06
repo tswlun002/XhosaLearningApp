@@ -1,0 +1,23 @@
+21
+2;Choose the correct word for given term or sentence description
+Autumn ; uKwindla $ uK.....a, uK....la, uKw..dla
+June ; eyeSilimela $ eyeSi...... , eyeSi.....a , eyeSil...la
+July ; EyeKhala $ EyeK...., EyeK...a, EyeKh..a
+August ; EyeThupha $ EyeT..... , EyeT....a , EyeTh...a
+Tuesday ; lwesibini $ lwesi...i, lwesib..., lwesi.i.i
+black ; mnyama $ mn...a , mny... , mny..a
+blue ; luhlaza $ lu.l..a, lu...za, luh..za
+green ; luhlaza $ ..hl..a, lu...za, luh..za
+red ; bomvu $ b...u ,bo..u, bom.u
+white ; mhlophe $ mhl.... , mhl...e , mh..phe
+yellow ; mthubi $ mth..., mth..i, mth.b.
+baby ; usana $ us..., us..a , us.na
+clan name ; isiduko $ is....o, is...ko, isi..ko
+Summer ; iHlobo $ iH.... , iH...o , iHl..o
+Wednesday ; lwesithathu $ lwesit, lwesit..... , lwesit..t.u
+Thursday ; lwesine $ lwe..n., lwes..., lwes..e
+Wednesday ; lwesithathu $ lwesit, lwesit..... , lwesit..t.u
+Thursday ; lwesine $ lwe..n., lwes..., lwes..e
+body ; umzimba $ umz.... , umz...a , umz..ba
+head ; intloko $ int.... , int...o , intl..o
+hair ; iinwele $ iin.... , iin...e ,iin..le

@@ -13,6 +13,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -20,14 +22,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentProggressBinding;
 import com.example.wordgame.databinding.FragmentTranslationBinding;
+import com.example.wordgame.model_layer.LevelResults;
+import com.example.wordgame.model_layer.LevelResultsViewModel;
+import com.example.wordgame.model_layer.WordGameViewModel;
 import com.google.android.material.internal.NavigationMenuItemView;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -36,12 +44,13 @@ import java.util.Objects;
  * create an instance of this fragment.
  */
 public class ProggressFragment extends Fragment {
-
-
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private FragmentProggressBinding binding;
+    WordGameViewModel wordGameViewModel ;
     HashMap<Integer,Integer> actions = new HashMap<>();
+    private LevelResultsViewModel levelResultsViewModel;
+
 
     public ProggressFragment() {
         // Required empty public constructor
@@ -76,6 +85,9 @@ public class ProggressFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        wordGameViewModel = new ViewModelProvider(requireActivity()).get(WordGameViewModel.class);
+        assert getParentFragment() != null;
+        levelResultsViewModel = new  ViewModelProvider(getParentFragment()).get(LevelResultsViewModel.class);
 
     }
 
@@ -153,6 +165,8 @@ public class ProggressFragment extends Fragment {
             }
         });
     }
+
+
     /**
      * Helper method , has inner method to handle drawer
      * @param average  true fragment searchLost_person is open else false
@@ -187,19 +201,53 @@ public class ProggressFragment extends Fragment {
             public void onDrawerOpened(@NonNull View drawerView) {
                 open[0] =true;
                 close[0] =false;
-                NavigationMenuItemView levelone = drawerView.findViewById(R.id.levelOneResults);
-                NavigationMenuItemView leveltwo = drawerView.findViewById(R.id.levelTwoResults);
-                NavigationMenuItemView levelthree = drawerView.findViewById(R.id.levelThreeResults);
-                if(average[0]) {
-                    levelone.setChecked(true);
-                    levelone.setTextColor(ColorStateList.valueOf(R.color.purple_700));
-                }
-                else {
-                    leveltwo.setChecked(true);
-                    leveltwo.setTextColor(ColorStateList.valueOf(R.color.purple_700));
-                }
+
+
             }
 
+
+            /**
+             *
+             * @param levelone ..
+             * @param leveltwo ..
+             * @param levelthree ..
+             */
+             private  void handleLevelResultsRequests(NavigationMenuItemView levelone,
+                                                      NavigationMenuItemView leveltwo
+             ,NavigationMenuItemView levelthree ){
+                 levelone.setOnClickListener(new View.OnClickListener() {
+                     @SuppressLint({"RestrictedApi", "ResourceAsColor"})
+                     @Override
+                     public void onClick(View v) {
+                         getAllLevelResults(1);
+                         levelone.setTextColor(ColorStateList.valueOf(R.color.blue));
+                         levelthree.setTextColor(ColorStateList.valueOf(R.color.black));
+                         leveltwo.setTextColor(ColorStateList.valueOf(R.color.black));
+
+                     }
+                 });
+                 leveltwo.setOnClickListener(new View.OnClickListener() {
+                     @SuppressLint({"ResourceAsColor", "RestrictedApi"})
+                     @Override
+                     public void onClick(View v) {
+                         getAllLevelResults(2);
+                         levelone.setTextColor(ColorStateList.valueOf(R.color.black));
+                         levelthree.setTextColor(ColorStateList.valueOf(R.color.black));
+                         leveltwo.setTextColor(ColorStateList.valueOf(R.color.blue));
+                     }
+                 });
+
+                 levelthree.setOnClickListener(new View.OnClickListener() {
+                     @SuppressLint({"ResourceAsColor", "RestrictedApi"})
+                     @Override
+                     public void onClick(View v) {
+                         getAllLevelResults(3);
+                         levelone.setTextColor(ColorStateList.valueOf(R.color.black));
+                         levelthree.setTextColor(ColorStateList.valueOf(R.color.blue));
+                         leveltwo.setTextColor(ColorStateList.valueOf(R.color.black));
+                     }
+                 });
+             }
             /**
              * Called when a drawer has settled in a completely closed state.
              * when drawer closes , average item are unchecked
@@ -236,6 +284,53 @@ public class ProggressFragment extends Fragment {
         });
     }
 
+    private  void  setLevelResults(){
+        levelResultsViewModel.getAverage().observe(getViewLifecycleOwner(), new Observer<List<LevelResults>>() {
+            @Override
+            public void onChanged(List<LevelResults> levelResults) {
+                wordGameViewModel.setResults(levelResults);
+            }
+        });
+
+    }
+    private  void getAllLevelResults(int level){
+        Toast.makeText(requireContext()," okay am here 1",Toast.LENGTH_SHORT).show();
+        levelResultsViewModel.getAverage().observe(getViewLifecycleOwner(), new Observer<List<LevelResults>>() {
+            @Override
+            public void onChanged(List<LevelResults> levelResults) {
+
+                List<String> list = new ArrayList<>();
+                if(level==1){
+                    for(LevelResults levelResults1:levelResults){
+                        int level1 = levelResults1.getLevel();
+                        if(level1 ==1){
+                            list.add(levelResults1.getInformation());
+                        }
+                    }
+                }
+                else if(level ==2){
+                    for(LevelResults levelResults1:levelResults){
+                        int level1 = levelResults1.getLevel();
+                        if(level1 ==2){
+                            list.add(levelResults1.getInformation());
+                        }
+                    }
+                }
+                else if (level ==3){
+                    for(LevelResults levelResults1:levelResults){
+                        int level1 = levelResults1.getLevel();
+                        if(level1 ==3){
+                            list.add(levelResults1.getInformation());
+                        }
+                    }
+                }
+                LevelResultsWindow levelResultsWindow  = new LevelResultsWindow(
+                        requireActivity().getLayoutInflater());
+                levelResultsWindow.gradesActity(0,0,list);
+            }
+        });
+    }
+
     /**
      * Handle drawer item selection or clicks
      * When item is selected , navigate to its destination fragment
@@ -258,8 +353,21 @@ public class ProggressFragment extends Fragment {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 item.setChecked(true);
                 drawerLayout.closeDrawer(GravityCompat.START);
+                if(item.getItemId() == R.id.levelOneResults)
+                {
+                    Toast.makeText(requireContext()," okay am here",Toast.LENGTH_SHORT).show();
+                    getAllLevelResults(1);
+                }
 
-                average[0]=true;
+                else  if(item.getItemId()== R.id.levelTwoResults)
+                {
+                    getAllLevelResults(2);
+                }
+
+                else if(item.getItemId() ==R.id.levelThreeResults)
+                {
+                    getAllLevelResults(3);
+                }
                 return true;
             }
         });

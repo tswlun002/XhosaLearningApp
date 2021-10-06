@@ -46,7 +46,7 @@ public class LevelResultsHandler {
                 gameId,userId,level,gameType,
                 score,totalMarks
         );
-        wordGameViewModel.setValue(levelResults);
+        wordGameViewModel.setResults(levelResults);
     }
 
     private  int UserId(){

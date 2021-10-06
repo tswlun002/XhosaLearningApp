@@ -139,6 +139,7 @@ public class LearnFragment extends Fragment {
     }
 
     void filter (String query){
+        //Toast.makeText(requireContext(),query.toString()+" ",Toast.LENGTH_SHORT).show();
         learn.getFilter().filter(query);
     }
 

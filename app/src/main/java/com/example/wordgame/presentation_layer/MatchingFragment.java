@@ -9,7 +9,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -17,12 +16,8 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentMatchingBinding;
-import com.example.wordgame.model_layer.LearnViewModel;
-import com.example.wordgame.model_layer.LevelResults;
 import com.example.wordgame.model_layer.Matching;
 import com.example.wordgame.model_layer.MatchingViewModel;
-import com.example.wordgame.model_layer.MultipleChoice;
-import com.example.wordgame.model_layer.User;
 import com.example.wordgame.model_layer.WordGameViewModel;
 
 import java.util.ArrayList;
@@ -78,6 +73,7 @@ public class MatchingFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         matchingViewModel = new ViewModelProvider(this).get(MatchingViewModel.class);
+        wordGameViewModel = new ViewModelProvider(requireActivity()).get(WordGameViewModel.class);
     }
 
     /**
@@ -106,7 +102,7 @@ public class MatchingFragment extends Fragment {
     }
 
     /**
-     * get user id for matching and setting it to access each level.
+     * get user id for matching3.txt and setting it to access each level.
      * user that id to store the average grades for the current level
      */
     private void getUserInformation(){
@@ -132,7 +128,7 @@ public class MatchingFragment extends Fragment {
                     setData(matching,matchingViewHandler);
                 }
             });
-        }else {
+        }else if(level ==3){
             matchingViewModel.getQuestionsLevelThree().observe(getViewLifecycleOwner(), new Observer<List<Matching>>() {
                 @Override
                 public void onChanged(List<Matching> matching) {
@@ -147,24 +143,27 @@ public class MatchingFragment extends Fragment {
      * @param matching gets data from the database
      */
     private void setData(List<Matching> matching,MatchingViewHandler matchingViewHandler){
-        int numberOfQuestions = 8;
-        List<Matching> newList = randomiseData(matching, numberOfQuestions);
-        matchingViewHandler.setData(newList);
+       if(matching.size()>0) {
+            int numberOfQuestions = 8;
+            List<Matching> newList = randomiseData(matching, numberOfQuestions);
+            matchingViewHandler.setData(newList);
+        }
     }
     /**
      * Randomise questions for game
-     * @param matchingList list of game material of matching game
+     * @param matchingList list of game material of matching3.txt game
      * @param numberQuestions is the number of questions for game
-     * @return new list of questions of matching game
+     * @return new list of questions of matching3.txt game
      */
     private  List<Matching> randomiseData(List<Matching> matchingList, int numberQuestions){
         Random rand = new Random();
         List<Matching> newList = new ArrayList<>();
         for (int i = 0; i < numberQuestions; i++) {
-
-            int randomIndex = rand.nextInt(matchingList.size());
-            newList.add(matchingList.get(randomIndex));
-            matchingList.remove(randomIndex);
+            if(matchingList.size()>0) {
+                int randomIndex = rand.nextInt(matchingList.size());
+                newList.add(matchingList.get(randomIndex));
+                matchingList.remove(randomIndex);
+            }
         }
 
         return newList;
@@ -196,7 +195,7 @@ public class MatchingFragment extends Fragment {
                 OnSubmit onSubmit =new SubmitHandler(inflater,id,binding.getRoot(), userAnswer,gameAnswer);
                 onSubmit.onSubmit(v,inflater);
                 new LevelResultsHandler(requireContext(),MainActivity.userViewModel,wordGameViewModel,
-                        getViewLifecycleOwner()).shareData(onSubmit,onExtractResults,userAnswer,"matching");
+                        getViewLifecycleOwner()).shareData(onSubmit,onExtractResults,userAnswer, "matching");
                 Navigation.findNavController(view).
                         navigate(R.id.action_matchingFragment_to_results_CurrentActivity);
 

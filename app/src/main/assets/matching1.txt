@@ -1,0 +1,18 @@
+Match English days of the week words with Xhosa words; 16
+1;answer all questions
+white ; mhlophe
+yellow ; mthubi
+Supper ; Isidlo sangokuhlwa
+Lunch ; Isidlo sasemini
+Dinner ; Isidlo sasemvakwemini
+o ; like a in all
+u ; like oo in moon
+i ; like ee in seen
+1 ; nye
+2 ; mbini
+19 ;lishumi elinethoba
+29 ; ngashumi amabini anethoba
+30 ; ngashumi amathathu
+100 ; likhulu
+1 000 ; liwaka
+1 000 000 ; sigidi

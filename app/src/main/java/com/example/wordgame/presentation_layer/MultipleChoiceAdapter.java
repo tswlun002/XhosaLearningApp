@@ -286,12 +286,12 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
          * Helper method to handle click listeners
          */
         private void handleRecycleView (){
-            HandleClickButtons handleClickButtons = new HandleClickButtons(getSize());
-            choice1.setOnClickListener(handleClickButtons);
-            choice2.setOnClickListener(handleClickButtons);
-            choice3.setOnClickListener(handleClickButtons);
-            choice4.setOnClickListener(handleClickButtons);
-            nextQ.setOnClickListener(handleClickButtons);
+            //HandleClickButtons handleClickButtons = );
+            choice1.setOnClickListener(new HandleClickButtons(getSize()));
+            choice2.setOnClickListener(new HandleClickButtons(getSize()));
+            choice3.setOnClickListener(new HandleClickButtons(getSize()));
+            choice4.setOnClickListener(new HandleClickButtons(getSize()));
+            nextQ.setOnClickListener(new HandleClickButtons(getSize()));
         }
         /**
          * set number of questions for this game
@@ -349,6 +349,7 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
                         setColor(pos*4+3,buttonColors[0]);
                     }
                     else if(v.getId()==R.id.answer3textView){
+
                         onMCQ.choices(v, pos);
                         onMCQ.StoreAnswer(answers);
                         setColor(pos*4,buttonColors[0]);
@@ -357,6 +358,9 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
                         setColor(pos*4+3,buttonColors[0]);
                     }
                     else if(v.getId()==R.id.answer4TextView) {
+                        Toast.makeText(context,"here at button 4", Toast.LENGTH_SHORT).show();
+                        onMCQ.choices(v, pos);
+                        onMCQ.StoreAnswer(answers);
                         setColor(pos*4,buttonColors[0]);
                         setColor(pos*4+1,buttonColors[0]);
                         setColor(pos*4+2,buttonColors[0]);

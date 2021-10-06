@@ -81,6 +81,14 @@ public class ProgressReport {
         this.status = status;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "ProgressReport{" +
+                "levelOneScore=" + levelOneScore +
+                "levelTwoScore=" + levelTwoScore +
+                ", levelThreeScore=" + levelThreeScore +
+                ", AverageScore=" + AverageScore +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }
