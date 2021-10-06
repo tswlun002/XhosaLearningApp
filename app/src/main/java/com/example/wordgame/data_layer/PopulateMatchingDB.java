@@ -11,14 +11,30 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @Class  populates the matchingDao on the database table
+ */
 class PopulateMatchingDB extends AsyncTask<Context,Void,Void> {
+    /**
+     * @serialField object used to access MatchingDao class
+     */
     private final MatchingDao matchingDao ;
+
+
+    /**
+     * this constructor is used to create an object for MathcingDao
+     * @param wordGameDB reference from the database to ensure that matchingDao can insert data to the database
+     */
     protected PopulateMatchingDB(WordGameDB wordGameDB){
         matchingDao=wordGameDB.matchingDao();
 
     }
 
-
+    /**
+     * this function populates the database matching questions and answers for all the levels
+     * @param contexts proves context to use to access the data from
+     * @return null reference
+     */
     @Override
     protected Void doInBackground(Context... contexts) {
 
@@ -57,6 +73,16 @@ class PopulateMatchingDB extends AsyncTask<Context,Void,Void> {
         return null;
     }
 
+    /**
+     * this function gets the data from the database
+     * @param questions array used to store the  questions from the database
+     * @param answers array used to store answers from the database
+     * @param instructions array used to store instructions on to play each level
+     * @param context proves context to access the database
+     * @param filename contains the file name that contains all the questions and answers
+     * @return returns marks for each question and the tittle for the sections
+     * @throws IOException handles a file error from the file name
+     */
     private String getData(List<String> questions,List<String> answers,List<String> instructions,
                            Context context,String filename) throws IOException {
 

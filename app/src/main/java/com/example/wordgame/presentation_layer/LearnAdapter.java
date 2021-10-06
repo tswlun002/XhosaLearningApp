@@ -73,7 +73,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
     @NonNull
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-       LayoutInflater inflater; inflater = LayoutInflater.from(context);
+        LayoutInflater inflater; inflater = LayoutInflater.from(context);
         View view = inflater.inflate(layout,parent,false);
         holder = new Holder(view);
         return holder;
@@ -103,7 +103,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
         int size = position+1;
         String key  = getHeadings()[position]+"";
         holder.setIsRecyclable(false);
-        holder.pageNumber.setText((size)+"/"+getSize());
+        holder.pageNumber.setText((size)+"/"+ data.size());
         addRow(data2.get(position*2), data2.get(position*2+1),key,holder);
     }
     /**
@@ -115,7 +115,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
      */
     @SuppressLint({"ResourceAsColor", "SetTextI18n"})
     void addRow(List<String>column1List,List<String>column2List,String key,Holder holder){
-       // Toast.makeText(context,column1List.size()+" | "+key,Toast.LENGTH_SHORT).show();
+        // Toast.makeText(context,column1List.size()+" | "+key,Toast.LENGTH_SHORT).show();
         holder.descriptionView.setText(key);
         for (int index =0; index<column1List.size();index++) {
             int i = index+1;
@@ -262,7 +262,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
     /**
      * Inner class that contain features of the element to be inflated into listview
      */
-     class  Holder extends RecyclerView.ViewHolder {
+    class  Holder extends RecyclerView.ViewHolder {
         TableLayout tableLayout;
         TextView descriptionView,pageNumber;
 
@@ -341,17 +341,22 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
                 boolean inContent =false;
                 boolean inHeadins  = false;
                 if(! inHeading){
+                    // Toast.makeText(context,filter.toString()+"\n\ndon't come here",filter.size());
+                    inContent =searchContent(pattern,filter);
+                    if(! inContent){
+                        filter.putAll(data1);
+                    }
                 }
                 if(inHeading==true){
-                     found=true;
-                     inHeading=true;
-                     Toast.makeText(context," hayibo",filter.size());
+                    found=true;
+                    inHeading=true;
+                    Toast.makeText(context," hayibo",filter.size());
                 }
 
 
             }
-           else if(!found ) {
-                 filter.putAll(data1);
+            else if(!found) {
+                filter.putAll(data1);
             }
             FilterResults filterResults = new FilterResults();
             filterResults.values = filter;
@@ -369,10 +374,10 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             //if(((HashMap) results.values).size() !=0) {
-                data.clear();
-                data2.clear();
-                setData((HashMap) results.values);
-                Toast.makeText(context, getItemCount()+" count",Toast.LENGTH_SHORT).show();
+            data.clear();
+            data2.clear();
+            setData((HashMap) results.values);
+            Toast.makeText(context, getItemCount()+" count",Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -382,8 +387,8 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
      * @param filter hash map to store filter results
      * @return true if found else false
      */
-     boolean searchHeading(String pattern,HashMap<String ,List<String>> filter ){
-         boolean found = false;
+    boolean searchHeading(String pattern,HashMap<String ,List<String>> filter ){
+        boolean found = false;
         for(String key : data.keySet()){
             if(key.toLowerCase().trim().equalsIgnoreCase(pattern)){
                 filter.put(key,data.get(key));
@@ -392,9 +397,28 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
             }
         }
         return  found;
-     }
+    }
 
-
+    /**
+     * Helper method to search the word on the content (first column)
+     * @param pattern word being searched
+     * @param filter hash map to store filter results
+     * @return true if found else false
+     */
+    boolean searchContent(String pattern,HashMap<String ,List<String>> filter){
+        int  found =0;
+        for(String key1 : data.keySet()) {
+            List<String> list = new ArrayList<>();
+            getContent(list, Objects.requireNonNull(data.get(key1)));
+            for (String searched : list) {
+                if (searched.toLowerCase().equalsIgnoreCase(pattern)) {
+                    filter.put(key1, data.get(key1));
+                    found ++;
+                }
+            }
+        }
+        return found > 0;
+    }
 
     /**
      * get content of the first column

@@ -4,8 +4,21 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+/**
+ * @Class  Matching is the class for learning material
+ */
 @Entity(tableName = "Matching")
 public class Matching {
+
+
+    /**
+     * @serialField levelId is the id for each learning material we store
+     * @serialField level is the level of learning
+     * @serialField title for the topic of the material
+     * @serialField  instructions is the instructions of learning
+     * @serialField  questions is the part for questions in of learning in the particular level
+     * @serialField answers in the part for answers for comparing for specific game
+     */
     @PrimaryKey(autoGenerate = true)
     public int matchingId=0;
     private  int level;
@@ -14,6 +27,10 @@ public class Matching {
     private  String questions;
     private String answers;
 
+
+    /**
+     * constructor for the classes
+     */
     @Ignore
     public Matching(){}
     @Ignore
@@ -21,6 +38,15 @@ public class Matching {
         this.matchingId = matchingId;
     }
 
+    /**
+     * constructor that initialise serial fields
+     * @param level is given level
+     * @param instructions given instructions
+     * @param tittle given tittle
+     * @param questions given questions for the user
+     * @param  answers given answers for the game type
+     * @param totalMarks given overall marks for the game type
+     */
     public Matching(int level, String questions, String answers, String tittle, String instructions, int totalMarks) {
         this.level = level;
         this.questions = questions;

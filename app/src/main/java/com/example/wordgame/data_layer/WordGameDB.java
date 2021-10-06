@@ -20,21 +20,65 @@ import com.example.wordgame.model_layer.User;
 
 import java.security.PublicKey;
 
+/**
+ * @Class create a database for all the application
+ */
 @Database(entities = {Learn.class, Matching.class, TrueFalseGame.class, MultipleChoice.class,
         TranslationGame.class,LevelResults.class, ProgressReport.class, User.class},
         version =10, exportSchema = true)
 public abstract class WordGameDB extends RoomDatabase {
+    /**
+     * @serialField object to access the database with
+     */
     public static WordGameDB wordGameDB;
+
+    /**
+     * an abstruct class for learnDao to ove ride cna create a database with
+     * @return
+     */
     public abstract LearnDao learnDao();
+    /**
+     * an abstruct class for matchingDao to ove ride cna create a database with
+     * @return
+     */
     public abstract MatchingDao matchingDao();
+    /**
+     * an abstruct class for trueFalseDao to ove ride cna create a database with
+     * @return
+     */
     public abstract TrueFalseDao trueFalseDao();
+    /**
+     * an abstruct class for multipleChoiceDao to ove ride cna create a database with
+     * @return
+     */
     public abstract MultipleChoiceDao multipleChoiceDao();
+    /**
+     * an abstruct class for translationDao to ove ride cna create a database with
+     * @return
+     */
     public abstract TranslationDao translationDao();
+    /**
+     * an abstruct class for levelResultsDao to ove ride cna create a database with
+     * @return
+     */
     public abstract LevelResultsDao levelResultsDao();
+    /**
+     * an abstruct class for progressReportDao to ove ride cna create a database with
+     * @return
+     */
     public abstract ProgressReportDao progressReportDao();
+    /**
+     * an abstruct class for userDao to ove ride cna create a database with
+     * @return
+     */
     public  abstract  UserDao userDao();
     static Context context1;
 
+    /**
+     * this constructor is used to build a database of the application
+     * @param context
+     * @return
+     */
     public static synchronized WordGameDB getInstanceWordGameDb(Context context){
         context1 = context;
 
@@ -62,13 +106,6 @@ public abstract class WordGameDB extends RoomDatabase {
             new PopulateTranslationGameDB(wordGameDB).execute(context1);
             new PopulateProgressDB(wordGameDB).execute();
         }
-
-        /*@Override
-        public void onOpen(@NonNull SupportSQLiteDatabase db) {
-            super.onOpen(db);
-            new PopulateDb(wordGameDB).execute();;
-            Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
-        }*/
     };
 
 

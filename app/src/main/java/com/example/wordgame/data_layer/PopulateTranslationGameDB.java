@@ -10,14 +10,30 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * @Class populate the translation table from the database
+ */
 public class PopulateTranslationGameDB extends AsyncTask<Context, Void, Void> {
+    /**
+     * @serialField  Translation object to prove access from the database
+     */
     private final TranslationDao translationDao;
 
+
+    /**
+     * constructor to creat an object for treanslationDao to proved access to the dsatabase with
+     * @param wordGameDB used to access translation talbe from the table with.
+     */
     protected PopulateTranslationGameDB(WordGameDB wordGameDB){
         translationDao =wordGameDB.translationDao();
 
     }
 
+    /**
+     * used to insert and translation table to the database for all the levels to translations
+     * @param contexts to prove context for the translation table
+     * @return
+     */
 
     @Override
     protected Void doInBackground(Context... contexts) {
@@ -33,6 +49,13 @@ public class PopulateTranslationGameDB extends AsyncTask<Context, Void, Void> {
         return null;
     }
 
+    /**
+     * this function get data from the database for translations play for all the levels of the game
+     * @param context  proves context for the database
+     * @param filename for the text information for each level of the game
+     * @return
+     * @throws IOException handles the file not found exceptions for if the function does not find the file
+     */
     private String getData(Context context,String filename) throws IOException {
 
 

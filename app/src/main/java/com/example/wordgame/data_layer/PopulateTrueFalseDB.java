@@ -12,15 +12,30 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @Class  populate true or false table
+ */
 public class PopulateTrueFalseDB extends AsyncTask<Context, Void, Void> {
+    /**
+     * @serialField  for true or false class
+     */
     private final TrueFalseDao trueFalseDao ;
+
+    /**
+     * constructor to create an object for the true or false class to prove access to the database with
+     * @param wordGameDB
+     */
 
     protected PopulateTrueFalseDB(WordGameDB wordGameDB){
         trueFalseDao=wordGameDB.trueFalseDao();
 
     }
 
-
+    /**
+     * to create and populate the true or false table from the database
+     * @param contexts proves context of the database
+     * @return
+     */
     @Override
     protected Void doInBackground(Context... contexts) {
 
@@ -57,12 +72,21 @@ public class PopulateTrueFalseDB extends AsyncTask<Context, Void, Void> {
         return null;
     }
 
+    /**
+     *  gets the data from true or false table for user to play the game
+     * @param figures array to store figures that will be displayed for the user during the game
+     * @param answers array for answers when we want to chess if the users answers are correct
+     * @param questions array for questions to access the user
+     * @param instructions  for how true or false game is plyaed
+     * @param context proved context of the database
+     * @param filename  to read the information to store to the database
+     * @return the user data and marks for the section of game
+     * @throws IOException
+     */
     private String getData(List<String> figures,List<String> answers,List<String>questions,
                            List<String> instructions,Context context, String filename) throws IOException {
 
-
         String Marks = "";
-
         String lineData;
         try {
 

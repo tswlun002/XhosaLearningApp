@@ -12,17 +12,29 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-
+/**
+ * @Class  Populates learnDoa
+ */
 class PopulateLearnDB extends AsyncTask<Context ,Void,Void> {
+    /**
+     * @serialField  private object to access the learnDao class
+     */
     private final LearnDao learnDao ;
 
+    /**
+     *  the constructor for the class PopulateLearnBD used to get the material for learnDao
+     * @param wordGameDB used to initialise learnDao
+     */
     protected PopulateLearnDB(WordGameDB wordGameDB){
         learnDao= wordGameDB.learnDao();
 
     }
-
-
-
+    /**
+     * this function is used to read the data from a text file for the learning material to store on the database
+     * @param myData  provided  with the array for data from the text file to store from
+     * @param fileName the file name of the text file to read from
+     * @param context the context of to which you use to store the information to
+     */
     private void readFile(ArrayList<String> myData, String fileName,Context context){
 
         try {
@@ -45,6 +57,15 @@ class PopulateLearnDB extends AsyncTask<Context ,Void,Void> {
 
     }
 
+    /**
+     * this function is used to insert the material into the database of the system  for learning
+     * @param myData the array that contains the information that will be store to the system
+     * @param levelFiles the text files that contains the material for every level for that game type
+     * @param level integer for the level the information will be used from from
+     * @param section the array of topics for the Content on each of the files
+     * @param instructions the instructions for how each user is suppose to play the level for the specific game type
+     * @param context Context to which the material will be used from
+     */
     public void insertData(ArrayList<String> myData, String[] levelFiles, int level ,
                            String[] section, String instructions,Context context){
         for(int i = 0; i< levelFiles.length ; i++){
@@ -56,6 +77,12 @@ class PopulateLearnDB extends AsyncTask<Context ,Void,Void> {
 
     }
 
+    /**
+     * this function is used to populate the database table for learning for all the levels from 1, 2, and 3
+     * every array contains material for all the levels in a text file and corrisponding to each topic
+     * @param contexts the context which will be used to store the material to
+     * @return
+     */
     @Override
     protected Void doInBackground(Context... contexts) {
         ArrayList<String> learningMatirial1 = new ArrayList<>();
@@ -72,22 +99,6 @@ class PopulateLearnDB extends AsyncTask<Context ,Void,Void> {
 
         String[] level3Files = {"DailyConversation.txt" , "xhosaBasicPhrase.txt" , "xhosaToEng.txt","emergency.txt"};
         String[] section3 = {" Daily conversation " , " Xhosa basic phrases", " Xhosa to English" ,"Emergency"};
-
-        /*String[] content1 = {"0; unothi", "1; enye","2; zimbini"};
-        String[] content2 = {"a; like a in hard ", "e; like e in red",
-                "i; like ee in seen","o; like a in all",
-                "u; like oo in moon"};
-        String[] content3 = {"a; like a in hard ", "e; like e in red",
-                "i; like ee in seen","o; like a in all",
-                "u; like oo in moon"};
-        String[] content4 = {"c; Place your tongue at the back of the teeth and suck in, like when expressing annoyance. ",
-                "q; Place your tongue on the roof of the mouth and suck in, like imitating a clock's ticking.",
-                "x; Place your tongue on your upper right jaw and pull it down, as if urging on a horse."};
-
-        for (String item : content1) learnDao.insert(new Learn(1, section[0], item, instructions));
-        for (String value : content2) learnDao.insert(new Learn(1, section[1], value, instructions));
-        for (String s : content3) learnDao.insert(new Learn(1, section[2], s, instructions));
-        for (String s : content4) learnDao.insert(new Learn(1, section[3], s, instructions));*/
         insertData(learningMatirial1,level1Files , 1,section1, instructions,contexts[0]);
         insertData(learningMatirial2,level2Files,2,section2,instructions,contexts[0]);
         insertData(learningMatirial3,level3Files,3,section3,instructions,contexts[0]);

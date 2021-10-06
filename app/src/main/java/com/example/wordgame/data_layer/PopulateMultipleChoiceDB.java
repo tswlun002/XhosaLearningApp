@@ -10,14 +10,30 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * @Class  populates Multiple choice table on datable
+ */
 public class PopulateMultipleChoiceDB extends AsyncTask<Context, Void, Void> {
+    /**
+     * @serialField  an object for Multiple choiceDao
+     */
     private final MultipleChoiceDao multipleChoiceDao ;
 
+    /**
+     * constructor to create an object for multiple choiceDao to have access to the database
+     * @param wordGameDB proves access to the database for Multiple choice Dao
+     */
     protected PopulateMultipleChoiceDB(WordGameDB wordGameDB){ multipleChoiceDao=wordGameDB.multipleChoiceDao();
 
     }
 
-
+    /**
+     * this functions is used to read and create a database table for multiple choice
+     * for all the levels of the game
+     * @param contexts proves a way to access the data from the database
+     * @return a null reference
+     */
     @Override
     protected Void doInBackground(Context... contexts) {
 
@@ -54,6 +70,15 @@ public class PopulateMultipleChoiceDB extends AsyncTask<Context, Void, Void> {
         return null;
     }
 
+    /**
+     * this function gets the data from the database
+     * @param Data array used to store the  questions from the database
+     * @param instructions array used to store instructions on to play each level
+     * @param context proves context to access the database
+     * @param filename contains the file name that contains all the questions and answers
+     * @return returns marks for the sections
+     * @throws IOException handles a file error from the file name
+     */
     private String getData(List<String> Data,List<String> instructions,Context context,String filename) throws IOException {
 
 
