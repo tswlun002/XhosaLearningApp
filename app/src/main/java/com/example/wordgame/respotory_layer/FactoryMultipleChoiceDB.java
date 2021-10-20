@@ -11,18 +11,28 @@ import java.util.List;
 
 public class FactoryMultipleChoiceDB {
     private final MultipleChoiceDao multipleChoiceDao;
-    private final LiveData<List<MultipleChoice>> questions;
+    private final LiveData<List<MultipleChoice>> questionsLevelOne,questionsLevelTwo
+            ,questionsLevelThree;
     public FactoryMultipleChoiceDB(Application application){
         WordGameDB MQCDB = WordGameDB.getInstanceWordGameDb(application);
 
         multipleChoiceDao = MQCDB.multipleChoiceDao();
-        questions = multipleChoiceDao.getAll();
+        questionsLevelOne = multipleChoiceDao.loadLevelOne();
+        questionsLevelThree= multipleChoiceDao.loadLevelThree();
+        questionsLevelTwo= multipleChoiceDao.loadLevelTwo();
 
     }
 
-    public LiveData<List<MultipleChoice>> getQuestions() {
-        return questions;
+    public LiveData<List<MultipleChoice>> getQuestionsLevelOne() {
+        return questionsLevelOne;
     }
+    public LiveData<List<MultipleChoice>> getQuestionsLevelTwo() {
+        return questionsLevelTwo;
+    }
+    public LiveData<List<MultipleChoice>> getQuestionsLevelThree() {
+        return questionsLevelThree;
+    }
+
 
     public  void insert(MultipleChoice multipleChoice){
         new insertHandler(multipleChoiceDao).execute(multipleChoice);

@@ -11,30 +11,35 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wordgame.R;
+import com.example.wordgame.model_layer.TrueFalseGame;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
  * Class helps to inflate content into Listview of  Play
  * Subclass of ArrayAdapter<String>
  */
-public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Holder> {
-        /**
+public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Holder> implements OnExtractResults {
+
+
+    /**
          * @serialField heading  list of headings of lessons
          * @serialField lesson  list of lessons
          * @serialField context  of fragment PlayFragment
          */
         private List<String> questions;
         private final List<Bitmap> figures = new ArrayList<>() ;
-        private final List<String> answers = new ArrayList<>() ;
+        private final List<View> answers = new ArrayList<>() ;
         private final Context context;
         private final int  layout;
         private  int size;
@@ -42,6 +47,7 @@ public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Hold
         private final List<Integer>  colors = new ArrayList<>();
         private  final  int [] buttonColors = {Color.BLUE,Color.GREEN};
         private final OnTrueFalseQuestion onTruefalse;
+        private List<TrueFalseGame> trueFalse;
 
 
         /**
@@ -94,7 +100,7 @@ public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Hold
             viewHolder.True.setBackgroundColor(getColors().get(position*2));
             viewHolder.False.setBackgroundColor(getColors().get(position*2+1));
             viewHolder.picView.setImageBitmap(figures.get(position));
-            viewHolder.question.setText(questions.get(position));
+            viewHolder.question.setText("Picture is called "+questions.get(position)+" ?");
             viewHolder.page.setText((position+1)+"/"+ questions.size()+"");
             holder.setNumberOfQuestions(questions.size()+65);
 
@@ -108,8 +114,10 @@ public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Hold
      * @param questionsList is the data of TrueFalse being set
      * @param pictures  is list of url of the pictures
      */
-    public void setData(List<String> questionsList, List<String> pictures) throws IOException {
+    public void setData(List<String> questionsList, List<String> pictures,
+                        List<TrueFalseGame> falseGame) throws IOException {
            questions =questionsList;
+           trueFalse = falseGame;
            for(String picUrl : pictures){
                new LoadImage().execute(picUrl);
            }
@@ -117,7 +125,7 @@ public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Hold
 
     }
 
-    /**viewHolder
+    /**view Holder
      * generate initial list of colors of buttons for all questions
      * List button is 2 times activity questions because each question contains two buttons
      * All colors  initial are set to zero
@@ -145,6 +153,90 @@ public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Hold
      */
     private  List<Integer> getColors(){
         return  colors;
+    }
+
+    /**
+     *
+     * @return all views that contain answers
+     */
+    public List<View> getAnswers() {
+        return answers;
+    }
+
+    /**
+     *
+     * @return all questions for the activity
+     */
+    public List<String> getQuestions() {
+        return questions;
+    }
+
+    /**
+     *
+     * @return hash map of questions and user final answers
+     */
+    @Override
+    public HashMap<String, String> getUserAnswers() {
+        return getUserFinalAnswers();
+    }
+
+    /**
+     * Get all user  final answers
+     * @return user final answers mapped to questions
+     */
+    private  HashMap<String ,String> getUserFinalAnswers(){
+        HashMap<String,String > ans = new HashMap<>();
+
+        int count =0;
+        for(int i = 0 ; i < questions.size();i++){
+            count++;
+            if(colors.get(2*i)==Color.GREEN){
+                ans.put(questions.get(i),"true");
+            }else if(colors.get(2*i+1)==Color.GREEN){
+                ans.put(questions.get(i),"false");
+            }else {
+                ans.put(questions.get(i),"none");
+            }
+        }
+        //Toast.makeText(context, ans.size()+" apha "+count, Toast.LENGTH_SHORT).show();
+        return ans;
+    }
+
+    /**
+     *
+     * @return all game correct answer
+     */
+    @Override
+    public HashMap<String, String> getGameAnswers() {
+        return gameAnswers();
+    }
+
+    /**
+     * Generate all the game answers
+     * @return all game correct answer
+     */
+    private  HashMap<String, String> gameAnswers(){
+        HashMap<String ,String> ans = new HashMap<>();
+        for(TrueFalseGame trueFalseGame: trueFalse){
+            String answer = trueFalseGame.getAnswers().
+                    substring(trueFalseGame.getAnswers().indexOf(",")+1);
+            ans.put(trueFalseGame.getQuestion(),answer.trim().toLowerCase());
+        }
+        return  ans;
+    }
+
+    /**
+     * get true false information such id, level and total marks
+     * @return concatenated true false game id, level and total marks
+     */
+    @Override
+    public String getGameInformation() {
+        String trueFalseGame="";
+        for(TrueFalseGame trueFalseGame1: trueFalse){
+           trueFalseGame =trueFalseGame1.toString();
+           break;
+        }
+        return trueFalseGame;
     }
 
     /**
@@ -256,14 +348,14 @@ public class TrueFalseAdapter extends RecyclerView.Adapter<TrueFalseAdapter.Hold
                     notifyChanges();
                     if(view.getId()==R.id.trueButton) {
                         onTruefalse.trueButton(view, pos);
-                        onTruefalse.StoreAnswer(answers);
+                        //.StoreAnswer(answers);
                         setColor(pos*2,buttonColors[onTruefalse.getColor()]);
                         setColor(pos*2+1,buttonColors[0]);
 
                     }
                     else if(view.getId()==R.id.falseButton) {
                         onTruefalse.falseButton(view, pos);
-                        onTruefalse.StoreAnswer(answers);
+                        //onTruefalse.StoreAnswer(answers);
                         setColor(pos*2+1,buttonColors[onTruefalse.getColor()]);
                         setColor(pos*2,buttonColors[0]);
                     }else {}

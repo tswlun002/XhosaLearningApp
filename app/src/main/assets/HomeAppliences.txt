@@ -1,0 +1,16 @@
+A meal ; Isidlo
+Beverages ; Drinks Isiselo
+Supper ; Isidlo sangokuhlwa
+Lunch ; Isidlo sasemini
+Dinner ; Isidlo sasemvakwemini
+Kitchen ; Igumbi lokuphekela('Ekhitshini')
+Spoon ; Icephe
+Pot ; Imbiza
+table ; itafile
+chair ; isitulo
+window ; ifestile
+television ; umabonakude
+radio ; unomathotholo
+light ; isibane
+dish ; isitya
+

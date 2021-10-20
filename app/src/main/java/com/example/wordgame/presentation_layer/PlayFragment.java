@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDestination;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -23,16 +25,11 @@ import com.example.wordgame.databinding.FragmentPlayBinding;
  */
 public class PlayFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     public static PlayFragment onplay;
     private Menu menu;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
     private @NonNull FragmentPlayBinding binding;
     private boolean tabs;
     public PlayFragment() {
@@ -47,7 +44,6 @@ public class PlayFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment PlayFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static PlayFragment newInstance(String param1, String param2) {
         PlayFragment fragment = new PlayFragment();
         Bundle args = new Bundle();
@@ -61,10 +57,6 @@ public class PlayFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -126,6 +118,24 @@ public class PlayFragment extends Fragment {
             public void onClick(View v) {
                 NavHostFragment.findNavController(PlayFragment.this)
                         .navigate(R.id.translationFragment);
+            }
+        });
+        /**
+         * handle click for  fab and navigate to score of the user
+         */
+        binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavDestination navDestination = Navigation.findNavController((MainActivity) requireActivity(),
+                        R.id.nav_host_fragment_content_main).getCurrentDestination();
+                if(navDestination.getId()==R.id.play)
+                NavHostFragment.findNavController(PlayFragment.this).
+                        navigate(R.id.action_play_to_proggress);
+                else {
+                    NavHostFragment.findNavController(PlayFragment.this).
+                            navigate(R.id.action_SecondFragment_to_proggress);
+                }
+
             }
         });
 

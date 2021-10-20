@@ -1,4 +1,4 @@
-package com.example.wordgame.presentation_layer;
+ package com.example.wordgame.presentation_layer;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -23,6 +23,9 @@ import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentLearnBinding;
 import com.example.wordgame.model_layer.Learn;
 import com.example.wordgame.model_layer.LearnViewModel;
+import com.example.wordgame.model_layer.User;
+import com.example.wordgame.model_layer.UserViewModel;
+import com.example.wordgame.model_layer.WordGameViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -40,11 +43,11 @@ public class LearnFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
     private LearnViewModel learnViewModel;
     private  LearnAdapter learn;
-    private final HashMap<String, List<String> >  data = new HashMap<>();
     private FragmentLearnBinding  binding;
+    private  List<Integer> userLevel = new ArrayList<>(2);
+    private WordGameViewModel wordGameViewModel;
 
     /**
      * Empty constructor
@@ -80,6 +83,7 @@ public class LearnFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         learnViewModel =  new ViewModelProvider(this).get(LearnViewModel.class);
+        wordGameViewModel = new ViewModelProvider(requireActivity()).get(WordGameViewModel.class);
 
 
     }
@@ -135,6 +139,7 @@ public class LearnFragment extends Fragment {
     }
 
     void filter (String query){
+        //Toast.makeText(requireContext(),query.toString()+" ",Toast.LENGTH_SHORT).show();
         learn.getFilter().filter(query);
     }
 
@@ -150,49 +155,82 @@ public class LearnFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentLearnBinding.inflate(inflater, container, false);
         setUpListView(binding);
-        getAllLearningMaterial(learnViewModel);
+        getUserInformation();
         return binding.getRoot();
 
 
     }
 
     /**
-     * get all learning material
+     * get all learning material for level one
      * @param learnViewModel holder of the learning
      */
-    private  void getAllLearningMaterial(LearnViewModel learnViewModel){
-        learnViewModel.getAllMaterial().observe(getViewLifecycleOwner(), new Observer<List<Learn>>() {
-            @Override
-            public void onChanged(List<Learn> learningMaterial) {
+    private  void getAllLearningMaterial(LearnViewModel learnViewModel,int level){
+           Toast.makeText(requireContext(),  level+ " Here on level 2", Toast.LENGTH_SHORT).show();
+           if (level == 1) {
+               learnViewModel.getAllNotesLevel1().observe(getViewLifecycleOwner(), new Observer<List<Learn>>() {
+                   @Override
+                   public void onChanged(List<Learn> learningMaterial) {
+                       setData(learningMaterial);
+                   }
+               });
+           } else if (level == 2) {
 
-                String key="";
-                for(Learn material:learningMaterial) {
-                    List<String> content = new ArrayList<>();
-                    key = material.getSection();
-                    content.add(material.getContent());
-
-                    if(data.containsKey(key)){
-                        content.addAll(Objects.requireNonNull(data.get(key)));
-                        content=content.stream().distinct().collect(Collectors.toList());
-                        data.put(key, content);
-                    }
-                    else {
-                        content=content.stream().distinct().collect(Collectors.toList());
-                        data.put(key, content);
-                    }
-
-                }
-                for( String key1 : data.keySet()) {
-                    learn.setData(data);
-                 }
-
-
-            }
-
-        });
-
+               learnViewModel.getAllNotesLevel2().observe(getViewLifecycleOwner(), new Observer<List<Learn>>() {
+                   @Override
+                   public void onChanged(List<Learn> learningMaterial) {
+                       setData(learningMaterial);
+                   }
+               });
+           } else if (level== 3) {
+               learnViewModel.getAllNotesLevel3().observe(getViewLifecycleOwner(), new Observer<List<Learn>>() {
+                   @Override
+                   public void onChanged(List<Learn> learningMaterial) {
+                       setData(learningMaterial);
+                   }
+               });
+           }
 
     }
+
+    /**
+     * Get user information
+     * User user level to get all the material user qualify for
+     */
+    private void getUserInformation(){
+      wordGameViewModel.getUserLevel().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+          @Override
+          public void onChanged(Integer integer) {
+              getAllLearningMaterial(learnViewModel,integer);
+          }
+      });
+    }
+
+    private void setData(List<Learn> learningMaterial){
+        String key="";
+        HashMap<String, List<String> >  data = new HashMap<>();
+        int count =0;
+        for(Learn material:learningMaterial) {
+            count++;
+            List<String> content = new ArrayList<>();
+            key = material.getSection();
+            content.add(material.getContent());
+
+            if(data.containsKey(key)){
+                content.addAll(Objects.requireNonNull(data.get(key)));
+                content=content.stream().distinct().collect(Collectors.toList());
+                data.put(key, content);
+            }
+            else {
+                content=content.stream().distinct().collect(Collectors.toList());
+                data.put(key, content);
+            }
+
+        }
+        Toast.makeText(requireContext(),count+"",Toast.LENGTH_LONG).show();
+        learn.setData(data);
+    }
+
     /**
      * set up List view with data content
      * @param binding  FragmentLearnBinding
@@ -201,7 +239,7 @@ public class LearnFragment extends Fragment {
     private  void setUpListView(FragmentLearnBinding binding){
 
 
-        learn = new LearnAdapter(requireContext(), R.layout.learn_adapter);
+       learn = new LearnAdapter(requireContext(), R.layout.learn_adapter);
         binding.learnIDListview.setAdapter(learn);
         binding.learnIDListview.setLayoutManager(new LinearLayoutManager(requireContext()));
 

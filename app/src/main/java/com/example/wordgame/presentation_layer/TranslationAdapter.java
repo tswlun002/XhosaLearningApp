@@ -2,31 +2,47 @@ package com.example.wordgame.presentation_layer;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wordgame.R;
+import com.example.wordgame.model_layer.TranslationGame;
 
-public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.Holder> {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
 
-    private final String [] questions;
+public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.Holder> implements OnExtractResults {
+
+    private final List<String> questions = new ArrayList<>();
+    private final List<Integer> totalNumberOfHints = new ArrayList<>();
+    private final HashMap<String, String[]> hintsData = new HashMap<>();
     @SuppressLint("StaticFieldLeak")
     private final Context context;
     private final int  layout ;
-    private static  OnHints onHints;
-    private  static  LayoutInflater inflater;
+    private  OnHints onHints;
+    private   LayoutInflater inflater;
     private   Holder holder;
+    private int size=0;
+    private final List<String>userEditText  = new ArrayList<>();
+    private List<TranslationGame> translationGame;
 
-    public TranslationAdapter(@NonNull Context context, String[] question, int resource) {
+
+    public TranslationAdapter(@NonNull Context context, int resource) {
         this.context=context;
         this.layout=resource;
-        this.questions=question;
         onHints =new HintHandler();
 
     }
@@ -43,23 +59,148 @@ public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         inflater = LayoutInflater.from(context);
         View view = inflater.inflate(layout,parent,false);
-       holder=  new Holder(view);
+       holder =  new Holder(view);
        return holder;
     }
 
+    /**
+     * Bind user data
+     * @param viewHolder   holds view of translation
+     * @param position of the view in the recycle view
+     */
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull Holder viewHolder, int position) {
-        viewHolder.descriptionView.setText(questions[position]);
-        viewHolder.pageNumber.setText((position+1)+"/"+questions.length);
+        viewHolder.descriptionView.setText(questions.get(position));
+        viewHolder.pageNumber.setText((position+1)+"/"+getSize());
+        viewHolder.numberHints.setText("No of hints: " + totalNumberOfHints.get(position));
+        viewHolder.answerEditText.setText(userEditText.get(position));
+
+
+
     }
+
+    /**
+     * set data for the game from database
+     * @param data being set
+     * @param translationGameList is the list of instance of TranslationGame
+     */
+
+    void setData(HashMap<String,String> data,List<TranslationGame>translationGameList){
+        translationGame =translationGameList;
+        for(Object key: data.keySet().toArray()){
+            questions.add(key.toString());
+            String [] list = data.get(key.toString()).split(",");
+            hintsData.put(key.toString(),list);
+        }
+        setSize(data.size());
+        generateTotalHints();
+        initEditText();
+        notifyDataSetChanged();
+
+    }
+
+    /**
+     * hint for user
+     */
+    private void generateTotalHints(){
+        for (String question : questions) {
+            int size = Objects.requireNonNull(hintsData.get(question)).length;
+            totalNumberOfHints.add(size);
+        }
+    }
+
+    /**
+     * initialise the editText with full stop
+     */
+    private void initEditText()
+    {
+        for(int i=0; i<getSize();i++){
+            userEditText.add(0,".");
+        }
+    }
+
+    /**
+     * get user text from EditText
+     * @param position number the question
+     * @param text answer of the user
+     */
+    void setUserEditText(int position , String text)
+    {
+        userEditText.set(position,text);
+    }
+    /**
+
+     * @param value set size of questions
+     */
+    void setSize(int value){
+        size = value;
+    }
+
+    /**
+     *
+     * @return size of the question
+     */
+    int getSize(){
+        return size;
+    }
+
     /**
      * number of elements to inflated into listview
      * @return number of the element inflated
      */
     @Override
     public int getItemCount() {
-        return questions.length ;
+        return getSize() ;
+    }
+
+    @Override
+    public HashMap<String, String> getUserAnswers() {
+
+        HashMap<String ,String> hash = new HashMap<>();
+        int count=0;
+        for(String answer :userEditText) {
+            if(!(answer.trim().length() <= 1)) {
+                hash.put(questions.get(count).trim().toLowerCase(),
+                        answer.trim().toUpperCase());
+                count++;
+            }
+            else{
+                 hash.put(questions.get(count),"none");
+                 count++;
+            }
+
+        }
+        return hash;
+    }
+
+    /**
+     * @return game answers were given in the game
+     */
+    @Override
+    public HashMap<String, String> getGameAnswers() {
+        HashMap<String ,String> hash = new HashMap<>();
+        for(TranslationGame translationGame1:translationGame) {
+            String ans = translationGame1.getAnswers().trim().toUpperCase();
+            String que =translationGame1.getQuestion().trim().toLowerCase();
+            hash.put(que, ans);
+        }
+
+        return hash;
+    }
+
+    /**
+     * get  id , level and total marks of the game
+     * @return the string information of the  game
+     */
+    @Override
+    public String getGameInformation() {
+        String infor ="";
+        for ( TranslationGame translationGame:translationGame) {
+            infor = translationGame.toString();
+        }
+        return infor;
+
     }
 
 
@@ -69,6 +210,7 @@ public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.
      class  Holder extends  RecyclerView.ViewHolder{
         TextView descriptionView,pageNumber, numberHints;
         Button hints;
+        EditText answerEditText;
         public Holder(@NonNull View itemView) {
             super(itemView);
 
@@ -76,8 +218,9 @@ public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.
             pageNumber = itemView.findViewById(R.id.pageNo);
             hints = itemView.findViewById(R.id.hintButton);
             numberHints = itemView.findViewById(R.id.noHintsTextView);
+            answerEditText = itemView.findViewById(R.id.transAnswerEditText);
             numberHints.setClickable(false);
-
+            handleEditText();
             hints.setOnClickListener(new View.OnClickListener() {
                 /**
                  * notify changes
@@ -88,12 +231,45 @@ public class TranslationAdapter extends RecyclerView.Adapter<TranslationAdapter.
                 @Override
                 public void onClick(View view) {
                     notifyChanges();
-                    onHints.onRequestHint(inflater,view,getLayoutPosition());
-                    onHints.updateNumberHints(numberHints);
+                    int position = getLayoutPosition();
+                    String key = questions.get(position);
+                    onHints.onRequestHint(inflater,view,totalNumberOfHints.get(position),
+                            position,hintsData.get(key));
+                    onHints.updateNumberHints(totalNumberOfHints,position);
+                    notifyDataSetChanged();
                 }
             });
 
         }
+
+        /***
+         * handle typing in the EditText
+         * Notify recycle view as user type the message for binding
+         */
+        void handleEditText(){
+            final StringBuilder[] stringBuilder = new StringBuilder[1];
+            answerEditText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    stringBuilder[0] = new StringBuilder();
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                       if(s!=null){
+                           stringBuilder[0].append(s);
+                       }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    setUserEditText(getLayoutPosition(),stringBuilder[0].toString());
+
+                }
+
+            });
+        }
+
 
         /**
          * notify holder about changes

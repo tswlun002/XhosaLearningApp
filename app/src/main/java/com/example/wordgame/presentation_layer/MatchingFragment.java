@@ -11,14 +11,19 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentMatchingBinding;
-import com.example.wordgame.model_layer.LearnViewModel;
 import com.example.wordgame.model_layer.Matching;
 import com.example.wordgame.model_layer.MatchingViewModel;
+import com.example.wordgame.model_layer.WordGameViewModel;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,27 +32,17 @@ import java.util.List;
  */
 public class MatchingFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-    OnMatchingViewHandler onMatchingViewHandler;
+    private  OnMatchingViewHandler onMatchingViewHandler;
+    private OnExtractResults onExtractResults;
     private FragmentMatchingBinding binding;
     private  LayoutInflater inflater;
     private MatchingViewModel matchingViewModel;
-    //words to generate questions
-    private String [] myEngWordsArr = {"dog", "sheep", "goat", "horse"};
-    private String [] xhosaTransWordArr =  {
-            "inja", "igusha", "ibhokhwe",
-            "ihashe","icephe","isitya",
-            "injana","amanzi"
-    };
-
-    //ids of textViews and edit texts
+    private WordGameViewModel wordGameViewModel;
+    private  MatchingViewHandler matchingViewHandler;
+    //private final User user = MainActivity.user;
 
 
     public MatchingFragment() {
@@ -77,13 +72,8 @@ public class MatchingFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-        /*matchingViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.
-                getInstance(this.requireActivity().getApplication())).get(MatchingViewModel.class);*/
         matchingViewModel = new ViewModelProvider(this).get(MatchingViewModel.class);
+        wordGameViewModel = new ViewModelProvider(requireActivity()).get(WordGameViewModel.class);
     }
 
     /**
@@ -95,24 +85,90 @@ public class MatchingFragment extends Fragment {
 
         binding = FragmentMatchingBinding.inflate(inflater, container, false);
         this.inflater =inflater;
-        MatchingViewHandler matchingViewHandler = new MatchingViewHandler(binding.getRoot());
+        matchingViewHandler = new MatchingViewHandler(binding.getRoot());
         try {
             onMatchingViewHandler =matchingViewHandler;
+            onExtractResults =matchingViewHandler;
+
         }catch (ClassCastException  e){
             Toast.makeText(requireContext(), "Can't cast matchingViewHandler to  onMatchingViewHandler",
                     Toast.LENGTH_SHORT).show();;
         }
+        //setData(matchingViewHandler,matchingViewModel,level);
+        getUserInformation();
 
-        matchingViewModel.getGameMaterial().observe(getViewLifecycleOwner(), new Observer<List<Matching>>() {
-            @Override
-            public void onChanged(List<Matching> matchings) {
-                Toast.makeText(requireContext(), matchings.size()+"",  Toast.LENGTH_SHORT).show();
-                matchingViewHandler.setData(matchings);
-            }
-        });
         return binding.getRoot();
 
     }
+
+    /**
+     * get user id for matching3.txt and setting it to access each level.
+     * user that id to store the average grades for the current level
+     */
+    private void getUserInformation(){
+        wordGameViewModel.getUserLevel().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                setData(matchingViewModel,matchingViewHandler,integer);
+            }
+        });
+    }
+    private void setData(MatchingViewModel matchingViewModel,MatchingViewHandler matchingViewHandler,int level){
+        if(level==1) {
+            matchingViewModel.getQuestionsLevelOne().observe(getViewLifecycleOwner(), new Observer<List<Matching>>() {
+                @Override
+                public void onChanged(List<Matching> matching) {
+                        setData(matching,matchingViewHandler);
+                }
+            });
+        }else if(level ==2) {
+            matchingViewModel.getQuestionsLevelTwo().observe(getViewLifecycleOwner(), new Observer<List<Matching>>() {
+                @Override
+                public void onChanged(List<Matching> matching) {
+                    setData(matching,matchingViewHandler);
+                }
+            });
+        }else if(level ==3){
+            matchingViewModel.getQuestionsLevelThree().observe(getViewLifecycleOwner(), new Observer<List<Matching>>() {
+                @Override
+                public void onChanged(List<Matching> matching) {
+                        setData(matching,matchingViewHandler);
+                }
+            });
+        }
+    }
+
+    /**
+     * sets the data then randomise it before access for use
+     * @param matching gets data from the database
+     */
+    private void setData(List<Matching> matching,MatchingViewHandler matchingViewHandler){
+       if(matching.size()>0) {
+            int numberOfQuestions = 8;
+            List<Matching> newList = randomiseData(matching, numberOfQuestions);
+            matchingViewHandler.setData(newList);
+        }
+    }
+    /**
+     * Randomise questions for game
+     * @param matchingList list of game material of matching3.txt game
+     * @param numberQuestions is the number of questions for game
+     * @return new list of questions of matching3.txt game
+     */
+    private  List<Matching> randomiseData(List<Matching> matchingList, int numberQuestions){
+        Random rand = new Random();
+        List<Matching> newList = new ArrayList<>();
+        for (int i = 0; i < numberQuestions; i++) {
+            if(matchingList.size()>0) {
+                int randomIndex = rand.nextInt(matchingList.size());
+                newList.add(matchingList.get(randomIndex));
+                matchingList.remove(randomIndex);
+            }
+        }
+
+        return newList;
+    }
+
 
     /**
      * created fragment
@@ -120,11 +176,58 @@ public class MatchingFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.button.setOnClickListener(new SubmitHandler(inflater,R.id.action_matchingFragment_to_play,binding.getRoot()));
+        wordGameViewModel = new ViewModelProvider(requireActivity()).get(WordGameViewModel.class);
+        handClick(view);
+        handleFab();
         ((MainActivity) requireActivity()).backUpPressed(MatchingFragment.this,R.id.action_matchingFragment_to_play);
         handleDragDrop();
     }
 
+    /**
+     *  handles submit button click
+     *  Then submit user results  using class SubmitHandler
+     *  Navigate to level results fragment to show user results
+     * @param view of this fragment
+     */
+    private void handClick(View view){
+        binding.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int id  =R.id.action_results_CurrentActivity_to_matchingFragment;
+                HashMap<String ,String> userAnswer = onExtractResults.getUserAnswers();
+                HashMap<String ,String> gameAnswer = onExtractResults.getGameAnswers();
+                Toast.makeText(requireContext(), userAnswer.size()+"",Toast.LENGTH_SHORT).show();
+                OnSubmit onSubmit =new SubmitHandler(inflater,id,binding.getRoot(), userAnswer,gameAnswer);
+                onSubmit.onSubmit(v,inflater);
+                new LevelResultsHandler(requireContext(),MainActivity.userViewModel,wordGameViewModel,
+                        getViewLifecycleOwner()).shareData(onSubmit,onExtractResults,userAnswer, "matching");
+                Navigation.findNavController(view).
+                        navigate(R.id.action_matchingFragment_to_results_CurrentActivity);
+
+
+            }
+        });
+    }
+
+    /**
+     * handle fab button click
+     * Navigate to progress window to display user results
+     */
+    private void handleFab(){
+        binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(MatchingFragment.this).
+                        navigate(R.id.action_matchingFragment_to_proggress);
+
+            }
+        });
+    }
+
+    /**
+     * handle drag and drop of the views
+     */
     void handleDragDrop(){
         onMatchingViewHandler.viewClicked(binding.xhosaMatchTextView1);
         onMatchingViewHandler.viewClicked(binding.xhosaMatchTextView2);

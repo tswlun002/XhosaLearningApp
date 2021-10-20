@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/results_nav_host"
+    app:startDestination="@id/averageResults2">
+
+    <fragment
+        android:id="@+id/averageResults2"
+        android:name="com.example.wordgame.presentation_layer.AverageResults"
+        android:label="fragment_average_results"
+        tools:layout="@layout/fragment_average_results" >
+        <action
+            android:id="@+id/action_averageResults2_to_levelOneResults3"
+            app:destination="@id/levelOneResults3" />
+        <action
+            android:id="@+id/action_averageResults2_to_levelThreeResults4"
+            app:destination="@id/levelThreeResults4" />
+        <action
+            android:id="@+id/action_averageResults2_to_levelTwoResults3"
+            app:destination="@id/levelTwoResults3" />
+    </fragment>
+    <fragment
+        android:id="@+id/levelOneResults3"
+        android:name="com.example.wordgame.presentation_layer.LevelOneResults"
+        android:label="fragment_level_one_results"
+        tools:layout="@layout/fragment_level_one_results" >
+        <action
+            android:id="@+id/action_levelOneResults3_to_averageResults2"
+            app:destination="@id/averageResults2" />
+        <action
+            android:id="@+id/action_levelOneResults3_to_levelTwoResults3"
+            app:destination="@id/levelTwoResults3" />
+        <action
+            android:id="@+id/action_levelOneResults3_to_levelTwoResults32"
+            app:destination="@id/levelTwoResults3" />
+        <action
+            android:id="@+id/action_levelOneResults3_to_levelTwoResults33"
+            app:destination="@id/levelTwoResults3" />
+        <action
+            android:id="@+id/action_levelOneResults3_to_levelThreeResults4"
+            app:destination="@id/levelThreeResults4" />
+    </fragment>
+    <fragment
+        android:id="@+id/levelTwoResults3"
+        android:name="com.example.wordgame.presentation_layer.LevelTwoResults"
+        android:label="fragment_level_two_results"
+        tools:layout="@layout/fragment_level_two_results" >
+        <action
+            android:id="@+id/action_levelTwoResults3_to_averageResults2"
+            app:destination="@id/averageResults2" />
+        <action
+            android:id="@+id/action_levelTwoResults3_to_levelOneResults3"
+            app:destination="@id/levelOneResults3" />
+        <action
+            android:id="@+id/action_levelTwoResults3_to_levelThreeResults4"
+            app:destination="@id/levelThreeResults4" />
+    </fragment>
+    <fragment
+        android:id="@+id/levelThreeResults4"
+        android:name="com.example.wordgame.presentation_layer.LevelThreeResults"
+        android:label="fragment_level_three_results"
+        tools:layout="@layout/fragment_level_three_results" >
+        <action
+            android:id="@+id/action_levelThreeResults4_to_averageResults2"
+            app:destination="@id/averageResults2" />
+        <action
+            android:id="@+id/action_levelThreeResults4_to_levelTwoResults3"
+            app:destination="@id/levelTwoResults3" />
+        <action
+            android:id="@+id/action_levelThreeResults4_to_levelOneResults3"
+            app:destination="@id/levelOneResults3" />
+    </fragment>
+</navigation>

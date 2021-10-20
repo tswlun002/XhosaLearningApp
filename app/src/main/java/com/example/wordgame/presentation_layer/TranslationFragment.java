@@ -4,15 +4,33 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ComponentActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentTranslationBinding;
+import com.example.wordgame.model_layer.LevelResults;
+import com.example.wordgame.model_layer.MatchingViewModel;
+import com.example.wordgame.model_layer.TranslationGame;
+import com.example.wordgame.model_layer.TranslationViewModel;
+import com.example.wordgame.model_layer.TrueFalseGame;
+import com.example.wordgame.model_layer.User;
+import com.example.wordgame.model_layer.WordGameViewModel;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,20 +42,18 @@ public class TranslationFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private String mParam1;
-    private String mParam2;
     private OnSubmit submit;
     public TranslationFragment() {
         // Required empty public constructor
     }
-    private final String [] questions={
-        "Molo sisi",
-         "Usisi uyapheka",
-         "Umama uphangele",
-         "Hlamab izandla Lulu"
-    };
+    TranslationViewModel translationViewModel;
+    TranslationAdapter translationController;
+    HashMap<String, String> data  = new HashMap<>();
     private  FragmentTranslationBinding binding;
     private  LayoutInflater inflater;
+    private WordGameViewModel wordGameViewModel;
+    //private final  User user = MainActivity.user;
+
 
     /**
      * Use this factory method to create a new instance of
@@ -60,20 +76,18 @@ public class TranslationFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        translationViewModel = new ViewModelProvider(this).get(TranslationViewModel.class);
+        wordGameViewModel = new ViewModelProvider(requireActivity()).get(WordGameViewModel.class);
     }
 
 
 
     /**
-     * create view of  Tralation fragment
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
-     * @return
+     * create view of  Translation fragment
+     * @param inflater of Translation fragment
+     * @param container of Translation fragment
+     * @param savedInstanceState of Translation fragment
+     * @return  view of Translation fragment
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,18 +97,87 @@ public class TranslationFragment extends Fragment {
         binding= FragmentTranslationBinding.inflate(inflater, container, false);
         this.inflater =inflater;
         setUpListView(binding);
+        getUserInformation();
+
+
         return binding.getRoot();
     }
     /**
+     * Get user information such as level
+     * Use the user level to set data for that level
+     */
+    private void getUserInformation(){
+        wordGameViewModel.getUserLevel().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                setData(translationViewModel,integer);
+            }
+        });
+    }
+    void setData(TranslationViewModel translationViewModel,int level ){
+        if(level ==1) {
+            translationViewModel.getQuestionsLevelOne().observe(getViewLifecycleOwner(), new Observer<List<TranslationGame>>() {
+                @Override
+                public void onChanged(List<TranslationGame> translationGames) {
+                   setData(translationGames);
+                }
+            });
+        }else if(level ==2){
+            translationViewModel.getQuestionsLevelTwo().observe(getViewLifecycleOwner(), new Observer<List<TranslationGame>>() {
+                @Override
+                public void onChanged(List<TranslationGame> translationGames) {
+                    setData(translationGames);
+                }
+            });
+        }
+        else  if(level ==3){
+            translationViewModel.getQuestionsLevelThree().observe(getViewLifecycleOwner(), new Observer<List<TranslationGame>>() {
+                @Override
+                public void onChanged(List<TranslationGame> translationGames) {
+                    setData(translationGames);
+                }
+            });
+        }
+    }
+
+    private  void setData(List<TranslationGame> translationGames){
+        int numberOfQuestions = 5;
+        List<TranslationGame> translationGameList = randomiseData(translationGames, numberOfQuestions);
+        for (TranslationGame translationGame : translationGameList) {
+            data.put(translationGame.getQuestion(), translationGame.getHints());
+        }
+        translationController.setData(data, translationGameList);
+    }
+    /**
+     * Randomise questions for game
+     * @param translationGameList list of game material of translation  game
+     * @param numberQuestions is the number of questions for game
+     * @return new list of questions of translation game
+     */
+    private  List<TranslationGame> randomiseData(List<TranslationGame> translationGameList, int numberQuestions){
+        Random rand = new Random();
+        List<TranslationGame> newList = new ArrayList<>();
+        for (int i = 0; i < numberQuestions; i++) {
+             if(translationGameList.size()>0) {
+                 int randomIndex = rand.nextInt(translationGameList.size());
+                 newList.add(translationGameList.get(randomIndex));
+                 translationGameList.remove(randomIndex);
+             }
+        }
+
+        return newList;
+    }
+    /**
      * created view of translation fragment
-     * @param view
-     * @param savedInstanceState
+     * @param view of Translation fragment
+     * @param savedInstanceState of Translation fragment
      */
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.submitButton.setOnClickListener(new SubmitHandler(inflater,R.id.action_translationFragment_to_play,binding.getRoot()));
+        handleSubmit(view);
+        handleFab();
         ((MainActivity) requireActivity()).backUpPressed(TranslationFragment.this,R.id.action_translationFragment_to_play);
     }
 
@@ -104,9 +187,43 @@ public class TranslationFragment extends Fragment {
      */
     private  void setUpListView(FragmentTranslationBinding binding){
 
-        TranslationAdapter translationController = new TranslationAdapter(requireContext(), questions,  R.layout.translation_adapter);
+        translationController = new TranslationAdapter(requireContext(), R.layout.translation_adapter);
         binding.tranlationListviewID.setAdapter(translationController);
         binding.tranlationListviewID.setLayoutManager(new LinearLayoutManager(requireContext()));
+    }
+
+
+    private void handleSubmit(View view){
+        OnExtractResults onExtractResults = translationController;
+        binding.submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int id  = R.id.action_results_CurrentActivity_to_translationFragment;
+                HashMap<String,String> userAnswer =onExtractResults.getUserAnswers();
+                HashMap<String,String>gameAnswer  = onExtractResults.getGameAnswers();
+                OnSubmit onSubmit = new SubmitHandler(inflater,id,view,userAnswer,gameAnswer);
+                onSubmit.onSubmit(view,inflater);
+                new LevelResultsHandler(requireContext(),MainActivity.userViewModel,wordGameViewModel,
+                        getViewLifecycleOwner()).shareData(onSubmit,onExtractResults,userAnswer,"translation");
+                Navigation.findNavController(view).
+                        navigate(R.id.action_translationFragment_to_results_CurrentActivity);
+
+            }
+        });
+    }
+
+    /**
+     * sets a popup to progress view
+     */
+    private void handleFab(){
+        binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(TranslationFragment.this).
+                        navigate(R.id.action_translationFragment_to_proggress);
+
+            }
+        });
     }
 
 }

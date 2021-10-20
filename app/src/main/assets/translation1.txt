@@ -1,0 +1,24 @@
+22
+1;Choose the correct word for given term or sentence description
+eyes ; amehlo $ ame... , ame..o , ameh.o
+eyebrowse ; amashiya  $ ama..... , amas...a , amas..ya
+forehead ; ibunzi $ ib.... , ib...i , ib..zi
+elbow ; ingqiniba $ ingq..... , ingq....a , ingqi..ba
+shoulder ; igxalaba $ igxa.... , igxa...a , igxa..ba
+arm ; ingalo $ in.... , ing..o , inga..
+stomach ; isisu $ is... , is..u , i..su
+thigh ; ithanga $ ithanga , ithanga , ithanga
+calf ; isiquluba $ isiquluba , isiquluba , isiquluba
+knee ; idolo $ idolo , idolo , idolo
+toes ; iinzwane $ iinzwane , iinzwane , iinzwane
+clan name ; isiduko $ is....o, is...ko, isi..ko
+Summer ; iHlobo $ iH.... , iH...o , iHl..o
+Autumn ; uKwindla $ uK.....a, uK....la, uKw..dla
+June ; eyeSilimela $ eyeSi...... , eyeSi.....a , eyeSil...la
+July ; EyeKhala $ EyeK...., EyeK...a, EyeKh..a
+August ; EyeThupha $ EyeT..... , EyeT....a , EyeTh...a
+Tuesday ; lwesibini $ lwesi...i, lwesib..., lwesi.i.i
+North ; uMntla $ uMn... , uM...a , uMn.la
+East ; eMpuma $ eMpuma , eMpuma , eMpuma
+South ; uMzantsi $ uMza....i , uMza.t.i, uMz...si
+West ; eNtshona $ eNts.... , eNts...a , eNts..na

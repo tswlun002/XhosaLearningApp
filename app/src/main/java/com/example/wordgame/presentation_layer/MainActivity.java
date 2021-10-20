@@ -9,7 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -18,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.ActivityMainBinding;
+import com.example.wordgame.model_layer.User;
+import com.example.wordgame.model_layer.UserViewModel;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,16 +34,17 @@ public class MainActivity extends AppCompatActivity {
      */
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+    public static UserViewModel userViewModel;
 
     /**
      * creates main activity  ,set up navigation controller
+     * Initialise the  userViewModel so that is accessed though out the application
      * @param savedInstanceState of main activity
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // upon click allow the fragment to get another fragment
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -53,7 +58,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 
     /**
      * inflate created menu in a tool bar (drop down menu)
@@ -76,10 +84,13 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        NavDestination navDestination = Navigation.findNavController(this,
+                R.id.nav_host_fragment_content_main).getCurrentDestination();
 
-            if( item.getItemId() == R.id.progressIdItem)
+            if( item.getItemId() == R.id.progressIdItem & navDestination.getId()==R.id.FirstFragment)
                 Navigation.findNavController(this,R.id.nav_host_fragment_content_main).navigate(R.id.action_FirstFragment_to_proggress);
-            else if(item.getItemId()==R.id.homeIdItem)
+            else if(item.getItemId()==R.id.homeIdItem & navDestination.getId()!=R.id.FirstFragment)
+
                 Navigation.findNavController(this,R.id.nav_host_fragment_content_main).navigate(R.id.action_proggress_to_FirstFragment);
             else if(item.getItemId()==R.id.instructions){
                 Instructions instructions = new Instructions(this , getLayoutInflater());

@@ -49,4 +49,13 @@
     <string name="type_translation">Type translation</string>
     <string name="avg_score">Avg score</string>
     <string name="results">Results</string>
+    <string name="level_one_results">Level One results >></string>
+    <string name="level_two_results">Level Two results >></string>
+    <string name="level_three_results">Level Three results >></string>
+    <string name="word_game_header">Word Game Header</string>
+    <string name="you_almost_there_keep_trying">You Almost there, keep trying!!</string>
+    <string name="average_results">Average results >></string>
+    <string name="word_game">Word Game</string>
+    <string name="nav_open_drawer">open navigation drawer</string>
+    <string name="nav_close_drawer">close navigation drawer</string>
 </resources>

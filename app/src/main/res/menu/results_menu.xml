@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/levelOneResults"
+        android:title="@string/level_one_results"
+        app:showAsAction="always|withText"
+
+        />
+    <item
+        android:id="@+id/levelTwoResults"
+        android:title="@string/level_two_results"
+        app:showAsAction="always|withText"
+
+        />
+    <item
+        android:id="@+id/levelThreeResults"
+        android:title="@string/level_three_results"
+        app:showAsAction="always|withText"
+
+        />
+
+</menu>

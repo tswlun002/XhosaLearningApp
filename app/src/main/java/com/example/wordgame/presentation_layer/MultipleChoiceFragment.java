@@ -7,21 +7,33 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentMultipleChoiceBinding;
+import com.example.wordgame.model_layer.LevelResults;
 import com.example.wordgame.model_layer.MultipleChoice;
 import com.example.wordgame.model_layer.MultipleChoiceViewModel;
+import com.example.wordgame.model_layer.TranslationGame;
+import com.example.wordgame.model_layer.TrueFalseGame;
+import com.example.wordgame.model_layer.TrueFalseViewModel;
+import com.example.wordgame.model_layer.User;
+import com.example.wordgame.model_layer.UserViewModel;
+import com.example.wordgame.model_layer.WordGameViewModel;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,8 +49,10 @@ public class MultipleChoiceFragment extends Fragment {
     HashMap<String,List<String>> data= new HashMap<>();
     private FragmentMultipleChoiceBinding binding ;
     private LayoutInflater inflater;
-
     private SubmitHandler submit;
+    //private final User user = MainActivity.user;
+    private OnExtractResults onExtractResults;
+    private WordGameViewModel wordGameViewModel;
     public MultipleChoiceFragment() {
         // Required empty public constructor
     }
@@ -65,6 +79,8 @@ public class MultipleChoiceFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        multipleChoiceViewModel = new ViewModelProvider(this).get(MultipleChoiceViewModel.class);
+       wordGameViewModel = new ViewModelProvider(requireActivity()).get(WordGameViewModel.class);
+
     }
 
     /**
@@ -81,9 +97,24 @@ public class MultipleChoiceFragment extends Fragment {
         this.inflater =inflater;
         View view =binding.getRoot();
         setUpRecycleView(binding,view);
-        setData(multipleChoiceViewModel);
+        onExtractResults =multipleChoiceController;
+        getUserInformation();
         setRecycleView();
         return  view;
+    }
+
+
+    /**
+     * Get user information such as level
+     * Use the user level to set data for that level
+     */
+    private void getUserInformation(){
+        wordGameViewModel.getUserLevel().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                setData(multipleChoiceViewModel,integer);
+            }
+        });
     }
 
     /**
@@ -92,28 +123,75 @@ public class MultipleChoiceFragment extends Fragment {
      * All data is then sent to Recycle view adapter
      * @param multipleChoiceViewModel is the view model instance of this fragment
      */
-    private  void setData(MultipleChoiceViewModel multipleChoiceViewModel){
-        multipleChoiceViewModel.getGameMaterial().observe(getViewLifecycleOwner(), new Observer<List<MultipleChoice>>() {
-            @Override
-            public void onChanged(List<MultipleChoice> multipleChoiceData) {
-                List<String> choices = new ArrayList<>();
-                int size = multipleChoiceData.size();
-
-                for(int i =0; i< size;i++) {
-                    MultipleChoice multipleChoice = multipleChoiceData.get(i);
-                    String question =multipleChoice.getQuestion();
-                    choices.add(multipleChoice.getChoiceOne());
-                    choices.add(multipleChoice.getChoiceTwo());
-                    choices.add(multipleChoice.getChoiceThree());
-                    choices.add(multipleChoice.getChoiceFour());
-                    data.put(question,choices);
-
+    private  void setData(MultipleChoiceViewModel multipleChoiceViewModel, int level){
+        if(level ==1) {
+            multipleChoiceViewModel.getQuestionsLevelOne().observe(getViewLifecycleOwner(), new Observer<List<MultipleChoice>>() {
+                @Override
+                public void onChanged(List<MultipleChoice> multipleChoices) {
+                    setData(multipleChoices);
                 }
-                multipleChoiceController.setData(data);
+            });
+        }else if(level==2){
+            multipleChoiceViewModel.getQuestionsLevelTwo().observe(getViewLifecycleOwner(), new Observer<List<MultipleChoice>>() {
+                @Override
+                public void onChanged(List<MultipleChoice> multipleChoices) {
+                    setData(multipleChoices);
+                }
+            });
+        }
+        else if(level ==3){
+            multipleChoiceViewModel.getQuestionsLevelThree().observe(getViewLifecycleOwner(), new Observer<List<MultipleChoice>>() {
+                @Override
+                public void onChanged(List<MultipleChoice> multipleChoices) {
+                    setData(multipleChoices);
+                }
+            });
+        }
 
+
+    }
+
+
+
+    private void  setData(List<MultipleChoice> multipleChoiceData){
+        List<String> choices ;
+        int numberOfQuestions =5;
+        List<MultipleChoice> multipleChoiceList = randomiseData(multipleChoiceData, numberOfQuestions);
+        int size = multipleChoiceList.size();
+
+        for(int i =0; i< size;i++) {
+            choices = new ArrayList<>();
+            MultipleChoice multipleChoice = multipleChoiceList.get(i);
+            String question =multipleChoice.getQuestion();
+            choices.add(multipleChoice.getChoiceOne());
+            choices.add(multipleChoice.getChoiceTwo());
+            choices.add(multipleChoice.getChoiceThree());
+            choices.add(multipleChoice.getChoiceFour());
+            data.put(question,choices);
+
+        }
+        multipleChoiceController.setData(data,multipleChoiceList);
+
+    }
+
+    /**
+     * Randomise questions for game
+     * @param multipleChoiceList list of game material of multiple choice  game
+     * @param numberQuestions is the number of questions for game
+     * @return new list of questions of multiple choice game
+     */
+    private  List<MultipleChoice> randomiseData(List<MultipleChoice> multipleChoiceList, int numberQuestions){
+        Random rand = new Random();
+        List<MultipleChoice> newList = new ArrayList<>();
+        for (int i = 0; i < numberQuestions; i++) {
+               if(multipleChoiceList.size()> 0){
+                int randomIndex = rand.nextInt(multipleChoiceList.size());
+                newList.add(multipleChoiceList.get(randomIndex));
+                multipleChoiceList.remove(randomIndex);
             }
-        });
+        }
 
+        return newList;
     }
 
     private void setRecycleView(){
@@ -137,10 +215,51 @@ public class MultipleChoiceFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.submit.setOnClickListener(new SubmitHandler(inflater,R.id.action_multipleChoiceFragment_to_play,binding.getRoot()));
+        handleSubmit(view);
+        handleFab();
         ((MainActivity) requireActivity()).backUpPressed(MultipleChoiceFragment.this,R.id.action_multipleChoiceFragment_to_play);
     }
 
+
+    /**
+     * helper method handle submit button events
+     * After submit clicked,
+     * Extract user answers and also game correct answers with their respective questions
+     * Grade the user answers
+     * Navigate to show activity results window
+     * And insert user score into database
+     * @param view view of this fragment
+     */
+    private void handleSubmit(View view){
+        binding.submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int id  = R.id.action_results_CurrentActivity_to_multipleChoiceFragment;
+                HashMap<String,String> userAnswer =onExtractResults.getUserAnswers();
+                HashMap<String,String>gameAnswer  = onExtractResults.getGameAnswers();
+                submit = new SubmitHandler(inflater, id, view, userAnswer, gameAnswer);
+                OnSubmit onSubmit =submit;
+                onSubmit.onSubmit(view,inflater);
+                UserViewModel userViewModel =MainActivity.userViewModel;
+                new LevelResultsHandler(requireContext(),userViewModel,wordGameViewModel,
+                        getViewLifecycleOwner()).shareData(onSubmit,onExtractResults,userAnswer,"multiple choice");
+                Navigation.findNavController(view).
+                        navigate(R.id.action_multipleChoiceFragment_to_results_CurrentActivity);
+
+            }
+        });
+    }
+
+    private void handleFab(){
+        binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(MultipleChoiceFragment.this).
+                        navigate(R.id.action_multipleChoiceFragment_to_proggress);
+
+            }
+        });
+    }
 
     /**
      * set binding to nul on destroy
@@ -150,6 +269,8 @@ public class MultipleChoiceFragment extends Fragment {
         super.onDestroyView();
         binding=null;
     }
+
+
 
 
 

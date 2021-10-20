@@ -1,0 +1,7 @@
+Money ; Imali
+In cash ; eziinkozo
+Cheque ; itsheke ?
+Coins ; imali eziinkozo
+Notes ; imali engamaphepa
+Expensive ; ixabisa kakhulu or iyabiza
+How much is .. ; Yimalini i..

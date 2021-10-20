@@ -1,0 +1,102 @@
+20
+2;Choose the correct word for given term or sentence description
+Left ; ekhohlo
+ekunene
+jika
+ekhohlo
+hamba
+Forward ; phambili
+jika
+phambili
+ekhohlo
+ekunene
+my sister ; dadewethu
+ubhuti
+dadewethu
+umama
+utata
+Money ; Imali
+eziinkozo
+Imali
+isonka
+amaphepha
+Cheque ; itsheke
+itsheke
+itshekhi
+isibane
+inja
+Coins ; imali eziinkozo
+imali engamaphepha
+imali eziinkozo
+imali engamagaqa
+imali esencwadini
+Notes ; imali engamaphepa
+isibunzi
+inja
+imali engamaphepa
+imali yencwadi
+bird ; intaka
+ihobe
+inkonjane
+intaka
+isibabula
+blood ; igazi
+ingozi
+igazi
+ububomvu
+isitulo
+book ; incwadi
+amaphepha
+incwadi
+amathole
+isihobe
+boy ; inkwenkwe
+intombazane
+usana
+inkwenkwe
+ikhehle
+peace ; xolo
+bulala
+xolo
+dubula
+jakela
+bus ; uduladula
+inqwelo ntaka
+uduladula
+inqwelo mafutha
+ihashe
+car ; moto
+ihashe
+ihagu
+moto
+ibhanoyi
+champion ; intshatsheli
+izizamva
+intshatsheli
+amagqilela
+isidlele
+child ; umntwana
+usana
+umntwana
+udadewethu
+umntakwethu
+baby ; umntwana
+umntwana
+isibunzi
+abantwana
+intombazana
+cliff ; iliwa
+intaba
+iliwa
+um-mango
+ithambeke
+near; kufutshane
+kude
+kufutshane
+phambili
+misa
+country ; ilizwe
+iphondo
+ilizwe
+isixeko
+ingingqi

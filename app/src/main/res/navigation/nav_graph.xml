@@ -85,6 +85,11 @@
             app:destination="@id/SecondFragment"
             app:popUpTo="@id/SecondFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_play_to_proggress"
+            app:destination="@id/proggress"
+            app:popUpTo="@id/proggress"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/proggress"
@@ -117,6 +122,11 @@
             app:destination="@id/results_CurrentActivity"
             app:popUpTo="@id/results_CurrentActivity"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_matchingFragment_to_proggress"
+            app:destination="@id/proggress"
+            app:popUpTo="@id/proggress"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/multipleChoiceFragment"
@@ -132,6 +142,11 @@
             android:id="@+id/action_multipleChoiceFragment_to_results_CurrentActivity"
             app:destination="@id/results_CurrentActivity"
             app:popUpTo="@id/results_CurrentActivity"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_multipleChoiceFragment_to_proggress"
+            app:destination="@id/proggress"
+            app:popUpTo="@id/proggress"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -149,6 +164,11 @@
             app:destination="@id/results_CurrentActivity"
             app:popUpTo="@id/results_CurrentActivity"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_trueFalseFragment_to_proggress"
+            app:destination="@id/proggress"
+            app:popUpTo="@id/proggress"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/translationFragment"
@@ -165,10 +185,15 @@
             app:destination="@id/results_CurrentActivity"
             app:popUpTo="@id/results_CurrentActivity"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_translationFragment_to_proggress"
+            app:destination="@id/proggress"
+            app:popUpTo="@id/proggress"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/results_CurrentActivity"
-        android:name="com.example.wordgame.presentation_layer.GameScore"
+        android:name="com.example.wordgame.presentation_layer.LevelResultsFragment"
         android:label="Exercise results"
         tools:layout="@layout/fragment_results__current_activity">
         <action
@@ -188,5 +213,19 @@
             android:id="@+id/action_results_CurrentActivity_to_translationFragment"
             app:destination="@id/translationFragment"
             app:popUpTo="@id/translationFragment" />
+        <action
+            android:id="@+id/action_results_CurrentActivity_to_play"
+            app:destination="@id/play"
+            app:popUpTo="@id/play"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_results_CurrentActivity_self"
+            app:destination="@id/results_CurrentActivity" />
     </fragment>
+
+    <action
+        android:id="@+id/startfrag_progress"
+        app:destination="@id/proggress"
+        app:popUpTo="@id/proggress" />
+
 </navigation>

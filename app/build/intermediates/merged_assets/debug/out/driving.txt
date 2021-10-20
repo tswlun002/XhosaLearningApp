@@ -1,0 +1,9 @@
+Turn ; jika
+Left ; ekhohlo
+Right ; ekunene
+Stop('stop the car' ); yima or 'misa'
+Go ; hamba
+Forward ; phambili
+Go forward ; bheka phambili
+Straight ahead ; phambili
+Gravel road ; indlela yomhlaba

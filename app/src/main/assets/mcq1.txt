@@ -1,0 +1,52 @@
+10
+1;Choose the correct word for given term or sentence description
+Monday;Mvulo
+Lwesibini
+Mgqibelo
+Mvulo
+Lwesihlanu
+Wednesday;Lwesithathu
+Lwesithathu
+Mgqibelo
+Mvulo
+Lwesihlanu
+Thursday;Lwesine
+Mgqibelo
+Mvulo
+LwesihlanuCawe
+Lwesine
+Friday;Lwesihlanu
+Mgqibelo
+Mvulo
+Lwesihlanu
+Lwesibini
+Saturday;Mgqibelo
+Lwesibini
+Mgqibelo
+Lwesihlanu
+Lwesibini
+black ; mnyama
+mnyama
+bomvu
+mhlophe
+mthubi
+Sunday;Cawe
+Lwesithathu
+Cawe
+Mvulo
+Lwesibini
+brown ; ntsundu
+luhlaza
+ntsundu
+bomvu
+mhlophe
+Turn ; jika
+ekhohlo
+jika
+ekunene
+hamba
+Tuesday;Lwesibini
+Lwesihlanu
+Lwesibini
+Mvulo
+Cawe

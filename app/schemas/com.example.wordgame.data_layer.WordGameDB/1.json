@@ -1,0 +1,114 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "6eeb629ede4ef150074e394b43dd1bb8",
+    "entities": [
+      {
+        "tableName": "Learn",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`learnId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `level` INTEGER NOT NULL, `section` TEXT, `content` TEXT, `instruction` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "learnId",
+            "columnName": "learnId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "level",
+            "columnName": "level",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "section",
+            "columnName": "section",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "content",
+            "columnName": "content",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "instruction",
+            "columnName": "instruction",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "learnId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Matching",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`matchingId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `level` INTEGER NOT NULL, `tittle` TEXT, `instructions` TEXT, `questions` TEXT, `answers` TEXT, `totalMarks` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "matchingId",
+            "columnName": "matchingId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "level",
+            "columnName": "level",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tittle",
+            "columnName": "tittle",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "instructions",
+            "columnName": "instructions",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "questions",
+            "columnName": "questions",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "answers",
+            "columnName": "answers",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "totalMarks",
+            "columnName": "totalMarks",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "matchingId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6eeb629ede4ef150074e394b43dd1bb8')"
+    ]
+  }
+}

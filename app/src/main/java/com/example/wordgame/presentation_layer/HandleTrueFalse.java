@@ -59,8 +59,12 @@ public class HandleTrueFalse extends CreateKeys implements OnTrueFalseQuestion {
         return color;
     }
 
+    /**
+     * Store all user answer for multiple choice
+     * @param answers user answer for multiple choice
+     */
     @Override
-    public void StoreAnswer(List<String > answers) {
+    public void StoreAnswer(List<View > answers) {
         storeAnswer(answers);
     }
 }

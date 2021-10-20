@@ -18,6 +18,9 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentStartBinding;
 import com.example.wordgame.model_layer.Learn;
+import com.example.wordgame.model_layer.ProgressReport;
+import com.example.wordgame.model_layer.ProgressViewModel;
+import com.example.wordgame.model_layer.User;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -27,8 +30,6 @@ public class FragmentStart extends Fragment {
      * @serialField  binding is a data binder for FragmentStart
      */
     private FragmentStartBinding binding;
-    private PlayFragment playObje;
-    private  LearnFragment learn;
     /**
      * create fragment start
      * @param savedInstanceState for FragmentStart
@@ -50,30 +51,27 @@ public class FragmentStart extends Fragment {
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-    ) {
+            Bundle savedInstanceState)
+    {
 
         binding = FragmentStartBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
-
     /**
      * set up tab layout which help of LearnAdapter class
      * handle events of the tab layout
+     * if position zero selected , learnFragment will be displayed
+     * Else if position is one , playFragment is inflated
      * @param view start fragment view
      * @param savedInstanceState for start fragment
      */
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         TabAdapter tabAdapter = new TabAdapter(requireActivity());
-         learn = tabAdapter.getLearn();
         ViewPager2 viewPager2 = view.findViewById(R.id.viewpager);
         TabLayout tabLayout = view.findViewById(R.id.tabs);
-
         viewPager2.setAdapter(tabAdapter);
-
-
         new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
@@ -94,19 +92,14 @@ public class FragmentStart extends Fragment {
             public void onTabSelected(TabLayout.Tab tab) {
 
                 viewPager2.setCurrentItem(tab.getPosition());
-
-
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
-
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
 
@@ -133,19 +126,6 @@ public class FragmentStart extends Fragment {
         searchItem.setVisible(true);
         searchItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         SearchView searchView1 = (SearchView) searchItem.getActionView();
-
-        /*searchView1.setQueryHint("Search");
-        searchView1.requestFocusFromTouch();
-        searchView1.setIconified(false);
-        searchView1.clearFocus();
-        searchItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                learn.filter();
-                Toast.makeText(requireContext(), "filtering ", Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        });*/
 
     }
 

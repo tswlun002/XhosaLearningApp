@@ -1,0 +1,122 @@
+25
+3;Choose the correct word for given term or sentence description
+mystery ; intsumantsumane
+ungazi
+uhlakanipha
+intsumantsumane
+ubumnyama
+outside ; phandle
+pakathi
+ecaleni
+phandle
+ekhohlo
+kuyatshisa phandle;it's hot outside
+hot
+it's raining
+it's hot outside
+raining outside
+question ; Umbuzo
+isizathu
+impendulo
+Umbuzo
+isitulo
+nika isizathu ; give a reason
+correct answer
+give a reason
+give answer
+correct reason
+imali ; money
+gold
+money
+notes
+coins
+In cash ; imali eziinkozo
+imali eziinkozo
+igolide
+eligadaqa
+umbona
+Summer ; iHlobo
+iHlobo
+ukwindla
+entlakohlaza
+ubusika
+Autumn ; uKwindla
+ubusika
+uKwindla
+intlakohlaza
+isibunzi
+Winter ; uBusika
+intwasahlobo
+ukwindla
+uBusika
+entlakohlaza
+Hello ; Molo
+uyaphi
+awe
+Molo
+bayabuya
+How are you ; Kunjani
+Kunjani
+uyaphi
+ubuyanini
+ukuhamba
+You're welcome ; wamkelekile
+wamkelekile
+phuma
+wamkelekile
+goduka
+isidlo ; meal
+inyama
+Isidlo
+isonka
+ihlobo
+Beverages ;Isiselo
+itafile
+Isiselo
+ingca
+impahla
+Supper ; Isidlo sangokuhlwa
+Isidlo sasemini
+Isidlo sangokuhlwa
+Isidlo sasemvakwemini
+itafile
+Kitchen ; Igumbi lokuphekela
+Icephe
+indlu yangasese
+Igumbi lokuphekela
+igumbi lokuphumla
+Pot ; Imbiza
+icephe
+itafile
+Imbiza
+isitya
+table ; itafile
+itafile
+umandlalo
+isitulo
+umthi
+chair ; isitulo
+umadlalo
+isitulo
+umbona
+ukutya
+television ; umabonakude
+unomathotholo
+umabonakude
+isibane
+inja
+radio ; unomathotholo
+umavakude
+unomathotholo
+ucingo
+ihagu
+light ; isibane
+isintya
+intambo
+isibane
+igusha
+dish ; isitya
+ihagu
+isihlangu
+ukutya
+isitya

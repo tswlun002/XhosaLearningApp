@@ -9,17 +9,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wordgame.R;
+import com.example.wordgame.model_layer.MultipleChoice;
+import com.example.wordgame.model_layer.TrueFalseGame;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
-public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAdapter.Holder>  {
+public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAdapter.Holder>
+        implements OnExtractResults  {
 
     @SuppressLint("StaticFieldLeak")
     private static Context context = null;
@@ -33,6 +40,7 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
     private HashMap<String ,List<String>> Data = new HashMap<>();
     private  int size =0;
     private  RecyclerView recyclerView;
+    private List<MultipleChoice>multipleChoices;
 
     /**
      * construct to initialise the serial fields
@@ -73,7 +81,7 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
         Object[] questionsData = Data.keySet().toArray();
         String key = questionsData[position]+"";
         List<String> choices  = Data.get(key);
-        viewHolder.question.setText(key);
+        viewHolder.question.setText(key+" is called ?");
         assert choices != null;
         viewHolder.choice1.setText(choices.get(0));
         viewHolder.choice2.setText(choices.get(1));
@@ -92,8 +100,9 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
      * generate initial colors for buttons
      * @param data  is list of url of the pictures
      */
-    public void setData(HashMap<String ,List<String>> data){
+    public void setData(HashMap<String ,List<String>> data, List<MultipleChoice>multipleChoiceList){
         Data = data;
+        multipleChoices=multipleChoiceList;
         setSize( Data.size());
         generateColors(getSize());
         notifyItemMoved(0, getSize());
@@ -164,6 +173,93 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
         return recyclerView;
     }
     /**
+     *
+     * @return hash map of questions and user final answers
+     */
+    @Override
+    public HashMap<String, String> getUserAnswers() {
+        return getUserFinalAnswers();
+    }
+
+    /**
+     * Get all user  final answers
+     *
+     * @return user final answers mapped to questions
+     */
+    private  HashMap<String ,String> getUserFinalAnswers(){
+        HashMap<String,String > ans = new HashMap<>();
+        Object[] questionsData = Data.keySet().toArray();
+        List<String> answer = new ArrayList<>();
+        String key="";
+        for(int i = 0 ; i < questionsData.length;i++) {
+            key = questionsData[i] + "";
+            answer.addAll(Objects.requireNonNull(Data.get(key)));
+        }
+
+        for(int i = 0 ; i < questionsData.length;i++) {
+            if(colors.get(4*i)==Color.GREEN){
+
+                ans.put(questionsData[i]+"".trim().toLowerCase(),answer.get(4*i)+"");
+            }
+            else if(colors.get(4*i+1)==Color.GREEN){
+
+                ans.put(questionsData[i]+"".trim().toLowerCase(),answer.get(4*i+1)+"");
+            }
+            else if(colors.get(4*i+2)==Color.GREEN){
+
+                ans.put(questionsData[i]+"".trim().toLowerCase(),answer.get(4*i+2)+"");
+            }
+            else if(colors.get(4*i+3)==Color.GREEN){
+
+                ans.put(questionsData[i]+"".trim().toLowerCase(),answer.get(4*i+3)+"");
+            }
+            else {
+
+                ans.put(questionsData[i]+"".trim().toLowerCase(),"none");
+            }
+        }
+        return ans;
+    }
+
+
+    /**
+     *
+     * @return all game correct answer
+     */
+    @Override
+    public HashMap<String, String> getGameAnswers() {
+        return gameAnswers();
+    }
+
+    /**
+     * Generate all the game answers
+     * @return all game correct answer
+     */
+    private  HashMap<String, String> gameAnswers(){
+        HashMap<String ,String> ans = new HashMap<>();
+        for(MultipleChoice multipleChoice: multipleChoices){
+            String answer = multipleChoice.getAnswer().trim().toLowerCase();
+            String question =multipleChoice.getQuestion().trim().toLowerCase();
+            ans.put(question,answer);
+        }
+        return  ans;
+    }
+
+    /**
+     * get true false information such id, level and total marks
+     * @return concatenated true false game id, level and total marks
+     */
+    @Override
+    public String getGameInformation() {
+        String trueFalseGame="";
+        for(MultipleChoice multipleChoice: multipleChoices){
+            trueFalseGame =multipleChoice.toString();
+            break;
+        }
+        return trueFalseGame;
+    }
+
+    /**
      * Inner class that contain features of the element to be inflated into listview
      */
     class  Holder extends RecyclerView.ViewHolder{
@@ -190,12 +286,12 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
          * Helper method to handle click listeners
          */
         private void handleRecycleView (){
-            HandleClickButtons handleClickButtons = new HandleClickButtons(getSize());
-            choice1.setOnClickListener(handleClickButtons);
-            choice2.setOnClickListener(handleClickButtons);
-            choice3.setOnClickListener(handleClickButtons);
-            choice4.setOnClickListener(handleClickButtons);
-            nextQ.setOnClickListener(handleClickButtons);
+            //HandleClickButtons handleClickButtons = );
+            choice1.setOnClickListener(new HandleClickButtons(getSize()));
+            choice2.setOnClickListener(new HandleClickButtons(getSize()));
+            choice3.setOnClickListener(new HandleClickButtons(getSize()));
+            choice4.setOnClickListener(new HandleClickButtons(getSize()));
+            nextQ.setOnClickListener(new HandleClickButtons(getSize()));
         }
         /**
          * set number of questions for this game
@@ -253,6 +349,7 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
                         setColor(pos*4+3,buttonColors[0]);
                     }
                     else if(v.getId()==R.id.answer3textView){
+
                         onMCQ.choices(v, pos);
                         onMCQ.StoreAnswer(answers);
                         setColor(pos*4,buttonColors[0]);
@@ -261,6 +358,9 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
                         setColor(pos*4+3,buttonColors[0]);
                     }
                     else if(v.getId()==R.id.answer4TextView) {
+                        Toast.makeText(context,"here at button 4", Toast.LENGTH_SHORT).show();
+                        onMCQ.choices(v, pos);
+                        onMCQ.StoreAnswer(answers);
                         setColor(pos*4,buttonColors[0]);
                         setColor(pos*4+1,buttonColors[0]);
                         setColor(pos*4+2,buttonColors[0]);

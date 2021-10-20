@@ -1,260 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:openDrawer="start"
+    android:id="@+id/drawer"
+    android:windowSoftInputMode="adjustResize|stateVisible|adjustPan"
     tools:context=".presentation_layer.ProggressFragment">
 
-
-    <TextView
-        android:id="@+id/editHardingId"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:ems="10"
-        android:gravity="center"
-        android:text="@string/your_progress_report"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:cardElevation="9dp"
-        app:layout_constraintBottom_toTopOf="@id/guideline12"
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/ResultsHots_frag"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        android:windowSoftInputMode="adjustPan"
+        app:defaultNavHost="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/guideline16"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <ProgressBar
-        android:id="@+id/determinateBar1"
-        style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:progress="50"
-        android:progressTint="@color/teal_700"
-        app:layout_constraintBottom_toTopOf="@id/guideline13"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guideline16"
-        app:layout_constraintTop_toTopOf="@id/guideline12"
+        app:navGraph="@navigation/results_nav_host"
 
         />
 
-    <TextView
-        android:id="@+id/editTextTextPersonName1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:ems="10"
-        android:gravity="center"
-        android:text="30%"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/guideline13"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guideline16"
-        app:layout_constraintTop_toTopOf="@id/guideline12" />
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@android:color/white"
+        app:headerLayout="@layout/header"
+        app:itemTextColor="@color/black"
+        app:menu="@menu/results_menu" />
 
-
-    <ProgressBar
-        android:id="@+id/determinateBar2"
-        style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:progress="50"
-        android:progressTint="@color/teal_700"
-        app:layout_constraintBottom_toTopOf="@id/guideline14"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guideline16"
-        app:layout_constraintTop_toTopOf="@id/guideline13"
-
-        />
-
-    <TextView
-        android:id="@+id/editTextTextPersonName2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:ems="10"
-        android:gravity="center"
-        android:text="30%"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/guideline14"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guideline16"
-        app:layout_constraintTop_toTopOf="@id/guideline13" />
-
-    <ProgressBar
-        android:id="@+id/determinateBar3"
-        style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:progress="50"
-        android:progressTint="@color/teal_700"
-        app:layout_constraintBottom_toTopOf="@id/guideline15"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guideline16"
-        app:layout_constraintTop_toTopOf="@id/guideline14"
-
-        />
-
-    <TextView
-        android:id="@+id/editTextTextPersonName3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:ems="10"
-        android:gravity="center"
-        android:text="30%"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/guideline15"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guideline16"
-        app:layout_constraintTop_toTopOf="@id/guideline14" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.29" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.39" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.49" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.59" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.23" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/textView13"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="@color/teal_700"
-        android:clickable="false"
-        android:elevation="4dp"
-        android:gravity="center"
-        android:text="@string/level_one"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/guideline13"
-        app:layout_constraintEnd_toEndOf="@+id/guideline16"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline12" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/textView14"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="@color/teal_700"
-        android:clickable="false"
-        android:elevation="4dp"
-        android:gravity="center"
-        android:text="@string/level_two"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/guideline14"
-        app:layout_constraintEnd_toEndOf="@+id/guideline16"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline13" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/textView15"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="@color/teal_700"
-        android:clickable="false"
-        android:elevation="4dp"
-        android:gravity="center"
-        android:text="@string/level_three"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/guideline15"
-        app:layout_constraintEnd_toEndOf="@+id/guideline16"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline14" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.69" />
-
-
-    <ProgressBar
-        android:id="@+id/determinateBar4"
-        style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:progress="50"
-        android:progressTint="#FFA500"
-        app:layout_constraintBottom_toTopOf="@id/guideline17"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guideline16"
-        app:layout_constraintTop_toTopOf="@id/guideline15"
-
-        />
-
-    <TextView
-        android:id="@+id/editTextTextPersonName4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:ems="10"
-        android:gravity="center"
-        android:text="30%"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/guideline17"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guideline16"
-        app:layout_constraintTop_toTopOf="@id/guideline15" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/engWordTextView4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="#FFA500"
-        android:clickable="false"
-        android:elevation="4dp"
-        android:gravity="center"
-        android:text="@string/avg_score"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/guideline17"
-        app:layout_constraintEnd_toEndOf="@+id/guideline16"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline15" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.79" />
-    <TextView
-        android:id="@+id/learnnextID"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:elevation="9dp"
-        android:text="@string/learning"
-        android:gravity="right|center"
-        android:textColor="@color/purple_700"
-        app:layout_constraintTop_toTopOf="@id/guideline17"
-        app:layout_constraintStart_toEndOf="@id/guideline16"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/guideline18"
-        />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

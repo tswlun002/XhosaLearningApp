@@ -1,0 +1,30 @@
+Match English days of the week words with Xhosa words; 28
+2;answer all questions
+Go ; hamba
+Forward ; phambili
+Go forward ; bheka phambili
+Straight ahead ; phambili
+I am busy ; ndixakekile
+I am tired now ; ndidiniwe ngoku
+I want food ; Ndifuna ukutya
+during the day ; emini
+in the evening ; ngokuhlwa
+in the afternoon ; emvakwemini
+at night ; ebsuku
+next month ; kulenyanga izayo
+next year ; kulonyaka uzayo
+umthunzi ; shade
+I'm ill ; Ndiyagula.
+isiduko; clan name
+cliff ; iliwa
+close by ; kufutshane
+conspiracy ; iyelenqe
+ilizwe ; country
+danger ; ingozi
+isithunzi ; shadow
+in the morning ; kusasa
+izolo ; yesterday
+today ; namhlanje
+I'm lost ; Ndilahlekile
+Leave me alone! ; Ndiyeke!
+Stop thief! ; Yima sela!

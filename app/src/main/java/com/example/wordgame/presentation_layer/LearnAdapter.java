@@ -40,12 +40,16 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
      */
     private final Context context;
     private final int layout;
-    private HashMap<String, List<String> > data;
+    private final  HashMap<String, List<String> > data = new HashMap<>();
     private HashMap<String, List<String> > data1;
+    private HashMap<Integer, List<String> > data2 = new HashMap<>();
+    List<String> column1List ;
+    List<String> column2List ;
+    private List<String> columnData;
     private  Holder holder;
-
-    int position,size;
-    int count =0;
+    private   Object[] keys;
+    int size=0;
+    boolean dataSet =false;
 
     /**
      * Constructor of WordGameDB controller to initialise the fields
@@ -83,10 +87,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
     public int getItemCount() {
         int y =0;
         if(data!=null)
-            y= getSize();
-        if(y ==4) {
-            data1 = new HashMap<>(data);
-        }
+            y= data.size();
         return y;
 
     }
@@ -99,58 +100,12 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
 
     @Override
     public void onBindViewHolder(@NonNull Holder holder, @SuppressLint("RecyclerView") int position) {
-       this.position =position;
-       if(position< data.size()) {
-           holder.descriptionView.setText(data.keySet().toArray()[position].toString());
-           addRow(data);
-
-       }
+        int size = position+1;
+        String key  = getHeadings()[position]+"";
+        holder.setIsRecyclable(false);
+        holder.pageNumber.setText((size)+"/"+ data.size());
+        addRow(data2.get(position*2), data2.get(position*2+1),key,holder);
     }
-
-    /**
-     * set data for learning
-     * @param material is the learning material
-     */
-    void setData(HashMap<String, List<String>> material){
-        data=material;
-        setSize(1);
-       notifyItemChanged(0, getSize());
-
-
-    }
-
-    /**
-     * set size of the learning
-     * @param materialSize size of the learning
-     */
-    void setSize(int materialSize) {
-        size += materialSize;
-    }
-
-    /**
-     * @return size of learning available
-     */
-    int getSize(){
-        return size;
-    }
-
-    /**
-     * Add row to store learning material
-     * @param data set on the rows
-     */
-    void addRow( HashMap<String, List<String>>  data ) {
-
-        List<String> column1List = new ArrayList<>();
-        List<String> column2List = new ArrayList<>();
-        List<String> values = data.get(data.keySet().toArray()[position].toString());
-        assert values != null;
-        getContent(column1List, column2List, values);
-        addRow(column1List, column2List);
-        column1List.clear();
-        column2List.clear();
-
-    }
-
     /**
      * On the added row ,sets data
      * First row label columns
@@ -159,9 +114,12 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
      * @param column2List contains data of the second column
      */
     @SuppressLint({"ResourceAsColor", "SetTextI18n"})
-    void addRow(List<String>column1List,List<String>column2List){
+    void addRow(List<String>column1List,List<String>column2List,String key,Holder holder){
+       // Toast.makeText(context,column1List.size()+" | "+key,Toast.LENGTH_SHORT).show();
+        holder.descriptionView.setText(key);
         for (int index =0; index<column1List.size();index++) {
-            for (int i = index+1; i < holder.tableLayout.getChildCount(); i++) {
+            int i = index+1;
+            if( i < holder.tableLayout.getChildCount()){
                 TableRow row = (TableRow) holder.tableLayout.getChildAt(i);
                 if (i -1 == 0) {
                     TableRow row1 = (TableRow) holder.tableLayout.getChildAt(0);
@@ -181,12 +139,10 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
                     }
                     else {
                         String dataLine  =column2List.get(index);
-                         setText(dataLine,view,40);
+                        setText(dataLine,view,40);
                     }
 
                 }
-                break;
-
             }
         }
     }
@@ -222,6 +178,67 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
 
     }
 
+    void generateHeadings(){
+        keys=getData().keySet().toArray();
+    }
+
+    Object[] getHeadings(){
+        return keys;
+    }
+
+    void setAllData(HashMap<String , List<String>>data1){
+        data.putAll(data1);
+    }
+    HashMap<String , List<String>> getData(){
+        return data;
+    }
+
+
+
+    /**
+     * set data for learning
+     * @param material is the learning material
+     */
+    void setData(HashMap<String, List<String>> material){
+        setAllData(material);
+        generateHeadings();
+        int count =0;
+        for (Object key : material.keySet().toArray()) {
+            column1List= new ArrayList<>();
+            column2List= new ArrayList<>();
+            getContent(column1List,column2List,material.get(key+""));
+            data2.put(count*2,column1List);
+            data2.put(count*2+1,column2List);
+            count++;
+
+        }
+        setSize(data.size());
+        notifyDataSetChanged();
+        if(!dataSet) {
+            data1 = new HashMap<>(data);
+            dataSet=true;
+        }
+        //notifyItemRangeInserted(0,getSize());
+
+
+    }
+
+    /**
+     * set size of the learning
+     * @param materialSize size of the learning
+     */
+    void setSize(int materialSize) {
+        size = materialSize;
+    }
+
+    /**
+     * @return size of learning available
+     */
+    int getSize(){
+        return size;
+    }
+
+
     /**
      * Store data in the columns lists
      * @param column1 list store data for first column
@@ -231,8 +248,9 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
     private void getContent(List<String> column1 ,List<String> column2,List<String> content){
         for(int i =content.size()-1; i>=0; i--){
             if(content.get(i).length()!= 0){
-                column1.add(content.get(i).substring(0,content.get(i).indexOf(";")));
-                column2.add(content.get(i).substring(content.get(i).indexOf(";")+1));
+                column1.add(content.get(i).substring(0, content.get(i).indexOf(";")));
+                column2.add(content.get(i).substring(content.get(i).indexOf(";") + 1));
+
             }
 
         }
@@ -246,7 +264,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
      */
      class  Holder extends RecyclerView.ViewHolder {
         TableLayout tableLayout;
-        TextView descriptionView;
+        TextView descriptionView,pageNumber;
 
         /**
          * constructor to initialise serial fields of Holder
@@ -256,6 +274,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
             super(itemView);
             tableLayout = itemView.findViewById(R.id.tablelayoutID);
             descriptionView = itemView.findViewById(R.id.textViewAdaoterID);
+            pageNumber= itemView.findViewById(R.id.pageNo);
             makeTable();
         }
 
@@ -266,7 +285,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
         @SuppressLint("ResourceType")
         void makeTable(){
 
-            for(int i=0; i<6;i++){
+            for(int i=0; i<10;i++){
                 TextView column1 = new TextView(context);
                 column1.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
                 column1.setKeyListener(null);
@@ -286,9 +305,8 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
                 tableLayout.addView(tableRow);
             }
         }
-
-
     }
+
 
     /**
      * Method implement search
@@ -314,21 +332,29 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
         protected FilterResults performFiltering(CharSequence constraint) {
 
             HashMap<String ,List<String>> filter = new HashMap<>();
+            boolean found =false;
+            if(constraint !=null || constraint.length()!=0){
 
-            if(constraint !=null  || !constraint.toString().trim().equals("")){
                 String pattern = constraint.toString().toLowerCase().trim();
                 boolean inHeading  =searchHeading(pattern,filter);
                 boolean inContent =false;
+                boolean inHeadins  = false;
                 if(! inHeading){
+                   // Toast.makeText(context,filter.toString()+"\n\ndon't come here",filter.size());
                     inContent =searchContent(pattern,filter);
+                    if(! inContent){
+                        filter.putAll(data1);
+                    }
                 }
-                if(! inContent){
-                    filter.putAll(data);
+                if(inHeading==true){
+                     found=true;
+                     inHeading=true;
                 }
 
+
             }
-           else {
-                 filter.putAll(data);
+           else if(!found) {
+                 filter.putAll(data1);
             }
             FilterResults filterResults = new FilterResults();
             filterResults.values = filter;
@@ -345,21 +371,10 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
          */
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            if(((HashMap) results.values).size() !=data.size()) {
+            //if(((HashMap) results.values).size() !=0) {
                 data.clear();
-                data.putAll((HashMap) results.values);
-                size = data.size();
-               notifyDataSetChanged();
-               count=0;
-            }else {
-                setSize(-data.size());
-                notifyDataSetChanged();
-                data.putAll(data1);
-                setSize(data.size());
-                notifyDataSetChanged();
-            }
-
-
+                data2.clear();
+                setData((HashMap) results.values);
         }
     };
 
@@ -375,7 +390,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
             if(key.toLowerCase().trim().equalsIgnoreCase(pattern)){
                 filter.put(key,data.get(key));
                 found=true;
-                break;
+                //break;
             }
         }
         return  found;
@@ -412,9 +427,6 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
             list.add(values.get(i).substring(0,values.get(i).indexOf(";")));
         }
     }
-
-
-
 
 
 

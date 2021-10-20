@@ -1,0 +1,306 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 6,
+    "identityHash": "b1543af025e20b82d7a389c2439e2abb",
+    "entities": [
+      {
+        "tableName": "Learn",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`learnId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `level` INTEGER NOT NULL, `section` TEXT, `content` TEXT, `instruction` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "learnId",
+            "columnName": "learnId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "level",
+            "columnName": "level",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "section",
+            "columnName": "section",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "content",
+            "columnName": "content",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "instruction",
+            "columnName": "instruction",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "learnId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Matching",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`matchingId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `level` INTEGER NOT NULL, `tittle` TEXT, `instructions` TEXT, `questions` TEXT, `answers` TEXT, `totalMarks` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "matchingId",
+            "columnName": "matchingId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "level",
+            "columnName": "level",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tittle",
+            "columnName": "tittle",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "instructions",
+            "columnName": "instructions",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "questions",
+            "columnName": "questions",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "answers",
+            "columnName": "answers",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "totalMarks",
+            "columnName": "totalMarks",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "matchingId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "TrueOfFalse",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`trueFalseId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `level` INTEGER NOT NULL, `question` TEXT, `figures` TEXT, `answers` TEXT, `instructions` TEXT, `totalMarks` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "trueFalseId",
+            "columnName": "trueFalseId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "level",
+            "columnName": "level",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "question",
+            "columnName": "question",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "figures",
+            "columnName": "figures",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "answers",
+            "columnName": "answers",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "instructions",
+            "columnName": "instructions",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "totalMarks",
+            "columnName": "totalMarks",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "trueFalseId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "MultipleChoice",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`multipleId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `level` INTEGER NOT NULL, `question` TEXT, `choiceOne` TEXT, `choiceTwo` TEXT, `choiceThree` TEXT, `choiceFour` TEXT, `answer` TEXT, `instructions` TEXT, `totalMarks` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "multipleId",
+            "columnName": "multipleId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "level",
+            "columnName": "level",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "question",
+            "columnName": "question",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "choiceOne",
+            "columnName": "choiceOne",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "choiceTwo",
+            "columnName": "choiceTwo",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "choiceThree",
+            "columnName": "choiceThree",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "choiceFour",
+            "columnName": "choiceFour",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "answer",
+            "columnName": "answer",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "instructions",
+            "columnName": "instructions",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "totalMarks",
+            "columnName": "totalMarks",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "multipleId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "TranslationGame",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`translationId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `hints` TEXT, `hintCounter` INTEGER NOT NULL, `instructions` TEXT, `totalMarks` INTEGER NOT NULL, `level` INTEGER NOT NULL, `question` TEXT, `answers` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "translationId",
+            "columnName": "translationId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hints",
+            "columnName": "hints",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hintCounter",
+            "columnName": "hintCounter",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "instructions",
+            "columnName": "instructions",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "totalMarks",
+            "columnName": "totalMarks",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "level",
+            "columnName": "level",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "question",
+            "columnName": "question",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "answers",
+            "columnName": "answers",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "translationId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b1543af025e20b82d7a389c2439e2abb')"
+    ]
+  }
+}
