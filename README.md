@@ -1,6 +1,6 @@
 # XhosaLearningApp
 
-App for teaching English speaking people  basic Xhosa.
+Android App for teaching English speaking people  basic Xhosa.
 
 User will learn first then after they have learn , user
 Is allowed to test what user had learn on 3 types of game
@@ -14,3 +14,5 @@ User is able to see progress as user learn and doing tests
 
 
 This app is under consideration by UCT policy language teaching and development.
+
+Link for app Demo: https://1drv.ms/v/s!Av2oHOkA9FZQzjvj2hvrBCoS35EY
