@@ -92,7 +92,6 @@ public class SubmitHandler extends ActivityResults implements OnSubmit,Comparabl
     @SuppressLint("DefaultLocale")
     double gradeAnswer(){
         double percent =0;
-        //Toast.makeText(inflater.getContext(),userAnswers+"\n\nall a",Toast.LENGTH_SHORT).show();
         for (Object string: userAnswers.keySet().toArray()) {
             int value = compareTo(string + ":" + userAnswers.get(string + ""));
             if (value == 0)
@@ -139,7 +138,7 @@ public class SubmitHandler extends ActivityResults implements OnSubmit,Comparabl
                         trim().toLowerCase()
                         .compareTo(answer);
             }catch (Exception e){
-                Toast.makeText(inflater.getContext(), question+"\n\n "+e.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(inflater.getContext(), question+"\n\n "+e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
         }

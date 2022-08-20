@@ -34,12 +34,12 @@ com/example/wordgame/presentation_layer/ProgressHandler.java
  com.example.wordgame.presentation_layer.ProgressHandler
 com/example/wordgame/data_layer/TranslationDao.java
  com.example.wordgame.data_layer.TranslationDao
-com/example/wordgame/databinding/FragmentProggressBinding.java
- com.example.wordgame.databinding.FragmentProggressBinding
 com/example/wordgame/presentation_layer/LevelResultsFragment.java
  com.example.wordgame.presentation_layer.LevelResultsFragment
  com.example.wordgame.presentation_layer.LevelResultsFragment$1
  com.example.wordgame.presentation_layer.LevelResultsFragment$2
+com/example/wordgame/databinding/FragmentProggressBinding.java
+ com.example.wordgame.databinding.FragmentProggressBinding
 com/example/wordgame/presentation_layer/OnScroll.java
  com.example.wordgame.presentation_layer.OnScroll
 com/example/wordgame/data_layer/ProgressReportDao.java
@@ -57,6 +57,11 @@ com/example/wordgame/presentation_layer/DragandDrop.java
  com.example.wordgame.presentation_layer.DragandDrop$1
  com.example.wordgame.presentation_layer.DragandDrop$Choice
  com.example.wordgame.presentation_layer.DragandDrop$TouchChoices
+com/example/wordgame/respotory_layer/FactoryMatchingDB.java
+ com.example.wordgame.respotory_layer.FactoryMatchingDB
+ com.example.wordgame.respotory_layer.FactoryMatchingDB$1
+ com.example.wordgame.respotory_layer.FactoryMatchingDB$UpdateHandler
+ com.example.wordgame.respotory_layer.FactoryMatchingDB$insertHandler
 com/example/wordgame/presentation_layer/LearnFragment.java
  com.example.wordgame.presentation_layer.LearnFragment
  com.example.wordgame.presentation_layer.LearnFragment$1
@@ -65,11 +70,6 @@ com/example/wordgame/presentation_layer/LearnFragment.java
  com.example.wordgame.presentation_layer.LearnFragment$4
  com.example.wordgame.presentation_layer.LearnFragment$5
  com.example.wordgame.presentation_layer.LearnFragment$6
-com/example/wordgame/respotory_layer/FactoryMatchingDB.java
- com.example.wordgame.respotory_layer.FactoryMatchingDB
- com.example.wordgame.respotory_layer.FactoryMatchingDB$1
- com.example.wordgame.respotory_layer.FactoryMatchingDB$UpdateHandler
- com.example.wordgame.respotory_layer.FactoryMatchingDB$insertHandler
 com/example/wordgame/presentation_layer/HintAdapter.java
  com.example.wordgame.presentation_layer.HintAdapter
  com.example.wordgame.presentation_layer.HintAdapter$1
@@ -120,10 +120,10 @@ com/example/wordgame/data_layer/PopulateTrueFalseDB.java
  com.example.wordgame.data_layer.PopulateTrueFalseDB
 com/example/wordgame/databinding/ActivityMainBinding.java
  com.example.wordgame.databinding.ActivityMainBinding
-com/example/wordgame/model_layer/MultipleChoice.java
- com.example.wordgame.model_layer.MultipleChoice
 com/example/wordgame/model_layer/WordGameViewModel.java
  com.example.wordgame.model_layer.WordGameViewModel
+com/example/wordgame/model_layer/MultipleChoice.java
+ com.example.wordgame.model_layer.MultipleChoice
 com/example/wordgame/presentation_layer/Instructions.java
  com.example.wordgame.presentation_layer.Instructions
  com.example.wordgame.presentation_layer.Instructions$1
@@ -257,20 +257,20 @@ com/example/wordgame/presentation_layer/TrueFalseFragment.java
  com.example.wordgame.presentation_layer.TrueFalseFragment$6
 com/example/wordgame/presentation_layer/TabAdapter.java
  com.example.wordgame.presentation_layer.TabAdapter
-com/example/wordgame/presentation_layer/OnMultipleChoice.java
- com.example.wordgame.presentation_layer.OnMultipleChoice
 com/example/wordgame/presentation_layer/HintHandler.java
  com.example.wordgame.presentation_layer.HintHandler
+com/example/wordgame/presentation_layer/OnMultipleChoice.java
+ com.example.wordgame.presentation_layer.OnMultipleChoice
 com/example/wordgame/presentation_layer/ActivityResults.java
  com.example.wordgame.presentation_layer.ActivityResults
  com.example.wordgame.presentation_layer.ActivityResults$1
  com.example.wordgame.presentation_layer.ActivityResults$2
+com/example/wordgame/databinding/FragmentMultipleChoiceBinding.java
+ com.example.wordgame.databinding.FragmentMultipleChoiceBinding
 com/example/wordgame/presentation_layer/ComputeProgressReport.java
  com.example.wordgame.presentation_layer.ComputeProgressReport
  com.example.wordgame.presentation_layer.ComputeProgressReport$1
  com.example.wordgame.presentation_layer.ComputeProgressReport$2
-com/example/wordgame/databinding/FragmentMultipleChoiceBinding.java
- com.example.wordgame.databinding.FragmentMultipleChoiceBinding
 com/example/wordgame/data_layer/PopulateLearnDB.java
  com.example.wordgame.data_layer.PopulateLearnDB
 com/example/wordgame/presentation_layer/LearnAdapter.java
@@ -308,14 +308,14 @@ com/example/wordgame/respotory_layer/FactoryTranslationDB.java
  com.example.wordgame.respotory_layer.FactoryTranslationDB$1
  com.example.wordgame.respotory_layer.FactoryTranslationDB$UpdateHandler
  com.example.wordgame.respotory_layer.FactoryTranslationDB$insertHandler
+com/example/wordgame/model_layer/TranslationViewModel.java
+ com.example.wordgame.model_layer.TranslationViewModel
 com/example/wordgame/presentation_layer/TranslationAdapter.java
  com.example.wordgame.presentation_layer.TranslationAdapter
  com.example.wordgame.presentation_layer.TranslationAdapter$Holder
  com.example.wordgame.presentation_layer.TranslationAdapter$Holder$1
  com.example.wordgame.presentation_layer.TranslationAdapter$Holder$2
  com.example.wordgame.presentation_layer.TranslationAdapter$Holder$3
-com/example/wordgame/model_layer/TranslationViewModel.java
- com.example.wordgame.model_layer.TranslationViewModel
 com/example/wordgame/data_layer/PopulateMatchingDB.java
  com.example.wordgame.data_layer.PopulateMatchingDB
 com/example/wordgame/data_layer/PopulateProgressDB.java

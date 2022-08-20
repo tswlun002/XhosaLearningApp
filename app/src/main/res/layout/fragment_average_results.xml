@@ -243,18 +243,19 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.79" />
-    <TextView
+    <!--com.google.android.material.button.MaterialButton
         android:id="@+id/learnnextID"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:elevation="9dp"
         android:text="@string/learning"
+        android:enabled="false"
         android:gravity="right|center"
         android:textColor="@color/purple_700"
         app:layout_constraintTop_toTopOf="@id/guideline17"
         app:layout_constraintStart_toEndOf="@id/guideline16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/guideline18"
-        />
+        /-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

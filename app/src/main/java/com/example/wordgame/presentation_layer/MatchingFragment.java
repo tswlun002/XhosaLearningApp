@@ -197,7 +197,6 @@ public class MatchingFragment extends Fragment {
                 int id  =R.id.action_results_CurrentActivity_to_matchingFragment;
                 HashMap<String ,String> userAnswer = onExtractResults.getUserAnswers();
                 HashMap<String ,String> gameAnswer = onExtractResults.getGameAnswers();
-                Toast.makeText(requireContext(), userAnswer.size()+"",Toast.LENGTH_SHORT).show();
                 OnSubmit onSubmit =new SubmitHandler(inflater,id,binding.getRoot(), userAnswer,gameAnswer);
                 onSubmit.onSubmit(v,inflater);
                 new LevelResultsHandler(requireContext(),MainActivity.userViewModel,wordGameViewModel,

@@ -14,12 +14,16 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
+
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentProggressBinding;
@@ -110,6 +114,7 @@ public class ProggressFragment extends Fragment {
         );
         binding.drawer.addDrawerListener(actionBarDrawerToggle);
 
+
         return binding.getRoot();
     }
 
@@ -121,6 +126,7 @@ public class ProggressFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         ((MainActivity) requireActivity()).backUpPressed(ProggressFragment.this,R.id.action_proggress_to_FirstFragment);
 
     }
@@ -254,16 +260,7 @@ public class ProggressFragment extends Fragment {
             @SuppressLint("RestrictedApi")
             @Override
             public void onDrawerClosed(@NonNull View drawerView) {
-                NavigationMenuItemView levelone = drawerView.findViewById(R.id.action_averageResults2_to_levelOneResults3);
-                NavigationMenuItemView leveltwo = drawerView.findViewById(R.id.action_averageResults2_to_levelTwoResults3);
-                NavigationMenuItemView levelthree = drawerView.findViewById(R.id.action_averageResults2_to_levelThreeResults4);
 
-               /* levelone.setChecked(false);
-                levelone.setTextColor(ColorStateList.valueOf(Color.BLACK));
-                leveltwo.setChecked(false);
-                leveltwo.setTextColor(ColorStateList.valueOf(Color.BLACK));
-                levelthree.setChecked(false);
-                levelthree.setTextColor(ColorStateList.valueOf(Color.BLACK));*/
 
                 close[0] =true;
                 open[0] =false;
@@ -290,7 +287,6 @@ public class ProggressFragment extends Fragment {
 
     }
     private  void getAllLevelResults(int level){
-        Toast.makeText(requireContext()," okay am here 1",Toast.LENGTH_SHORT).show();
         levelResultsViewModel.getAverage().observe(getViewLifecycleOwner(), new Observer<List<LevelResults>>() {
             @Override
             public void onChanged(List<LevelResults> levelResults) {
@@ -351,7 +347,6 @@ public class ProggressFragment extends Fragment {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 if(item.getItemId() == R.id.levelOneResults)
                 {
-                    Toast.makeText(requireContext()," okay am here",Toast.LENGTH_SHORT).show();
                     getAllLevelResults(1);
                 }
 

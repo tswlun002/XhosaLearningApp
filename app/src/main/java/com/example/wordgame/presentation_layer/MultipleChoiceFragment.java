@@ -15,21 +15,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentMultipleChoiceBinding;
-import com.example.wordgame.model_layer.LevelResults;
+
 import com.example.wordgame.model_layer.MultipleChoice;
 import com.example.wordgame.model_layer.MultipleChoiceViewModel;
-import com.example.wordgame.model_layer.TranslationGame;
-import com.example.wordgame.model_layer.TrueFalseGame;
-import com.example.wordgame.model_layer.TrueFalseViewModel;
-import com.example.wordgame.model_layer.User;
+
 import com.example.wordgame.model_layer.UserViewModel;
 import com.example.wordgame.model_layer.WordGameViewModel;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

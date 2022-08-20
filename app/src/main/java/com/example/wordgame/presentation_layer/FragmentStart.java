@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,10 +17,6 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentStartBinding;
-import com.example.wordgame.model_layer.Learn;
-import com.example.wordgame.model_layer.ProgressReport;
-import com.example.wordgame.model_layer.ProgressViewModel;
-import com.example.wordgame.model_layer.User;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 

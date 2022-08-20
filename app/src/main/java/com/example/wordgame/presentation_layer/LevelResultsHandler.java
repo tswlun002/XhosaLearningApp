@@ -64,7 +64,7 @@ public class LevelResultsHandler {
             level= Integer.parseInt(information[1].trim());
             totalMarks= userAnswers.size();
         }catch (Exception e){
-            Toast.makeText(context,"Error LevelResultsHandler\n "+e.toString(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,"Error LevelResultsHandler\n "+e.getMessage(),Toast.LENGTH_SHORT).show();
         }
 
         LevelResults levelResults = new LevelResults(

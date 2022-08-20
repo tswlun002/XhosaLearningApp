@@ -17,14 +17,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
-import android.widget.Toast;
+
 
 import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentLearnBinding;
 import com.example.wordgame.model_layer.Learn;
 import com.example.wordgame.model_layer.LearnViewModel;
-import com.example.wordgame.model_layer.User;
-import com.example.wordgame.model_layer.UserViewModel;
+
 import com.example.wordgame.model_layer.WordGameViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -139,7 +138,6 @@ public class LearnFragment extends Fragment {
     }
 
     void filter (String query){
-        //Toast.makeText(requireContext(),query.toString()+" ",Toast.LENGTH_SHORT).show();
         learn.getFilter().filter(query);
     }
 
@@ -166,7 +164,6 @@ public class LearnFragment extends Fragment {
      * @param learnViewModel holder of the learning
      */
     private  void getAllLearningMaterial(LearnViewModel learnViewModel,int level){
-           Toast.makeText(requireContext(),  level+ " Here on level 2", Toast.LENGTH_SHORT).show();
            if (level == 1) {
                learnViewModel.getAllNotesLevel1().observe(getViewLifecycleOwner(), new Observer<List<Learn>>() {
                    @Override
@@ -209,9 +206,9 @@ public class LearnFragment extends Fragment {
     private void setData(List<Learn> learningMaterial){
         String key="";
         HashMap<String, List<String> >  data = new HashMap<>();
-        int count =0;
+
         for(Learn material:learningMaterial) {
-            count++;
+
             List<String> content = new ArrayList<>();
             key = material.getSection();
             content.add(material.getContent());
@@ -227,7 +224,6 @@ public class LearnFragment extends Fragment {
             }
 
         }
-        Toast.makeText(requireContext(),count+"",Toast.LENGTH_LONG).show();
         learn.setData(data);
     }
 

@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_averageResults2_to_levelTwoResults3"
             app:destination="@id/levelTwoResults3" />
+        <action
+            android:id="@+id/action_averageResults2_to_Play"
+            app:destination="@id/SecondFragment" />
     </fragment>
     <fragment
         android:id="@+id/levelOneResults3"

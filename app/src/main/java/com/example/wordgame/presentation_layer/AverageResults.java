@@ -9,7 +9,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.wordgame.R;
 import com.example.wordgame.databinding.FragmentAverageResultsBinding;
 import com.example.wordgame.model_layer.ProgressReport;
 import com.example.wordgame.model_layer.ProgressViewModel;

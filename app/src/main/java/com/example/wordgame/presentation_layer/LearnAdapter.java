@@ -11,11 +11,11 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.MultiAutoCompleteTextView;
+
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -115,7 +115,6 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
      */
     @SuppressLint({"ResourceAsColor", "SetTextI18n"})
     void addRow(List<String>column1List,List<String>column2List,String key,Holder holder){
-       // Toast.makeText(context,column1List.size()+" | "+key,Toast.LENGTH_SHORT).show();
         holder.descriptionView.setText(key);
         for (int index =0; index<column1List.size();index++) {
             int i = index+1;
@@ -340,7 +339,6 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.Holder> impl
                 boolean inContent =false;
                 boolean inHeadins  = false;
                 if(! inHeading){
-                   // Toast.makeText(context,filter.toString()+"\n\ndon't come here",filter.size());
                     inContent =searchContent(pattern,filter);
                     if(! inContent){
                         filter.putAll(data1);

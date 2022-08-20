@@ -9,18 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wordgame.R;
 import com.example.wordgame.model_layer.MultipleChoice;
-import com.example.wordgame.model_layer.TrueFalseGame;
+
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -358,7 +356,6 @@ public class MultipleChoiceAdapter extends RecyclerView.Adapter<MultipleChoiceAd
                         setColor(pos*4+3,buttonColors[0]);
                     }
                     else if(v.getId()==R.id.answer4TextView) {
-                        Toast.makeText(context,"here at button 4", Toast.LENGTH_SHORT).show();
                         onMCQ.choices(v, pos);
                         onMCQ.StoreAnswer(answers);
                         setColor(pos*4,buttonColors[0]);
